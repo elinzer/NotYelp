@@ -3,11 +3,9 @@ Definitely not Yelp
 
 ## This project was developed utilizing:
 
-* ####  Backend: Python/Flask
+* ####  Backend: Python/Flask/SQLAlchemy
 
 * #### Frontend: React/Redux/JS/HTML/CSS
-
-* #### DB: SQLAlchemy
 
 * ####  Hosted on Heroku
 (Insert link here)
