@@ -21,5 +21,5 @@ Definitely not Yelp
 
 ***
 
-## How to run AwayBnB Locally:
+## How to run NotYelp Locally:
 * Clone the repository in your terminal: ```git clone https://github.com/elinzer/NotYelp.git```
