@@ -1,9 +1,10 @@
 # Welcome to NotYelp, clone of Yelp
-Definitely not Yelp
+Definitely not Yelp is a full-stack-application clone of Yelp deployed on heroku. The App Uses React & Redux in the Front-end and for the backend we use Flask & an ORM called SQLAlchemy.
 
-## This project was developed utilizing:
+## This project was developed utilizing the technoligies:
 
 * ####  Backend: Python/Flask
+
 
 * #### Frontend: React/Redux/JS/HTML/CSS
 
