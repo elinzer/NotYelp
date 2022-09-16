@@ -23,7 +23,7 @@ class Business(db.Model):
   owner_id = db.Column("owner_id", db.Integer, db.ForeignKey("users.id"))
 
   owner = db.relationship("User")
-  reviews = db.relationship("Review", back_populates="business")
+  reviews = db.relationship("Review", back_populates="business", cascade="all, delete")
 
   def to_dict(self):
     return {
