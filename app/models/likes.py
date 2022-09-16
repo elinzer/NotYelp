@@ -1,4 +1,3 @@
-from sqlalchemy import func
 from .db import db
 
 class Like(db.Model):
