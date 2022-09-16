@@ -17,3 +17,4 @@ class EditBusinessForm(FlaskForm):
   close_time = TimeField("Close_Time", validators=[DataRequired()])
   previewImage = StringField("PreviewImage", validators=[DataRequired()])
   submit = SubmitField("Submit")
+
