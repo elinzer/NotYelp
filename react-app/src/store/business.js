@@ -29,6 +29,17 @@ export const getBusinesses = () => async (dispatch) => {
     const businesses = await res.json();
     dispatch(getAll(businesses));
   }
+  return res;
+};
+
+export const deleteBusinessById = (id) => async (dispatch) => {
+  const res = await fetch(`/api/businesses/${id}`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    dispatch(deleteBusiness(id));
+  }
+  return res;
 };
 
 export default function businessesReducer(state = {}, action) {
@@ -38,6 +49,9 @@ export default function businessesReducer(state = {}, action) {
       action.payload.businesses.forEach((business) => {
         newState[business.id] = business;
       });
+      return newState;
+    case DELETE:
+      delete newState[action.payload];
       return newState;
     default:
       return state;
