@@ -65,7 +65,7 @@ def edit_business(business_id):
 #Delete Business
 @business_routes.route("/<int:business_id>", methods=["DELETE"])
 def delete_business(business_id):
-  business = Business.query.filter(Business.id == business_id)
+  business = Business.query.filter(Business.id == business_id).first()
   db.session.delete(business)
   db.session.commit()
   return jsonify({
