@@ -1,5 +1,5 @@
 from ..models import db
-from ..models.business import Business
+from ..models import Business
 from datetime import time
 def seeded_businesses():
   demo_businesses = [
