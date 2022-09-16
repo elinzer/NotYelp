@@ -13,5 +13,5 @@ class EditBusinessForm(FlaskForm):
   zipcode = IntegerField("Zipcode", validators=[DataRequired()])
   open_time = TimeField("Open_Time", validators=[DataRequired()])
   close_time = TimeField("Close_Time", validators=[DataRequired()])
-  preview_image = StringField("PreviewImage", validators=[DataRequired()])
+  preview_image = StringField("preview_image", validators=[DataRequired()])
   submit = SubmitField("Submit")

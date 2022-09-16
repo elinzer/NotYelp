@@ -18,7 +18,7 @@ class Business(db.Model):
   preview_image = db.Column("preview_image", db.String, nullable=False)
 
   created_at = db.Column("created_at", db.DateTime, default=func.now())
-  updated_at = db.Column("updated_at", db.DateTime, default=func.now(), on_update=func.now())
+  updated_at = db.Column("updated_at", db.DateTime, default=func.now(), onupdate=func.now())
 
   owner_id = db.Column("owner_id", db.Integer, db.ForeignKey("users.id"))
 
