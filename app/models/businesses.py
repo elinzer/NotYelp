@@ -13,10 +13,9 @@ class Business(db.Model):
   state = db.Column("state", db.String, nullable=False)
   city = db.Column("city", db.String, nullable=False)
   zipcode = db.Column("zipcode", db.Integer, nullable=False)
-  lat = db.Column("lat", db.Float, nullable=False)
-  lng = db.Column("lng", db.Float, nullable=False)
   open_time = db.Column("open_time", db.Time, nullable=False)
   close_time = db.Column("close_time", db.Time, nullable=False)
+  preview_image = db.Column("preview_image", db.String, nullable=False)
 
   created_at = db.Column("created_at", db.DateTime, default=func.now())
   updated_at = db.Column("updated_at", db.DateTime, default=func.now(), on_update=func.now())
@@ -36,10 +35,9 @@ class Business(db.Model):
       "state": self.state,
       "city": self.city,
       "zipcode": self.zipcode,
-      "lat": self.lat,
-      "lng": self.lng,
       "open_time": self.open_time.hour,
       "close_time": self.close_time.hour,
+      "preview_image": self.preview_image,
       "created_at": self.created_at,
       "updated_at": self.updated_at,
       "owner_id": self.owner_id,
