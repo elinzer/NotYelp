@@ -24,6 +24,8 @@ class Business(db.Model):
 
   owner = db.relationship("User")
   reviews = db.relationship("Review", back_populates="business", cascade="all, delete")
+  likes = db.relationship("Like", back_populates="business", cascade="all, delete")
+  menuitems = db.relationship("MenuItem", back_populates="business", cascade="all, delete")
 
   def to_dict(self):
     return {
@@ -42,5 +44,7 @@ class Business(db.Model):
       "created_at": self.created_at,
       "updated_at": self.updated_at,
       "owner_id": self.owner_id,
-      "review_ids": [review.id for review in self.reviews]
+      "review_ids": [review.id for review in self.reviews],
+      "like_ids": [like.id for like in self.likes],
+      "menuitem_ids": [menuitem.id for menuitem in self.menuitems]
     }

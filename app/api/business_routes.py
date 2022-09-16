@@ -39,7 +39,7 @@ def create_business():
     db.session.commit()
     return jsonify(new_business.to_dict()), 200
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 403
 
 #Edit Business
 @business_routes.route("/<int:business_id>", methods=["PUT"])
@@ -65,7 +65,7 @@ def edit_business(business_id):
     else:
       return {'errors': 'Unauthorized'}, 401
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 403
 
 #Delete Business
 @business_routes.route("/<int:business_id>", methods=["DELETE"])
