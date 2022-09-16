@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from ..models import Review
 from ..models import db
 from ..forms.review_form import ReviewForm
+from .auth_routes import validation_errors_to_error_messages
 # from flask_login import current_user
 
 
@@ -20,6 +21,18 @@ def get_single(id):
     review = Review.query.get(id)
     return review.to_dict()
 
+# Get Reviews by current user
+@review_routes.route('/current')
+@login_required
+def get_current():
+    reviews = Review.query.filter(Review.user_id == current_user.id).all()
+    return { "reviews": [r.to_dict() for r in reviews] }
+
+
+# TODO This should be under the business route
+# #Get all reviews by a business id
+# @review_routes.route('/<int:business_id>')
+
 
 #Create a review
 @review_routes.route('/', methods=['POST'])
@@ -31,14 +44,12 @@ def create_review():
         new_review = Review(
                         stars=form.stars.data,
                         review=form.review_body.data,
-                        business_id=form.business_id.data,
-                        user_id=current_user.id,
                         )
         db.session.add(new_review)
         db.session.commit()
-        return new_review.to_dict()
+        return jsonify(new_review.to_dict()), 200
     else:
-        return {'errors': form.errors}, 422
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 #Update Review
@@ -46,15 +57,16 @@ def create_review():
 def update_review(id):
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    review = Review.query.get(id)
 
     if form.validate_on_submit():
-        review.review = form.review.data
-        review.stars = form.stars.data
-        db.session.commit()
-        return review.to_dict()
+        review = Review.query.get(id)
+        if review.user_id == current_user.id:
+            review.review = form.review.data
+            review.stars = form.stars.data
+            db.session.commit()
+            return jsonify(review.to_dict()), 200
     else:
-        return {'errors': form.errors}, 422
+        return {'errors': 'Unauthorized'}, 401
 
 #Delete Review
 @review_routes.route('/<int:id>', methods=['DELETE'])
@@ -69,4 +81,4 @@ def delete_review(id):
         "status-code": 200
     }), 200
     else:
-        return {'Message': 'Unable to delete this review, This review belongs to another user.'}
+        return {"errors": "Unauthorized"} , 401
