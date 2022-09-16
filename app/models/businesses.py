@@ -24,7 +24,7 @@ class Business(db.Model):
 
   owner = db.relationship("User")
   reviews = db.relationship("Review", back_populates="business", cascade="all, delete")
-
+  
   def to_dict(self):
     return {
       "id": self.id,
