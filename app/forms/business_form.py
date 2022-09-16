@@ -41,8 +41,6 @@ def validate_time(form, field):
   elif (field.data.hour) < 0:
     raise ValidationError("Time must be valid")
 
-
-
 class BusinessForm(FlaskForm):
   owner_id = IntegerField("Owner_Id", validators=[DataRequired()])
   name = StringField("Name", validators=[DataRequired(), validate_name])
