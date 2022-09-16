@@ -42,4 +42,5 @@ class Business(db.Model):
       "created_at": self.created_at,
       "updated_at": self.updated_at,
       "owner_id": self.owner_id,
+      "review_ids": [review.to_dict()['id'] for review in self.reviews]
     }
