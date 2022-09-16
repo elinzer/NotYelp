@@ -10,6 +10,8 @@ class MenuItem(db.Model):
 
   business_id = db.Column("business_id", db.Integer)
 
+  business = db.relationship("Business")
+
   def to_dict(self):
     return {
       "id": self.id,
