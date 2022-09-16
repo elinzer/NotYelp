@@ -4,19 +4,19 @@ from app.models import db, Business
 from ..forms.business_form import BusinessForm
 from ..forms.edit_business_form import EditBusinessForm
 
-business = Blueprint("business", __name__, url_prefix="/businesses")
+business_routes = Blueprint("businesses", __name__, url_prefix="/businesses")
 
 #TODO: Have not tested routes live yet
 
 #Get all Businesses
-@business.route("/")
+# TODO: Need to implement reviews under GET business routes
+@business_routes.route("/")
 def all_businesses():
   businesses = Business.query.all()
   return {"businesses": [business.to_dict() for business in businesses]}
-# TODO: Need to implement reviews under get business routes
 
 #Create Business
-@business.route("/", methods=["POST"])
+@business_routes.route("/", methods=["POST"])
 def create_business():
   form = BusinessForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -37,9 +37,11 @@ def create_business():
     db.session.add(new_business)
     db.session.commit()
     return jsonify(new_business.to_dict()), 200
+  else:
+    return {'errors': form.errors}
 
 #Edit Business
-@business.route("/<int:business_id>", methods=["PUT"])
+@business_routes.route("/<int:business_id>", methods=["PUT"])
 def edit_business(business_id):
   form = EditBusinessForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -57,11 +59,13 @@ def edit_business(business_id):
     business.preview_image = form.preview_image.data
     db.session.commit()
     return jsonify(business.to_dict()), 200
+  else:
+    return {'errors': form.errors}
 
 #Delete Business
-@business.route("/<int:business_id>", methods=["DELETE"])
+@business_routes.route("/<int:business_id>", methods=["DELETE"])
 def delete_business(business_id):
-  business = Business.query.filter(Business.id == business_id)
+  business = Business.query.filter(Business.id == business_id).first()
   db.session.delete(business)
   db.session.commit()
   return jsonify({

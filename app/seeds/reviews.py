@@ -1,4 +1,4 @@
-from app.models import business
+from app.models import Review
 from ..models import db
 from ..models.review import Review
 def seeded_reviews():
