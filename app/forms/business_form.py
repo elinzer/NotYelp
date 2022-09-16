@@ -1,7 +1,7 @@
 from xml.dom import ValidationErr
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, DecimalField, TimeField
-from wtforms.validators import DataRequired, ValidationError, URL
+from wtforms.validators import DataRequired, ValidationError, URL, Regexp
 
 def validate_name(form, field):
   if len(field.data) > 25:
@@ -41,8 +41,7 @@ def validate_time(form, field):
   elif (field.data) < 0:
     raise ValidationError("Time must be valid")
 
-def validate_image(form, field):
-  pass
+
 
 class BusinessForm(FlaskForm):
   owner_id = IntegerField("Owner_Id", validators=[DataRequired()])
@@ -55,5 +54,5 @@ class BusinessForm(FlaskForm):
   zipcode = IntegerField("Zipcode", validators=[DataRequired(), validate_zipcode])
   open_time = TimeField("Open_Time", validators=[DataRequired(), validate_time])
   close_time = TimeField("Close_Time", validators=[DataRequired(), validate_time])
-  preview_image = StringField("preview_image", validators=[DataRequired()])
+  preview_image = StringField("preview_image", validators=[DataRequired(), Regexp('/\.(jpeg|jpg|png)$/', message='URL must end with .jpeg/.jpg/.png')])
   submit = SubmitField("Submit")
