@@ -16,7 +16,7 @@ def validate_address(form, field):
     raise ValidationError("Address must be valid")
 
 def validate_phone(form, field):
-  if len(field.data) is not 10:
+  if len(field.data) != 10:
     raise ValidationError("Phone must be 10 numbers")
 
 def validate_state(form, field):
@@ -32,13 +32,13 @@ def validate_city(form, field):
     raise ValidationError("City must not be empty")
 
 def validate_zipcode(form, field):
-  if len(field.data) is not 5:
+  if len(field.data) != 5:
     raise ValidationError("Zipcode must be valid")
 
 def validate_time(form, field):
-  if (field.data) > 24:
+  if (field.data.hour) > 24:
     raise ValidationError("Time must be valid")
-  elif (field.data) < 0:
+  elif (field.data.hour) < 0:
     raise ValidationError("Time must be valid")
 
 

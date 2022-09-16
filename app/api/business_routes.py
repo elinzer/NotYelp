@@ -3,6 +3,7 @@ from flask import Blueprint, request, jsonify
 from app.models import db, Business
 from ..forms.business_form import BusinessForm
 from ..forms.edit_business_form import EditBusinessForm
+from flask_login import current_user, login_required
 
 business_routes = Blueprint("businesses", __name__, url_prefix="/businesses")
 
@@ -17,6 +18,7 @@ def all_businesses():
 
 #Create Business
 @business_routes.route("/", methods=["POST"])
+@login_required
 def create_business():
   form = BusinessForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -42,6 +44,7 @@ def create_business():
 
 #Edit Business
 @business_routes.route("/<int:business_id>", methods=["PUT"])
+@login_required
 def edit_business(business_id):
   form = EditBusinessForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -64,6 +67,7 @@ def edit_business(business_id):
 
 #Delete Business
 @business_routes.route("/<int:business_id>", methods=["DELETE"])
+@login_required
 def delete_business(business_id):
   business = Business.query.filter(Business.id == business_id).first()
   db.session.delete(business)
