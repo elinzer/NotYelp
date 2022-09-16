@@ -27,5 +27,5 @@ def seeded_businesses():
   db.session.commit()
 
 def undo_businesses():
-  Business.query.filter(Business.owner_id == 1).delete()
+  db.session.execute('TRUNCATE businesses RESTART IDENTITY CASCADE;')
   db.session.commit()
