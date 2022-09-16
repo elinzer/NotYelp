@@ -30,10 +30,9 @@ def create_business():
       state=form.state.data,
       city=form.city.data,
       zipcode=form.zipcode.data,
-      lat=form.lat.data,
-      lng=form.lng.data,
       open_time=form.open_time.data,
-      close_time=form.close_time.data
+      close_time=form.close_time.data,
+      previewImage=form.previewImage.data
     )
     db.session.add(new_business)
     db.session.commit()
@@ -53,10 +52,9 @@ def edit_business(business_id):
     business.state = form.state.data,
     business.city = form.city.data,
     business.zipcode = form.zipcode.data,
-    business.lat = form.lat.data,
-    business.lng = form.lng.data,
     business.open_time = form.open_time.data,
     business.close_time = form.close_time.data,
+    business.previewImage = form.previewImage.data
     db.session.commit()
     return jsonify(business.to_dict()), 200
 

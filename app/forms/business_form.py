@@ -11,8 +11,6 @@ class BusinessForm(FlaskForm):
   state = StringField("State")
   city = StringField("City")
   zipcode = IntegerField("Zipcode")
-  lat = DecimalField("Latitude")
-  lng = DecimalField("Longitude")
   open_time = TimeField("Open_Time")
   close_time = TimeField("Close_Time")
   previewImage = StringField("PreviewImage")
