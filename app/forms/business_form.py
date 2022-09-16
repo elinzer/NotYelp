@@ -1,4 +1,3 @@
-from xml.dom import ValidationErr
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, DecimalField, TimeField
 from wtforms.validators import DataRequired, ValidationError, URL, Regexp
