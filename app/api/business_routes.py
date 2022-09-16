@@ -4,7 +4,7 @@ from app.models import db, Business
 from ..forms.business_form import BusinessForm
 from ..forms.edit_business_form import EditBusinessForm
 
-business = Blueprint("business", __name__, url_prefix="/businesses")
+business_routes = Blueprint("businesses", __name__, url_prefix="/businesses")
 
 #TODO: Have not tested routes live yet
 
