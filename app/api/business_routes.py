@@ -46,7 +46,7 @@ def create_business():
 @business_routes.route("/<int:business_id>", methods=["PUT"])
 @login_required
 def edit_business(business_id):
-  form = EditBusinessForm()
+  form = BusinessForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     business = Business.query.get(business_id)
