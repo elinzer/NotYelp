@@ -1,12 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import StringField, IntegerField, SubmitField, TextAreaField
-from wtforms.validators import DataRequired
+from wtforms.fields import IntegerField, TextAreaField
+from wtforms.validators import DataRequired, Length, NumberRange
 
 
 
 class ReviewForm(FlaskForm):
-    review_body = TextAreaField('Review Body', validators=[DataRequired()])
     business_id = IntegerField('Business Id', validators=[DataRequired()])
     user_id = IntegerField('User Id', validators=[DataRequired()])
-    stars = IntegerField('Stars', validators=[DataRequired()])
-    review = StringField('Review', validators=[DataRequired()])
+    stars = IntegerField('Stars', validators=[DataRequired(), NumberRange(1,5)])
+    review = TextAreaField('Review', validators=[DataRequired(), Length(1,255)])
