@@ -13,5 +13,5 @@ class BusinessForm(FlaskForm):
   zipcode = IntegerField("Zipcode")
   open_time = TimeField("Open_Time")
   close_time = TimeField("Close_Time")
-  previewImage = StringField("PreviewImage")
+  preview_image = StringField("PreviewImage")
   submit = SubmitField("Submit")
