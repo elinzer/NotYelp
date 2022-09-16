@@ -1,7 +1,6 @@
 from ..models import db
 from app.models import Business
 from datetime import time
-#TODO: Need to add previewImage for these seeders
 
 def seeded_businesses():
   demo_businesses = [
