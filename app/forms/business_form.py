@@ -15,7 +15,7 @@ def validate_address(form, field):
     raise ValidationError("Address must be valid")
 
 def validate_phone(form, field):
-  if len(field.data) != 10:
+  if len(str(field.data)) != 10:
     raise ValidationError("Phone must be 10 numbers")
 
 def validate_state(form, field):
