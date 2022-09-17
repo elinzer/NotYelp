@@ -1,4 +1,3 @@
-from xml.dom import ValidationErr
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, DecimalField, TimeField
 from wtforms.validators import DataRequired, ValidationError, URL, Regexp
@@ -40,8 +39,6 @@ def validate_time(form, field):
     raise ValidationError("Time must be valid")
   elif (field.data.hour) < 0:
     raise ValidationError("Time must be valid")
-
-
 
 class BusinessForm(FlaskForm):
   owner_id = IntegerField("Owner_Id", validators=[DataRequired()])
