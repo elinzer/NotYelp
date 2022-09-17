@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import DisplayAllReviews from './components/Reviews/DisplayReviews';
+import CreateReview from './components/Reviews/CreateReviewModal';
 import { authenticate } from './store/session';
 import * as reviewActions from './store/review'
 
@@ -44,6 +45,9 @@ function App() {
         </Route>
         <Route path='/test-get-reviews'>
           <DisplayAllReviews />
+        </Route>
+        <Route path='/test-post-review'>
+          <CreateReview />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
