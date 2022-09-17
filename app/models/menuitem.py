@@ -8,7 +8,7 @@ class MenuItem(db.Model):
   price = db.Column("price", db.Integer, nullable=False)
   preview_image = db.Column("preview_image", db.String, nullable=False)
 
-  business_id = db.Column("business_id", db.Integer)
+  business_id = db.Column("business_id", db.Integer, db.ForeignKey('businesses.id'))
 
   business = db.relationship("Business")
 

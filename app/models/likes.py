@@ -7,9 +7,9 @@ class Like(db.Model):
   like = db.Column("like", db.Integer, nullable=False)
 
   user_id = db.Column("user_id", db.Integer)
-  business_id = db.Column("business_id", db.Integer)
+  business_id = db.Column("business_id", db.Integer, db.ForeignKey('businesses.id'))
 
-  business = db.relationship("Business")
+  business = db.relationship("Business", back_populates="likes")
 
   def to_dict(self):
     return {

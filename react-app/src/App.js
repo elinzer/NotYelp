@@ -7,7 +7,10 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import DisplayAllReviews from './components/Reviews/DisplayReviews';
 import { authenticate } from './store/session';
+import * as reviewActions from './store/review'
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -19,6 +22,11 @@ function App() {
       setLoaded(true);
     })();
   }, [dispatch]);
+
+
+  useEffect(() => {
+    dispatch(reviewActions.getReviews())
+  }, [dispatch])
 
   if (!loaded) {
     return null;
@@ -33,6 +41,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/test-get-reviews'>
+          <DisplayAllReviews />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
