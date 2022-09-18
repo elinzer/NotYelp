@@ -1,0 +1,7 @@
+.business-card {
+  display: flex;
+  border: 2px solid red;
+  max-width: 300px;
+  max-height: 300px;
+  margin: 10px;
+}
