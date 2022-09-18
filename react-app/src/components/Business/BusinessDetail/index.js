@@ -7,6 +7,7 @@ function BusinessDetail() {
   const { businessId } = useParams();
   const dispatch = useDispatch();
   const business = useSelector((state) => state.businesses[businessId]);
+  const history = useHistory();
   if (business && !isLoaded) {
     setIsLoaded(true);
   } else if (!business && !isLoaded) {
@@ -14,9 +15,9 @@ function BusinessDetail() {
   }
   const handleDelete = async (e) => {
     e.preventDefault();
-    const res = await dispatch(deleteBusinessById(businessId))
-    if (res) history.push("/")
-  }
+    const res = await dispatch(deleteBusinessById(businessId));
+    if (res) history.push("/");
+  };
   return (
     isLoaded && (
       <div>
@@ -32,7 +33,9 @@ function BusinessDetail() {
         <div>{business.open_time}</div>
         <div>{business.close_time}</div>
         <div>{business.preview_image}</div>
-        <button onClick={handleDelete} className='deleteButton'>Delete</button>
+        <button onClick={handleDelete} className="deleteButton">
+          Delete
+        </button>
       </div>
     )
   );

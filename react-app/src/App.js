@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import BusinessDetail from "./components/Business/BusinessDetail";
 import DisplayAllReviews from "./components/Reviews/DisplayReviews";
 import { authenticate } from "./store/session";
 import * as reviewActions from "./store/review";
@@ -49,6 +50,9 @@ function App() {
         </Route>
         <Route path="/test-edit-business">
           <BusinessEditForm />
+        </Route>
+        <Route path="/businesses/:businessId">
+          <BusinessDetail />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
