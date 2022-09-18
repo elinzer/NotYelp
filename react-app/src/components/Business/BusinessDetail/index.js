@@ -41,7 +41,7 @@ function BusinessDetail() {
         <div>{business.close_time}</div>
         <div>{business.preview_image}</div>
         {currentUser && (
-          <div>
+          <div className='currentUserDelete'>
             <button onClick={handleDelete} className='deleteButton'>Delete Business</button>
           </div>
             )}
