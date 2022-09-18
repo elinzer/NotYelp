@@ -8,6 +8,7 @@ function BusinessEditForm() {
   const {business_id} = useParams()
   const dispatch = useDispatch();
   const history = useHistory();
+  const user = useSelector((state) => state.session.user);
   const business = useSelector(state => state.businesses[business_id])
 
   const [name, setName] = useState(business?.name);
@@ -28,17 +29,18 @@ function BusinessEditForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const businessData = {
+      owner_id: user.id,
       name,
       address,
       url,
       phone,
       city,
       state,
-      zipCode,
-      openTime,
-      closeTime,
+      zipcode: zipCode,
+      open_time: openTime,
+      close_time: closeTime,
       description,
-      previewUrl,
+      preview_image: previewUrl,
     };
     setErrors([]);
     dispatch(editBusiness(businessData, business.id)).catch(async (res) => {
