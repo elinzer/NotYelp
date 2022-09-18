@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import { getBusinessByid, deleteBusinessById } from "../../../store/business";
 function BusinessDetail() {
+  let currentUser;
   const [isLoaded, setIsLoaded] = useState(false);
   const { businessId } = useParams();
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[businessId]);
   const history = useHistory();
   if (business && !isLoaded) {
@@ -18,6 +20,11 @@ function BusinessDetail() {
     await dispatch(deleteBusinessById(businessId));
     history.push("/");
   };
+  if (sessionUser && business) {
+    if (sessionUser.id === business.owner_id) {
+      currentUser = true;
+    } else currentUser = false;
+  }
   return (
     isLoaded && (
       <div>
