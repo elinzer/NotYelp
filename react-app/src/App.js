@@ -38,7 +38,7 @@ function App() {
         <Route path="/test-get-reviews">
           <DisplayAllReviews />
         </Route>
-        <Route path='/test-post-review'>
+        <Route path="/test-post-review">
           <CreateReview />
         </Route>
         <Route path="/test-create-business">
