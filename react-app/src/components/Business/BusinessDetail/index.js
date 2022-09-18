@@ -15,25 +15,27 @@ function BusinessDetail() {
   }
   const handleDelete = async (e) => {
     e.preventDefault();
-    const res = await dispatch(deleteBusinessById(businessId));
-    if (res) history.push("/");
+    await dispatch(deleteBusinessById(businessId));
+    history.push("/");
   };
   return (
     isLoaded && (
       <div>
         <h1>Business Detail</h1>
-        <div>{business.name}</div>
-        <div>{business.address}</div>
-        <div>{business.description}</div>
-        <div>{business.url}</div>
-        <div>{business.phone}</div>
-        <div>{business.state}</div>
-        <div>{business.city}</div>
-        <div>{business.zipcode}</div>
-        <div>{business.open_time}</div>
-        <div>{business.close_time}</div>
-        <div>{business.preview_image}</div>
-        <button onClick={handleDelete} className='deleteButton'>Delete</button>
+        <div>{business?.name}</div>
+        <div>{business?.address}</div>
+        <div>{business?.description}</div>
+        <div>{business?.url}</div>
+        <div>{business?.phone}</div>
+        <div>{business?.state}</div>
+        <div>{business?.city}</div>
+        <div>{business?.zipcode}</div>
+        <div>{business?.open_time}</div>
+        <div>{business?.close_time}</div>
+        <div>{business?.preview_image}</div>
+        <button onClick={handleDelete} className="deleteButton">
+          Delete
+        </button>
       </div>
     )
   );
