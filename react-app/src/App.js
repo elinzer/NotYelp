@@ -10,7 +10,7 @@ import { authenticate } from "./store/session";
 import * as reviewActions from "./store/review";
 import BusinessCreateForm from "./components/Business/CreateBusiness";
 import CreateReview from './components/Reviews/CreateReviewModal';
-
+import BusinessEditForm from "./components/Business/EditBusiness";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +43,9 @@ function App() {
         </Route>
         <Route path="/test-create-business">
           <BusinessCreateForm />
+        </Route>
+        <Route path="/test-edit-business">
+          <BusinessEditForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
