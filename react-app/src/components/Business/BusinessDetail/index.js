@@ -17,8 +17,8 @@ function BusinessDetail() {
   }
   const handleDelete = async (e) => {
     e.preventDefault();
-    const res = await dispatch(deleteBusinessById(businessId));
-    if (res) history.push("/");
+    await dispatch(deleteBusinessById(businessId));
+    history.push("/");
   };
   if (sessionUser && business) {
     if (sessionUser.id === business.owner_id) {
