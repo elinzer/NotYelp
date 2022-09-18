@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
-import { getBusinessByid } from "../../../store/business";
+import { getBusinessByid, deleteBusinessById } from "../../../store/business";
 function BusinessDetail() {
   const [isLoaded, setIsLoaded] = useState(false);
   const { businessId } = useParams();
@@ -11,6 +11,11 @@ function BusinessDetail() {
     setIsLoaded(true);
   } else if (!business && !isLoaded) {
     dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
+  }
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    const res = await dispatch(deleteBusinessById(businessId))
+    if (res) history.push("/")
   }
   return (
     isLoaded && (
@@ -27,6 +32,7 @@ function BusinessDetail() {
         <div>{business.open_time}</div>
         <div>{business.close_time}</div>
         <div>{business.preview_image}</div>
+        <button onClick={handleDelete} className='deleteButton'>Delete</button>
       </div>
     )
   );
