@@ -55,6 +55,15 @@ export const createBusiness = (business) => async (dispatch) => {
   }
 };
 
+export const getBusinessByid = (businessId) => async (dispatch) => {
+  const res = await fetch(`/api/businesses/${businessId}`);
+  if (res.ok) {
+    const business = await res.json();
+    dispatch(create(business));
+  }
+  return res;
+};
+
 export const editBusiness = (business) => async (dispatch) => {
   const res = await fetch(`/api/businesses/${business.id}`, {
     method: "PUT",
