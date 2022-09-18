@@ -47,12 +47,6 @@ function BusinessCreateForm() {
     } else if (newBusiness) {
       console.log("newBusiness", newBusiness);
     }
-    // console.log(newBusiness);
-    // if(newBusiness){
-    //   setIsSubmitted(true);
-    //   console.log("New Business:", newBusiness)
-    //   // history.push(`/businesses/${newBusiness.id}`);
-    // }
   };
 
   return (
