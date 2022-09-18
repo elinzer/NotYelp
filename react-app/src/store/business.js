@@ -41,10 +41,18 @@ export const createBusiness = (business) => async (dispatch) => {
     body: JSON.stringify(business),
   });
   if (res.ok) {
-    const business = await res.json();
-    dispatch(create(business));
+    const data = await res.json();
+    dispatch(create(data));
+    return data;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    console.log("DATA:", data);
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
   }
-  return res;
 };
 
 export const editBusiness = (business) => async (dispatch) => {
