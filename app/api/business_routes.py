@@ -5,6 +5,7 @@ from ..forms.business_form import BusinessForm
 from flask_login import current_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 business_routes = Blueprint("businesses", __name__, url_prefix="/businesses")
+import re
 
 #TODO: Have not tested routes live yet
 
@@ -23,6 +24,7 @@ def create_business():
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     new_business = Business(
+      owner_id=current_user.id,
       name=form.name.data,
       address=form.address.data,
       description=form.description.data,
@@ -39,7 +41,7 @@ def create_business():
     db.session.commit()
     return jsonify(new_business.to_dict()), 200
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 403
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 #Edit Business
 @business_routes.route("/<int:business_id>", methods=["PUT"])
@@ -65,7 +67,7 @@ def edit_business(business_id):
     else:
       return {'errors': 'Unauthorized'}, 401
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 403
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 #Delete Business
 @business_routes.route("/<int:business_id>", methods=["DELETE"])

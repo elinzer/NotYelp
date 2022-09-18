@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 import { getBusinesses } from "../store/business";
-import * as sessionActions from '../store/session'
-
+import LoginFormModal from "./auth/LoginFormModal";
+import SignUpFormModal from "./auth/SignupFormModal";
 
 const NavBar = ({loaded}) => {
   const dispatch = useDispatch();
@@ -29,9 +29,7 @@ const NavBar = ({loaded}) => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
+          <LoginFormModal />
         </li>
       </div>
     )
@@ -52,10 +50,7 @@ const NavBar = ({loaded}) => {
           </NavLink>
         </li> */}
         <li>
-          <button onClick={() => dispatch(getBusinesses())}>
-            {/* Temporary Button to test Redux Store */}
-            Get Businesses
-          </button>
+          <SignUpFormModal />
         </li>
       </ul>
       {loaded && sessionLinks}
