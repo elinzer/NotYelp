@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 import { getBusinesses } from "../store/business";
+import LoginFormModal from "./auth/LoginFormModal";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -15,9 +16,7 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
+          <LoginFormModal />
         </li>
         <li>
           <NavLink to="/sign-up" exact={true} activeClassName="active">
