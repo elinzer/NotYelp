@@ -84,7 +84,17 @@ export const deleteBusinessById = (id) => async (dispatch) => {
     method: "DELETE",
   });
   if (res.ok) {
+    const data = await res.json();
     dispatch(deleteBusiness(id));
+    return data;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    console.log("DATA:", data);
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
   }
   return res;
 };
