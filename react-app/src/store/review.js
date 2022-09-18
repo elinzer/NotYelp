@@ -54,6 +54,9 @@ export const UserReview = () => async (dispatch) => {
 
 //create review
 export const createReview = (review) => async (dispatch) => {
+
+    console.log('this is review', review)
+
     const res = await fetch("/api/reviews/", {
         method: "POST",
         headers: {
