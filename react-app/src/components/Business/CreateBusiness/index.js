@@ -17,12 +17,14 @@ function BusinessCreateForm() {
   const [openTime, setOpenTime] = useState("");
   const [closeTime, setCloseTime] = useState("");
   const [description, setDescription] = useState("");
+  const [previewUrl, setPreviewUrl] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors([]);
     const businessData = {
       owner_id: user.id,
       name,
@@ -31,15 +33,17 @@ function BusinessCreateForm() {
       phone,
       city,
       state,
-      zipCode,
-      openTime,
-      closeTime,
+      zipcode: zipCode,
+      open_time: openTime,
+      close_time: closeTime,
       description,
+      preview_image: previewUrl,
     };
     const newBusiness = await dispatch(createBusiness(businessData));
     if (newBusiness.errors) {
       console.log("errors", newBusiness.errors);
       setErrors(newBusiness.errors);
+      console.log("errors two:", errors);
     } else if (newBusiness) {
       console.log("newBusiness", newBusiness);
     }
@@ -55,11 +59,11 @@ function BusinessCreateForm() {
     <form onSubmit={handleSubmit}>
       <div>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div key={ind}>{error.split(": ")[1]}</div>
         ))}
       </div>
       <div>
-        <label>Name</label>
+        <label htmlFor="name">Name</label>
         <input
           type="text"
           value={name}
@@ -68,7 +72,7 @@ function BusinessCreateForm() {
         />
       </div>
       <div>
-        <label>Address</label>
+        <label htmlFor="address">Address</label>
         <input
           type="text"
           value={address}
@@ -78,77 +82,97 @@ function BusinessCreateForm() {
         />
       </div>
       <div>
-        <label>URL</label>
+        <label htmlFor="url">URL</label>
         <input
           type="text"
+          name="url"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           required
         />
       </div>
       <div>
-        <label>Phone</label>
+        <label htmlFor="phone">Phone</label>
         <input
-          type="text"
+          type="number"
+          name="phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           required
         />
       </div>
       <div>
-        <label>City</label>
+        <label htmlFor="city">City</label>
         <input
           type="text"
+          name="city"
           value={city}
           onChange={(e) => setCity(e.target.value)}
           required
         />
       </div>
       <div>
-        <label>State</label>
+        <label htmlFor="state">State</label>
         <input
           type="text"
+          name="state"
           value={state}
           onChange={(e) => setState(e.target.value)}
           required
         />
       </div>
       <div>
-        <label>Zip Code</label>
+        <label htmlFor="zipcode">Zip Code</label>
         <input
           type="number"
+          name="zipcode"
           value={zipCode}
           onChange={(e) => setZipCode(e.target.value)}
           required
         />
       </div>
       <div>
-        <label>Open Time</label>
+        <label htmlFor="previewUrl">Preview Image URL</label>
+        <input
+          type="url"
+          name="previewUrl"
+          value={previewUrl}
+          onChange={(e) => setPreviewUrl(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="open_time">Open Time</label>
         <input
           type="time"
+          name="open_time"
           value={openTime}
           onChange={(e) => setOpenTime(e.target.value)}
           required
         />
       </div>
       <div>
-        <label>Close Time</label>
+        <label htmlFor="close_time">Close Time</label>
         <input
           type="time"
+          name="close_time"
           value={closeTime}
           onChange={(e) => setCloseTime(e.target.value)}
           required
         />
       </div>
       <div>
-        <label>Description</label>
+        <label htmlFor="description">Description</label>
         <textarea
           value={description}
+          name="description"
           onChange={(e) => setDescription(e.target.value)}
           required
         />
       </div>
-      <button type="submit">Create Business</button>
+      <button name="submit" type="submit">
+        Create Business
+      </button>
     </form>
   );
 }

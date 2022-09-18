@@ -31,7 +31,7 @@ def validate_city(form, field):
     raise ValidationError("City must not be empty")
 
 def validate_zipcode(form, field):
-  if len(field.data) != 5:
+  if len(str(field.data)) != 5:
     raise ValidationError("Zipcode must be valid")
 
 def validate_time(form, field):
@@ -41,15 +41,16 @@ def validate_time(form, field):
     raise ValidationError("Time must be valid")
 
 class BusinessForm(FlaskForm):
-  owner_id = IntegerField("Owner_Id", validators=[DataRequired()])
-  name = StringField("Name", validators=[DataRequired(), validate_name])
-  address = StringField("Address", validators=[DataRequired(), validate_address])
-  url = StringField("Url", validators=[DataRequired(), URL()])
-  phone = IntegerField("Phone", validators=[DataRequired(), validate_phone])
+  owner_id = IntegerField("owner_id", validators=[DataRequired()])
+  name = StringField("name", validators=[DataRequired(), validate_name])
+  address = StringField("address", validators=[DataRequired(), validate_address])
+  url = StringField("url", validators=[DataRequired(), URL()])
+  description = StringField("description", validators=[DataRequired()])
+  phone = IntegerField("phone", validators=[DataRequired(), validate_phone])
   state = StringField("State", validators=[DataRequired(), validate_state])
-  city = StringField("City", validators=[DataRequired(), validate_city])
-  zipcode = IntegerField("Zipcode", validators=[DataRequired(), validate_zipcode])
-  open_time = TimeField("Open_Time", validators=[DataRequired(), validate_time])
-  close_time = TimeField("Close_Time", validators=[DataRequired(), validate_time])
-  preview_image = StringField("preview_image", validators=[DataRequired(), Regexp('/\.(jpeg|jpg|png)$/', message='URL must end with .jpeg/.jpg/.png')])
+  city = StringField("city", validators=[DataRequired(), validate_city])
+  zipcode = IntegerField("zipcode", validators=[DataRequired(), validate_zipcode])
+  open_time = TimeField("open_time", validators=[DataRequired(), validate_time])
+  close_time = TimeField("close_time", validators=[DataRequired(), validate_time])
+  preview_image = StringField("preview_image", validators=[DataRequired(), URL()])
   submit = SubmitField("Submit")
