@@ -91,3 +91,4 @@ def delete_business(business_id):
       }), 200
   else:
     return {"errors": "Unauthorized"} , 401
+

@@ -5,12 +5,15 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import BusinessDetail from "./components/Business/BusinessDetail";
 import DisplayAllReviews from "./components/Reviews/DisplayReviews";
 import { authenticate } from "./store/session";
 import * as reviewActions from "./store/review";
 import BusinessCreateForm from "./components/Business/CreateBusiness";
+import BusinessEditForm from "./components/Business/EditBusiness";
 import CreateReview from "./components/Reviews/CreateReviewModal";
-import BusinessDetail from "./components/Business/BusinessDetail";
+import SplashPage from "./components/SplashPage";
+import { getBusinesses } from "./store/business";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -19,6 +22,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      await dispatch(getBusinesses());
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -33,7 +37,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar loaded={loaded}/>
+      <NavBar loaded={loaded} />
       <Switch>
         <Route path="/test-get-reviews">
           <DisplayAllReviews />
@@ -43,6 +47,9 @@ function App() {
         </Route>
         <Route path="/test-create-business">
           <BusinessCreateForm />
+        </Route>
+        <Route path="/test-edit-business">
+          <BusinessEditForm />
         </Route>
         <Route path="/businesses/:businessId">
           <BusinessDetail />
@@ -54,7 +61,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
-          <h1>My Home Page</h1>
+          <SplashPage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
