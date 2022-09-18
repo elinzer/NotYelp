@@ -33,7 +33,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar loaded={loaded}/>
       <Switch>
         <Route path="/test-get-reviews">
           <DisplayAllReviews />
