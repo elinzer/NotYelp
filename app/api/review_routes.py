@@ -42,8 +42,10 @@ def create_review():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_review = Review(
+                        business_id=form.business_id.data,
+                        user_id=form.user_id.data,
                         stars=form.stars.data,
-                        review=form.review_body.data,
+                        review=form.review.data,
                         )
         db.session.add(new_review)
         db.session.commit()
