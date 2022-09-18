@@ -33,9 +33,7 @@ function BusinessDetail() {
         <div>{business.open_time}</div>
         <div>{business.close_time}</div>
         <div>{business.preview_image}</div>
-        <button onClick={handleDelete} className="deleteButton">
-          Delete
-        </button>
+        <button onClick={handleDelete} className='deleteButton'>Delete</button>
       </div>
     )
   );
