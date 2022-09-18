@@ -15,6 +15,7 @@ import CreateReview from "./components/Reviews/CreateReviewModal";
 import SplashPage from "./components/SplashPage";
 import { getBusinesses } from "./store/business";
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
