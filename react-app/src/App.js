@@ -9,6 +9,8 @@ import DisplayAllReviews from "./components/Reviews/DisplayReviews";
 import { authenticate } from "./store/session";
 import * as reviewActions from "./store/review";
 import BusinessCreateForm from "./components/Business/CreateBusiness";
+import CreateReview from './components/Reviews/CreateReviewModal';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,11 +38,14 @@ function App() {
         <Route path="/test-get-reviews">
           <DisplayAllReviews />
         </Route>
+        <Route path='/test-post-review'>
+          <CreateReview />
+        </Route>
         <Route path="/test-create-business">
           <BusinessCreateForm />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
+        <ProtectedRoute path='/users' exact={true} >
+          <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
