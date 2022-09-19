@@ -1,3 +1,5 @@
+import { getBusinessByid } from "./business";
+
 //types
 const GET_ALL = "reviews/GET_ALL";
 const GET_CURRENT = "reviews/GET_CURRENT";
@@ -66,6 +68,7 @@ export const createReview = (review) => async (dispatch) => {
   if (res.ok) {
     const review = await res.json();
     dispatch(create(review));
+    dispatch(getBusinessByid(review.business_id));
   }
   return res;
 };

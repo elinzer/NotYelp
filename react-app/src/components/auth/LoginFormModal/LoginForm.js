@@ -38,7 +38,7 @@ const LoginForm = ({ closeModal }) => {
       <div>
         <label htmlFor="email">Email</label>
         <input
-          name="email"
+          // name="email"
           type="text"
           placeholder="Email"
           className="emailInput"
@@ -49,7 +49,7 @@ const LoginForm = ({ closeModal }) => {
       <div>
         <label htmlFor="password">Password</label>
         <input
-          name="password"
+          // name="password"
           type="password"
           placeholder="Password"
           className="passwordInput"

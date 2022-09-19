@@ -7,6 +7,8 @@ import CreateReviewModal from "../../Reviews/ReviewModal";
 import EditBusinessModal from "../EditBusiness";
 import CreateItemModal from "../MenuItem";
 import "./BusinessDetail.css";
+import ReviewCard from "../../Reviews/ReviewCard";
+const states = require("us-state-converter");
 
 function BusinessDetail() {
   let currentUser;
@@ -19,9 +21,8 @@ function BusinessDetail() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[businessId]);
-  const reviewState = useSelector((state) => state.reviews);
+  const reviews = useSelector((state) => state.reviews);
   const items = useSelector((state) => state.items);
-  const reviews = Object.values(reviewState);
   const history = useHistory();
   if (business && !isLoaded) {
     setIsLoaded(true);
@@ -104,49 +105,56 @@ function BusinessDetail() {
           </div>
         </div>
         <div className="pt20">
-          <div className="business-details-container">
-            <div>
-              <CreateReviewModal business={business} />
-            </div>
-            <div className="business-actions-container">
-              {currentUser && (
-                <div className="EditDeleteBusiness">
-                  <EditBusinessModal />
-                  <button onClick={handleDelete} className="deleteButton">
-                    Delete Business
-                  </button>
-                  {/* Item Modal might make more sense to go in menu, unsure atm */}
-                  <CreateItemModal />
+          <div className="business-details-container flex">
+            <div className="business-details">
+              <div className="business-actions-container">
+                {currentUser && (
+                  <div className="EditDeleteBusiness">
+                    <EditBusinessModal />
+                    <button onClick={handleDelete} className="deleteButton">
+                      Delete Business
+                    </button>
+                    {/* Item Modal might make more sense to go in menu, unsure atm */}
+                    <CreateItemModal businessId={business.id} />
+                  </div>
+                )}
+                {sessionUser && (
+                  <div>
+                    <CreateReviewModal business={business} />
+                  </div>
+                )}
+              </div>
+              <div className="business-menu-container">
+                <div className="menu-header">Menu</div>
+                {/* Show every Item Card Here */}
+                <div className="menu-items flex flex-wrap">
+                  {business?.menuitem_ids.map((itemId) => (
+                    <ItemCard key={itemId} item={items[itemId]} />
+                  ))}
                 </div>
-              )}
-            </div>
-            <div className="business-menu-container">
-              Menu:
-              {/* Show every Item Card Here */}
-              {business?.menuitem_ids.map((itemId) => (
-                <ItemCard key={itemId} item={items[itemId]} />
-              ))}
-            </div>
-            <div className="business-info-container">
-              <div className="business-owner-info">
-                {/* Owner Info i.e Picture/Name */}
               </div>
-              <div className="business-description">
-                {/* Business Description */}
+
+              <div className="business-reviews-container">
+                {/* Show every Review Card Here */}
+                <div className="reviews-header">Reviews</div>
+                <div className="reviews-inner-container">
+                  {business?.review_ids.map((reviewId) => (
+                    <ReviewCard key={reviewId} review={reviews[reviewId]} />
+                  ))}
+                </div>
               </div>
             </div>
-            <div className="business-reviews-container">
-              {/* Show every Review Card Here */}
-              Reviews:
-              {reviews.map((review) => {
-                if (review.business_id == businessId)
-                  return (
-                    <div key={review.id}>
-                      {/* ReviewCard will go here */}
-                      Stars: {review.stars} Review: {review.review}
-                    </div>
-                  );
-              })}
+            <div className="business-contact-outer-container">
+              <div className="business-contact-container">
+                <div className="business-website">
+                  <a href={business?.url}>{business?.url}</a>
+                </div>
+                <div className="business-phone">{business?.phone}</div>
+                <div className="business-address">
+                  {business?.address} {business?.city},{" "}
+                  {states.abbr(business?.state)}
+                </div>
+              </div>
             </div>
           </div>
         </div>

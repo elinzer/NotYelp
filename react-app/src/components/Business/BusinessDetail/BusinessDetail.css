@@ -67,6 +67,10 @@
   display: inline;
 }
 
+.business-details {
+  width: 66.66667%;
+}
+
 .business-open-time {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -75,4 +79,71 @@
   line-height: 24px;
   color: rgba(255, 255, 255, 1);
   text-align: left;
+}
+
+.business-contact-container {
+  border: 1px solid #ebebeb;
+  position: sticky;
+  top: 18px;
+  border-radius: 4 px;
+  padding: 16px;
+}
+
+.business-contact-outer-container {
+  width: 33%;
+}
+
+.business-website {
+  border-top: none;
+  padding-top: 0;
+  padding: 16px 0px;
+}
+
+.business-website a {
+  color: rgba(2, 122, 151, 1);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.business-phone {
+  padding: 16px 0px;
+  border-top: 1px solid #ebebeb;
+}
+
+.business-address {
+  border-top: 1px solid #ebebeb;
+  padding: 16px 0px;
+  padding-bottom: 0;
+}
+
+.menu-header {
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  color: rgba(45, 46, 47, 1);
+  display: inline;
+}
+
+.menu-items {
+  gap: 3%;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.business-menu-container {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ebebeb;
+}
+
+.business-reviews-container {
+  padding-top: 30px;
+}
+
+.reviews-inner-container {
+  padding-top: 30px;
 }
