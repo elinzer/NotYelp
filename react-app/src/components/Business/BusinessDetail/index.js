@@ -6,7 +6,9 @@ import ItemCard from "../ItemCard";
 import CreateReviewModal from "../../Reviews/ReviewModal";
 import EditBusinessModal from "../EditBusiness";
 import CreateItemModal from "../MenuItem";
+import EditReviewModal from "../../Reviews/EditReviewModal";
 import "./BusinessDetail.css";
+import { deleteReviewById, editReview } from "../../../store/review";
 
 function BusinessDetail() {
   let currentUser;
@@ -56,10 +58,29 @@ function BusinessDetail() {
     }
   }, [business]);
 
+  //if the user has already reviewed the spot then the input box for reviews will not show up
+  // const alreadyReviewed = (reviews) => {
+  //   let alreadyReviewedByUser = false;
+  //   for (let i = 0; i < reviews.length; i++) {
+  //     if (reviews[i].user_id === sessionUser.id) {
+  //       alreadyReviewedByUser = true;
+  //     }
+  //   }
+  //   return alreadyReviewedByUser;
+  // };
+
   const handleDelete = async (e) => {
     e.preventDefault();
     await dispatch(deleteBusinessById(businessId));
     history.push("/");
+  };
+  const handleDeleteReview = async (e, id) => {
+    e.preventDefault();
+    await dispatch(deleteReviewById(id));
+  };
+  const EditReview = async (e, id) => {
+    e.preventDefault();
+    await dispatch(editReview(id));
   };
   if (sessionUser && business) {
     if (sessionUser.id === business.owner_id) {
@@ -105,10 +126,10 @@ function BusinessDetail() {
         </div>
         <div className="pt20">
           <div className="business-details-container">
-            <div>
-              <CreateReviewModal business={business} />
-            </div>
             <div className="business-actions-container">
+              <div>
+                {sessionUser && <CreateReviewModal business={business} />}
+              </div>
               {currentUser && (
                 <div className="EditDeleteBusiness">
                   <EditBusinessModal />
@@ -144,6 +165,16 @@ function BusinessDetail() {
                     <div key={review.id}>
                       {/* ReviewCard will go here */}
                       Stars: {review.stars} Review: {review.review}
+                      {review.user_id == sessionUser.id ? (
+                        <>
+                          <EditReviewModal rev={review} />
+                          <button
+                            onClick={(e) => handleDeleteReview(e, review.id)}
+                          >
+                            Delete Review
+                          </button>
+                        </>
+                      ) : null}
                     </div>
                   );
               })}
