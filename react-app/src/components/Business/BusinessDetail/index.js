@@ -75,14 +75,7 @@ function BusinessDetail() {
     await dispatch(deleteBusinessById(businessId));
     history.push("/");
   };
-  const handleDeleteReview = async (e, id) => {
-    e.preventDefault();
-    await dispatch(deleteReviewById(id));
-  };
-  const EditReview = async (e, id) => {
-    e.preventDefault();
-    await dispatch(editReview(id));
-  };
+
   if (sessionUser && business) {
     if (sessionUser.id === business.owner_id) {
       currentUser = true;
@@ -166,6 +159,7 @@ function BusinessDetail() {
                   ))}
                 </div>
               </div>
+            </div>
             <div className="business-contact-outer-container">
               <div className="business-contact-container">
                 <div className="business-website">
