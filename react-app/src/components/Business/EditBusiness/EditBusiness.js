@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
-import { editBusiness } from "../../../store/business";
+import { editBusiness, getBusinessByid } from "../../../store/business";
 const imageURLRegex = /\.(jpeg|jpg|png)$/;
 
 function BusinessEditForm() {
-  const {business_id} = useParams()
+  const { businessId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
-  const business = useSelector(state => state.businesses[business_id])
+  const business = useSelector(state => state.businesses[businessId])
 
   const [name, setName] = useState(business?.name);
   const [address, setAddress] = useState(business?.address);
@@ -25,7 +25,11 @@ function BusinessEditForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false)
-
+  if (business && !isLoaded) {
+    setIsLoaded(true);
+  } else if (!business && !isLoaded) {
+    dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     const businessData = {
@@ -49,6 +53,7 @@ function BusinessEditForm() {
     })
   }
   return (
+    isLoaded && (
     <form onSubmit={handleSubmit} className='editForm'>
       <div className='editTitle'>
       </div>
@@ -172,6 +177,7 @@ function BusinessEditForm() {
       </label>
       <button type="submit" className='editBusinessBut'>Update Your Business!</button>
     </form>
+    )
   )
 }
 
