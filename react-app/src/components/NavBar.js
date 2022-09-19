@@ -5,6 +5,8 @@ import LogoutButton from "./auth/LogoutButton";
 import { getBusinesses } from "../store/business";
 import LoginFormModal from "./auth/LoginFormModal";
 import SignUpFormModal from "./auth/SignupFormModal";
+import CreateBusinessModal from "./Business/CreateBusiness";
+
 import "./NavBar.css";
 const NavBar = ({ loaded }) => {
   const dispatch = useDispatch();
@@ -14,6 +16,7 @@ const NavBar = ({ loaded }) => {
   if (sessionUser) {
     sessionLinks = (
       <div className="session-links flex center">
+        <CreateBusinessModal />
         <button>Profile</button>
         <LogoutButton />
       </div>
