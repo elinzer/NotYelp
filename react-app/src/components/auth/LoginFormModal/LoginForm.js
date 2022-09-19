@@ -38,7 +38,7 @@ const LoginForm = ({ closeModal }) => {
       <div>
         <label htmlFor="email">Email</label>
         <input
-          name="email"
+          // name="email"
           type="text"
           placeholder="Email"
           className="emailInput"

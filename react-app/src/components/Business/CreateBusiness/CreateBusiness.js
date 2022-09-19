@@ -41,15 +41,16 @@ function BusinessCreateForm() {
     };
     const newBusiness = await dispatch(createBusiness(businessData));
     if (newBusiness.errors) {
-      console.log("errors", newBusiness.errors);
+      // console.log("errors", newBusiness.errors);
       setErrors(newBusiness.errors);
-      console.log("errors two:", errors);
+      // console.log("errors two:", errors);
     } else if (newBusiness) {
-      console.log("newBusiness", newBusiness);
+      // console.log("newBusiness", newBusiness);
     }
   };
 
   return (
+    <div className='createBusinessBox'>
     <form onSubmit={handleSubmit}>
       <div>
         {errors.map((error, ind) => (
@@ -182,6 +183,7 @@ function BusinessCreateForm() {
         Create Business
       </button>
     </form>
+    </div>
   );
 }
 
