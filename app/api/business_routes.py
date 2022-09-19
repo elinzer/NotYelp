@@ -16,6 +16,14 @@ def all_businesses():
   businesses = Business.query.all()
   return {"businesses": [business.to_dict() for business in businesses]}
 
+#Get Business by ID
+@business_routes.route("/<int:id>")
+def get_business(id):
+  print("BUSINESS ID:", id)
+  business = Business.query.get(id)
+  print("BUSINESS:", business.to_dict())
+  return business.to_dict()
+
 #Create Business
 @business_routes.route("/", methods=["POST"])
 @login_required
@@ -83,3 +91,4 @@ def delete_business(business_id):
       }), 200
   else:
     return {"errors": "Unauthorized"} , 401
+
