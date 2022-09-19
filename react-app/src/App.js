@@ -10,7 +10,7 @@ import DisplayAllReviews from "./components/Reviews/DisplayReviews";
 import { authenticate } from "./store/session";
 import * as reviewActions from "./store/review";
 import BusinessCreateForm from "./components/Business/CreateBusiness";
-import BusinessEditForm from "./components/Business/EditBusiness";
+import BusinessEditForm from "./components/Business/EditBusiness/EditBusiness";
 import CreateReview from "./components/Reviews/CreateReviewModal";
 import SplashPage from "./components/SplashPage";
 import { getBusinesses } from "./store/business";
@@ -48,9 +48,6 @@ function App() {
         </Route>
         <Route path="/test-create-business">
           <BusinessCreateForm />
-        </Route>
-        <Route path="/test-edit-business">
-          <BusinessEditForm />
         </Route>
         <Route path="/businesses/:businessId">
           <BusinessDetail />

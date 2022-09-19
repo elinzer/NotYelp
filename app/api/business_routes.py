@@ -2,6 +2,7 @@ from pydoc import describe
 from flask import Blueprint, request, jsonify
 from app.models import db, Business
 from ..forms.business_form import BusinessForm
+from datetime import time
 from flask_login import current_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 business_routes = Blueprint("businesses", __name__, url_prefix="/businesses")
@@ -59,16 +60,18 @@ def edit_business(business_id):
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     business = Business.query.get(business_id)
+    print("FORM DATA:", form.data['open_time'])
     if business.owner_id == current_user.id:
-      business.address = form.address.data,
-      business.description = form.description.data,
-      business.url = form.url.data,
-      business.phone = form.phone.data,
-      business.state = form.state.data,
-      business.city = form.city.data,
-      business.zipcode = form.zipcode.data,
-      business.open_time = form.open_time.data,
-      business.close_time = form.close_time.data,
+      business.name = form.name.data
+      business.address = form.address.data
+      business.description = form.description.data
+      business.url = form.url.data
+      business.phone = form.phone.data
+      business.state = form.state.data
+      business.city = form.city.data
+      business.zipcode = form.zipcode.data
+      business.open_time = form.open_time.data
+      business.close_time = form.close_time.data
       business.preview_image = form.preview_image.data
       db.session.commit()
       return jsonify(business.to_dict()), 200
@@ -91,4 +94,3 @@ def delete_business(business_id):
       }), 200
   else:
     return {"errors": "Unauthorized"} , 401
-
