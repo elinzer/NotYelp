@@ -6,7 +6,9 @@ import ItemCard from "../ItemCard";
 import CreateReviewModal from "../../Reviews/ReviewModal";
 import EditBusinessModal from "../EditBusiness";
 import CreateItemModal from "../MenuItem";
+import EditReviewModal from "../../Reviews/EditReviewModal";
 import "./BusinessDetail.css";
+import { deleteReviewById, editReview } from "../../../store/review";
 import ReviewCard from "../../Reviews/ReviewCard";
 const states = require("us-state-converter");
 
@@ -57,10 +59,29 @@ function BusinessDetail() {
     }
   }, [business]);
 
+  //if the user has already reviewed the spot then the input box for reviews will not show up
+  // const alreadyReviewed = (reviews) => {
+  //   let alreadyReviewedByUser = false;
+  //   for (let i = 0; i < reviews.length; i++) {
+  //     if (reviews[i].user_id === sessionUser.id) {
+  //       alreadyReviewedByUser = true;
+  //     }
+  //   }
+  //   return alreadyReviewedByUser;
+  // };
+
   const handleDelete = async (e) => {
     e.preventDefault();
     await dispatch(deleteBusinessById(businessId));
     history.push("/");
+  };
+  const handleDeleteReview = async (e, id) => {
+    e.preventDefault();
+    await dispatch(deleteReviewById(id));
+  };
+  const EditReview = async (e, id) => {
+    e.preventDefault();
+    await dispatch(editReview(id));
   };
   if (sessionUser && business) {
     if (sessionUser.id === business.owner_id) {
@@ -133,7 +154,6 @@ function BusinessDetail() {
                   ))}
                 </div>
               </div>
-
               <div className="business-reviews-container">
                 {/* Show every Review Card Here */}
                 <div className="reviews-header">Reviews</div>
@@ -143,7 +163,6 @@ function BusinessDetail() {
                   ))}
                 </div>
               </div>
-            </div>
             <div className="business-contact-outer-container">
               <div className="business-contact-container">
                 <div className="business-website">
