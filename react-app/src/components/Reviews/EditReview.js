@@ -4,33 +4,28 @@ import "./Reviews.css";
 import * as reviewActions from "../../store/review";
 
 const EditReview = ({ business, rev }) => {
-  //   const { business_id } = rev.business_id;
-  console.log(rev, "this is rev");
-  console.log(business);
-  //   console.log(business_id);
+  const { business_id } = business.rev;
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [stars, setStars] = useState(rev.stars);
-  const [review, setReview] = useState(rev.review);
-  const [businessId, setBusinessId] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [stars, setStars] = useState(business.rev.stars);
+  const [review, setReview] = useState(business.rev.review);
+  console.log(business.rev.id)
+  // const [businessId, setBusinessId] = useState("");
+  // const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
 
     const info = {
       user_id: sessionUser.id,
       stars,
       review,
-      business_id: id,
+      business_id: business_id,
     };
 
-    dispatch(reviewActions.editReview(info));
+    dispatch(reviewActions.editReview(info, business.rev.id));
 
-    setReview("");
-    setStars("");
   };
 
   return (
