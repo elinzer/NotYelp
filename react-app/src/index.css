@@ -42,6 +42,17 @@ a {
   cursor: pointer;
 }
 
+.clear-button {
+  background-color: #ffffff;
+  color: #7c7c7d;
+  border: #c8c9ca solid 1px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  height: 40px;
+  cursor: pointer;
+}
+
 .m5 {
   margin: 5px;
 }
