@@ -14,6 +14,8 @@ function BusinessDetail() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[businessId]);
+  const reviewState = useSelector((state) => state.reviews);
+  const reviews = Object.values(reviewState);
   const history = useHistory();
   if (business && !isLoaded) {
     setIsLoaded(true);
@@ -95,6 +97,16 @@ function BusinessDetail() {
             />
           </div>
         </div>
+        <ul>
+          {reviews.map((review) => {
+            if (review.business_id == businessId)
+              return (
+                <li key={review.id}>
+                  Stars: {review.stars} Review: {review.review}
+                </li>
+              );
+          })}
+        </ul>
         {currentUser && (
           <div className="EditDeleteBusiness">
             <EditBusinessModal />
