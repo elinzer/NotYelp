@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
-import DisplayAllReviews from './components/Reviews/DisplayReviews';
-import CreateReview from './components/Reviews/CreateReviewModal';
-import { authenticate } from './store/session';
-import * as reviewActions from './store/review'
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import NavBar from "./components/NavBar";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import UsersList from "./components/UsersList";
+import User from "./components/User";
+import BusinessDetail from "./components/Business/BusinessDetail";
+import DisplayAllReviews from "./components/Reviews/DisplayReviews";
+import { authenticate } from "./store/session";
+import * as reviewActions from "./store/review";
+import BusinessCreateForm from "./components/Business/CreateBusiness";
+import BusinessEditForm from "./components/Business/EditBusiness/EditBusiness";
+import CreateReview from "./components/Reviews/CreateReviewModal";
+import SplashPage from "./components/SplashPage";
+import { getBusinesses } from "./store/business";
 
 
 function App() {
@@ -18,16 +21,16 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
+      await dispatch(getBusinesses());
       setLoaded(true);
     })();
   }, [dispatch]);
 
-
   useEffect(() => {
-    dispatch(reviewActions.getReviews())
-  }, [dispatch])
+    dispatch(reviewActions.getReviews());
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
@@ -35,28 +38,28 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar loaded={loaded} />
       <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <Route path='/test-get-reviews'>
+        <Route path="/test-get-reviews">
           <DisplayAllReviews />
         </Route>
-        <Route path='/test-post-review'>
+        <Route path="/test-post-review">
           <CreateReview />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <Route path="/test-create-business">
+          <BusinessCreateForm />
+        </Route>
+        <Route path="/businesses/:businessId">
+          <BusinessDetail />
+        </Route>
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+        <ProtectedRoute path="/" exact={true}>
+          <SplashPage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

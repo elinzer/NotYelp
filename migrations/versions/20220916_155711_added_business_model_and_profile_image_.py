@@ -24,7 +24,7 @@ def upgrade():
     sa.Column('address', sa.String(), nullable=False),
     sa.Column('description', sa.String(), nullable=False),
     sa.Column('url', sa.String(), nullable=False),
-    sa.Column('phone', sa.Integer(), nullable=False),
+    sa.Column('phone', sa.String(), nullable=False),
     sa.Column('state', sa.String(), nullable=False),
     sa.Column('city', sa.String(), nullable=False),
     sa.Column('zipcode', sa.Integer(), nullable=False),

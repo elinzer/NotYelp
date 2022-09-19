@@ -9,7 +9,7 @@ class Business(db.Model):
   address = db.Column("address", db.String, nullable=False)
   description = db.Column("description", db.String, nullable=False)
   url = db.Column("url", db.String, nullable=False)
-  phone = db.Column("phone", db.Integer, nullable=False)
+  phone = db.Column("phone", db.String, nullable=False)
   state = db.Column("state", db.String, nullable=False)
   city = db.Column("city", db.String, nullable=False)
   zipcode = db.Column("zipcode", db.Integer, nullable=False)
@@ -38,8 +38,8 @@ class Business(db.Model):
       "state": self.state,
       "city": self.city,
       "zipcode": self.zipcode,
-      "open_time": self.open_time.hour,
-      "close_time": self.close_time.hour,
+      "open_time": self.open_time.isoformat(timespec='minutes'),
+      "close_time": self.close_time.isoformat(timespec='minutes'),
       "preview_image": self.preview_image,
       "created_at": self.created_at,
       "updated_at": self.updated_at,

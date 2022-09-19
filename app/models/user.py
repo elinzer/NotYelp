@@ -12,7 +12,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_image = db.Column(db.String(255), nullable=False)
 
-    reviews = db.relationship('Review', back_populates='user')
+    reviews = db.relationship('Review', back_populates='user', cascade="all, delete")
+    likes = db.relationship("Like", back_populates="user", cascade="all, delete")
 
     @property
     def password(self):

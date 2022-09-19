@@ -1,0 +1,43 @@
+.login-button {
+  background-color: transparent;
+  border: 1px solid white;
+  border-width: 2px;
+}
+
+.loginBox {
+  border: 1px red solid;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 600px;
+}
+
+.loginForm {
+  border: 1px white solid;
+  border-radius: 10px;
+}
+
+.userInput,
+.emailInput,
+.passwordInput {
+  font-size: 16px;
+  border: solid 1px lightslategray;
+  border-radius: 8px;
+  width: 300px;
+  height: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+}
+
+.submitLogin {
+  background-color: rgb(230, 0, 0);
+  color: white;
+  border: white solid 1px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 750;
+  height: 40px;
+  width: 150px;
+}
