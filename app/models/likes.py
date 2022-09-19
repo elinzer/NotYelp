@@ -2,6 +2,7 @@ from .db import db
 
 class Like(db.Model):
   __tablename__ = "likes"
+  __table_args__ = (db.UniqueConstraint('user_id', "business_id", name='unique_likes'),)
 
   id = db.Column("id", db.Integer, primary_key = True)
   like = db.Column("like", db.Integer, nullable=False)
