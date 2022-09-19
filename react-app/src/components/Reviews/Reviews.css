@@ -1,7 +1,23 @@
 .review-container {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 
 .review-form {
-    border: 1px solid red;
+  border: 1px solid red;
+}
+
+.create-review-button {
+  background-color: rgb(230, 0, 0);
+  color: white;
+  border: white solid 1px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  height: 40px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.create-review-button > * {
+  padding: 0 5px;
 }

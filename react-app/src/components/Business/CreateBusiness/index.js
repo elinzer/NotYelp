@@ -12,9 +12,11 @@ function CreateBusinessModal() {
   }, [allBusinesses])
   return (
     <>
+      <div className='createBox'>
       <button className='createButton' onClick={() => setShowModal(true)}>
         Create Business
         </button>
+        </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <CreateBusiness />

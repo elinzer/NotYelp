@@ -75,14 +75,7 @@ function BusinessDetail() {
     await dispatch(deleteBusinessById(businessId));
     history.push("/");
   };
-  const handleDeleteReview = async (e, id) => {
-    e.preventDefault();
-    await dispatch(deleteReviewById(id));
-  };
-  const EditReview = async (e, id) => {
-    e.preventDefault();
-    await dispatch(editReview(id));
-  };
+
   if (sessionUser && business) {
     if (sessionUser.id === business.owner_id) {
       currentUser = true;
@@ -128,20 +121,23 @@ function BusinessDetail() {
         <div className="pt20">
           <div className="business-details-container flex">
             <div className="business-details">
-              <div className="business-actions-container">
-                {currentUser && (
-                  <div className="EditDeleteBusiness">
-                    <EditBusinessModal />
-                    <button onClick={handleDelete} className="deleteButton">
-                      Delete Business
-                    </button>
-                    {/* Item Modal might make more sense to go in menu, unsure atm */}
-                    <CreateItemModal businessId={business.id} />
-                  </div>
-                )}
+              <div className="business-actions-container flex">
                 {sessionUser && (
                   <div>
                     <CreateReviewModal business={business} />
+                  </div>
+                )}
+                {currentUser && (
+                  <div className="EditDeleteBusiness flex">
+                    <CreateItemModal businessId={business.id} />
+                    <EditBusinessModal />
+                    <button
+                      onClick={handleDelete}
+                      className="deleteButton clear-button"
+                    >
+                      Delete Business
+                    </button>
+                    {/* Item Modal might make more sense to go in menu, unsure atm */}
                   </div>
                 )}
               </div>
@@ -163,6 +159,7 @@ function BusinessDetail() {
                   ))}
                 </div>
               </div>
+            </div>
             <div className="business-contact-outer-container">
               <div className="business-contact-container">
                 <div className="business-website">
