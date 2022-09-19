@@ -34,14 +34,18 @@ function BusinessDetail() {
         <div>{business?.name}</div>
         <div>{business?.address}</div>
         <div>{business?.description}</div>
-        <div>{business?.url}</div>
+        <div>
+          <a href={business?.url}>{business?.name} Website</a>
+        </div>
         <div>{business?.phone}</div>
         <div>{business?.state}</div>
         <div>{business?.city}</div>
         <div>{business?.zipcode}</div>
         <div>{business?.open_time}</div>
         <div>{business?.close_time}</div>
-        <div>{business?.preview_image}</div>
+        <div>
+          <img src={business?.preview_image}/>
+        </div>
         {currentUser && (
           <div className="EditDeleteBusiness">
             <EditBusinessModal/>
