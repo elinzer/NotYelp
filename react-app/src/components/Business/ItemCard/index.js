@@ -4,7 +4,7 @@ function ItemCard({ item }) {
   return (
     <div className="item-card">
       <div className="item-card-image">
-        <img src={item.image} alt={item.name} />
+        <img className="item-image" src={item.preview_image} />
       </div>
       <div className="item-card-info">
         <div className="item-card-name">{item.name}</div>

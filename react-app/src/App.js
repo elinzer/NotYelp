@@ -12,6 +12,7 @@ import * as reviewActions from "./store/review";
 import CreateReview from "./components/Reviews/CreateReviewModal";
 import SplashPage from "./components/SplashPage";
 import { getBusinesses } from "./store/business";
+import { getItems } from "./store/item";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -21,6 +22,7 @@ function App() {
     (async () => {
       await dispatch(authenticate());
       await dispatch(getBusinesses());
+      await dispatch(getItems());
       setLoaded(true);
     })();
   }, [dispatch]);

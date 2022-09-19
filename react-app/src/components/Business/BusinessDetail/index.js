@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import { getBusinessByid, deleteBusinessById } from "../../../store/business";
+import ItemCard from "../ItemCard";
 import EditBusinessModal from "../EditBusiness";
 import CreateItemModal from "../MenuItem";
 import "./BusinessDetail.css";
@@ -18,6 +19,7 @@ function BusinessDetail() {
   const sessionUser = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[businessId]);
   const reviewState = useSelector((state) => state.reviews);
+  const items = useSelector((state) => state.items);
   const reviews = Object.values(reviewState);
   const history = useHistory();
   if (business && !isLoaded) {
@@ -117,6 +119,9 @@ function BusinessDetail() {
             <div className="business-menu-container">
               Menu:
               {/* Show every Item Card Here */}
+              {business?.menuitem_ids.map((itemId) => (
+                <ItemCard key={itemId} item={items[itemId]} />
+              ))}
             </div>
             <div className="business-info-container">
               <div className="business-owner-info">
