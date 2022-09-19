@@ -18,6 +18,16 @@
   max-height: 426px;
   object-fit: cover;
 }
+.photo-inner-container::after {
+  background: linear-gradient(180deg, #0000 31.42%, #000);
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 .details-container {
   align-items: flex-end;
   bottom: 0;
@@ -31,6 +41,7 @@
   position: absolute;
   right: 0;
   top: 0;
+  z-index: 1;
 }
 
 .details {

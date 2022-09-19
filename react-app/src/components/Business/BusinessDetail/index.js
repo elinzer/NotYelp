@@ -9,6 +9,9 @@ import "./BusinessDetail.css";
 function BusinessDetail() {
   let currentUser;
   const [isLoaded, setIsLoaded] = useState(false);
+  const [openTime, setOpenTime] = useState("");
+  const [closeTime, setCloseTime] = useState("");
+  const [openStatus, setOpenStatus] = useState(false);
   const [curTime, setCurTime] = useState(new Date());
   const { businessId } = useParams();
   const dispatch = useDispatch();
@@ -23,16 +26,32 @@ function BusinessDetail() {
     dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
   }
 
-  const openStatus = () => {
-    let open_time = new Date();
-    open_time.setHours(business.open_time.split(":")[0]);
-    let close_time = new Date();
-    close_time.setHours(business.close_time.split(":")[0]);
-    if (curTime > open_time && curTime < close_time) {
-      return "Open";
+  useEffect(() => {
+    let openTimeDate = new Date();
+    let closeTimeDate = new Date();
+    openTimeDate.setHours(business.open_time.split(":")[0]);
+    openTimeDate.setMinutes(business.open_time.split(":")[1]);
+    closeTimeDate.setHours(business.close_time.split(":")[0]);
+    closeTimeDate.setMinutes(business.close_time.split(":")[1]);
+    setOpenTime(
+      openTimeDate.toLocaleTimeString("en-US", {
+        timeStyle: "short",
+      })
+    );
+    setCloseTime(
+      closeTimeDate.toLocaleTimeString([], {
+        timeStyle: "short",
+      })
+    );
+    if (
+      curTime.valueOf() > openTimeDate.valueOf() &&
+      curTime.valueOf() < closeTimeDate.valueOf()
+    ) {
+      setOpenStatus(true);
+    } else {
+      setOpenStatus(false);
     }
-    return "Closed";
-  };
+  }, [business]);
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -47,22 +66,6 @@ function BusinessDetail() {
   return (
     isLoaded && (
       <div>
-        {/* <h1>Business Detail</h1>
-        <div>{business?.name}</div>
-        <div>{business?.address}</div>
-        <div>{business?.description}</div>
-        <div>
-          <a href={business?.url}>{business?.name} Website</a>
-        </div>
-        <div>{business?.phone}</div>
-        <div>{business?.state}</div>
-        <div>{business?.city}</div>
-        <div>{business?.zipcode}</div>
-        <div>{business?.open_time}</div>
-        <div>{business?.close_time}</div>
-        <div>
-          <img src={business?.preview_image} />
-        </div> */}
         <div className="photo-outer-container">
           <div className="details-container">
             <div className="details">
@@ -77,15 +80,15 @@ function BusinessDetail() {
                 <div
                   className="business-open-status"
                   style={
-                    openStatus() === "Open"
+                    openStatus
                       ? { color: "rgba(4,197,133,1)" }
                       : { color: "rgba(255,139,135,1)" }
                   }
                 >
-                  {openStatus()}
+                  {openStatus ? "Open" : "Closed"}
                 </div>
                 <div className="business-open-time pl5">
-                  {business?.open_time} - {business?.close_time}
+                  {openTime} - {closeTime}
                 </div>
               </div>
             </div>
