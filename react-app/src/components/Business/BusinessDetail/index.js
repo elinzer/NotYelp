@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import { getBusinessByid, deleteBusinessById } from "../../../store/business";
 import EditBusinessModal from "../EditBusiness";
+import CreateItemModal from "../MenuItem";
 
 function BusinessDetail() {
   let currentUser;
@@ -52,6 +53,7 @@ function BusinessDetail() {
             <button onClick={handleDelete} className="deleteButton">
               Delete Business
             </button>
+            <CreateItemModal/>
           </div>
         )}
       </div>
