@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Modal } from '../../context/Modal';
+import { Modal } from '../../../context/Modal';
 import EditBusiness from './EditBusiness';
 import "./EditBusiness.css";
 
@@ -17,7 +17,7 @@ function EditBusinessModal() {
         </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditSpot />
+          <EditBusiness />
         </Modal>
       )}
     </>

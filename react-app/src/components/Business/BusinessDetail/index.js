@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import { getBusinessByid, deleteBusinessById } from "../../../store/business";
+import EditBusinessModal from "../EditBusiness";
+
 function BusinessDetail() {
   let currentUser;
   const [isLoaded, setIsLoaded] = useState(false);
@@ -41,7 +43,8 @@ function BusinessDetail() {
         <div>{business?.close_time}</div>
         <div>{business?.preview_image}</div>
         {currentUser && (
-          <div className="currentUserDelete">
+          <div className="EditDeleteBusiness">
+            <EditBusinessModal/>
             <button onClick={handleDelete} className="deleteButton">
               Delete Business
             </button>
