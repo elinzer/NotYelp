@@ -64,17 +64,23 @@ export const getBusinessByid = (businessId) => async (dispatch) => {
   return res;
 };
 
+export const findBusiness = (businessId) => async (dispatch) => {
+  const res = await fetch(`/api/businesses/${businessId}`)
+  if (res.ok) {
+    const business = await res.json()
+    dispatch(getAll([business]))
+  }
+}
+
 export const editBusiness = (data, businessId) => async (dispatch) => {
   const res = await fetch(`/api/businesses/${businessId}`, {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
   if (res.ok) {
     const business = await res.json();
-    dispatch(getBusinessByid(business.id));
+    dispatch(findBusiness(business.id));
   }
   return res;
 };
