@@ -1,3 +1,5 @@
+import { getBusinessByid } from "./business";
+
 //types
 const GET_ALL = "reviews/GET_ALL";
 const GET_CURRENT = "reviews/GET_CURRENT";
@@ -66,6 +68,7 @@ export const createReview = (review) => async (dispatch) => {
   if (res.ok) {
     const review = await res.json();
     dispatch(create(review));
+    dispatch(getBusinessByid(review.business_id));
   }
   return res;
 };
@@ -87,12 +90,13 @@ export const editReview = (review, id) => async (dispatch) => {
 };
 
 //delete review
-export const deleteReviewById = (id) => async (dispatch) => {
+export const deleteReviewById = (id, business_id) => async (dispatch) => {
   const res = await fetch(`/api/reviews/${id}`, {
     method: "DELETE",
   });
   if (res.ok) {
     dispatch(deleteReview(id));
+    dispatch(getBusinessByid(business_id));
   }
   return res;
 };

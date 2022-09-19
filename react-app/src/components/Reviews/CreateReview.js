@@ -4,7 +4,7 @@ import "./Reviews.css";
 import * as reviewActions from "../../store/review";
 
 const CreateReview = ({ business }) => {
-  const { id } = business.business;
+  const id = business.id;
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [stars, setStars] = useState("");

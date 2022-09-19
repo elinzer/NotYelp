@@ -12,7 +12,7 @@ function EditBusinessModal() {
   }, [allBusinesses])
   return (
     <>
-      <button className='editButton' onClick={() => setShowModal(true)}>
+      <button className='editButton clear-button' onClick={() => setShowModal(true)}>
         Edit Business
         </button>
       {showModal && (

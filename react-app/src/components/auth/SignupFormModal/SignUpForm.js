@@ -56,8 +56,8 @@ const SignUpForm = ({ closeModal }) => {
         <label>User Name</label>
         <input
           type="text"
-          name="username"
-          className='userInput'
+          // name="username"
+          className='userInputs'
           onChange={updateUsername}
           value={username}
         ></input>
@@ -66,8 +66,8 @@ const SignUpForm = ({ closeModal }) => {
         <label>Email</label>
         <input
           type="text"
-          name="email"
-          className='emailInput'
+          // name="email"
+          className='emailInputs'
           onChange={updateEmail}
           value={email}
         ></input>
@@ -76,8 +76,8 @@ const SignUpForm = ({ closeModal }) => {
         <label>Password</label>
         <input
           type="password"
-          name="password"
-          className='passwordInput'
+          // name="password"
+          className='passwordInputs'
           onChange={updatePassword}
           value={password}
         ></input>
@@ -86,8 +86,8 @@ const SignUpForm = ({ closeModal }) => {
         <label>Repeat Password</label>
         <input
           type="password"
-          name="repeat_password"
-          className='passwordInput'
+          // name="repeat_password"
+          className='passwordInputs'
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}

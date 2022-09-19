@@ -1,3 +1,5 @@
+import { getBusinessByid } from "./business";
+
 const GET_ALL = "ITEMS/GET_ALL";
 const CREATE = "ITEMS/CREATE";
 const DELETE = "ITEMS/DELETE";
@@ -37,6 +39,7 @@ export const createItem = (item) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     dispatch(create(data));
+    dispatch(getBusinessByid(data.business_id));
     return data;
   } else if (res.status < 500) {
     const data = await res.json();

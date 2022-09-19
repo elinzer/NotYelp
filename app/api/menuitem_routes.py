@@ -21,6 +21,7 @@ def create_menuitem():
     if form.validate_on_submit():
         new_menuitem = MenuItem(
             name=form.name.data,
+            business_id = form.business_id.data,
             price=form.price.data,
             preview_image=form.preview_image.data,
         )
