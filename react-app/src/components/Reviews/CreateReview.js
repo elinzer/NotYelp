@@ -3,14 +3,15 @@ import { useEffect, useState } from "react";
 import "./Reviews.css";
 import * as reviewActions from "../../store/review";
 
-const CreateReview = () => {
+const CreateReview = ({ business }) => {
+  const { id } = business.business;
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [stars, setStars] = useState("");
   const [review, setReview] = useState("");
-  const [businessId, setBusinessId] = useState(1);
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [errors, setErrors] = useState([])
+  const [businessId, setBusinessId] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,14 +21,13 @@ const CreateReview = () => {
       user_id: sessionUser.id,
       stars,
       review,
-      business_id: businessId,
+      business_id: id,
     };
 
     dispatch(reviewActions.createReview(info));
 
-    setReview('')
-    setStars('')
-
+    setReview("");
+    setStars("");
   };
 
   return (
@@ -60,8 +60,9 @@ const CreateReview = () => {
           required
         ></textarea>
       </label>
-      <button type="submit"
-      disabled={review.length <= 5}>Submit Review</button>
+      <button type="submit" disabled={review.length <= 5}>
+        Submit Review
+      </button>
     </form>
   );
 };
