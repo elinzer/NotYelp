@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
       <div className='showMenu'>
         <div className="profile-dropdown">
           <div className='userProfile'>
-          {user.username}
+          User: {user.username}
         </div>
           <div className='divLine'></div>
           {/* <Link to='/view-your-spots' className='allSpotButton'>View My Spots</Link> */}
