@@ -68,7 +68,7 @@ export const findBusiness = (businessId) => async (dispatch) => {
   const res = await fetch(`/api/businesses/${businessId}`);
   if (res.ok) {
     const business = await res.json();
-    dispatch(create([business]));
+    dispatch(create(business));
   }
 };
 
