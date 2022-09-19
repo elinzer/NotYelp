@@ -65,12 +65,12 @@ export const getBusinessByid = (businessId) => async (dispatch) => {
 };
 
 export const findBusiness = (businessId) => async (dispatch) => {
-  const res = await fetch(`/api/businesses/${businessId}`)
+  const res = await fetch(`/api/businesses/${businessId}`);
   if (res.ok) {
-    const business = await res.json()
-    dispatch(getAll([business]))
+    const business = await res.json();
+    dispatch(create([business]));
   }
-}
+};
 
 export const editBusiness = (data, businessId) => async (dispatch) => {
   const res = await fetch(`/api/businesses/${businessId}`, {
@@ -80,6 +80,7 @@ export const editBusiness = (data, businessId) => async (dispatch) => {
   });
   if (res.ok) {
     const business = await res.json();
+    console.log("BUSINESS:", business);
     dispatch(findBusiness(business.id));
   }
   return res;
