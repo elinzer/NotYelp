@@ -5,55 +5,55 @@ import LogoutButton from "./auth/LogoutButton";
 import { getBusinesses } from "../store/business";
 import LoginFormModal from "./auth/LoginFormModal";
 import SignUpFormModal from "./auth/SignupFormModal";
-
-const NavBar = ({loaded}) => {
+import "./NavBar.css";
+const NavBar = ({ loaded }) => {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <div>
+      <div className="session-links flex center">
         <button>Profile</button>
-        <li>
-          <LogoutButton />
-        </li>
+        <LogoutButton />
       </div>
-    )
+    );
   } else {
     sessionLinks = (
-      <div>
-        <li>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <LoginFormModal />
-        </li>
+      <div className="session-links flex center">
+        <LoginFormModal />
+        <SignUpFormModal />
       </div>
-    )
+    );
   }
 
-
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to="/" exact={true} activeClassName="active">
-            NotYelp
+    <nav className="main-nav-container">
+      <div className="nav-bar flex center space-between">
+        <div className="home-button-container pl20">
+          <NavLink
+            className="home-button"
+            to="/"
+            exact={true}
+            activeClassName="active"
+          >
+            {/* Our logo will go here instead (eventually) - hazel */}
+            <img
+              className="logo"
+              src="https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_design_cdn/2d2a7a4342fc/assets/img/brand/logo_desktop_white.svg"
+            ></img>
           </NavLink>
-        </li>
-        {/* <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </li> */}
-        <li>
-          <SignUpFormModal />
-        </li>
-      </ul>
-      {loaded && sessionLinks}
+        </div>
+        <div className="search-bar">
+          <input
+            className="search-input"
+            type="text"
+            placeholder="Search"
+          ></input>
+          <button className="search-button">Search</button>
+        </div>
+        {loaded && sessionLinks}
+      </div>
     </nav>
   );
 };

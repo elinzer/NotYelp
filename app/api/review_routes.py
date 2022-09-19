@@ -28,12 +28,6 @@ def get_current():
     reviews = Review.query.filter(Review.user_id == current_user.id).all()
     return { "reviews": [r.to_dict() for r in reviews] }
 
-
-# TODO This should be under the business route
-# #Get all reviews by a business id
-# @review_routes.route('/<int:business_id>')
-
-
 #Create a review
 @review_routes.route('/', methods=['POST'])
 @login_required
@@ -52,7 +46,6 @@ def create_review():
         return jsonify(new_review.to_dict()), 200
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
 
 #Update Review
 @review_routes.route('/<int:id>', methods=['PUT'])

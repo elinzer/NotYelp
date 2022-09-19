@@ -55,17 +55,33 @@ export const createBusiness = (business) => async (dispatch) => {
   }
 };
 
-export const editBusiness = (business) => async (dispatch) => {
-  const res = await fetch(`/api/businesses/${business.id}`, {
+export const getBusinessByid = (businessId) => async (dispatch) => {
+  const res = await fetch(`/api/businesses/${businessId}`);
+  if (res.ok) {
+    const business = await res.json();
+    dispatch(create(business));
+  }
+  return res;
+};
+
+export const findBusiness = (businessId) => async (dispatch) => {
+  const res = await fetch(`/api/businesses/${businessId}`);
+  if (res.ok) {
+    const business = await res.json();
+    dispatch(create(business));
+  }
+};
+
+export const editBusiness = (data, businessId) => async (dispatch) => {
+  const res = await fetch(`/api/businesses/${businessId}`, {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(business),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
   });
   if (res.ok) {
     const business = await res.json();
-    dispatch(update(business));
+    console.log("BUSINESS:", business);
+    dispatch(findBusiness(business.id));
   }
   return res;
 };
@@ -75,7 +91,17 @@ export const deleteBusinessById = (id) => async (dispatch) => {
     method: "DELETE",
   });
   if (res.ok) {
+    const data = await res.json();
     dispatch(deleteBusiness(id));
+    return data;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    console.log("DATA:", data);
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
   }
   return res;
 };

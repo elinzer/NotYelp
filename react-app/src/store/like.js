@@ -49,7 +49,6 @@ export const UserLikes = () => async (dispatch) => {
 
 //create like
 export const createLike = (like) => async (dispatch) => {
-  console.log("this is review", like);
 
   const res = await fetch("/api/likes/", {
     method: "POST",
