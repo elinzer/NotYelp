@@ -128,7 +128,7 @@ function BusinessEditForm() {
       <label>
         <input
         className='editZipCode'
-        type="integer"
+        type="number"
         placeholder='ZipCode'
         value={zipCode}
         onChange={(e) => setZipCode(e.target.value)}
