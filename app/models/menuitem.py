@@ -15,6 +15,7 @@ class MenuItem(db.Model):
   def to_dict(self):
     return {
       "id": self.id,
+      "business_id": self.business_id,
       "name": self.name,
       "price": self.price,
       "preview_image": self.preview_image

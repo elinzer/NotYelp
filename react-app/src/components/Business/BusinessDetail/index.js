@@ -112,7 +112,7 @@ function BusinessDetail() {
                     Delete Business
                   </button>
                   {/* Item Modal might make more sense to go in menu, unsure atm */}
-                  <CreateItemModal />
+                  <CreateItemModal businessId={business.id} />
                 </div>
               )}
             </div>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Modal } from '../../../context/Modal';
+import { Modal } from "../../../context/Modal";
 import CreateItem from "./CreateItem";
 import "./CreateItem.css";
 
-function CreateItemModal() {
+function CreateItemModal({ businessId }) {
   const [showModal, setShowModal] = useState(false);
 
   const hideModal = () => {
@@ -18,7 +18,7 @@ function CreateItemModal() {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateItem hideModal={hideModal} />
+          <CreateItem businessId={businessId} hideModal={hideModal} />
         </Modal>
       )}
     </>

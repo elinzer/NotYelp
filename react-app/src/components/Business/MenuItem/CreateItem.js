@@ -4,7 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { createItem } from "../../../store/item";
 const imageURLRegex = /\.(jpeg|jpg|png)$/;
 
-function CreateItemForm() {
+function CreateItemForm({ businessId }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
@@ -18,7 +18,7 @@ function CreateItemForm() {
     setErrors([]);
     const itemData = {
       owner_id: user.id,
-      // business_id: business.id,
+      business_id: businessId,
       name,
       price,
       preview_image: previewUrl,
