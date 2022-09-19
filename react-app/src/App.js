@@ -9,7 +9,6 @@ import BusinessDetail from "./components/Business/BusinessDetail";
 import DisplayAllReviews from "./components/Reviews/DisplayReviews";
 import { authenticate } from "./store/session";
 import * as reviewActions from "./store/review";
-import CreateReview from "./components/Reviews/CreateReviewModal";
 import SplashPage from "./components/SplashPage";
 import { getBusinesses } from "./store/business";
 import { getItems } from "./store/item";
@@ -41,9 +40,6 @@ function App() {
       <Switch>
         <Route path="/test-get-reviews">
           <DisplayAllReviews />
-        </Route>
-        <Route path="/test-post-review">
-          <CreateReview />
         </Route>
         <Route path="/businesses/:businessId">
           <BusinessDetail />
