@@ -59,7 +59,7 @@ export const getBusinessByid = (businessId) => async (dispatch) => {
   const res = await fetch(`/api/businesses/${businessId}`);
   if (res.ok) {
     const business = await res.json();
-    dispatch(create(business));
+    dispatch(update(business));
   }
   return res;
 };
@@ -68,7 +68,7 @@ export const findBusiness = (businessId) => async (dispatch) => {
   const res = await fetch(`/api/businesses/${businessId}`);
   if (res.ok) {
     const business = await res.json();
-    dispatch(create(business));
+    dispatch(update(business));
   }
 };
 
@@ -81,7 +81,7 @@ export const editBusiness = (data, businessId) => async (dispatch) => {
   if (res.ok) {
     const business = await res.json();
     console.log("BUSINESS:", business);
-    dispatch(findBusiness(business.id));
+    dispatch(update(business));
   }
   return res;
 };
