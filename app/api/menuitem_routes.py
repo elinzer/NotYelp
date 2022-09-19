@@ -4,7 +4,7 @@ from ..forms.menu_item_form import MenuItemForm
 from flask_login import current_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 
-menuitem_routes = Blueprint("menuitems", __name__, url_prefix="/menuitems")
+menuitem_routes = Blueprint("menuitems", __name__, url_prefix="/items")
 
 #Get all MenuItems
 @menuitem_routes.route("/")
