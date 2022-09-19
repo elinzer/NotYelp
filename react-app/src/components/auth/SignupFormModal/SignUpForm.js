@@ -45,6 +45,7 @@ const SignUpForm = ({ closeModal }) => {
   }
 
   return (
+  <div className='login'>
     <form onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
@@ -90,6 +91,7 @@ const SignUpForm = ({ closeModal }) => {
       </div>
       <button type="submit">Sign Up</button>
     </form>
+    </div>
   );
 };
 

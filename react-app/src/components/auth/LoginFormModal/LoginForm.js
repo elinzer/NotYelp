@@ -29,7 +29,7 @@ const LoginForm = ({ closeModal }) => {
   };
 
   return (
-    <form onSubmit={onLogin}>
+    <form onSubmit={onLogin} className='loginForm'>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -41,6 +41,7 @@ const LoginForm = ({ closeModal }) => {
           name="email"
           type="text"
           placeholder="Email"
+          className="emailInput"
           value={email}
           onChange={updateEmail}
         />
@@ -51,10 +52,14 @@ const LoginForm = ({ closeModal }) => {
           name="password"
           type="password"
           placeholder="Password"
+          className="passwordInput"
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
+        <button
+        type="submit"
+        className="submitLogin"
+        >Login</button>
       </div>
     </form>
   );
