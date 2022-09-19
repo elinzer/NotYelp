@@ -1,5 +1,24 @@
+.login {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 600px;
+}
+
 .signup-button {
   background-color: rgb(230, 0, 0);
   height: 40px;
   font-weight: 600px;
+}
+
+.signUpButton {
+  background-color: rgb(230, 0, 0);
+  color: white;
+  border: white solid 1px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 750;
+  height: 40px;
+  width: 150px;
 }

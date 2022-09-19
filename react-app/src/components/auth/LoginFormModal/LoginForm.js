@@ -29,7 +29,7 @@ const LoginForm = ({ closeModal }) => {
   };
 
   return (
-    <form onSubmit={onLogin} className='loginForm'>
+    <form onSubmit={onLogin} className='loginBox'>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
