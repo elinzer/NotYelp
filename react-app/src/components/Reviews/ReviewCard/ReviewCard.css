@@ -1,0 +1,19 @@
+.reivew-card {
+  max-width: 67%;
+}
+
+.review-user-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: fill;
+}
+
+.review-user-info {
+  padding-left: 10px;
+}
+
+.review-text,
+.review-stars {
+  padding-top: 5px;
+}

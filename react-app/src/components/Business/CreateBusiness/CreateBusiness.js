@@ -61,7 +61,7 @@ function BusinessCreateForm() {
         <input
           type="text"
           value={name}
-          className='nameInput'
+          className="nameInput"
           onChange={(e) => setName(e.target.value)}
           required
         />
@@ -71,7 +71,7 @@ function BusinessCreateForm() {
         <input
           type="text"
           value={address}
-          className='addressInput'
+          className="addressInput"
           name="address"
           onChange={(e) => setAddress(e.target.value)}
           required
@@ -83,7 +83,7 @@ function BusinessCreateForm() {
           type="text"
           name="url"
           value={url}
-          className='urlInput'
+          className="urlInput"
           onChange={(e) => setUrl(e.target.value)}
           required
         />
@@ -91,10 +91,10 @@ function BusinessCreateForm() {
       <div>
         <label htmlFor="phone">Phone</label>
         <input
-          type="number"
+          type="tel"
           name="phone"
           value={phone}
-          className='phoneInput'
+          className="phoneInput"
           onChange={(e) => setPhone(e.target.value)}
           required
         />
@@ -105,7 +105,7 @@ function BusinessCreateForm() {
           type="text"
           name="city"
           value={city}
-          className='cityInput'
+          className="cityInput"
           onChange={(e) => setCity(e.target.value)}
           required
         />
@@ -116,7 +116,7 @@ function BusinessCreateForm() {
           type="text"
           name="state"
           value={state}
-          className='stateInput'
+          className="stateInput"
           onChange={(e) => setState(e.target.value)}
           required
         />
@@ -127,7 +127,7 @@ function BusinessCreateForm() {
           type="number"
           name="zipcode"
           value={zipCode}
-          className='zipcodeInput'
+          className="zipcodeInput"
           onChange={(e) => setZipCode(e.target.value)}
           required
         />
@@ -138,7 +138,7 @@ function BusinessCreateForm() {
           type="url"
           name="previewUrl"
           value={previewUrl}
-          className='previewUrlInput'
+          className="previewUrlInput"
           onChange={(e) => setPreviewUrl(e.target.value)}
           required
         />
@@ -149,7 +149,7 @@ function BusinessCreateForm() {
           type="time"
           name="open_time"
           value={openTime}
-          className='openTimeInput'
+          className="openTimeInput"
           onChange={(e) => setOpenTime(e.target.value)}
           required
         />
@@ -160,7 +160,7 @@ function BusinessCreateForm() {
           type="time"
           name="close_time"
           value={closeTime}
-          className='closeTimeInput'
+          className="closeTimeInput"
           onChange={(e) => setCloseTime(e.target.value)}
           required
         />
@@ -170,15 +170,12 @@ function BusinessCreateForm() {
         <textarea
           value={description}
           name="description"
-          className='descriptionInput'
+          className="descriptionInput"
           onChange={(e) => setDescription(e.target.value)}
           required
         />
       </div>
-      <button
-      name="submit"
-      type="submit"
-      className='submitButton'>
+      <button name="submit" type="submit" className="submitButton">
         Create Business
       </button>
     </form>
