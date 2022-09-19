@@ -21,9 +21,8 @@ function BusinessDetail() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[businessId]);
-  const reviewState = useSelector((state) => state.reviews);
+  const reviews = useSelector((state) => state.reviews);
   const items = useSelector((state) => state.items);
-  const reviews = Object.values(reviewState);
   const history = useHistory();
   if (business && !isLoaded) {
     setIsLoaded(true);
@@ -117,6 +116,11 @@ function BusinessDetail() {
                     </button>
                     {/* Item Modal might make more sense to go in menu, unsure atm */}
                     <CreateItemModal businessId={business.id} />
+                  </div>
+                )}
+                {sessionUser && (
+                  <div>
+                    <CreateReviewModal business={business} />
                   </div>
                 )}
               </div>
