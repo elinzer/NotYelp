@@ -30,6 +30,7 @@ function CreateItemForm({ businessId }) {
   };
 
   return (
+    <div className="menuItemBox">
     <form onSubmit={handleSubmit}>
       <div>
         {errors.map((error, ind) => (
@@ -41,6 +42,7 @@ function CreateItemForm({ businessId }) {
         <input
           type="text"
           value={name}
+          className='nameInputm'
           onChange={(e) => setName(e.target.value)}
           required
         />
@@ -50,6 +52,7 @@ function CreateItemForm({ businessId }) {
         <input
           type="number"
           value={price}
+          className='priceInputm'
           onChange={(e) => setPrice(e.target.value)}
           required
         />
@@ -59,14 +62,19 @@ function CreateItemForm({ businessId }) {
         <input
           type="url"
           value={previewUrl}
+          className='previewUrlInputm'
           onChange={(e) => setPreviewUrl(e.target.value)}
           required
         />
       </div>
-      <button name="submit" type="submit">
+      <button
+      name="submit"
+      type="submit"
+      className='submitButtonm'>
         Create Item
       </button>
     </form>
+    </div>
   );
 }
 

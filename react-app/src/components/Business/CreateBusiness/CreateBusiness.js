@@ -169,8 +169,8 @@ function BusinessCreateForm() {
       <div>
         <label htmlFor="description">Description</label>
         <textarea
-          value={description}
           name="description"
+          value={description}
           className='descriptionInput'
           onChange={(e) => setDescription(e.target.value)}
           required
