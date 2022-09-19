@@ -7,6 +7,7 @@ from flask_login import current_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 
 business_routes = Blueprint("businesses", __name__, url_prefix="/businesses")
+
 import re
 
 # Get all Businesses
