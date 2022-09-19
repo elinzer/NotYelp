@@ -138,7 +138,7 @@ function BusinessEditForm() {
       <label>
         <input
         className='editOpenTime'
-        type="number"
+        type="time"
         placeholder='OpenTime'
         value={openTime}
         onChange={(e) => setOpenTime(e.target.value)}
@@ -148,7 +148,7 @@ function BusinessEditForm() {
       <label>
         <input
         className='editCloseTime'
-        type="number"
+        type="time"
         placeholder='CloseTime'
         value={closeTime}
         onChange={(e) => setCloseTime(e.target.value)}

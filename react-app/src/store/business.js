@@ -64,17 +64,17 @@ export const getBusinessByid = (businessId) => async (dispatch) => {
   return res;
 };
 
-export const editBusiness = (business) => async (dispatch) => {
-  const res = await fetch(`/api/businesses/${business.id}`, {
+export const editBusiness = (data, businessId) => async (dispatch) => {
+  const res = await fetch(`/api/businesses/${businessId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(business),
+    body: JSON.stringify(data),
   });
   if (res.ok) {
     const business = await res.json();
-    dispatch(update(business));
+    dispatch(getBusinessByid(business.id));
   }
   return res;
 };
