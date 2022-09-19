@@ -9,9 +9,12 @@ const CreateReview = () => {
   const [stars, setStars] = useState("");
   const [review, setReview] = useState("");
   const [businessId, setBusinessId] = useState(1);
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [errors, setErrors] = useState([])
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrors([]);
 
     const info = {
       user_id: sessionUser.id,
@@ -21,6 +24,10 @@ const CreateReview = () => {
     };
 
     dispatch(reviewActions.createReview(info));
+
+    setReview('')
+    setStars('')
+
   };
 
   return (
@@ -29,7 +36,13 @@ const CreateReview = () => {
         <input
           type="number"
           value={stars}
-          onChange={(e) => setStars(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (value > 5 || value < 1) {
+              return;
+            }
+            setStars(e.target.value);
+          }}
         ></input>
       </label>
       <label className="review-body">
@@ -37,10 +50,18 @@ const CreateReview = () => {
           placeholder="Write a review"
           wrap="soft"
           value={review}
-          onChange={(e) => setReview(e.target.value)}
+          onChange={(e) => {
+            const textValue = e.target.value;
+            if (textValue.length > 255) {
+              return;
+            }
+            setReview(e.target.value);
+          }}
+          required
         ></textarea>
       </label>
-      <button type="submit">Submit Review</button>
+      <button type="submit"
+      disabled={review.length <= 5}>Submit Review</button>
     </form>
   );
 };

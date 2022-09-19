@@ -5,6 +5,8 @@ import LogoutButton from "./auth/LogoutButton";
 import { getBusinesses } from "../store/business";
 import LoginFormModal from "./auth/LoginFormModal";
 import SignUpFormModal from "./auth/SignupFormModal";
+import CreateBusinessModal from "./Business/CreateBusiness";
+
 import "./NavBar.css";
 const NavBar = ({ loaded }) => {
   const dispatch = useDispatch();
@@ -14,6 +16,7 @@ const NavBar = ({ loaded }) => {
   if (sessionUser) {
     sessionLinks = (
       <div className="session-links flex center">
+        <CreateBusinessModal />
         <button>Profile</button>
         <LogoutButton />
       </div>
@@ -30,7 +33,7 @@ const NavBar = ({ loaded }) => {
   return (
     <nav className="main-nav-container">
       <div className="nav-bar flex center space-between">
-        <div className="home-button-container pl20">
+        <div className="home-button-container p20">
           <NavLink
             className="home-button"
             to="/"

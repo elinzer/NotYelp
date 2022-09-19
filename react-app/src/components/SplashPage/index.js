@@ -9,7 +9,7 @@ function SplashPage() {
       {/* <h1>Welcome to the Splash Page!</h1> */}
       <div className="splash-container flex">
         {businesses.map((business) => (
-          <BusinessCard business={business} />
+          <BusinessCard key={business?.id} business={business} />
         ))}
       </div>
     </div>
