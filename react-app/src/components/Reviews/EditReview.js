@@ -3,30 +3,28 @@ import { useEffect, useState } from "react";
 import "./Reviews.css";
 import * as reviewActions from "../../store/review";
 
-const CreateReview = () => {
+const EditReview = ({ business, rev }) => {
+  const { business_id } = business.rev;
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [stars, setStars] = useState("");
-  const [review, setReview] = useState("");
-  const [businessId, setBusinessId] = useState(1);
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [errors, setErrors] = useState([])
+  const [stars, setStars] = useState(business.rev.stars);
+  const [review, setReview] = useState(business.rev.review);
+  console.log(business.rev.id)
+  // const [businessId, setBusinessId] = useState("");
+  // const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
 
     const info = {
       user_id: sessionUser.id,
       stars,
       review,
-      business_id: businessId,
+      business_id: business_id,
     };
 
-    dispatch(reviewActions.createReview(info));
-
-    setReview('')
-    setStars('')
+    dispatch(reviewActions.editReview(info, business.rev.id));
 
   };
 
@@ -60,10 +58,11 @@ const CreateReview = () => {
           required
         ></textarea>
       </label>
-      <button type="submit"
-      disabled={review.length <= 5}>Submit Review</button>
+      <button type="submit" disabled={rev.length <= 5}>
+        Submit Review
+      </button>
     </form>
   );
 };
 
-export default CreateReview;
+export default EditReview;
