@@ -107,20 +107,23 @@ function BusinessDetail() {
         <div className="pt20">
           <div className="business-details-container flex">
             <div className="business-details">
-              <div className="business-actions-container">
-                {currentUser && (
-                  <div className="EditDeleteBusiness">
-                    <EditBusinessModal />
-                    <button onClick={handleDelete} className="deleteButton">
-                      Delete Business
-                    </button>
-                    {/* Item Modal might make more sense to go in menu, unsure atm */}
-                    <CreateItemModal businessId={business.id} />
-                  </div>
-                )}
+              <div className="business-actions-container flex">
                 {sessionUser && (
                   <div>
                     <CreateReviewModal business={business} />
+                  </div>
+                )}
+                {currentUser && (
+                  <div className="EditDeleteBusiness flex">
+                    <CreateItemModal businessId={business.id} />
+                    <EditBusinessModal />
+                    <button
+                      onClick={handleDelete}
+                      className="deleteButton clear-button"
+                    >
+                      Delete Business
+                    </button>
+                    {/* Item Modal might make more sense to go in menu, unsure atm */}
                   </div>
                 )}
               </div>
