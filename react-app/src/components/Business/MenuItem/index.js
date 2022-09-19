@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Modal } from "../../../../context/Modal";
+import { Modal } from '../../../context/Modal';
 import CreateItem from "./CreateItem";
-import "./CreateItemModal.css";
+import "./CreateItem.css";
 
 function CreateItemModal() {
   const [showModal, setShowModal] = useState(false);
@@ -25,4 +25,4 @@ function CreateItemModal() {
   );
 }
 
-export default CreateBusinessModal;
+export default CreateItemModal;
