@@ -49,7 +49,7 @@ export const UserLikes = () => async (dispatch) => {
 
 //create like
 export const createLike = (like) => async (dispatch) => {
-
+  console.log(like)
   const res = await fetch("/api/likes/", {
     method: "POST",
     headers: {
@@ -81,7 +81,7 @@ export default function likeReducer(state = {}, action) {
   let newState = { ...state };
   switch (action.type) {
     case GET_ALL:
-      action.payload.reviews.forEach((like) => {
+      action.payload.likes.forEach((like) => {
         newState[like.id] = like;
       });
       return newState;

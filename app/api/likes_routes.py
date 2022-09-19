@@ -34,9 +34,8 @@ def post_like():
     if form.validate_on_submit():
         new_like = Like(
                     user_id=form.user_id.data,
-                    buisness_id=form.buisness_id.data,
+                    business_id=form.business_id.data,
                     like=form.like.data,
-                    submit=form.submit.data
         )
         db.session.add(new_like)
         db.session.commit()
