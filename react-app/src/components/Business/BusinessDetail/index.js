@@ -6,6 +6,7 @@ import ItemCard from "../ItemCard";
 import EditBusinessModal from "../EditBusiness";
 import CreateItemModal from "../MenuItem";
 import "./BusinessDetail.css";
+const states = require("us-state-converter");
 
 function BusinessDetail() {
   let currentUser;
@@ -152,7 +153,8 @@ function BusinessDetail() {
               </div>
               <div className="business-phone">{business?.phone}</div>
               <div className="business-address">
-                {business?.address} {business?.city}, {business?.state}
+                {business?.address} {business?.city},{" "}
+                {states.abbr(business?.state)}
               </div>
             </div>
           </div>
