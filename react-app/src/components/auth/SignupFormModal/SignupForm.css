@@ -2,8 +2,27 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  height: 400px;
-  width: 600px;
+  height: 350px;
+  width: 500px;
+  border-radius: 20px;
+  border: 1px solid red;
+}
+
+.userInputs,
+.emailInputs,
+.passwordInputs {
+  font-size: 16px;
+  border: solid 1px lightslategray;
+  border-radius: 8px;
+  width: 300px;
+  height: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  margin-left: 10px;
 }
 
 .signup-button {
@@ -16,9 +35,11 @@
   background-color: rgb(230, 0, 0);
   color: white;
   border: white solid 1px;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 20px;
   font-weight: 750;
   height: 40px;
   width: 150px;
+  margin-top: 25px;
+  margin-left: 33%;
 }

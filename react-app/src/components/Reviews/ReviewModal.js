@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
 import CreateReview from "./CreateReview";
 
-function CreateReviewModal(business) {
+function CreateReviewModal({ business }) {
   const [showModal, setShowModal] = useState(false);
   const allReviews = useSelector((state) => state.reviews);
   useEffect(() => {

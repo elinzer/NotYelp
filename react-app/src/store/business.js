@@ -2,6 +2,7 @@ const GET_ALL = "businesses/GET_ALL";
 const CREATE = "businesses/CREATE";
 const UPDATE = "businesses/UPDATE";
 const DELETE = "businesses/DELETE";
+const ADD_ITEM_TO_BUSINESS = "businesses/ADD_ITEM_TO_BUSINESS";
 
 const getAll = (businesses) => ({
   type: GET_ALL,
@@ -21,6 +22,11 @@ const update = (business) => ({
 const deleteBusiness = (businessId) => ({
   type: DELETE,
   payload: businessId,
+});
+
+export const addItemToBusinessAction = (businessId, itemId) => ({
+  type: ADD_ITEM_TO_BUSINESS,
+  payload: { businessId, itemId },
 });
 
 export const getBusinesses = () => async (dispatch) => {
