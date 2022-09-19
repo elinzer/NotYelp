@@ -1,0 +1,59 @@
+.profileButton {
+  background-color: white;
+  border: 1px lightsteelblue solid;
+  border-radius: 20px;
+}
+
+.profileButton:hover {
+  cursor: pointer;
+}
+
+.profileIcon {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  height: 90px;
+  width: 250px;
+  box-shadow: lightslategrey 5px 5px 20px 0px;
+  border-radius: 5px;
+  margin-top: 100px;
+  position: absolute;
+  right: 57px;
+  top: -20px;
+  z-index: 999;
+}
+
+.userProfile,
+.logoutUser {
+  color: rgb(70, 70, 70);
+  text-decoration: none;
+  font-family: Helvetica, Rounded;
+  font-size: 15px;
+  font-weight:600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+.logoutUser:hover,
+.userProfile:hover {
+  background-color: rgb(240, 240, 240);
+  border-radius: 15px;
+}
+
+.logoutUser:hover {
+  cursor:pointer;
+}
+
+.divLine {
+  border-top: 1px solid rgb(200, 200, 200);
+}
