@@ -49,7 +49,7 @@ const LoginForm = ({ closeModal }) => {
       <div>
         <label htmlFor="password">Password</label>
         <input
-          name="password"
+          // name="password"
           type="password"
           placeholder="Password"
           className="passwordInput"

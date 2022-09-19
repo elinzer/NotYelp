@@ -2,8 +2,8 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  height: 500px;
-  width: 600px;
+  height: 700px;
+  width: 550px;
 }
 
 .createBusinessBox {
@@ -29,6 +29,7 @@
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 15px;
+  margin-top: 20px;
 }
 
 .submitButton {
@@ -40,4 +41,6 @@
   font-weight: 750;
   height: 40px;
   width: 150px;
+  margin-top: 20px;
+  margin-left: 33%;
 }
