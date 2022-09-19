@@ -6,6 +6,7 @@ import { getBusinesses } from "../store/business";
 import LoginFormModal from "./auth/LoginFormModal";
 import SignUpFormModal from "./auth/SignupFormModal";
 import CreateBusinessModal from "./Business/CreateBusiness";
+import ProfileButton from './ProfileButton'
 
 import "./NavBar.css";
 const NavBar = ({ loaded }) => {
@@ -15,11 +16,7 @@ const NavBar = ({ loaded }) => {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <div className="session-links flex center">
-        <CreateBusinessModal />
-        <button>Profile</button>
-        <LogoutButton />
-      </div>
+      <ProfileButton user={sessionUser} />
     );
   } else {
     sessionLinks = (

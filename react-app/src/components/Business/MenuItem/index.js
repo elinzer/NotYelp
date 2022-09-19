@@ -13,7 +13,7 @@ function CreateItemModal({ businessId }) {
 
   return (
     <>
-      <button className="addMenuButton" onClick={() => setShowModal(true)}>
+      <button className="addMenuButton clear-button" onClick={() => setShowModal(true)}>
         Add Menu Item
       </button>
       {showModal && (
