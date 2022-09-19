@@ -18,6 +18,11 @@
   max-height: 426px;
   object-fit: cover;
 }
+.business-details-container {
+  margin: 0 auto;
+  max-width: 1144px;
+  padding: 0 40px;
+}
 .photo-inner-container::after {
   background: linear-gradient(180deg, #0000 31.42%, #000);
   bottom: 0;

@@ -1,5 +1,5 @@
 .main-nav-container {
-  /* no idea how to mimic their gradient yet LOL - hazel */
-  /* linear-gradient(#0006, #0000001a 55%) <== from Yelp's css directly but idk */
+  /* below is the gradient from Yelp's CSS */
+  /* background: linear-gradient(180deg, #000000b3, #0000004d 72.92%, #0000); */
   background-color: black;
 }

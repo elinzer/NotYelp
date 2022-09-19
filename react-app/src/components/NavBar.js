@@ -33,7 +33,7 @@ const NavBar = ({ loaded }) => {
   return (
     <nav className="main-nav-container">
       <div className="nav-bar flex center space-between">
-        <div className="home-button-container pl20">
+        <div className="home-button-container p20">
           <NavLink
             className="home-button"
             to="/"

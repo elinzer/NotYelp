@@ -100,25 +100,47 @@ function BusinessDetail() {
             />
           </div>
         </div>
-        <ul>
-          {reviews.map((review) => {
-            if (review.business_id == businessId)
-              return (
-                <li key={review.id}>
-                  Stars: {review.stars} Review: {review.review}
-                </li>
-              );
-          })}
-        </ul>
-        {currentUser && (
-          <div className="EditDeleteBusiness">
-            <EditBusinessModal />
-            <button onClick={handleDelete} className="deleteButton">
-              Delete Business
-            </button>
-            <CreateItemModal />
+        <div className="pt20">
+          <div className="business-details-container">
+            <div className="business-actions-container">
+              {currentUser && (
+                <div className="EditDeleteBusiness">
+                  <EditBusinessModal />
+                  <button onClick={handleDelete} className="deleteButton">
+                    Delete Business
+                  </button>
+                  {/* Item Modal might make more sense to go in menu, unsure atm */}
+                  <CreateItemModal />
+                </div>
+              )}
+            </div>
+            <div className="business-menu-container">
+              Menu:
+              {/* Show every Item Card Here */}
+            </div>
+            <div className="business-info-container">
+              <div className="business-owner-info">
+                {/* Owner Info i.e Picture/Name */}
+              </div>
+              <div className="business-description">
+                {/* Business Description */}
+              </div>
+            </div>
+            <div className="business-reviews-container">
+              {/* Show every Review Card Here */}
+              Reviews:
+              {reviews.map((review) => {
+                if (review.business_id == businessId)
+                  return (
+                    <div key={review.id}>
+                      {/* ReviewCard will go here */}
+                      Stars: {review.stars} Review: {review.review}
+                    </div>
+                  );
+              })}
+            </div>
           </div>
-        )}
+        </div>
       </div>
     )
   );
