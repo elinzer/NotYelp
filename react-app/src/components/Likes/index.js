@@ -56,8 +56,9 @@ const LikeComponent = ({ business }) => {
 
 
     return (
-        <div>
+        <div className="like-button-container">
             <button
+            style={{backgroundColor: clicked ? '#90EE90' : ''}}
             className="love-button"
             onClick={handleLove}
             disabled={clicked}>
