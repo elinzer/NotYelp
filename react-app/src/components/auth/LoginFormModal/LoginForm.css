@@ -21,7 +21,7 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .errors {
@@ -33,7 +33,6 @@
   font-weight: 650;
   color: red;
   font-size: 18px;
-  font-weight: 700;
 }
 
 .loginTitle {
@@ -41,6 +40,7 @@
   font-size: 20px;
   margin-left: 43%;
   font-weight: 750;
+  margin-bottom: -20px;
 }
 
 .userInput,

@@ -63,7 +63,7 @@ function BusinessCreateForm() {
           <div className="CreateBusTitle">Create Your Business</div>
         <div className="createErrors">
           {errors.map((error, ind) => (
-            <div key={ind}>{error.split(": ")[1]}</div>
+            <div key={ind} className='createError'>{error.split(": ")[1]}</div>
           ))}
         </div>
         <div>

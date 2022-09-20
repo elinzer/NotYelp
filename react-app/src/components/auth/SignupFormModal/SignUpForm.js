@@ -54,12 +54,12 @@ const SignUpForm = ({ closeModal }) => {
   return (
     <div className="login">
       <form onSubmit={onSignUp}>
+          <div className="signupTitle">Sign Up</div>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div className="signupTitle">Sign Up</div>
         <div>
           <input
             type="text"
