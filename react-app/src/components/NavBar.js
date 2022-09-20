@@ -62,10 +62,10 @@ const NavBar = ({ loaded }) => {
             </svg>
           </button>
         </div>
-        <div className="createBusModal">
-          <CreateBusinessModal/>
+        <div className="flex pr20">
+          <CreateBusinessModal />
+          {loaded && sessionLinks}
         </div>
-        {loaded && sessionLinks}
       </div>
     </nav>
   );
