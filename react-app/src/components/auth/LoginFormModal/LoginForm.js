@@ -62,6 +62,14 @@ const LoginForm = ({ closeModal }) => {
         className="submitLogin"
         >Login</button>
       </div>
+      <button
+      onClick={() => {
+        setEmail('demo@aa.io');
+        setPassword("password")
+    }}
+      type="submit"
+      className="submitDemo"
+      >Demo Login</button>
     </form>
   );
 };
