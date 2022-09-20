@@ -47,5 +47,5 @@ class Business(db.Model):
       "review_ids": [review.id for review in self.reviews],
       "like_ids": [like.id for like in self.likes],
       "menuitem_ids": [menuitem.id for menuitem in self.menuitems],
-      "avg_rating": sum([review.stars for review in self.reviews]) / len(self.reviews)
+      "avg_rating": (sum([review.stars for review in self.reviews]) / len(self.reviews)) if len(self.reviews) > 0 else 0
     }
