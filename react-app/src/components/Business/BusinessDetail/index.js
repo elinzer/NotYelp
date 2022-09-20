@@ -35,10 +35,10 @@ function BusinessDetail() {
   useEffect(() => {
     let openTimeDate = new Date();
     let closeTimeDate = new Date();
-    openTimeDate.setHours(business.open_time.split(":")[0]);
-    openTimeDate.setMinutes(business.open_time.split(":")[1]);
-    closeTimeDate.setHours(business.close_time.split(":")[0]);
-    closeTimeDate.setMinutes(business.close_time.split(":")[1]);
+    openTimeDate.setHours(business?.open_time.split(":")[0]);
+    openTimeDate.setMinutes(business?.open_time.split(":")[1]);
+    closeTimeDate.setHours(business?.close_time.split(":")[0]);
+    closeTimeDate.setMinutes(business?.close_time.split(":")[1]);
     setOpenTime(
       openTimeDate.toLocaleTimeString("en-US", {
         timeStyle: "short",
@@ -91,7 +91,11 @@ function BusinessDetail() {
               <div className="details-review-data flex">
                 <div className="review-avg-stars">✰✰✰✰✰</div>
                 <div className="review-count pl10">
-                  {business?.review_ids.length}
+                  {business?.review_ids.length == 1 ? (
+                    <div>{business?.review_ids.length} review</div>
+                  ) : (
+                    <div>{business?.review_ids.length} reviews</div>
+                  )}
                 </div>
               </div>
               <div className="business-hours flex">

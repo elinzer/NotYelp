@@ -17,6 +17,14 @@ def all_businesses():
     return {"businesses": [business.to_dict() for business in businesses]}
 
 
+# Search Businesses
+@business_routes.route("/search")
+def search_businesses():
+    query_name = request.args.get("name")
+    businesses = Business.query.filter(Business.name.ilike(f"%{query_name}%")).all()
+    return {"businesses": [business.to_dict() for business in businesses]}
+
+
 # Get Business by ID
 @business_routes.route("/<int:id>")
 def get_business(id):

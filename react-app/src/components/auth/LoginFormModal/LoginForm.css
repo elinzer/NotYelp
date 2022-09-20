@@ -1,7 +1,12 @@
 .login-button {
   background-color: transparent;
-  border: 1px solid white;
+  border: 1px solid rgba(200, 201, 202, 1);
   border-width: 2px;
+  color: rgba(45, 46, 47, 1);
+  border-radius: 4px;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
 }
 
 .loginBox {
