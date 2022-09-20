@@ -30,12 +30,12 @@ const LoginForm = ({ closeModal }) => {
 
   return (
     <form onSubmit={onLogin} className='loginBox'>
+        <div className="loginTitle">Login</div>
       <div className='loginErrors'>
         {errors.map((error, ind) => (
           <div key={ind} className='errors'>{error}</div>
         ))}
       </div>
-      <div className="loginTitle">Login</div>
       <div>
         <label htmlFor="Email"/>
         <input
