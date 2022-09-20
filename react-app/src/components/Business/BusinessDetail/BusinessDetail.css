@@ -67,6 +67,34 @@
   display: inline;
 }
 
+.business-about-container {
+  padding: 20px 0px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.about-header {
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  color: rgba(45, 46, 47, 1);
+  padding-bottom: 15px;
+}
+
+.header {
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  color: rgba(45, 46, 47, 1);
+}
+
 .business-details {
   width: 66.66667%;
 }
