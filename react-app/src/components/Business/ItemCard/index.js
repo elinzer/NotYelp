@@ -1,5 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
-import {useHistory, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { getBusinessByid } from "../../../store/business";
 import { deleteItemById } from "../../../store/item";
 
@@ -7,9 +6,7 @@ import "./ItemCard.css";
 
 
 function ItemCard({ item }) {
-  const { itemId } = useParams();
-  // const items = useSelector(state => state.items[itemId])
-  const history = useHistory();
+
   const dispatch = useDispatch();
 
   const handleDelete = async (e) => {
