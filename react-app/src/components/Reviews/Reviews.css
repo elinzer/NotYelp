@@ -18,7 +18,6 @@
   cursor: pointer;
 }
 .stars-outer {
-  display: inline-block;
   position: relative;
   font-family: FontAwesome;
 }
@@ -39,7 +38,7 @@
 
 .stars-inner::before {
   content: "\f005 \f005 \f005 \f005 \f005";
-  color: #f8ce0b;
+  color: #ffd000;
 }
 .create-review-button > * {
   padding: 0 5px;
