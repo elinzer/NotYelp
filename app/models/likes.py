@@ -13,7 +13,7 @@ class Like(db.Model):
   business = db.relationship("Business", back_populates="likes")
   user = db.relationship("User", back_populates="likes")
 
-  __table_args__ = (db.Index('one_like_per_business', 'user_id', "business_id", unique=True),)
+  __table_args__ = (db.UniqueConstraint("user_id", "business_id", name="_user_business_uc"),)
 
   def to_dict(self):
     return {

@@ -12,8 +12,9 @@
 
 .createButton {
   background-color: transparent;
-  color: white;
+  color: rgba(45, 46, 47, 1);
   font-size: 14px;
+  border: none;
   font-weight: 600;
   padding: 10px;
 }
