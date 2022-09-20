@@ -35,10 +35,14 @@
   color: white;
   border: white solid 1px;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 750;
-  height: 40px;
-  width: 150px;
+  height: 38px;
+  width: 125px;
   margin-top: 25px;
-  margin-left: 28%;
+  margin-left: 32%;
+}
+
+.submitButtonm:hover {
+  cursor: pointer;
 }
