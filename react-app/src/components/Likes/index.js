@@ -13,7 +13,8 @@ const LikeComponent = ({ business }) => {
     const [clickedLove, setClickedLove] = useState(false)
     const [clickedOkay, setClickedOkay] = useState(false)
     const [clickedTrash, setClickedTrash] = useState(false)
-
+    console.log(business)
+    console.log(likes)
     //helper function to select 'like'
     const likeSelected = () => {
         let existingLike = likes.filter(like => {
@@ -21,8 +22,10 @@ const LikeComponent = ({ business }) => {
                 return like;
             }
         })
+        console.log('this is existing like', existingLike)
         let likeId = existingLike[0].id
-        return likeId
+        console.log('this is the like id' , likeId)
+        if (likeId) return likeId
     }
 
     useEffect(() => {
@@ -30,28 +33,20 @@ const LikeComponent = ({ business }) => {
     }, [dispatch])
 
     useEffect(() => {
-        setClickedLove(JSON.parse(window.localStorage.getItem('clickedLove')));
-        setClickedOkay(JSON.parse(window.localStorage.getItem('clickedOkay')));
-        setClickedTrash(JSON.parse(window.localStorage.getItem('clickedTrash')));
+        // check to see if sessionUser has a like on a business. if they do, set clickedXYZ to true
     }, []);
 
     useEffect(() => {
-        window.localStorage.setItem('clickedLove', clickedLove);
-    }, [clickedLove]);
-
-    useEffect(() => {
-        window.localStorage.setItem('clickedOkay', clickedOkay);
-    }, [clickedOkay])
-
-    useEffect(() => {
-        window.localStorage.setItem('clickedTrash', clickedTrash);
-    }, [clickedTrash])
+        // not sure if we need this...?
+    }, []);
 
     const handleLove = () => {
         if (clickedLove) {
             setClickedLove(!clickedLove)
             if (likeSelected()) {
                 dispatch(likeActions.deleteLikeById(likeSelected()))
+            } else {
+                return
             }
         } else {
             const info = {
@@ -69,9 +64,7 @@ const LikeComponent = ({ business }) => {
     const handleOkay = () => {
         if (clickedOkay) {
             setClickedOkay(!clickedOkay)
-
             if (likeSelected()) {
-
                 dispatch(likeActions.deleteLikeById(likeSelected()))
             }
         } else {
@@ -90,9 +83,7 @@ const LikeComponent = ({ business }) => {
     const handleTrash = () => {
         if (clickedTrash) {
             setClickedTrash(!clickedTrash)
-
             if (likeSelected()) {
-
                 dispatch(likeActions.deleteLikeById(likeSelected()))
             }
         } else {
@@ -114,16 +105,19 @@ const LikeComponent = ({ business }) => {
                 style={{ backgroundColor: clickedLove ? '#90EE90' : '' }}
                 className="love-button"
                 onClick={() => { setClickedLove(!clickedLove); handleLove() }}
+                disabled={clickedOkay || clickedTrash}
             >
                 <i class="fa-regular fa-face-grin-hearts"></i></button>
             <button
                 style={{ backgroundColor: clickedOkay ? '#F1BE48' : '' }}
                 onClick={() => { setClickedOkay(!clickedOkay); handleOkay() }}
+                disabled={clickedLove || clickedTrash}
             >
                 <i class="fa-regular fa-face-meh"></i></button>
             <button
                 style={{ backgroundColor: clickedTrash ? '#FF7276' : '' }}
                 onClick={() => { setClickedTrash(!clickedTrash); handleTrash() }}
+                disabled={clickedLove || clickedOkay}
             >
                 <i class="fa-regular fa-face-frown"></i></button>
 
