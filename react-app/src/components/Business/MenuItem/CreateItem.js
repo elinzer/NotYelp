@@ -32,7 +32,7 @@ function CreateItemForm({ businessId }) {
   return (
     <div className="menuItemBox">
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className="awef">
         {errors.map((error, ind) => (
           <div key={ind}>{error.split(": ")[1]}</div>
         ))}

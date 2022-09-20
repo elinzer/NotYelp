@@ -137,8 +137,7 @@ function BusinessDetail() {
                     <EditBusinessModal />
                     <button
                       onClick={handleDelete}
-                      className="deleteButton clear-button"
-                    >
+                      className="deleteButton clear-button">
                       Delete Business
                     </button>
                     {/* Item Modal might make more sense to go in menu, unsure atm */}
