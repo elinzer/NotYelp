@@ -7,7 +7,7 @@ function SplashPage() {
   // https://s3-media0.fl.yelpcdn.com/educatorphoto/T3U8OES-w0Pat6ijyqf8pg/o.jpg
   return (
     <div className="main-splash-container">
-      <div className="splash-container flex">
+      <div className="splash-container flex flex-wrap">
         {businesses.map((business) => (
           <BusinessCard key={business?.id} business={business} />
         ))}
