@@ -6,7 +6,9 @@ import ItemCard from "../ItemCard";
 import CreateReviewModal from "../../Reviews/ReviewModal";
 import EditBusinessModal from "../EditBusiness";
 import CreateItemModal from "../MenuItem";
+import EditReviewModal from "../../Reviews/EditReviewModal";
 import "./BusinessDetail.css";
+import { deleteReviewById, editReview } from "../../../store/review";
 import ReviewCard from "../../Reviews/ReviewCard";
 const states = require("us-state-converter");
 
@@ -57,11 +59,23 @@ function BusinessDetail() {
     }
   }, [business]);
 
+  //if the user has already reviewed the spot then the input box for reviews will not show up
+  // const alreadyReviewed = (reviews) => {
+  //   let alreadyReviewedByUser = false;
+  //   for (let i = 0; i < reviews.length; i++) {
+  //     if (reviews[i].user_id === sessionUser.id) {
+  //       alreadyReviewedByUser = true;
+  //     }
+  //   }
+  //   return alreadyReviewedByUser;
+  // };
+
   const handleDelete = async (e) => {
     e.preventDefault();
     await dispatch(deleteBusinessById(businessId));
     history.push("/");
   };
+
   if (sessionUser && business) {
     if (sessionUser.id === business.owner_id) {
       currentUser = true;
@@ -140,7 +154,6 @@ function BusinessDetail() {
                   ))}
                 </div>
               </div>
-
               <div className="business-reviews-container">
                 {/* Show every Review Card Here */}
                 <div className="reviews-header">Reviews</div>

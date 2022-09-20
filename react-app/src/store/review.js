@@ -74,9 +74,8 @@ export const createReview = (review) => async (dispatch) => {
 };
 
 //edit review
-export const editReview = (review) => async (dispatch) => {
-  //   review.id = 1;
-  const res = await fetch(`/api/reviews/${review.id}`, {
+export const editReview = (review, id) => async (dispatch) => {
+  const res = await fetch(`/api/reviews/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -91,12 +90,13 @@ export const editReview = (review) => async (dispatch) => {
 };
 
 //delete review
-export const deleteReviewById = (id) => async (dispatch) => {
+export const deleteReviewById = (id, business_id) => async (dispatch) => {
   const res = await fetch(`/api/reviews/${id}`, {
     method: "DELETE",
   });
   if (res.ok) {
     dispatch(deleteReview(id));
+    dispatch(getBusinessByid(business_id));
   }
   return res;
 };

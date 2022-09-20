@@ -62,6 +62,9 @@ const NavBar = ({ loaded }) => {
             </svg>
           </button>
         </div>
+        <div className="createBusModal">
+          <CreateBusinessModal/>
+        </div>
         {loaded && sessionLinks}
       </div>
     </nav>

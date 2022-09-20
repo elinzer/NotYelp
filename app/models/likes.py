@@ -1,7 +1,9 @@
+from enum import unique
 from .db import db
 
 class Like(db.Model):
   __tablename__ = "likes"
+
 
   id = db.Column("id", db.Integer, primary_key = True)
   like = db.Column("like", db.Integer, nullable=False)
@@ -10,6 +12,8 @@ class Like(db.Model):
 
   business = db.relationship("Business", back_populates="likes")
   user = db.relationship("User", back_populates="likes")
+
+  __table_args__ = (db.Index('one_like_per_business', 'user_id', "business_id", unique=True),)
 
   def to_dict(self):
     return {
