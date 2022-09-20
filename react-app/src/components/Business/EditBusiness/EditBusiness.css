@@ -1,0 +1,54 @@
+.editForm {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+  width: 550px;
+}
+
+.updateTitle {
+  font-family: Helvetica, Rounded;
+  font-size: 20px;
+  margin-left: 25%;
+  font-weight: 750;
+}
+
+.editName,
+.editAddress,
+.editUrl,
+.editPhone,
+.editCity,
+.editState,
+.editZipCode,
+.editOpenTime,
+.editCloseTime,
+.editDescription,
+.editPreviewUrl {
+  font-size: 16px;
+  border: solid 1px lightslategray;
+  border-radius: 8px;
+  width: 300px;
+  height: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+  margin-top: 10px;
+}
+
+.editBusinessBut {
+  background-color: rgb(230, 0, 0);
+  color: white;
+  border: white solid 1px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 750;
+  height: 40px;
+  width: 200px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 18%;
+}
+
+.editBusinessBut:hover {
+  cursor: pointer;
+}
