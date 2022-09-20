@@ -35,8 +35,9 @@ const LoginForm = ({ closeModal }) => {
           <div key={ind}>{error}</div>
         ))}
       </div>
+      <div className="loginTitle">Login</div>
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email"/>
         <input
           // name="email"
           type="text"
@@ -47,7 +48,7 @@ const LoginForm = ({ closeModal }) => {
         />
       </div>
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password"/>
         <input
           // name="password"
           type="password"
