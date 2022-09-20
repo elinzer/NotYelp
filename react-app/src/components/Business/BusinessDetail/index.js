@@ -10,6 +10,7 @@ import EditReviewModal from "../../Reviews/EditReviewModal";
 import "./BusinessDetail.css";
 import { deleteReviewById, editReview } from "../../../store/review";
 import ReviewCard from "../../Reviews/ReviewCard";
+import DisplayStars from "../../Reviews/DisplayStars";
 const states = require("us-state-converter");
 
 function BusinessDetail() {
@@ -89,7 +90,7 @@ function BusinessDetail() {
             <div className="details">
               <div className="details-name">{business?.name}</div>
               <div className="details-review-data flex">
-                <div className="review-avg-stars">✰✰✰✰✰</div>
+                <DisplayStars rating={business.avg_rating} />
                 <div className="review-count pl10">
                   {business?.review_ids.length == 1 ? (
                     <div>{business?.review_ids.length} review</div>
