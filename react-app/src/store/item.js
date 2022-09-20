@@ -55,7 +55,8 @@ export const deleteItemById = (itemId) => async (dispatch) => {
     method: "DELETE",
   });
   if (res.ok) {
-    const data = await dispatch(deleteItem(itemId));
+    const data = await res.json();
+    dispatch(deleteItem(itemId));
     return data;
   } else if (res.status < 500) {
     const data = await res.json();

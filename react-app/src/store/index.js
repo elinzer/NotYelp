@@ -5,9 +5,11 @@ import businessesReducer from "./business";
 import reviewReducer from "./review";
 import itemReducer from "./item";
 import likeReducer from "./like";
+import queriedBusinessReducer from "./queried_business";
 const rootReducer = combineReducers({
   session,
   businesses: businessesReducer,
+  queried_businesses: queriedBusinessReducer,
   reviews: reviewReducer,
   items: itemReducer,
   likes: likeReducer,
