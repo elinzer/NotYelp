@@ -37,7 +37,7 @@
   text-decoration: none;
   font-family: Helvetica, Rounded;
   font-size: 15px;
-  font-weight:600;
+  font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,7 +51,7 @@
 }
 
 .logoutUser:hover {
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .divLine {

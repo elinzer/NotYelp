@@ -53,7 +53,7 @@ function ProfileButton({ user }) {
           {/* <Link to='/view-your-spots' className='allSpotButton'>View My Spots</Link> */}
           <div className='divLine'></div>
           <div className='logoutUser' onClick={logout}>
-          <svg width={24} height={24} className="icon_svg"><path d="M15 2a1 1 0 110 2H4v16h11a1 1 0 110 2H3a1 1 0 01-1-1V3a1 1 0 011-1h12zm1.09 4.72a1 1 0 011.41 0L22 11.3a1 1 0 010 1.4l-4.59 4.58a1 1 0 01-1.41.02 1 1 0 010-1.42L18.87 13H7a1 1 0 110-2h11.87l-2.78-2.86a1 1 0 010-1.42z" /></svg>
+          <svg width={24} height={24} className="logout-icon"><path d="M15 2a1 1 0 110 2H4v16h11a1 1 0 110 2H3a1 1 0 01-1-1V3a1 1 0 011-1h12zm1.09 4.72a1 1 0 011.41 0L22 11.3a1 1 0 010 1.4l-4.59 4.58a1 1 0 01-1.41.02 1 1 0 010-1.42L18.87 13H7a1 1 0 110-2h11.87l-2.78-2.86a1 1 0 010-1.42z" /></svg>
             Log Out
             </div>
           </div>
