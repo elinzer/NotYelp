@@ -37,8 +37,8 @@ function ItemCard({ item }) {
         <div>
         <button
          onClick={handleDelete}
-         className="menuitem delete">
-         Delete Item
+         className="menuitem-delete">
+         <i class="fa-solid fa-trash"></i>
         </button>
         </div>
         )}
