@@ -23,6 +23,9 @@ def upgrade():
     sa.Column('like', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('business_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.UniqueConstraint('user_id', 'business_id'),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
