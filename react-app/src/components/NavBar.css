@@ -1,7 +1,7 @@
 .main-nav-container {
   /* below is the gradient from Yelp's CSS */
   /* background: linear-gradient(180deg, #000000b3, #0000004d 72.92%, #0000); */
-  background-color: black;
+  /* background-color: black; */
 }
 .search-input {
   width: 40vw;
