@@ -44,7 +44,7 @@ const NavBar = ({ loaded }) => {
             {/* Our logo will go here instead (eventually) - hazel */}
             <img
               className="logo"
-              src="https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_design_cdn/2d2a7a4342fc/assets/img/brand/logo_desktop_white.svg"
+              src="https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_design_cdn/7ef71bf77a33/assets/img/yelp_logo_desktop/cookbook.svg"
             ></img>
           </NavLink>
         </div>

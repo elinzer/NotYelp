@@ -77,7 +77,11 @@ function BusinessDetail() {
               <div className="details-review-data flex">
                 <div className="review-avg-stars">✰✰✰✰✰</div>
                 <div className="review-count pl10">
-                  {business?.review_ids.length}
+                  {business?.review_ids.length == 1 ? (
+                    <div>{business?.review_ids.length} review</div>
+                  ) : (
+                    <div>{business?.review_ids.length} reviews</div>
+                  )}
                 </div>
               </div>
               <div className="business-hours flex">
