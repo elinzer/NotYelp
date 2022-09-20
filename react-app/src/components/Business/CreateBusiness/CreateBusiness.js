@@ -57,95 +57,105 @@ function BusinessCreateForm() {
             <div key={ind}>{error.split(": ")[1]}</div>
           ))}
         </div>
+        <div className="CreateBusTitle">Create Your Business</div>
         <div>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name"/>
           <input
             type="text"
             value={name}
             className="nameInput"
+            placeholder="Name"
             onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
         <div>
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address"/>
           <input
             type="text"
             value={address}
             className="addressInput"
+            placeholder="Address"
             name="address"
             onChange={(e) => setAddress(e.target.value)}
             required
           />
         </div>
         <div>
-          <label htmlFor="url">URL</label>
+          <label htmlFor="url"/>
           <input
             type="text"
             name="url"
             value={url}
             className="urlInput"
+            placeholder="URL"
             onChange={(e) => setUrl(e.target.value)}
             required
           />
         </div>
         <div>
-          <label htmlFor="phone">Phone</label>
+          <label htmlFor="phone"/>
           <input
             type="tel"
             name="phone"
             value={phone}
             className="phoneInput"
+            placeholder="Phone"
             onChange={(e) => setPhone(e.target.value)}
             required
           />
         </div>
         <div>
-          <label htmlFor="city">City</label>
+          <label htmlFor="city"/>
           <input
             type="text"
             name="city"
             value={city}
             className="cityInput"
+            placeholder="City"
             onChange={(e) => setCity(e.target.value)}
             required
           />
         </div>
         <div>
-          <label htmlFor="state">State</label>
+          <label htmlFor="state"/>
           <input
             type="text"
             name="state"
             value={state}
             className="stateInput"
+            placeholder="State"
             onChange={(e) => setState(e.target.value)}
             required
           />
         </div>
         <div>
-          <label htmlFor="zipcode">Zip Code</label>
+          <label htmlFor="zipcode"/>
           <input
             type="number"
             name="zipcode"
             value={zipCode}
             className="zipcodeInput"
+            placeholder="Zip Code"
             onChange={(e) => setZipCode(e.target.value)}
             required
           />
         </div>
         <div>
-          <label htmlFor="previewUrl">Preview Image URL</label>
+          <label htmlFor="previewUrl"/>
           <input
             type="url"
             name="previewUrl"
             value={previewUrl}
             className="previewUrlInput"
+            placeholder="Preview Image URL"
             onChange={(e) => setPreviewUrl(e.target.value)}
             required
           />
         </div>
         <div>
-          <label htmlFor="open_time">Open Time</label>
+          <label htmlFor="open_time" className="opentimeTitle">Open-Time</label>
+            <div>
           <input
             type="time"
             name="open_time"
@@ -154,9 +164,11 @@ function BusinessCreateForm() {
             onChange={(e) => setOpenTime(e.target.value)}
             required
           />
+          </div>
         </div>
         <div>
-          <label htmlFor="close_time">Close Time</label>
+          <label htmlFor="close_time" className="closetimeTitle">Close-Time</label>
+            <div>
           <input
             type="time"
             name="close_time"
@@ -165,13 +177,15 @@ function BusinessCreateForm() {
             onChange={(e) => setCloseTime(e.target.value)}
             required
           />
+          </div>
         </div>
         <div>
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description"/>
           <textarea
             name="description"
             value={description}
             className="descriptionInput"
+            placeholder="Description"
             onChange={(e) => setDescription(e.target.value)}
             required
           />
