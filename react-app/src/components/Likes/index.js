@@ -13,8 +13,7 @@ const LikeComponent = ({ business }) => {
     const [clickedLove, setClickedLove] = useState(false)
     const [clickedOkay, setClickedOkay] = useState(false)
     const [clickedTrash, setClickedTrash] = useState(false)
-    console.log(business)
-    console.log(likes)
+
     //helper function to select 'like'
     const likeSelected = () => {
         let existingLike = likes.filter(like => {
@@ -22,17 +21,31 @@ const LikeComponent = ({ business }) => {
                 return like;
             }
         })
-        console.log('this is existing like', existingLike)
         let likeId = existingLike[0].id
-        console.log('this is the like id' , likeId)
         if (likeId) return likeId
     }
+
+    //helper func to get current user likes
+    const userLikes = () => {
+        let currentUserLikes = likes.filter(like => {
+            if (like.user_id === sessionUser.id) {
+                return like
+            }
+        })
+        return currentUserLikes
+    }
+
+    console.log(userLikes().length)
+
 
     useEffect(() => {
         dispatch(likeActions.getLikes())
     }, [dispatch])
 
     useEffect(() => {
+        if (userLikes().length) {
+            console.log('has length')
+        }
         // check to see if sessionUser has a like on a business. if they do, set clickedXYZ to true
     }, []);
 
@@ -45,8 +58,6 @@ const LikeComponent = ({ business }) => {
             setClickedLove(!clickedLove)
             if (likeSelected()) {
                 dispatch(likeActions.deleteLikeById(likeSelected()))
-            } else {
-                return
             }
         } else {
             const info = {
