@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  UserReview,
-  editReview,
-  deleteReviewById,
-  getReviews,
-} from "../../../store/review";
 import "./CurrentUserReview.css";
 import * as reviewActions from "../../../store/review";
+import EditReviewModal from "../EditReviewModal";
 
 const CurrentUserReviews = () => {
   const user = useSelector((state) => state.session.user);
@@ -20,9 +15,8 @@ const CurrentUserReviews = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(UserReview());
-    dispatch(getReviews());
-    dispatch(editReview());
+    // dispatch(UserReview());
+    dispatch(reviewActions.getReviews());
   }, []);
 
   const handleDeleteButton = (review_id) => {
@@ -48,7 +42,7 @@ const CurrentUserReviews = () => {
             >
               Delete Review
             </button>
-            <button>Edit Review</button>
+            <EditReviewModal rev={review} />
           </div>
         ))}
       </div>
