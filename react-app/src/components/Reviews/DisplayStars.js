@@ -11,6 +11,7 @@ const DisplayStars = ({ rating }) => {
       starArr.fill("empty-star");
       return starArr;
     }
+
     const numberFullStars = Math.floor(rating);
     for (let i = 1; i <= numberFullStars; i++) {
       starArr.push("full-star");
