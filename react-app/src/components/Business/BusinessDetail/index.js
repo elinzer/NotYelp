@@ -154,9 +154,13 @@ function BusinessDetail() {
                   ))}
                 </div>
               </div>
+              <div className="business-about-container">
+                <div className="about-header">About</div>
+                <div className="about-content">{business?.description}</div>
+              </div>
               <div className="business-reviews-container">
                 {/* Show every Review Card Here */}
-                <div className="reviews-header">Reviews</div>
+                <div className="reviews-header header">Reviews</div>
                 <div className="reviews-inner-container">
                   {business?.review_ids.map((reviewId) => (
                     <ReviewCard key={reviewId} review={reviews[reviewId]} />

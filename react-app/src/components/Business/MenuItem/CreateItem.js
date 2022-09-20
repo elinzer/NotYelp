@@ -37,32 +37,36 @@ function CreateItemForm({ businessId }) {
           <div key={ind}>{error.split(": ")[1]}</div>
         ))}
       </div>
+      <div className="AddMenuTitle">Add Menu Item</div>
       <div>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name"/>
         <input
           type="text"
           value={name}
           className='nameInputm'
+          placeholder="Name"
           onChange={(e) => setName(e.target.value)}
           required
         />
       </div>
       <div>
-        <label htmlFor="price">Price</label>
+        <label htmlFor="price"/>
         <input
           type="number"
           value={price}
           className='priceInputm'
+          placeholder="Price"
           onChange={(e) => setPrice(e.target.value)}
           required
         />
       </div>
       <div>
-        <label htmlFor="previewUrl">Preview Image</label>
+        <label htmlFor="previewUrl"/>
         <input
           type="url"
           value={previewUrl}
           className='previewUrlInputm'
+          placeholder="Preview Image URL (jpg/jpeg/png)"
           onChange={(e) => setPreviewUrl(e.target.value)}
           required
         />

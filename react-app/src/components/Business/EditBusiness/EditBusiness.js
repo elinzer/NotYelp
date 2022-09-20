@@ -61,15 +61,13 @@ function BusinessEditForm() {
       <form onSubmit={handleSubmit} className="editForm">
         <div className="editTitle"></div>
         <div>
-          <h2 className="editSubTitle">Update Business</h2>
-        </div>
-        <div>
           {errors.map((error, idx) => (
             <div key={idx} className="editError">
               {error}
             </div>
           ))}
         </div>
+        <div className='updateTitle'>Update Business</div>
         <label>
           <input
             className="editName"
@@ -181,7 +179,7 @@ function BusinessEditForm() {
           />
         </label>
         <button type="submit" className="editBusinessBut">
-          Update Your Business!
+          Update Your Business
         </button>
       </form>
     )

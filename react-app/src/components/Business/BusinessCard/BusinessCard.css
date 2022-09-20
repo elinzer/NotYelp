@@ -1,7 +1,39 @@
 .business-card {
   display: flex;
-  border: 2px solid red;
-  max-width: 300px;
+  border-radius: 4px;
+  border-color: #ebebeb;
+  gap: 1.25vw;
+  width: 42vw;
   max-height: 300px;
-  margin: 10px;
+  padding: 24px;
+  transition: box-shadow 0.3s;
+}
+.business-card:hover {
+  box-shadow: 0 0 10px #0000001a;
+  cursor: pointer;
+}
+.business-card-image {
+  width: 220px;
+  height: 220px;
+}
+
+.business-card-image > img {
+  height: 100%;
+  width: 100%;
+}
+
+.business-card-name {
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  line-height: 28px;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  color: rgba(45, 46, 47, 1);
+}
+
+.business-card-description {
+  padding-top: 20px;
 }

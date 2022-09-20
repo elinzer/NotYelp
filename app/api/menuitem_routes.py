@@ -36,12 +36,9 @@ def create_menuitem():
 @login_required
 def delete_menuitem(menuitem_id):
     menuitem = MenuItem.query.filter(MenuItem.id == menuitem_id).first()
-    if menuitem.business_id == Business.id:
-        db.session.delete(menuitem)
-        db.session.commit()
-        return (
+    db.session.delete(menuitem)
+    db.session.commit()
+    return (
             jsonify({"message": "Business successfully deleted", "status-code": 200}),
             200,
         )
-    else:
-        return {"errors": "Unauthorized"}, 401

@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import BusinessCard from "../Business/BusinessCard";
-import "./SplashPage.css";
-function SplashPage() {
+import "./SearchPage.css";
+function SearchPage() {
   const dispatch = useDispatch();
-  const businesses = useSelector((state) => Object.values(state.businesses));
-  // https://s3-media0.fl.yelpcdn.com/educatorphoto/T3U8OES-w0Pat6ijyqf8pg/o.jpg
+  const businesses = useSelector((state) =>
+    Object.values(state.queried_businesses)
+  );
   return (
     <div className="main-splash-container">
-      <div className="splash-container flex flex-wrap">
+      <div className="splash-container flex">
         {businesses.map((business) => (
           <BusinessCard key={business?.id} business={business} />
         ))}
@@ -15,4 +16,4 @@ function SplashPage() {
     </div>
   );
 }
-export default SplashPage;
+export default SearchPage;
