@@ -67,7 +67,7 @@ function BusinessCard({ business }) {
             >
               {openStatus ? "Open" : "Closed"}
             </div>
-            <div className="pl5">until {closeTime}</div>
+            <div className="pl5">until {openStatus ? closeTime : openTime}</div>
           </div>
           <div className="business-card-description">
             {business.description}
