@@ -28,7 +28,7 @@
 .CreateBusTitle {
   font-family: Helvetica, Rounded;
   font-size: 20px;
-  margin-left: 20%;
+  margin-left: 25%;
   font-weight: 750;
 }
 
@@ -62,7 +62,6 @@
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 15px;
-
 }
 
 .previewUrlInput,
@@ -72,7 +71,7 @@
 
 .openTimeInput,
 .closeTimeInput {
-  margin-left: 2%;
+  margin-left: 10%;
   margin-top: 10px;
 }
 
@@ -93,7 +92,7 @@
 .zipcodeInput,
 .previewUrlInput,
 .descriptionInput {
-  margin-left: 2%;
+  margin-left: 10%;
 }
 
 .submitButton {
@@ -106,7 +105,7 @@
   height: 40px;
   width: 150px;
   margin-top: 20px;
-  margin-left: 28%;
+  margin-left: 31%;
 }
 
 .submitButton:hover {

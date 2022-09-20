@@ -71,9 +71,9 @@ function BusinessDetail() {
   //   return alreadyReviewedByUser;
   // };
 
-  const handleDelete = async (e) => {
+  const handleDelete = (e) => {
     e.preventDefault();
-    await dispatch(deleteBusinessById(businessId));
+    dispatch(deleteBusinessById(businessId));
     history.push("/");
   };
 
