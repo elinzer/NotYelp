@@ -2,17 +2,19 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
-import { getBusinesses, searchBusinesses } from "../store/business";
+import { searchBusinesses } from "../store/queried_business";
 import LoginFormModal from "./auth/LoginFormModal";
 import SignUpFormModal from "./auth/SignupFormModal";
 import CreateBusinessModal from "./Business/CreateBusiness";
 import ProfileButton from "./ProfileButton";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./NavBar.css";
 const NavBar = ({ loaded }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [search, setSearch] = useState("");
+  const history = useHistory();
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = <ProfileButton user={sessionUser} />;
@@ -27,8 +29,8 @@ const NavBar = ({ loaded }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(`/businesses/search?q=${search}`);
     dispatch(searchBusinesses(search));
+    history.push(`/search?name=${search}`);
   };
 
   return (
