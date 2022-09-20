@@ -1,5 +1,22 @@
 .main-search-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.splash-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-header {
+  display: flex;
+  font-size: 32px;
+  font-weight: 550;
+  padding-bottom: 50px;
+}
+#query {
+  padding-left: 6px;
+  color: red;
 }

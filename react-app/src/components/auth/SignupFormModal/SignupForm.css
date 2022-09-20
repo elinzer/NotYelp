@@ -17,7 +17,8 @@
 
 .userInputs,
 .emailInputs,
-.passwordInputs {
+.passwordInputs,
+.profileImg {
   font-size: 16px;
   border: solid 1px lightslategray;
   border-radius: 8px;
@@ -49,4 +50,8 @@
   width: 115px;
   margin-top: 25px;
   margin-left: 33%;
+}
+
+.signUpButton:hover {
+  cursor: pointer;
 }

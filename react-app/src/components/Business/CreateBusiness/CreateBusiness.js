@@ -49,15 +49,23 @@ function BusinessCreateForm() {
     }
   };
 
+  useEffect(() => {
+    const errors=[];
+    if (!previewUrl.match(imageURLRegex)) {
+      errors.push('preview_url: Preview url must end in valid img extension [png/jpg/jpeg]')
+    }
+    setErrors(errors)
+  },[previewUrl])
+
   return (
     <div className="createBusinessBox">
       <form onSubmit={handleSubmit}>
-        <div>
+          <div className="CreateBusTitle">Create Your Business</div>
+        <div className="createErrors">
           {errors.map((error, ind) => (
             <div key={ind}>{error.split(": ")[1]}</div>
           ))}
         </div>
-        <div className="CreateBusTitle">Create Your Business</div>
         <div>
           <label htmlFor="name"/>
           <input

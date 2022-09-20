@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./BusinessCard.css";
 import LikeComponent from "../../Likes";
 import { useState, useEffect } from "react";
+import DisplayStars from "../../Reviews/DisplayStars";
 const states = require("us-state-converter");
 function BusinessCard({ business }) {
   const [openTime, setOpenTime] = useState("");
@@ -47,7 +48,9 @@ function BusinessCard({ business }) {
             {business.address} {business.city}, {states.abbr(business.state)}
           </div>
           <div className="card-review-data flex">
-            <div className="review-avg-stars">✰✰✰✰✰</div>
+            <div className="review-avg-stars">
+              <DisplayStars rating={business?.avg_rating} />
+            </div>
             <div className="review-count pl10">
               {business?.review_ids.length == 1 ? (
                 <div>{business?.review_ids.length} review</div>
@@ -67,7 +70,7 @@ function BusinessCard({ business }) {
             >
               {openStatus ? "Open" : "Closed"}
             </div>
-            <div className="pl5">until {closeTime}</div>
+            <div className="pl5">until {openStatus ? closeTime : openTime}</div>
           </div>
           <div className="business-card-description">
             {business.description}
