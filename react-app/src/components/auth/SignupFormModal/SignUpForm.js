@@ -52,44 +52,41 @@ const SignUpForm = ({ closeModal }) => {
           <div key={ind}>{error}</div>
         ))}
       </div>
+      <div className="signupTitle">Sign Up</div>
       <div>
-        <label>User Name</label>
         <input
           type="text"
-          // name="username"
           className='userInputs'
           onChange={updateUsername}
           value={username}
+          placeholder='Username'
         ></input>
       </div>
       <div>
-        <label>Email</label>
         <input
           type="text"
-          // name="email"
           className='emailInputs'
           onChange={updateEmail}
           value={email}
+          placeholder='Email'
         ></input>
       </div>
       <div>
-        <label>Password</label>
         <input
           type="password"
-          // name="password"
           className='passwordInputs'
           onChange={updatePassword}
           value={password}
+          placeholder='Password'
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
         <input
           type="password"
-          // name="repeat_password"
           className='passwordInputs'
           onChange={updateRepeatPassword}
           value={repeatPassword}
+          placeholder='Repeat Password'
           required={true}
         ></input>
       </div>

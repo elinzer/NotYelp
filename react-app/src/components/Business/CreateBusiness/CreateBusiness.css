@@ -2,7 +2,7 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  height: 700px;
+  height: 775px;
   width: 550px;
 }
 
@@ -12,8 +12,9 @@
 
 .createButton {
   background-color: transparent;
-  color: white;
+  color: rgba(45, 46, 47, 1);
   font-size: 14px;
+  border: none;
   font-weight: 600;
   padding: 10px;
 }
@@ -24,6 +25,13 @@
   border-radius: 4px;
 }
 
+.CreateBusTitle {
+  font-family: Helvetica, Rounded;
+  font-size: 20px;
+  margin-left: 20%;
+  font-weight: 750;
+}
+
 .nameInput,
 .addressInput,
 .urlInput,
@@ -32,8 +40,6 @@
 .stateInput,
 .zipcodeInput,
 .previewUrlInput,
-.openTimeInput,
-.closeTimeInput,
 .descriptionInput {
   font-size: 16px;
   border: solid 1px lightslategray;
@@ -46,6 +52,50 @@
   margin-top: 20px;
 }
 
+.openTimeInput,
+.closeTimeInput {
+  font-size: 16px;
+  border: solid 1px lightslategray;
+  border-radius: 8px;
+  width: 300px;
+  height: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+
+}
+
+.previewUrlInput,
+.openTimeInput {
+  margin-bottom: 12px;
+}
+
+.openTimeInput,
+.closeTimeInput {
+  margin-left: 2%;
+  margin-top: 10px;
+}
+
+.opentimeTitle,
+.closetimeTitle {
+  font-family: Helvetica, Rounded;
+  font-weight: 750;
+  margin-bottom: 10%;
+  margin-left: 38%;
+}
+
+.nameInput,
+.addressInput,
+.urlInput,
+.phoneInput,
+.cityInput,
+.stateInput,
+.zipcodeInput,
+.previewUrlInput,
+.descriptionInput {
+  margin-left: 2%;
+}
+
 .submitButton {
   background-color: rgb(230, 0, 0);
   color: white;
@@ -56,5 +106,9 @@
   height: 40px;
   width: 150px;
   margin-top: 20px;
-  margin-left: 33%;
+  margin-left: 28%;
+}
+
+.submitButton:hover {
+  cursor: pointer;
 }

@@ -12,6 +12,8 @@ import * as reviewActions from "./store/review";
 import SplashPage from "./components/SplashPage";
 import { getBusinesses } from "./store/business";
 import { getItems } from "./store/item";
+import CurrentUserReviews from "./components/Reviews/CurrentUserReview/CurrentUserReview";
+import SearchPage from "./components/SearchPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,8 +46,14 @@ function App() {
         <Route path="/businesses/:businessId">
           <BusinessDetail />
         </Route>
+        <Route path="/search">
+          <SearchPage />
+        </Route>
         <Route path="/" exact={true}>
           <SplashPage />
+        </Route>
+        <Route path="/test-current">
+          <CurrentUserReviews />
         </Route>
       </Switch>
     </BrowserRouter>

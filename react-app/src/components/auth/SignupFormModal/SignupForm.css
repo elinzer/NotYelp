@@ -2,10 +2,17 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  height: 350px;
-  width: 500px;
+  height: 425px;
+  width: 450px;
   border-radius: 20px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
+}
+
+.signupTitle {
+  font-family: Helvetica, Rounded;
+  font-size: 20px;
+  margin-left: 39%;
+  font-weight: 750;
 }
 
 .userInputs,
@@ -36,10 +43,10 @@
   color: white;
   border: white solid 1px;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 750;
   height: 40px;
-  width: 150px;
+  width: 115px;
   margin-top: 25px;
   margin-left: 33%;
 }
