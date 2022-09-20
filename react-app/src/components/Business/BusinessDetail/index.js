@@ -90,8 +90,7 @@ function BusinessDetail() {
             <div className="details">
               <div className="details-name">{business?.name}</div>
               <div className="details-review-data flex">
-                <div>{business.avg_rating.toFixed(1)}</div>
-                <DisplayStars rating={business.avg_rating.toFixed(1)} />
+                <DisplayStars rating={business.avg_rating} />
                 <div className="review-count pl10">
                   {business?.review_ids.length == 1 ? (
                     <div>{business?.review_ids.length} review</div>
