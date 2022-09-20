@@ -6,10 +6,10 @@ import "./CreateItem.css";
 
 function CreateItemModal({ businessId }) {
   const [showModal, setShowModal] = useState(false);
-
-  const hideModal = () => {
+  const menuItems = useSelector(state => state.items);
+  useEffect(() => {
     setShowModal(false);
-  };
+  }, [menuItems])
 
   return (
     <>
@@ -21,7 +21,7 @@ function CreateItemModal({ businessId }) {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateItem businessId={businessId} hideModal={hideModal} />
+          <CreateItem businessId={businessId} />
         </Modal>
       )}
     </>
