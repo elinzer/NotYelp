@@ -31,8 +31,13 @@
 }
 
 .fa-trash {
-  background-color: white;
+  background-color: transparent;
   text-decoration: none;
   border: none;
+  cursor: pointer;
 }
 
+.menuitem-delete {
+  border: none;
+  background-color: white;
+}

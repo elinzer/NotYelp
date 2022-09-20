@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 
 import "./ItemCard.css";
 
-
 function ItemCard({ item }) {
   let currentUser;
   const dispatch = useDispatch();
@@ -16,7 +15,7 @@ function ItemCard({ item }) {
   const handleDelete = async (e) => {
     e.preventDefault();
     await dispatch(deleteItemById(item.id));
-    await dispatch(getBusinessByid(item.business_id))
+    await dispatch(getBusinessByid(item.business_id));
   };
 
   if (sessionUser && item) {
@@ -34,13 +33,13 @@ function ItemCard({ item }) {
         <div className="item-card-name">{item?.name}</div>
         <div className="item-card-price">${item?.price}</div>
         {currentUser && (
-        <div>
-        <button
-         onClick={handleDelete}
-         className="menuitem-delete">
-         <i class="fa-solid fa-trash"></i>
-        </button>
-        </div>
+          <div>
+            <button onClick={handleDelete} className="menuitem-delete">
+              <div className="delete-icon">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+            </button>
+          </div>
         )}
       </div>
     </div>
