@@ -72,5 +72,25 @@
   width: 150px;
   margin-top: 20px;
   margin-left: 33%;
+}
+
+.submitLogin:hover {
+  cursor: pointer;
+}
+
+.submitDemo {
+  background-color: rgb(230, 0, 0);
+  color: white;
+  border: white solid 1px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 750;
+  height: 45px;
+  width: 150px;
+  margin-left: 33%;
   margin-bottom: 10px;
+}
+
+.submitDemo:hover {
+  cursor: pointer;
 }
