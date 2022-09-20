@@ -4,6 +4,7 @@ import { Modal } from '../../../context/Modal';
 import CreateBusiness from './CreateBusiness';
 import "./CreateBusiness.css";
 
+
 function CreateBusinessModal() {
   const [showModal, setShowModal] = useState(false);
   const allBusinesses = useSelector(state => state.businesses);

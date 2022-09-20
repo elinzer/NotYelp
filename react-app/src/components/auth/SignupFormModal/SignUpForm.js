@@ -9,6 +9,7 @@ const SignUpForm = ({ closeModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [profileImage, setProfileImage] = useState("")
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
@@ -38,6 +39,10 @@ const SignUpForm = ({ closeModal }) => {
 
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
+  };
+
+  const updateProfileImage = (e) => {
+    setProfileImage(e.target.value);
   };
 
   if (user) {
@@ -88,6 +93,15 @@ const SignUpForm = ({ closeModal }) => {
           value={repeatPassword}
           placeholder='Repeat Password'
           required={true}
+        ></input>
+      </div>
+      <div>
+        <input
+          type="url"
+          className='profileImg'
+          onChange={updateProfileImage}
+          value={profileImage}
+          placeholder='Profile Image URL'
         ></input>
       </div>
       <button

@@ -17,6 +17,26 @@
   width: 425px;
 }
 
+.loginErrors {
+  /* border:1px red solid; */
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.errors {
+  font-family: Helvetica, Rounded;
+  font-size: 18px;
+
+}
+
+.errors:hover {
+  font-weight: 650;
+  color: red;
+  font-size: 18px;
+  font-weight: 700;
+}
+
 .loginTitle {
   font-family: Helvetica, Rounded;
   font-size: 20px;
