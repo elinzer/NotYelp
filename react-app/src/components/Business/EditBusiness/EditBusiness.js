@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import { editBusiness, getBusinessByid } from "../../../store/business";
+import { maskPhoneNumber, returnDigitsOnly } from "../../../helpers/phoneMask";
 const imageURLRegex = /\.(jpeg|jpg|png)$/;
 
-function BusinessEditForm() {
+function BusinessEditForm({ closeModal }) {
   const { businessId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -59,7 +60,7 @@ function BusinessEditForm() {
       name,
       address,
       url,
-      phone,
+      phone: returnDigitsOnly(phone),
       city,
       state,
       zipcode: zipCode,
@@ -69,18 +70,18 @@ function BusinessEditForm() {
       preview_image: previewUrl,
     };
     setErrors([]);
-    await dispatch(editBusiness(businessData, business.id)).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors([data.errors]);
-      }
-    );
-    await dispatch(getBusinessByid(businessId));
+    const data = await dispatch(editBusiness(businessData, business.id));
+    if (data && data.errors) {
+      setErrors(data.errors);
+    } else {
+      closeModal();
+      dispatch(getBusinessByid(businessId));
+    }
   };
   return (
     isLoaded && (
       <form onSubmit={handleSubmit} className="editForm">
-        <div className="editTitle"></div>
+        <div className="updateTitle">Update Business</div>
         <div>
           {errors.map((error, idx) => (
             <div key={idx} className="editError">
@@ -88,7 +89,6 @@ function BusinessEditForm() {
             </div>
           ))}
         </div>
-        <div className='updateTitle'>Update Business</div>
         <label>
           <input
             className="editName"
@@ -122,9 +122,10 @@ function BusinessEditForm() {
         <label>
           <input
             className="editPhone"
-            type="integer"
-            placeholder="Phone"
-            value={phone}
+            type="tel"
+            name="phone"
+            value={maskPhoneNumber(phone)}
+            placeholder="Phone Number"
             onChange={(e) => setPhone(e.target.value)}
             required
           />
