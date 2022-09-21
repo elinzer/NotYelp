@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { Rating } from "react-simple-star-rating";
 import "./Reviews.css";
 import * as reviewActions from "../../store/review";
 
@@ -13,12 +14,16 @@ const EditReview = ({ business, rev, closeModal }) => {
   // const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
 
+  const handleRating = (rate) => {
+    setStars(rate);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const info = {
       user_id: sessionUser.id,
-      stars,
+      stars: stars / 20,
       review,
       business_id: business_id,
     };
@@ -39,19 +44,15 @@ const EditReview = ({ business, rev, closeModal }) => {
     <form onSubmit={handleSubmit} className="review-form">
       <div className="editreview-title">Write A Review</div>
       <label>
-        <input
-          className="stars-review"
-          type="number"
-          placeholder="Stars 1-5"
-          value={stars}
-          onChange={(e) => {
-            const value = e.target.value;
-            if (value > 5 || value < 1) {
-              return;
-            }
-            setStars(e.target.value);
-          }}
-        ></input>
+        <Rating
+          onClick={handleRating}
+          ratingValue={stars}
+          size={30}
+          transition
+          fillColor="gold"
+          allowHover={false}
+          emptyColor="gray"
+        />
       </label>
       <label className="review-body">
         <input
