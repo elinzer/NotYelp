@@ -3,6 +3,12 @@
   /* background: linear-gradient(180deg, #000000b3, #0000004d 72.92%, #0000); */
   /* background-color: black; */
 }
+
+.logo {
+  height: 80px;
+  width: 250px;
+}
+
 .search-input {
   width: 40vw;
   padding: 16px;
