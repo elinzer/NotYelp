@@ -41,14 +41,12 @@ function BusinessCreateForm() {
       description,
       preview_image: previewUrl,
     };
-    console.log(businessData);
     const newBusiness = await dispatch(createBusiness(businessData));
-    if (newBusiness.errors) {
-      // console.log("errors", newBusiness.errors);
+    console.log("newBusiness:", newBusiness);
+    if (newBusiness && newBusiness.errors) {
       setErrors(newBusiness.errors);
-      // console.log("errors two:", errors);
-    } else if (newBusiness) {
-      // console.log("newBusiness", newBusiness);
+    } else if (newBusiness && !newBusiness.errors) {
+      history.push(`/businesses/${newBusiness.id}`);
     }
   };
 
@@ -59,8 +57,15 @@ function BusinessCreateForm() {
         "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
       );
     }
+    if (String(zipCode).length !== 5) {
+      errors.push("zipcode: Zipcode must be 5 digits");
+    }
+    if (address.length < 5) {
+      errors.push("address: Address must be at least 5 characters");
+    }
+    console.log("errors:", errors);
     setErrors(errors);
-  }, [previewUrl]);
+  }, [previewUrl, zipCode, address]);
 
   return (
     <div className="createBusinessBox">
@@ -115,10 +120,10 @@ function BusinessCreateForm() {
             <input
               type="tel"
               name="phone"
-              value={maskPhoneNumber(phone)}
+              value={phone}
               className="phoneInput"
               placeholder="Phone Number"
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => setPhone(maskPhoneNumber(e.target.value))}
               required
             />
           </div>
