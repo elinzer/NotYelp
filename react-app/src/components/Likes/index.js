@@ -107,7 +107,7 @@ const LikeComponent = ({ business }) => {
     sessionUser && (
       <div className="like-button-container">
         <button
-          style={{ backgroundColor: clickedLove ? "#90EE90" : "" }}
+          style={{ color: clickedLove ? "#90EE90" : "" }}
           className="love-button"
           onClick={() => {
             setClickedLove(!clickedLove);
@@ -118,7 +118,8 @@ const LikeComponent = ({ business }) => {
           <i class="fa-regular fa-face-grin-hearts"></i>
         </button>
         <button
-          style={{ backgroundColor: clickedOkay ? "#F1BE48" : "" }}
+          style={{ color: clickedOkay ? "#F1BE48" : "" }}
+          className="okay-button"
           onClick={() => {
             setClickedOkay(!clickedOkay);
             handleOkay();
@@ -128,7 +129,8 @@ const LikeComponent = ({ business }) => {
           <i class="fa-regular fa-face-meh"></i>
         </button>
         <button
-          style={{ backgroundColor: clickedTrash ? "#FF7276" : "" }}
+          style={{ color: clickedTrash ? "#FF7276" : ""}}
+          className="trash-button"
           onClick={() => {
             setClickedTrash(!clickedTrash);
             handleTrash();
