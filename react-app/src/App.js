@@ -9,6 +9,7 @@ import BusinessDetail from "./components/Business/BusinessDetail";
 import DisplayAllReviews from "./components/Reviews/DisplayReviews";
 import { authenticate } from "./store/session";
 import * as reviewActions from "./store/review";
+import * as likeActions from "./store/like";
 import SplashPage from "./components/SplashPage";
 import { getBusinesses } from "./store/business";
 import { getItems } from "./store/item";
@@ -24,6 +25,7 @@ function App() {
       await dispatch(authenticate());
       await dispatch(getBusinesses());
       await dispatch(getItems());
+      await dispatch(likeActions.getLikes());
       setLoaded(true);
     })();
   }, [dispatch]);

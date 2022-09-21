@@ -24,6 +24,8 @@ function BusinessCreateForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitted(true)
+    if (errors.length) return null
     setErrors([]);
     const businessData = {
       owner_id: user.id,
@@ -60,12 +62,13 @@ function BusinessCreateForm() {
   return (
     <div className="createBusinessBox">
       <form onSubmit={handleSubmit}>
+        <div className="createBusinessBox">
           <div className="CreateBusTitle">Create Your Business</div>
+          {isSubmitted && (errors.map((error, ind) => (
         <div className="createErrors">
-          {errors.map((error, ind) => (
             <div key={ind} className='createError'>{error.split(": ")[1]}</div>
-          ))}
-        </div>
+            </div>
+            )))}
         <div>
           <label htmlFor="name"/>
           <input
@@ -201,6 +204,7 @@ function BusinessCreateForm() {
         <button name="submit" type="submit" className="submitButton">
           Create Business
         </button>
+        </div>
       </form>
     </div>
   );
