@@ -26,6 +26,11 @@ const LikeComponent = ({ business }) => {
     return null;
   };
 
+
+  useEffect(() => {
+    dispatch(likeActions.getLikes())
+  }, [dispatch])
+
   useEffect(() => {
     const userLike = likeSelected();
     if (!userLike) return;
@@ -43,50 +48,8 @@ const LikeComponent = ({ business }) => {
       setClickedTrash(true);
     }
 
-
-
-
-    useEffect(() => {
-        dispatch(likeActions.getLikes())
-    }, [dispatch])
-
-    useEffect(() => {
-        if (userLikes().length) {
-        }
-        // check to see if sessionUser has a like on a business. if they do, set clickedXYZ to true
-    }, []);
-
-    useEffect(() => {
-        // not sure if we need this...?
-    }, []);
-
-    const handleLove = () => {
-        if (clickedLove) {
-            setClickedLove(!clickedLove)
-            if (likeSelected()) {
-                dispatch(likeActions.deleteLikeById(likeSelected()))
-            }
-        } else {
-            const info = {
-                like: 3,
-                user_id: sessionUser.id,
-                business_id: id
-            }
-
-            dispatch(likeActions.createLike(info))
-            setClickedLove(!clickedLove)
-        }
-
-
-  }, [dispatch]);
-
-  useEffect(() => {
-    // check to see if sessionUser has a like on a business. if they do, set clickedXYZ to true
   }, []);
 
-  useEffect(() => {
-    // not sure if we need this...?
-  }, []);
 
   const handleLove = () => {
     if (clickedLove) {
