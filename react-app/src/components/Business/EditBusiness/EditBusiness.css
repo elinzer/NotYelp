@@ -54,4 +54,10 @@
 
 .editError {
   text-align: center;
+  margin-top: 15px;
+}
+
+.editError:hover {
+  font-weight: 600;
+  color: red
 }
