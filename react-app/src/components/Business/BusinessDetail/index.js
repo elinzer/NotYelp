@@ -191,7 +191,15 @@ function BusinessDetail() {
               </div>
               <div className="likes-container">
                   <div className="likes-component"><LikeComponent business={business}/></div>
-                  <div className="likes-text">{`${loveCount} ${loveCount === 1 ? 'person loves' : 'people love'} this place, ${okayCount} ${okayCount === 1 ? 'person says' : 'people say'} this place is okay, ${trashCount} ${trashCount === 1 ? "person dislikes" : "people dislike"} this place`}</div>
+                    <ul className="likes-ul">
+                      <li style={{fontWeight: 'bold'}}>Too lazy to read the reviews? Here's what people are saying:</li>
+                      <li className="likes-li">
+                      {`${loveCount} ${loveCount === 1 ? 'person loves' : 'people love'} this place`}</li>
+                      <li className="likes-li">{`${okayCount} ${okayCount === 1 ? 'person says' : 'people say'} this place is okay`}</li>
+                      <li className="likes-li">
+                      {`${trashCount} ${trashCount === 1 ? "person dislikes" : "people dislike"} this place`}
+                      </li>
+                    </ul>
               </div>
             </div>
           </div>

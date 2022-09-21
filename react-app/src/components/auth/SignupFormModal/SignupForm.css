@@ -1,18 +1,36 @@
 .login {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 425px;
+  height: 500px;
   width: 450px;
   border-radius: 20px;
-  /* border: 1px solid red; */
 }
 
 .signupTitle {
   font-family: Helvetica, Rounded;
   font-size: 20px;
-  margin-left: 39%;
   font-weight: 750;
+}
+
+.signupErrors {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.signupError:hover {
+  font-weight: 650;
+  color: red;
+  font-size: 18px;
+}
+
+.signupError {
+  font-family: Helvetica, Rounded;
+  font-size: 18px;
 }
 
 .userInputs,
@@ -49,7 +67,7 @@
   height: 40px;
   width: 115px;
   margin-top: 25px;
-  margin-left: 33%;
+  /* margin-left: 33%; */
 }
 
 .signUpButton:hover {

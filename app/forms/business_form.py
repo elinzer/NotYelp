@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, DecimalField, TimeField
 from wtforms.validators import DataRequired, ValidationError, URL, Regexp
-
+from .validators import validate_image
 def validate_name(form, field):
   if len(field.data) > 25:
     raise ValidationError("Name must be less than 25 characters")
@@ -40,6 +40,7 @@ def validate_time(form, field):
   elif (field.data.hour) < 0:
     raise ValidationError("Time must be valid")
 
+
 class BusinessForm(FlaskForm):
   owner_id = IntegerField("owner_id", validators=[DataRequired()])
   name = StringField("name", validators=[DataRequired(), validate_name])
@@ -52,5 +53,5 @@ class BusinessForm(FlaskForm):
   zipcode = IntegerField("zipcode", validators=[DataRequired(), validate_zipcode])
   open_time = TimeField("open_time", validators=[DataRequired(), validate_time])
   close_time = TimeField("close_time", validators=[DataRequired(), validate_time])
-  preview_image = StringField("preview_image", validators=[DataRequired(), URL()])
+  preview_image = StringField("preview_image", validators=[DataRequired(), validate_image])
   submit = SubmitField("Submit")

@@ -1,5 +1,6 @@
 .menuItemBox {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 275px;
@@ -9,13 +10,12 @@
 .AddMenuTitle {
   font-family: Helvetica, Rounded;
   font-size: 20px;
-  margin-left: 30%;
+  text-align: center;
   font-weight: 750;
 }
 
 .menuErrors {
   font-family: Helvetica, Rounded;
-  margin-left: 33%;
   margin-top: 2%;
 }
 

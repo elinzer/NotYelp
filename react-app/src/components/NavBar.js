@@ -10,8 +10,8 @@ import ProfileButton from "./ProfileButton";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./NavBar.css";
-import logo from "./notyelplogo.png"
-import logo2 from './notyelplogo2.png'
+import logo from "./notyelplogo.png";
+import logo2 from "./notyelplogo2.png";
 
 const NavBar = ({ loaded }) => {
   const dispatch = useDispatch();
@@ -32,8 +32,8 @@ const NavBar = ({ loaded }) => {
     );
   }
 
-  if (sessionUser2) currentUser = true
-    else currentUser = false;
+  if (sessionUser2) currentUser = true;
+  else currentUser = false;
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -51,10 +51,7 @@ const NavBar = ({ loaded }) => {
             exact={true}
             activeClassName="active"
           >
-            <img
-              className="logo"
-              src={logo2}
-            ></img>
+            <img className="logo" src={logo2}></img>
           </NavLink>
         </div>
         <div className="search-bar flex">
@@ -64,6 +61,11 @@ const NavBar = ({ loaded }) => {
             placeholder="Search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                handleSearch(e);
+              }
+            }}
           ></input>
           <button className="search-button" onClick={handleSearch}>
             <svg width="24" height="24" class="icon_svg">
@@ -72,9 +74,7 @@ const NavBar = ({ loaded }) => {
           </button>
         </div>
         <div className="flex pr20">
-        {currentUser && (
-          <CreateBusinessModal />
-        )}
+          {currentUser && <CreateBusinessModal />}
           {loaded && sessionLinks}
         </div>
       </div>

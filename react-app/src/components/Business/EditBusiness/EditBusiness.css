@@ -1,15 +1,15 @@
 .editForm {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
   justify-content: center;
   align-items: center;
-  height: 800px;
-  width: 550px;
+  min-width: 500px;
 }
 
 .updateTitle {
   font-family: Helvetica, Rounded;
   font-size: 20px;
-  margin-left: 25%;
   font-weight: 750;
 }
 
@@ -32,7 +32,7 @@
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 15px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .editBusinessBut {
@@ -44,11 +44,14 @@
   font-weight: 750;
   height: 40px;
   width: 200px;
-  margin-top: 10px;
+  margin-top: 14px;
   margin-bottom: 10px;
-  margin-left: 18%;
 }
 
 .editBusinessBut:hover {
   cursor: pointer;
+}
+
+.editError {
+  text-align: center;
 }
