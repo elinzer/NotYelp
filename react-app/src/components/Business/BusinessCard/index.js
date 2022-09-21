@@ -3,11 +3,42 @@ import "./BusinessCard.css";
 import LikeComponent from "../../Likes";
 import { useState, useEffect } from "react";
 import DisplayStars from "../../Reviews/DisplayStars";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+// import { useSelector } from "react-redux";
+// import { useParams } from "react-router-dom";
 
 const states = require("us-state-converter");
 function BusinessCard({ business }) {
+  const [openTime, setOpenTime] = useState("");
+  const [closeTime, setCloseTime] = useState("");
+  const [openStatus, setOpenStatus] = useState(false);
+  const [curTime, setCurTime] = useState(new Date());
+  // const { businessId } = useParams()
+  useEffect(() => {
+    let openTimeDate = new Date();
+    let closeTimeDate = new Date();
+    openTimeDate.setHours(business?.open_time.split(":")[0]);
+    openTimeDate.setMinutes(business?.open_time.split(":")[1]);
+    closeTimeDate.setHours(business?.close_time.split(":")[0]);
+    closeTimeDate.setMinutes(business?.close_time.split(":")[1]);
+    setOpenTime(
+      openTimeDate.toLocaleTimeString("en-US", {
+        timeStyle: "short",
+      })
+    );
+    setCloseTime(
+      closeTimeDate.toLocaleTimeString([], {
+        timeStyle: "short",
+      })
+    );
+    if (
+      curTime.valueOf() > openTimeDate.valueOf() &&
+      curTime.valueOf() < closeTimeDate.valueOf()
+    ) {
+      setOpenStatus(true);
+    } else {
+      setOpenStatus(false);
+    }
+  }, [business]);
 
   return (
     <div>

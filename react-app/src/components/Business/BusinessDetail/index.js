@@ -1,25 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getBusinessByid, deleteBusinessById } from "../../../store/business";
 import ItemCard from "../ItemCard";
 import CreateReviewModal from "../../Reviews/ReviewModal";
 import EditBusinessModal from "../EditBusiness";
 import CreateItemModal from "../MenuItem";
-import EditReviewModal from "../../Reviews/EditReviewModal";
 import "./BusinessDetail.css";
-import { deleteReviewById, editReview } from "../../../store/review";
+// import EditReviewModal from "../../Reviews/EditReviewModal";
+// import { deleteReviewById, editReview } from "../../../store/review";
 import ReviewCard from "../../Reviews/ReviewCard";
 import DisplayStars from "../../Reviews/DisplayStars";
+import LikeComponent from '../../Likes'
 const states = require("us-state-converter");
 
 function BusinessDetail() {
   let currentUser;
   const [isLoaded, setIsLoaded] = useState(false);
+  const [openTime, setOpenTime] = useState("");
+  const [closeTime, setCloseTime] = useState("");
+  const [openStatus, setOpenStatus] = useState(false);
+  const [curTime, setCurTime] = useState(new Date());
   const { businessId } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[businessId]);
+  const likeState = useSelector((state => state.likes))
+  const likes = Object.values(likeState)
   const reviews = useSelector((state) => state.reviews);
   const items = useSelector((state) => state.items);
   const history = useHistory();
@@ -27,6 +34,51 @@ function BusinessDetail() {
     setIsLoaded(true);
   } else if (!business && !isLoaded) {
     dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
+  }
+
+  useEffect(() => {
+    let openTimeDate = new Date();
+    let closeTimeDate = new Date();
+    openTimeDate.setHours(business?.open_time.split(":")[0]);
+    openTimeDate.setMinutes(business?.open_time.split(":")[1]);
+    closeTimeDate.setHours(business?.close_time.split(":")[0]);
+    closeTimeDate.setMinutes(business?.close_time.split(":")[1]);
+    setOpenTime(
+      openTimeDate.toLocaleTimeString("en-US", {
+        timeStyle: "short",
+      })
+    );
+    setCloseTime(
+      closeTimeDate.toLocaleTimeString([], {
+        timeStyle: "short",
+      })
+    );
+    if (
+      curTime.valueOf() > openTimeDate.valueOf() &&
+      curTime.valueOf() < closeTimeDate.valueOf()
+    ) {
+      setOpenStatus(true);
+    } else {
+      setOpenStatus(false);
+    }
+  }, [business]);
+
+  //get specific types of like for the business
+  let loveCount = 0;
+  let okayCount = 0;
+  let trashCount = 0;
+
+  for (let i = 0; i < likes.length; i++) {
+    let like = likes[i]
+    if (business.id === like.business_id) {
+      if (like.like === 3) {
+        loveCount += 1;
+      } else if (like.like === 2) {
+        okayCount += 1;
+      } else if (like.like === 1) {
+        trashCount += 1;
+      }
+    }
   }
 
   const handleDelete = (e) => {
@@ -137,6 +189,10 @@ function BusinessDetail() {
                   {business?.address} {business?.city},{" "}
                   {states.abbr(business?.state)}
                 </div>
+              </div>
+              <div className="likes-container">
+                  <div className="likes-component"><LikeComponent business={business}/></div>
+                  <div className="likes-text">{`${loveCount} ${loveCount === 1 ? 'person loves' : 'people love'} this place, ${okayCount} ${okayCount === 1 ? 'person says' : 'people say'} this place is okay, ${trashCount} ${trashCount === 1 ? "person dislikes" : "people dislike"} this place`}</div>
               </div>
             </div>
           </div>

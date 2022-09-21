@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { editBusiness, getBusinessByid } from "../../../store/business";
 import { maskPhoneNumber, returnDigitsOnly } from "../../../helpers/phoneMask";
 const imageURLRegex = /\.(jpeg|jpg|png)$/;
@@ -8,7 +8,7 @@ const imageURLRegex = /\.(jpeg|jpg|png)$/;
 function BusinessEditForm({ closeModal }) {
   const { businessId } = useParams();
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[businessId]);
 
