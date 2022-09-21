@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { createBusiness } from "../../../store/business";
-const imageURLRegex = /\.(jpeg|jpg|png)$/;
 
 function BusinessCreateForm() {
+  const imageURLRegex = /\.(jpeg|jpg|png)$/;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
@@ -165,7 +165,9 @@ function BusinessCreateForm() {
           />
         </div>
         <div>
-          <label htmlFor="open_time" className="opentimeTitle">Open-Time</label>
+          <label htmlFor="open_time"
+          className="opentimeTitle">
+            Open-Time</label>
             <div>
           <input
             type="time"
@@ -178,7 +180,9 @@ function BusinessCreateForm() {
           </div>
         </div>
         <div>
-          <label htmlFor="close_time" className="closetimeTitle">Close-Time</label>
+          <label htmlFor="close_time"
+          className="closetimeTitle">
+            Close-Time</label>
             <div>
           <input
             type="time"
@@ -201,7 +205,8 @@ function BusinessCreateForm() {
             required
           />
         </div>
-        <button name="submit" type="submit" className="submitButton">
+        <button name="submit" type="submit"
+        className="submitButton">
           Create Business
         </button>
         </div>
