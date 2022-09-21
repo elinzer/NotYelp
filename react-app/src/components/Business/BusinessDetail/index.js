@@ -60,17 +60,6 @@ function BusinessDetail() {
     }
   }, [business]);
 
-  //if the user has already reviewed the spot then the input box for reviews will not show up
-  // const alreadyReviewed = (reviews) => {
-  //   let alreadyReviewedByUser = false;
-  //   for (let i = 0; i < reviews.length; i++) {
-  //     if (reviews[i].user_id === sessionUser.id) {
-  //       alreadyReviewedByUser = true;
-  //     }
-  //   }
-  //   return alreadyReviewedByUser;
-  // };
-
   const handleDelete = (e) => {
     e.preventDefault();
     dispatch(deleteBusinessById(businessId));
