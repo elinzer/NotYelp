@@ -44,7 +44,7 @@ def seeded_businesses():
       owner_id=3, name="Salsa Pizzeria", address="40 Clifford Pl", description="Best pizza ever!", url="https://www.salsapizzeria.com/", phone='3475424680', state="New York", city="Brooklyn", zipcode=11222, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/ssjYUXaAYEZuw2fYqA12zg/o.jpg"
     ),
     Business(
-      owner_id=4, name="Dellarocco's Brick Oven Pizza", address="214 Hicks St ", description="Famous for serving authentic wood fired Neapolitan pizzas", url="https://www.dellaroccospizza.com/", phone='(718) 858-1010', state="New York", city="New York", zipcode=10003, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/RGsip2vQXryVUbOrXfYBkQ/o.jpg"
+      owner_id=4, name="Dellarocco's Brick Oven Pizza", address="214 Hicks St ", description="Famous for serving authentic wood fired Neapolitan pizzas", url="https://www.dellaroccospizza.com/", phone='7188581010', state="New York", city="New York", zipcode=10003, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/RGsip2vQXryVUbOrXfYBkQ/o.jpg"
     ),
     Business(
       owner_id=5, name="Giordano's", address="130 E Randolph", description="Famous Stuffed Pizza", url="http://giordanos.com", phone='3126161200', state="Chicago", city="Randolph", zipcode=60601, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/OalRgOyfThOHIqY5A83_fQ/o.jpg"
