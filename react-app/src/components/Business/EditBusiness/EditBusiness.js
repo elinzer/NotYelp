@@ -119,7 +119,7 @@ function BusinessEditForm({ closeModal }) {
         <label>
           <input
             className="editUrl"
-            type="text"
+            type="url"
             placeholder="Url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}

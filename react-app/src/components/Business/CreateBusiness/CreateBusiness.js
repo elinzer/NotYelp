@@ -114,7 +114,7 @@ function BusinessCreateForm({ closeModal }) {
           <div>
             <label htmlFor="url" />
             <input
-              type="text"
+              type="url"
               name="url"
               value={url}
               className="urlInput"
