@@ -106,39 +106,42 @@ const LikeComponent = ({ business }) => {
   return (
     sessionUser && (
       <div className="like-button-container">
-        <button
-          style={{ color: clickedLove ? "#90EE90" : "" }}
-          className="love-button"
-          onClick={() => {
-            setClickedLove(!clickedLove);
-            handleLove();
-          }}
-          disabled={clickedOkay || clickedTrash}
-        >
-          <i class="fa-regular fa-face-grin-hearts"></i>
-        </button>
-        <button
-          style={{ color: clickedOkay ? "#F1BE48" : "" }}
-          className="okay-button"
-          onClick={() => {
-            setClickedOkay(!clickedOkay);
-            handleOkay();
-          }}
-          disabled={clickedLove || clickedTrash}
-        >
-          <i class="fa-regular fa-face-meh"></i>
-        </button>
-        <button
-          style={{ color: clickedTrash ? "#FF7276" : ""}}
-          className="trash-button"
-          onClick={() => {
-            setClickedTrash(!clickedTrash);
-            handleTrash();
-          }}
-          disabled={clickedLove || clickedOkay}
-        >
-          <i class="fa-regular fa-face-frown"></i>
-        </button>
+        <div>Eaten here before?</div>
+        <div>
+          <button
+            style={{ color: clickedLove ? "#90EE90" : "" }}
+            className="love-button"
+            onClick={() => {
+              setClickedLove(!clickedLove);
+              handleLove();
+            }}
+            disabled={clickedOkay || clickedTrash}
+          >
+            <i class="fa-regular fa-face-grin-hearts"></i>
+          </button>
+          <button
+            style={{ color: clickedOkay ? "#F1BE48" : "" }}
+            className="okay-button"
+            onClick={() => {
+              setClickedOkay(!clickedOkay);
+              handleOkay();
+            }}
+            disabled={clickedLove || clickedTrash}
+          >
+            <i class="fa-regular fa-face-meh"></i>
+          </button>
+          <button
+            style={{ color: clickedTrash ? "#FF7276" : "" }}
+            className="trash-button"
+            onClick={() => {
+              setClickedTrash(!clickedTrash);
+              handleTrash();
+            }}
+            disabled={clickedLove || clickedOkay}
+          >
+            <i class="fa-regular fa-face-frown"></i>
+          </button>
+        </div>
       </div>
     )
   );
