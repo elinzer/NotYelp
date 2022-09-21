@@ -42,7 +42,6 @@ function BusinessEditForm({ closeModal }) {
     setErrors(errors)
   }, [previewUrl])
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitted(true);
