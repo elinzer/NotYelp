@@ -4,7 +4,8 @@
 
 .review-form {
   border: 1px solid #e8e8e8;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 275px;
@@ -70,9 +71,7 @@
   font-size: 16px;
   font-weight: 750;
   height: 38px;
-  width: 125px;
   margin-top: 15px;
-  margin-left: 32%;
 }
 .stars-outer {
   position: relative;

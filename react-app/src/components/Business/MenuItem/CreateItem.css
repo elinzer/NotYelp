@@ -1,5 +1,6 @@
 .menuItemBox {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 275px;
@@ -15,7 +16,6 @@
 
 .menuErrors {
   font-family: Helvetica, Rounded;
-  margin-left: 33%;
   margin-top: 2%;
 }
 
