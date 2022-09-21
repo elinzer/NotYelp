@@ -55,3 +55,20 @@
   margin-bottom: 10px;
   padding: 5px;
 }
+
+.my-reviews {
+  color: rgb(70, 70, 70);
+  text-decoration: none;
+  font-family: Helvetica, Rounded;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+.my-reviews:hover {
+  background-color: rgb(240, 240, 240);
+  border-radius: 15px;
+}
