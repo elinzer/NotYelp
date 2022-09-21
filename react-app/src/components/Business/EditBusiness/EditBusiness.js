@@ -40,7 +40,7 @@ function BusinessEditForm({ closeModal }) {
       errors.push('Provide a valid image url')
    }
     setErrors(errors)
-  }, [name, address, url, phone, city, state, zipCode, openTime, closeTime, description, previewUrl])
+  }, [previewUrl])
 
 
   const handleSubmit = async (e) => {
