@@ -54,9 +54,9 @@ function App() {
         <Route path="/" exact={true}>
           <SplashPage />
         </Route>
-        <Route path="/test-current">
+        <ProtectedRoute path="/myReviews">
           <CurrentUserReviews />
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

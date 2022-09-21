@@ -63,7 +63,7 @@ function ProfileButton({ user }) {
               <div className="userProfile">User: {user.username}</div>
               <div className="divLine"></div>
               {/* <Link to='/view-your-spots' className='allSpotButton'>View My Spots</Link> */}
-              <Link to="/test-current" className="my-reviews">
+              <Link to="/MyReviews" className="my-reviews">
                 My Reviews
               </Link>
               <div className="divLine"></div>
