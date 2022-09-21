@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { Rating } from "react-simple-star-rating";
 import "./Reviews.css";
 import * as reviewActions from "../../store/review";
 
@@ -7,11 +8,15 @@ const CreateReview = ({ business, closeModal }) => {
   const id = business.id;
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [stars, setStars] = useState("");
+  const [stars, setStars] = useState(0);
   const [review, setReview] = useState("");
   const [businessId, setBusinessId] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
+
+  const handleRating = (rate) => {
+    setStars(rate);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,12 +24,15 @@ const CreateReview = ({ business, closeModal }) => {
 
     const info = {
       user_id: sessionUser.id,
-      stars,
+      stars: stars / 20,
       review,
       business_id: id,
     };
 
+    console.log(info);
+
     const data = await dispatch(reviewActions.createReview(info));
+    console.log(data);
     if (data && data.errors) {
       setErrors(data.errors);
     } else {
@@ -38,19 +46,15 @@ const CreateReview = ({ business, closeModal }) => {
     <form onSubmit={handleSubmit} className="review-form">
       <div className="editreview-title">Write A Review</div>
       <label>
-        <input
-          className="stars-review"
-          type="number"
-          placeholder="Stars 1-5"
-          value={stars}
-          onChange={(e) => {
-            const value = e.target.value;
-            if (value > 5 || value < 1) {
-              return;
-            }
-            setStars(e.target.value);
-          }}
-        ></input>
+        <Rating
+          onClick={handleRating}
+          ratingValue={stars}
+          size={30}
+          transition
+          fillColor="gold"
+          allowHover={false}
+          emptyColor="gray"
+        />
       </label>
       <label className="review-body">
         <input
