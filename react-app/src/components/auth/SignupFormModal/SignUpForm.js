@@ -18,27 +18,30 @@ const SignUpForm = ({ closeModal }) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true)
-    if (errors.length) return null
+    setIsSubmitted(true);
+    if (errors.length) return null;
     if (password === repeatPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signUp(username, email, password, profileImage))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors)
-        else closeModal();
-      });
+      const data = await dispatch(
+        sessionActions.signUp(username, email, password, profileImage)
+      );
+      if (data && data.errors) {
+        setErrors(data.errors);
+      } else if (data && !data.errors) {
+        closeModal();
+      }
+    } else {
+      return setErrors(["Passwords do not match"]);
     }
-    return setErrors(['Repeat Password field must be the same as the Password field']);
   };
 
   useEffect(() => {
-    const errors=[];
+    const errors = [];
     if (!profileImage.match(imageURLRegex)) {
-      errors.push('Preview url must end in valid img extension [png/jpg/jpeg]')
+      errors.push("Preview url must end in valid img extension [png/jpg/jpeg]");
     }
-    setErrors(errors)
-  },[profileImage])
+    setErrors(errors);
+  }, [profileImage]);
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -69,60 +72,63 @@ const SignUpForm = ({ closeModal }) => {
       <form onSubmit={onSignUp}>
         <div className="login">
           <div className="signupTitle">Sign Up</div>
-        <div className="signupErrors">
-          {isSubmitted && (errors.map((error, ind) => (
-            <div key={ind} className='signupError'>{error}</div>
-          )))}
-        </div>
-        <div>
-          <input
-            type="text"
-            className="userInputs"
-            onChange={updateUsername}
-            value={username}
-            placeholder="Username"
+          <div className="signupErrors">
+            {isSubmitted &&
+              errors.map((error, ind) => (
+                <div key={ind} className="signupError">
+                  {error.split(": ")[1]}
+                </div>
+              ))}
+          </div>
+          <div>
+            <input
+              type="text"
+              className="userInputs"
+              onChange={updateUsername}
+              value={username}
+              placeholder="Username"
             />
-        </div>
-        <div>
-          <input
-            type="text"
-            className="emailInputs"
-            onChange={updateEmail}
-            value={email}
-            placeholder="Email"
+          </div>
+          <div>
+            <input
+              type="text"
+              className="emailInputs"
+              onChange={updateEmail}
+              value={email}
+              placeholder="Email"
             />
-        </div>
-        <div>
-          <input
-            type="password"
-            className="passwordInputs"
-            onChange={updatePassword}
-            value={password}
-            placeholder="Password"
+          </div>
+          <div>
+            <input
+              type="password"
+              className="passwordInputs"
+              onChange={updatePassword}
+              value={password}
+              placeholder="Password"
             />
-        </div>
-        <div>
-          <input
-            type="password"
-            className="passwordInputs"
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            placeholder="Repeat Password"
-            required={true}
-          />
-        </div>
-        <div>
-          <input
-            type="url"
-            className="profileImg"
-            onChange={updateProfileImage}
-            value={profileImage}
-            placeholder="Profile Image URL"
-          />
-        </div>
-        <button type="submit" className="signUpButton">
-          Sign Up
-        </button>
+          </div>
+          <div>
+            <input
+              type="password"
+              className="passwordInputs"
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              placeholder="Repeat Password"
+              required={true}
+            />
+          </div>
+          <div>
+            <input
+              type="url"
+              className="profileImg"
+              onChange={updateProfileImage}
+              value={profileImage}
+              placeholder="Profile Image URL"
+            />
+          </div>
+          <button type="submit" className="signUpButton">
+            Sign Up
+          </button>
         </div>
       </form>
     </div>

@@ -89,7 +89,7 @@ export const signUp =
     } else if (response.status < 500) {
       const data = await response.json();
       if (data.errors) {
-        return data.errors;
+        return data;
       }
     } else {
       return ["An error occurred. Please try again."];
