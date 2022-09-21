@@ -7,12 +7,13 @@ function SearchPage() {
   const search = useLocation().search;
   const query = new URLSearchParams(search).get("name");
   const businesses = useSelector((state) =>
-    Object.values(state.queried_businesses)
+    Object.values(state.)
   );
   return (
     <div className="main-search-container">
       <div className="search-header">
-        {businesses.length} results found for name: <div id="query">"{query}"</div>
+        {businesses.length} results found for name:{" "}
+        <div id="query">"{query}"</div>
       </div>
       <div className="splash-container flex">
         {businesses.map((business) => (
