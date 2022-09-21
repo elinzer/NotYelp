@@ -181,3 +181,9 @@
   padding-left: 10px;
   gap: 10px;
 }
+
+.likes-container {
+  padding-top: 40px;
+  position: absolute;
+  
+}
