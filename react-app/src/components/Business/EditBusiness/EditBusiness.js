@@ -60,7 +60,7 @@ function BusinessEditForm({ closeModal }) {
   return (
     isLoaded && (
       <form onSubmit={handleSubmit} className="editForm">
-        <div className="editTitle"></div>
+        <div className="updateTitle">Update Business</div>
         <div>
           {errors.map((error, idx) => (
             <div key={idx} className="editError">
@@ -68,7 +68,6 @@ function BusinessEditForm({ closeModal }) {
             </div>
           ))}
         </div>
-        <div className="updateTitle">Update Business</div>
         <label>
           <input
             className="editName"
