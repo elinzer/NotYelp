@@ -32,12 +32,12 @@ function CreateItemForm({ businessId }) {
   return (
     <div className="menuItemBox">
     <form onSubmit={handleSubmit}>
-      <div className="awef">
+        <div className="AddMenuTitle">Add Menu Item</div>
+      <div className="menuErrors">
         {errors.map((error, ind) => (
-          <div key={ind}>{error.split(": ")[1]}</div>
+          <div key={ind} className='menuError'>{error.split(": ")[1]}</div>
         ))}
       </div>
-      <div className="AddMenuTitle">Add Menu Item</div>
       <div>
         <label htmlFor="name"/>
         <input
