@@ -87,6 +87,16 @@ function BusinessDetail() {
     history.push("/");
   };
 
+  const alreadyReviewed = () => {
+    let alreadyReviewedByUser = false;
+    for (let i of business?.review_ids) {
+      if (reviews[i]?.user_id === sessionUser.id) {
+        alreadyReviewedByUser = true;
+      }
+    }
+    return alreadyReviewedByUser;
+  };
+
   if (sessionUser && business) {
     if (sessionUser.id === business.owner_id) {
       currentUser = true;
@@ -137,7 +147,7 @@ function BusinessDetail() {
           <div className="business-details-container flex">
             <div className="business-details">
               <div className="business-actions-container flex">
-                {sessionUser && (
+                {alreadyReviewed() === false && sessionUser && (
                   <div>
                     <CreateReviewModal business={business} />
                   </div>
