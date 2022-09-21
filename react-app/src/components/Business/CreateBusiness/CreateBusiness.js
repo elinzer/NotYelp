@@ -32,7 +32,7 @@ function BusinessCreateForm() {
       name,
       address,
       url,
-      phone,
+      phone: returnDigitsOnly(phone),
       city,
       state,
       zipcode: zipCode,
@@ -118,9 +118,7 @@ function BusinessCreateForm() {
               value={maskPhoneNumber(phone)}
               className="phoneInput"
               placeholder="Phone Number"
-              onChange={(e) =>
-                setPhone(returnDigitsOnly(maskPhoneNumber(e.target.value)))
-              }
+              onChange={(e) => setPhone(e.target.value)}
               required
             />
           </div>

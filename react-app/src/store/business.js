@@ -84,8 +84,16 @@ export const editBusiness = (data, businessId) => async (dispatch) => {
     body: JSON.stringify(data),
   });
   if (res.ok) {
-    const business = await res.json();
-    dispatch(update(business));
+    const data = await res.json();
+    dispatch(update(data));
+    return data;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
   }
   return res;
 };
