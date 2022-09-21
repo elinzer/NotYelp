@@ -42,7 +42,6 @@ function BusinessCreateForm({ closeModal }) {
       preview_image: previewUrl,
     };
     const newBusiness = await dispatch(createBusiness(businessData));
-    console.log("newBusiness:", newBusiness);
     if (newBusiness && newBusiness.errors) {
       setErrors(newBusiness.errors);
     } else if (newBusiness && !newBusiness.errors) {

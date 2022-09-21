@@ -29,10 +29,7 @@ const CreateReview = ({ business, closeModal }) => {
       business_id: id,
     };
 
-    console.log(info);
-
     const data = await dispatch(reviewActions.createReview(info));
-    console.log(data);
     if (data && data.errors) {
       setErrors(data.errors);
     } else {
