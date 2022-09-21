@@ -64,7 +64,7 @@ function BusinessEditForm({ closeModal }) {
         <div>
           {errors.map((error, idx) => (
             <div key={idx} className="editError">
-              {error}
+              {error.split(": ")[1]}
             </div>
           ))}
         </div>
