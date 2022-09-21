@@ -32,7 +32,7 @@ def seeded_businesses():
       owner_id=4, name="Grimaldi's Pizzeria", address="1 Front St", description="Best Pizza Place", url="http://grimaldispizzeria.com", phone='3476876910', state="New York", city="Brooklyn", zipcode=11201, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/Rxz04yxreCJcr9Wmu0LUSA/o.jpg"
     ),
     Business(
-      owner_id=5, name="Lombardo's of Bay Ridge", address="279 71st Ste", description="Brooklyn Style Pizza!", url="https://lombardos-of-bay-ridge.business.site/", phone='7182387100', state="New York", city="Brooklyn", zipcode='11209', open_time=time(hour=8), close_time=time(hour=17), preview_image=""
+      owner_id=5, name="Lombardo's of Bay Ridge", address="279 71st St", description="Brooklyn Style Pizza!", url="https://lombardos-of-bay-ridge.business.site/", phone='7182387100', state="New York", city="Brooklyn", zipcode='11209', open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/1Lv82d_QZtwAfNlFE1yPzw/o.jpg"
     ),
     Business(
       owner_id=1, name="Roccos' Coal Brick Oven Pizza", address="115-10 Rockaway Beach Blvd", description="Coal Brick Oven Pizza by the beach!", url="https://www.roccoscoalovenpizza.com/", phone='9292097966', state="New York", city="Rockaway Beach", zipcode=11694, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/zkmC0y2EFB_mIoP0cbZZAQ/o.jpg"
