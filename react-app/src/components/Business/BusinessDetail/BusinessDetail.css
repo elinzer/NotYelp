@@ -120,6 +120,7 @@
 .business-contact-outer-container {
   width: 33%;
   padding-left: 16px;
+  position: sticky;
 }
 
 .business-website {
@@ -183,19 +184,29 @@
 }
 
 .likes-container {
-  padding-top: 30px;
   margin-top: 20px;
-  position: absolute;
+  position: sticky;
   display: flex;
   flex-direction: column;
   border: 1px solid #ebebeb;
-  position: relative;
-}
-
-.likes-component {
+  top: 215px;
+  border-radius: 4 px;
+  padding: 16px;
   padding-left: 20px;
 }
 
-.likes-text {
-  padding: 20px 20px;
+.likes-component {
+  border-top: none;
+  padding-top: 0;
+  padding: 16px 0px;
+}
+
+.likes-ul {
+  list-style: none;
+  padding: 16px 16px;
+  border-top: 1px solid #ebebeb;
+}
+
+.likes-li {
+  padding-top: 5px;
 }
