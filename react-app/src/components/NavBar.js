@@ -11,6 +11,8 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./NavBar.css";
 import logo from "./notyelplogo.png"
+import logo2 from './notyelplogo2.png'
+
 const NavBar = ({ loaded }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -51,7 +53,7 @@ const NavBar = ({ loaded }) => {
           >
             <img
               className="logo"
-              src={logo}
+              src={logo2}
             ></img>
           </NavLink>
         </div>

@@ -15,6 +15,7 @@ const LikeComponent = ({ business }) => {
 
   //helper function to select 'like'
   const likeSelected = () => {
+    if (!sessionUser) return;
     let existingLike = likes.filter((like) => {
       if (like.user_id === sessionUser.id && like.business_id === id) {
         return like;
@@ -26,10 +27,9 @@ const LikeComponent = ({ business }) => {
     return null;
   };
 
-
   useEffect(() => {
-    dispatch(likeActions.getLikes())
-  }, [dispatch])
+    dispatch(likeActions.getLikes());
+  }, [dispatch]);
 
   useEffect(() => {
     const userLike = likeSelected();
@@ -47,9 +47,7 @@ const LikeComponent = ({ business }) => {
       setClickedOkay(false);
       setClickedTrash(true);
     }
-
   }, []);
-
 
   const handleLove = () => {
     if (clickedLove) {
@@ -66,7 +64,6 @@ const LikeComponent = ({ business }) => {
 
       dispatch(likeActions.createLike(info));
       setClickedLove(!clickedLove);
-
     }
   };
 
@@ -107,39 +104,41 @@ const LikeComponent = ({ business }) => {
   };
 
   return (
-    <div className="like-button-container">
-      <button
-        style={{ backgroundColor: clickedLove ? "#90EE90" : "" }}
-        className="love-button"
-        onClick={() => {
-          setClickedLove(!clickedLove);
-          handleLove();
-        }}
-        disabled={clickedOkay || clickedTrash}
-      >
-        <i class="fa-regular fa-face-grin-hearts"></i>
-      </button>
-      <button
-        style={{ backgroundColor: clickedOkay ? "#F1BE48" : "" }}
-        onClick={() => {
-          setClickedOkay(!clickedOkay);
-          handleOkay();
-        }}
-        disabled={clickedLove || clickedTrash}
-      >
-        <i class="fa-regular fa-face-meh"></i>
-      </button>
-      <button
-        style={{ backgroundColor: clickedTrash ? "#FF7276" : "" }}
-        onClick={() => {
-          setClickedTrash(!clickedTrash);
-          handleTrash();
-        }}
-        disabled={clickedLove || clickedOkay}
-      >
-        <i class="fa-regular fa-face-frown"></i>
-      </button>
-    </div>
+    sessionUser && (
+      <div className="like-button-container">
+        <button
+          style={{ backgroundColor: clickedLove ? "#90EE90" : "" }}
+          className="love-button"
+          onClick={() => {
+            setClickedLove(!clickedLove);
+            handleLove();
+          }}
+          disabled={clickedOkay || clickedTrash}
+        >
+          <i class="fa-regular fa-face-grin-hearts"></i>
+        </button>
+        <button
+          style={{ backgroundColor: clickedOkay ? "#F1BE48" : "" }}
+          onClick={() => {
+            setClickedOkay(!clickedOkay);
+            handleOkay();
+          }}
+          disabled={clickedLove || clickedTrash}
+        >
+          <i class="fa-regular fa-face-meh"></i>
+        </button>
+        <button
+          style={{ backgroundColor: clickedTrash ? "#FF7276" : "" }}
+          onClick={() => {
+            setClickedTrash(!clickedTrash);
+            handleTrash();
+          }}
+          disabled={clickedLove || clickedOkay}
+        >
+          <i class="fa-regular fa-face-frown"></i>
+        </button>
+      </div>
+    )
   );
 };
 
