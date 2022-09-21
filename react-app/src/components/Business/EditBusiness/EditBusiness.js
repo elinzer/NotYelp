@@ -33,28 +33,21 @@ function BusinessEditForm({ closeModal }) {
     dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
   }
 
-  // useEffect(() => {
-  //   const errors = [];
-  //   if (name === '') errors.push("Business name is required")
-  //   if (address === '') errors.push("Street address is required")
-  //   if (url === '') errors.push("URL is required")
-  //   if (phone === '' || phone.length !== 10) errors.push("Phone is not valid")
-  //   if (city === '') errors.push("City is required")
-  //   if (state === '') errors.push("State is required")
-  //   if (zipCode === '' || zipCode.length !== 5) errors.push("zipCode is not valid")
-  //   if (openTime === '') errors.push("openTime is required")
-  //   if (closeTime === '') errors.push("closeTime is required")
-  //   if (description === '') errors.push("Description is required")
-  //   if (previewUrl === '') errors.push("previewUrl is required")
-  //   if (!previewUrl.endsWith('.jpg') && !previewUrl.endsWith('.png') && !previewUrl.endsWith('.jpeg')) {
-  //     errors.push('Provide a valid image url')
-  //  }
-  //   setErrors(errors)
-  // }, [name, address, url, phone, city, state, zipCode, openTime, closeTime, description, previewUrl])
+  useEffect(() => {
+    const errors = [];
+    if (previewUrl === '') errors.push("previewUrl is required")
+    if (!previewUrl.endsWith('.jpg') && !previewUrl.endsWith('.png') && !previewUrl.endsWith('.jpeg')) {
+      errors.push('Provide a valid image url')
+   }
+    setErrors(errors)
+  }, [name, address, url, phone, city, state, zipCode, openTime, closeTime, description, previewUrl])
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
+    if (errors.length) return null;
+    setErrors([]);
     const businessData = {
       owner_id: user.id,
       name,
@@ -69,7 +62,6 @@ function BusinessEditForm({ closeModal }) {
       description,
       preview_image: previewUrl,
     };
-    setErrors([]);
     const data = await dispatch(editBusiness(businessData, business.id));
     if (data && data.errors) {
       setErrors(data.errors);
@@ -83,7 +75,7 @@ function BusinessEditForm({ closeModal }) {
       <form onSubmit={handleSubmit} className="editForm">
         <div className="updateTitle">Update Business</div>
         <div>
-          {errors.map((error, idx) => (
+          {isSubmitted && errors.map((error, idx) => (
             <div key={idx} className="editError">
               {error}
             </div>
