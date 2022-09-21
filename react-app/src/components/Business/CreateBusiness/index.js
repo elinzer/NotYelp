@@ -1,26 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Modal } from '../../../context/Modal';
-import CreateBusiness from './CreateBusiness';
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Modal } from "../../../context/Modal";
+import CreateBusiness from "./CreateBusiness";
 import "./CreateBusiness.css";
-
 
 function CreateBusinessModal() {
   const [showModal, setShowModal] = useState(false);
-  const allBusinesses = useSelector(state => state.businesses);
+  const allBusinesses = useSelector((state) => state.businesses);
   useEffect(() => {
     setShowModal(false);
-  }, [allBusinesses])
+  }, [allBusinesses]);
   return (
     <>
-      <div className='createBox'>
-      <button className='createButton' onClick={() => setShowModal(true)}>
-        Create Business
+      <div className="createBox">
+        <button className="createButton" onClick={() => setShowModal(true)}>
+          Create Business
         </button>
-        </div>
+      </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateBusiness />
+          <div className="modal-form">
+            <CreateBusiness />
+          </div>
         </Modal>
       )}
     </>
