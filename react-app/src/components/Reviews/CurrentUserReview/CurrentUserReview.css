@@ -1,0 +1,57 @@
+.span-review-stars {
+  display: flex;
+  gap: 4px;
+}
+
+.RevButton {
+  background-color: #ffffff;
+  color: #7c7c7d;
+  border: #c8c9ca solid 1px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  height: 40px;
+  cursor: pointer;
+}
+
+.my-review {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+.review-card-current {
+  margin-bottom: max(1.5vh, 20px);
+  border: none;
+  outline: 1px solid #e8e8e8;
+  border-radius: 10%;
+  padding: 15px;
+}
+
+.MyReviewHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.review-user-image-current {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.users-name-current {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-current {
+  margin-bottom: 10px;
+  padding: 5px;
+}

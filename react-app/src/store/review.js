@@ -56,8 +56,6 @@ export const UserReview = () => async (dispatch) => {
 
 //create review
 export const createReview = (review) => async (dispatch) => {
-  console.log("this is review", review);
-
   const res = await fetch("/api/reviews/", {
     method: "POST",
     headers: {
@@ -106,7 +104,6 @@ export default function reviewReducer(state = {}, action) {
   let newState = { ...state };
   switch (action.type) {
     case GET_ALL:
-      console.log(action.payload, "this is payload");
       action.payload.reviews.forEach((review) => {
         newState[review.id] = review;
       });

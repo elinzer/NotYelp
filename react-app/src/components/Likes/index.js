@@ -35,7 +35,6 @@ const LikeComponent = ({ business }) => {
         return currentUserLikes
     }
 
-    console.log(userLikes().length)
 
 
     useEffect(() => {
@@ -44,7 +43,6 @@ const LikeComponent = ({ business }) => {
 
     useEffect(() => {
         if (userLikes().length) {
-            console.log('has length')
         }
         // check to see if sessionUser has a like on a business. if they do, set clickedXYZ to true
     }, []);
