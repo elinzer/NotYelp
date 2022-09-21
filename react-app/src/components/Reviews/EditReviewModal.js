@@ -7,9 +7,10 @@ import "./EditReviewModal.css";
 function EditReviewModal(business, rev) {
   const [showModal, setShowModal] = useState(false);
   const allReviews = useSelector((state) => state.reviews);
-  useEffect(() => {
+  const closeModal = () => {
     setShowModal(false);
-  }, [allReviews]);
+  };
+
   return (
     <>
       <button className="editReviewButton" onClick={() => setShowModal(true)}>
@@ -17,7 +18,9 @@ function EditReviewModal(business, rev) {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditReview rev={rev} business={business} />
+          <div className="modal-form">
+            <EditReview rev={rev} business={business} closeModal={closeModal} />
+          </div>
         </Modal>
       )}
     </>

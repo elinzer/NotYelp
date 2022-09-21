@@ -6,9 +6,9 @@ import CreateReview from "./CreateReview";
 function CreateReviewModal({ business }) {
   const [showModal, setShowModal] = useState(false);
   const allReviews = useSelector((state) => state.reviews);
-  useEffect(() => {
+  const closeModal = () => {
     setShowModal(false);
-  }, [allReviews]);
+  };
   return (
     <>
       <button
@@ -20,7 +20,9 @@ function CreateReviewModal({ business }) {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateReview business={business} />
+          <div className="modal-form">
+            <CreateReview business={business} closeModal={closeModal} />
+          </div>
         </Modal>
       )}
     </>

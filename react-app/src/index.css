@@ -21,8 +21,8 @@ a {
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 100vh;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .flex-row {
