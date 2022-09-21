@@ -10,6 +10,7 @@ import ProfileButton from "./ProfileButton";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./NavBar.css";
+import logo from "./notyelplogo.png"
 const NavBar = ({ loaded }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -48,10 +49,9 @@ const NavBar = ({ loaded }) => {
             exact={true}
             activeClassName="active"
           >
-            {/* Our logo will go here instead (eventually) - hazel */}
             <img
               className="logo"
-              src="https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_design_cdn/7ef71bf77a33/assets/img/yelp_logo_desktop/cookbook.svg"
+              src={logo}
             ></img>
           </NavLink>
         </div>

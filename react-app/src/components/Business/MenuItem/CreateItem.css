@@ -13,6 +13,17 @@
   font-weight: 750;
 }
 
+.menuErrors {
+  font-family: Helvetica, Rounded;
+  margin-left: 33%;
+  margin-top: 2%;
+}
+
+.menuError:hover {
+  font-weight: 650;
+  color: red;
+}
+
 .nameInputm,
 .priceInputm,
 .previewUrlInputm {

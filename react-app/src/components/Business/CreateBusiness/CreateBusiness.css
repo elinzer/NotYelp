@@ -1,9 +1,10 @@
 .createBusinessBox {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 775px;
-  width: 550px;
+  height: 800px;
+  width: 625px;
 }
 
 .createBusinessBox {
@@ -19,6 +20,17 @@
   padding: 10px;
 }
 
+.createErrors {
+  margin-top: 10px;
+  font-family: Helvetica, Rounded;
+  font-size: 18px;
+}
+
+.createError:hover {
+  font-weight: 600;
+  color: red;
+}
+
 .createButton:hover {
   cursor: pointer;
   background-color: rgb(230, 230, 230, 0.5);
@@ -28,7 +40,6 @@
 .CreateBusTitle {
   font-family: Helvetica, Rounded;
   font-size: 20px;
-  margin-left: 25%;
   font-weight: 750;
 }
 
@@ -71,7 +82,6 @@
 
 .openTimeInput,
 .closeTimeInput {
-  margin-left: 10%;
   margin-top: 10px;
 }
 
@@ -80,19 +90,7 @@
   font-family: Helvetica, Rounded;
   font-weight: 750;
   margin-bottom: 10%;
-  margin-left: 38%;
-}
-
-.nameInput,
-.addressInput,
-.urlInput,
-.phoneInput,
-.cityInput,
-.stateInput,
-.zipcodeInput,
-.previewUrlInput,
-.descriptionInput {
-  margin-left: 10%;
+  margin-left: 35%;
 }
 
 .submitButton {
@@ -105,7 +103,6 @@
   height: 40px;
   width: 150px;
   margin-top: 20px;
-  margin-left: 31%;
 }
 
 .submitButton:hover {
