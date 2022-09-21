@@ -52,7 +52,6 @@ export const createBusiness = (business) => async (dispatch) => {
     return data;
   } else if (res.status < 500) {
     const data = await res.json();
-    console.log("DATA:", data);
     if (data.errors) {
       return data;
     }
@@ -86,7 +85,6 @@ export const editBusiness = (data, businessId) => async (dispatch) => {
   });
   if (res.ok) {
     const business = await res.json();
-    console.log("BUSINESS:", business);
     dispatch(update(business));
   }
   return res;
@@ -102,7 +100,6 @@ export const deleteBusinessById = (id) => async (dispatch) => {
     return data;
   } else if (res.status < 500) {
     const data = await res.json();
-    console.log("DATA:", data);
     if (data.errors) {
       return data;
     }
