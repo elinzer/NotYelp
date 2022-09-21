@@ -1,5 +1,7 @@
 .editForm {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
   justify-content: center;
   align-items: center;
   height: 800px;
@@ -9,7 +11,6 @@
 .updateTitle {
   font-family: Helvetica, Rounded;
   font-size: 20px;
-  margin-left: 25%;
   font-weight: 750;
 }
 
@@ -46,9 +47,12 @@
   width: 200px;
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-left: 18%;
 }
 
 .editBusinessBut:hover {
   cursor: pointer;
+}
+
+.editError {
+  text-align: center;
 }
