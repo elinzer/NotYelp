@@ -18,6 +18,7 @@ def seeded_reviews():
     Review(
       stars=4, review="This restaurant is good, minor issues!", business_id=5, user_id=5
     )
+
   ]
 
   for review in demo_reviews:
