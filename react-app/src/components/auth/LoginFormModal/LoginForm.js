@@ -29,15 +29,17 @@ const LoginForm = ({ closeModal }) => {
   };
 
   return (
-    <form onSubmit={onLogin} className='loginBox'>
-        <div className="loginTitle">Login</div>
-      <div className='loginErrors'>
+    <form onSubmit={onLogin} className="loginBox">
+      <div className="loginTitle">Login</div>
+      <div className="loginErrors">
         {errors.map((error, ind) => (
-          <div key={ind} className='errors'>{error}</div>
+          <div key={ind} className="errors">
+            {error.split(": ")[1]}
+          </div>
         ))}
       </div>
       <div>
-        <label htmlFor="Email"/>
+        <label htmlFor="Email" />
         <input
           // name="email"
           type="text"
@@ -48,7 +50,7 @@ const LoginForm = ({ closeModal }) => {
         />
       </div>
       <div>
-        <label htmlFor="password"/>
+        <label htmlFor="password" />
         <input
           // name="password"
           type="password"
@@ -57,19 +59,20 @@ const LoginForm = ({ closeModal }) => {
           value={password}
           onChange={updatePassword}
         />
-        <button
-        type="submit"
-        className="submitLogin"
-        >Login</button>
+        <button type="submit" className="submitLogin">
+          Login
+        </button>
       </div>
       <button
-      onClick={() => {
-        setEmail('demo@aa.io');
-        setPassword("password")
-    }}
-      type="submit"
-      className="submitDemo"
-      >Demo Login</button>
+        onClick={() => {
+          setEmail("demo@aa.io");
+          setPassword("password");
+        }}
+        type="submit"
+        className="submitDemo"
+      >
+        Demo Login
+      </button>
     </form>
   );
 };
