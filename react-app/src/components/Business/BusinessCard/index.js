@@ -67,14 +67,19 @@ function BusinessCard({ business }) {
             <div
               className="business-open-status"
               style={
-                openStatus
+                business?.open_status
                   ? { color: "rgba(4,197,133,1)" }
                   : { color: "rgba(255,139,135,1)" }
               }
             >
-              {openStatus ? "Open" : "Closed"}
+              {business?.open_status ? "Open" : "Closed"}
             </div>
-            <div className="pl5">until {openStatus ? closeTime : openTime}</div>
+            <div className="pl5">
+              until{" "}
+              {business?.open_status
+                ? business?.format_open
+                : business?.format_close}
+            </div>
           </div>
           <div className="business-card-description">
             {business.description}

@@ -14,10 +14,26 @@
   cursor: pointer;
 }
 
+.review-cards-inner-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  /* align-content: flex-st; */
+}
+
 .my-review {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.my-review-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+  gap: 2vw;
 }
 
 .review-card-current {
