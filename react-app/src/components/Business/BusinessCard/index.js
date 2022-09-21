@@ -3,8 +3,8 @@ import "./BusinessCard.css";
 import LikeComponent from "../../Likes";
 import { useState, useEffect } from "react";
 import DisplayStars from "../../Reviews/DisplayStars";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+// import { useSelector } from "react-redux";
+// import { useParams } from "react-router-dom";
 
 const states = require("us-state-converter");
 function BusinessCard({ business }) {
@@ -12,7 +12,7 @@ function BusinessCard({ business }) {
   const [closeTime, setCloseTime] = useState("");
   const [openStatus, setOpenStatus] = useState(false);
   const [curTime, setCurTime] = useState(new Date());
-  const { businessId } = useParams()
+  // const { businessId } = useParams()
   useEffect(() => {
     let openTimeDate = new Date();
     let closeTimeDate = new Date();

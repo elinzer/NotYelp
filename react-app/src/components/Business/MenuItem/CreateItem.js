@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+// import { Redirect, useHistory } from "react-router-dom";
 import { createItem } from "../../../store/item";
-const imageURLRegex = /\.(jpeg|jpg|png)$/;
+// const imageURLRegex = /\.(jpeg|jpg|png)$/;
 
 function CreateItemForm({ businessId, closeModal }) {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ function CreateItemForm({ businessId, closeModal }) {
   const [price, setPrice] = useState("");
   const [previewUrl, setPreviewUrl] = useState("");
   const [errors, setErrors] = useState([]);
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
