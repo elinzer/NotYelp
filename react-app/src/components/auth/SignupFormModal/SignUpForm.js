@@ -17,7 +17,6 @@ const SignUpForm = ({ closeModal }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-    if (errors.length) return null;
     if (password === repeatPassword) {
       setErrors([]);
       const data = await dispatch(

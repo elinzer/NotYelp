@@ -17,12 +17,15 @@
 .signupErrors {
   /* border: 1px solid red; */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
 }
 
 .signupError:hover {
+  display: flex;
+  align-items: center;
   font-weight: 650;
   color: red;
   font-size: 18px;
