@@ -26,9 +26,11 @@ const CurrentUserReviews = () => {
       <h2 className="MyReviewHeader">My Reviews</h2>
       <div className="my-review">
         <div className="my-review-inner">
-          {filteredReviews.map((review, i) => (
-            <ReviewCard review={review} />
-          ))}
+          <div className="review-cards-inner-container">
+            {filteredReviews.map((review, i) => (
+              <ReviewCard review={review} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

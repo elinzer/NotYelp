@@ -5,6 +5,7 @@
   outline: 1px solid #e8e8e8;
   border-radius: 15px;
   padding: 15px;
+  width: 100%;
 }
 
 .review-user-image {

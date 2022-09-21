@@ -14,6 +14,14 @@
   cursor: pointer;
 }
 
+.review-cards-inner-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  /* align-content: flex-st; */
+}
+
 .my-review {
   display: flex;
   flex-wrap: wrap;
@@ -22,8 +30,8 @@
 }
 .my-review-inner {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
   width: 80vw;
   gap: 2vw;
 }
