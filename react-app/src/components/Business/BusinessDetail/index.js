@@ -11,6 +11,7 @@ import "./BusinessDetail.css";
 import { deleteReviewById, editReview } from "../../../store/review";
 import ReviewCard from "../../Reviews/ReviewCard";
 import DisplayStars from "../../Reviews/DisplayStars";
+import LikeComponent from '../../Likes'
 const states = require("us-state-converter");
 
 function BusinessDetail() {
@@ -24,6 +25,8 @@ function BusinessDetail() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[businessId]);
+  const likeState = useSelector((state => state.likes))
+  const likes = Object.values(likeState)
   const reviews = useSelector((state) => state.reviews);
   const items = useSelector((state) => state.items);
   const history = useHistory();
@@ -59,6 +62,24 @@ function BusinessDetail() {
       setOpenStatus(false);
     }
   }, [business]);
+
+  //get specific types of like for the business
+  let loveCount = 0;
+  let okayCount = 0;
+  let trashCount = 0;
+
+  for (let i = 0; i < likes.length; i++) {
+    let like = likes[i]
+    if (business.id === like.business_id) {
+      if (like.like === 3) {
+        loveCount += 1;
+      } else if (like.like === 2) {
+        okayCount += 1;
+      } else if (like.like === 1) {
+        trashCount += 1;
+      }
+    }
+  }
 
   const handleDelete = (e) => {
     e.preventDefault();
@@ -167,6 +188,10 @@ function BusinessDetail() {
                   {business?.address} {business?.city},{" "}
                   {states.abbr(business?.state)}
                 </div>
+              </div>
+              <div className="likes-container">
+                  <div className="likes-component"><LikeComponent business={business}/></div>
+                  <div className="likes-text">{`${loveCount} ${loveCount === 1 ? 'person loves' : 'people love'} this place, ${okayCount} ${okayCount === 1 ? 'person says' : 'people say'} this place is okay, ${trashCount} ${trashCount === 1 ? "person dislikes" : "people dislike"} this place`}</div>
               </div>
             </div>
           </div>
