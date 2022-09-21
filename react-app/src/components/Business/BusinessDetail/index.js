@@ -35,34 +35,6 @@ function BusinessDetail() {
   } else if (!business && !isLoaded) {
     dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
   }
-
-  useEffect(() => {
-    let openTimeDate = new Date();
-    let closeTimeDate = new Date();
-    openTimeDate.setHours(business?.open_time.split(":")[0]);
-    openTimeDate.setMinutes(business?.open_time.split(":")[1]);
-    closeTimeDate.setHours(business?.close_time.split(":")[0]);
-    closeTimeDate.setMinutes(business?.close_time.split(":")[1]);
-    setOpenTime(
-      openTimeDate.toLocaleTimeString("en-US", {
-        timeStyle: "short",
-      })
-    );
-    setCloseTime(
-      closeTimeDate.toLocaleTimeString([], {
-        timeStyle: "short",
-      })
-    );
-    if (
-      curTime.valueOf() > openTimeDate.valueOf() &&
-      curTime.valueOf() < closeTimeDate.valueOf()
-    ) {
-      setOpenStatus(true);
-    } else {
-      setOpenStatus(false);
-    }
-  }, [business]);
-
   //get specific types of like for the business
   let loveCount = 0;
   let okayCount = 0;
@@ -85,6 +57,16 @@ function BusinessDetail() {
     e.preventDefault();
     dispatch(deleteBusinessById(businessId));
     history.push("/");
+  };
+
+  const alreadyReviewed = () => {
+    let alreadyReviewedByUser = false;
+    for (let i of business?.review_ids) {
+      if (reviews[i]?.user_id === sessionUser.id) {
+        alreadyReviewedByUser = true;
+      }
+    }
+    return alreadyReviewedByUser;
   };
 
   if (sessionUser && business) {
@@ -137,7 +119,7 @@ function BusinessDetail() {
           <div className="business-details-container flex">
             <div className="business-details">
               <div className="business-actions-container flex">
-                {sessionUser && sessionUser.id !== business?.owner_id && (
+                {sessionUser && sessionUser.id !== business?.owner_id && alreadyReviewed() === false && (
                   <div>
                     <CreateReviewModal business={business} />
                   </div>

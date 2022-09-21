@@ -60,11 +60,12 @@ function BusinessCreateForm({ closeModal }) {
     if (String(zipCode).length !== 5) {
       errors.push("zipcode: Zipcode must be 5 digits");
     }
-    if (address.length < 5) {
+    if (address.length < 6) {
       errors.push("address: Address must be at least 5 characters");
     }
+
     setErrors(errors);
-  }, [previewUrl, zipCode, address]);
+  }, [previewUrl, zipCode, address, url]);
 
   return (
     <div className="createBusinessBox">
