@@ -13,6 +13,8 @@ const LikeComponent = ({ business }) => {
   const [clickedOkay, setClickedOkay] = useState(false);
   const [clickedTrash, setClickedTrash] = useState(false);
 
+//dummy comment for commit
+
   //helper function to select 'like'
   const likeSelected = () => {
     if (!sessionUser) return;
