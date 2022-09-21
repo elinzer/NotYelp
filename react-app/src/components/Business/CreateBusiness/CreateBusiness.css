@@ -1,10 +1,10 @@
 .createBusinessBox {
   display: flex;
   flex-direction: column;
+  gap: 1%;
   justify-content: center;
   align-items: center;
-  height: 800px;
-  width: 625px;
+  min-width: 500px;
 }
 
 .createBusinessBox {
