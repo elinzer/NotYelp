@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { createBusiness } from "../../../store/business";
 import { maskPhoneNumber, returnDigitsOnly } from "../../../helpers/phoneMask";
-function BusinessCreateForm() {
+function BusinessCreateForm({ closeModal }) {
   const imageURLRegex = /\.(jpeg|jpg|png)$/;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
@@ -46,6 +46,7 @@ function BusinessCreateForm() {
     if (newBusiness && newBusiness.errors) {
       setErrors(newBusiness.errors);
     } else if (newBusiness && !newBusiness.errors) {
+      closeModal();
       history.push(`/businesses/${newBusiness.id}`);
     }
   };
@@ -63,7 +64,6 @@ function BusinessCreateForm() {
     if (address.length < 5) {
       errors.push("address: Address must be at least 5 characters");
     }
-    console.log("errors:", errors);
     setErrors(errors);
   }, [previewUrl, zipCode, address]);
 

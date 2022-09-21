@@ -35,17 +35,19 @@ function BusinessEditForm({ closeModal }) {
 
   useEffect(() => {
     const errors = [];
-    if (previewUrl === '') errors.push("previewUrl is required")
-    if (!previewUrl.endsWith('.jpg') && !previewUrl.endsWith('.png') && !previewUrl.endsWith('.jpeg')) {
-      errors.push('Provide a valid image url')
-   }
-    setErrors(errors)
-  }, [previewUrl])
-
+    if (previewUrl === "") errors.push("preview_image: previewUrl is required");
+    if (!previewUrl.match(imageURLRegex)) {
+      errors.push(
+        "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
+      );
+    }
+    setErrors(errors);
+  }, [previewUrl]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitted(true);
+    console.log("ERRORS:", errors);
     if (errors.length) return null;
     setErrors([]);
     const businessData = {
@@ -65,7 +67,7 @@ function BusinessEditForm({ closeModal }) {
     const data = await dispatch(editBusiness(businessData, business.id));
     if (data && data.errors) {
       setErrors(data.errors);
-    } else {
+    } else if (data && !data.errors && !errors.length) {
       closeModal();
       dispatch(getBusinessByid(businessId));
     }
@@ -75,11 +77,12 @@ function BusinessEditForm({ closeModal }) {
       <form onSubmit={handleSubmit} className="editForm">
         <div className="updateTitle">Update Business</div>
         <div>
-          {isSubmitted && errors.map((error, idx) => (
-            <div key={idx} className="editError">
-              {error.split(": ")[1]}
-            </div>
-          ))}
+          {isSubmitted &&
+            errors.map((error, idx) => (
+              <div key={idx} className="editError">
+                {error.split(": ")[1]}
+              </div>
+            ))}
         </div>
         <label>
           <input

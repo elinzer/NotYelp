@@ -7,9 +7,9 @@ import "./CreateBusiness.css";
 function CreateBusinessModal() {
   const [showModal, setShowModal] = useState(false);
   const allBusinesses = useSelector((state) => state.businesses);
-  useEffect(() => {
+  const closeModal = () => {
     setShowModal(false);
-  }, [allBusinesses]);
+  };
   return (
     <>
       <div className="createBox">
@@ -20,7 +20,7 @@ function CreateBusinessModal() {
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <div className="modal-form">
-            <CreateBusiness />
+            <CreateBusiness closeModal={closeModal} />
           </div>
         </Modal>
       )}

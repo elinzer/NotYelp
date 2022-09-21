@@ -20,7 +20,9 @@ function EditBusinessModal() {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditBusiness closeModal={closeModal} />
+          <div className="modal-form">
+            <EditBusiness closeModal={closeModal} />
+          </div>
         </Modal>
       )}
     </>

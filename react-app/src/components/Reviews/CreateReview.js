@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./Reviews.css";
 import * as reviewActions from "../../store/review";
 
-const CreateReview = ({ business }) => {
+const CreateReview = ({ business, closeModal }) => {
   const id = business.id;
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -13,7 +13,7 @@ const CreateReview = ({ business }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
 
@@ -24,10 +24,14 @@ const CreateReview = ({ business }) => {
       business_id: id,
     };
 
-    dispatch(reviewActions.createReview(info));
-
-    setReview("");
-    setStars("");
+    const data = await dispatch(reviewActions.createReview(info));
+    if (data && data.errors) {
+      setErrors(data.errors);
+    } else {
+      setReview("");
+      setStars("");
+      closeModal();
+    }
   };
 
   return (

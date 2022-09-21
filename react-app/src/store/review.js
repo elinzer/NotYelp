@@ -67,6 +67,14 @@ export const createReview = (review) => async (dispatch) => {
     const review = await res.json();
     dispatch(create(review));
     dispatch(getBusinessByid(review.business_id));
+    return review;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
   }
   return res;
 };
@@ -83,6 +91,14 @@ export const editReview = (review, id) => async (dispatch) => {
   if (res.ok) {
     const review = await res.json();
     dispatch(update(review));
+    return review;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
   }
   return res;
 };
@@ -95,10 +111,16 @@ export const deleteReviewById = (id, business_id) => async (dispatch) => {
   if (res.ok) {
     dispatch(deleteReview(id));
     dispatch(getBusinessByid(business_id));
+  } else if (res.status < 500) {
+    const data = await res.json();
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
   }
   return res;
 };
-
 //reducer
 export default function reviewReducer(state = {}, action) {
   let newState = { ...state };
