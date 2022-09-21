@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { signUp } from "../../../store/session";
-
+// import { signUp } from "../../../store/session";
+// import * as sessionActions from '../../store/session';
+import * as sessionActions from "../../../store/session";
 const SignUpForm = ({ closeModal }) => {
+  const imageURLRegex = /\.(jpeg|jpg|png)$/;
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -15,17 +18,27 @@ const SignUpForm = ({ closeModal }) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    setIsSubmitted(true)
+    if (errors.length) return null
     if (password === repeatPassword) {
-      const data = await dispatch(
-        signUp(username, email, password, profileImage)
-      );
-      if (data) {
-        setErrors(data);
-      } else {
-        closeModal();
-      }
+      setErrors([]);
+      return dispatch(sessionActions.signUp(username, email, password, profileImage))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors)
+        else closeModal();
+      });
     }
+    return setErrors(['Repeat Password field must be the same as the Password field']);
   };
+
+  useEffect(() => {
+    const errors=[];
+    if (!profileImage.match(imageURLRegex)) {
+      errors.push('Preview url must end in valid img extension [png/jpg/jpeg]')
+    }
+    setErrors(errors)
+  },[profileImage])
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -54,11 +67,12 @@ const SignUpForm = ({ closeModal }) => {
   return (
     <div className="login">
       <form onSubmit={onSignUp}>
+        <div className="login">
           <div className="signupTitle">Sign Up</div>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+        <div className="signupErrors">
+          {isSubmitted && (errors.map((error, ind) => (
+            <div key={ind} className='signupError'>{error}</div>
+          )))}
         </div>
         <div>
           <input
@@ -67,7 +81,7 @@ const SignUpForm = ({ closeModal }) => {
             onChange={updateUsername}
             value={username}
             placeholder="Username"
-          ></input>
+            />
         </div>
         <div>
           <input
@@ -76,7 +90,7 @@ const SignUpForm = ({ closeModal }) => {
             onChange={updateEmail}
             value={email}
             placeholder="Email"
-          ></input>
+            />
         </div>
         <div>
           <input
@@ -85,7 +99,7 @@ const SignUpForm = ({ closeModal }) => {
             onChange={updatePassword}
             value={password}
             placeholder="Password"
-          ></input>
+            />
         </div>
         <div>
           <input
@@ -95,7 +109,7 @@ const SignUpForm = ({ closeModal }) => {
             value={repeatPassword}
             placeholder="Repeat Password"
             required={true}
-          ></input>
+          />
         </div>
         <div>
           <input
@@ -104,11 +118,12 @@ const SignUpForm = ({ closeModal }) => {
             onChange={updateProfileImage}
             value={profileImage}
             placeholder="Profile Image URL"
-          ></input>
+          />
         </div>
         <button type="submit" className="signUpButton">
           Sign Up
         </button>
+        </div>
       </form>
     </div>
   );

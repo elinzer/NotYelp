@@ -12,7 +12,8 @@ function SearchPage() {
   return (
     <div className="main-search-container">
       <div className="search-header">
-        {businesses.length} results found for name: <div id="query">"{query}"</div>
+        {businesses.length} results found for name:{" "}
+        <div id="query">"{query}"</div>
       </div>
       <div className="splash-container flex">
         {businesses.map((business) => (

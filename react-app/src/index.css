@@ -17,6 +17,14 @@ a {
   flex-direction: column;
 }
 
+.modal-form {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100vh;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 .flex-row {
   flex-direction: row;
 }

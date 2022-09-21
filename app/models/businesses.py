@@ -34,7 +34,7 @@ class Business(db.Model):
       "address": self.address,
       "description": self.description,
       "url": self.url,
-      "phone": self.phone,
+      "phone": "({}) {}-{}".format(self.phone[0:3], self.phone[3:6], self.phone[6::]),
       "state": self.state,
       "city": self.city,
       "zipcode": self.zipcode,

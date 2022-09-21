@@ -1,23 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Modal } from '../../../context/Modal';
-import EditBusiness from './EditBusiness';
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Modal } from "../../../context/Modal";
+import EditBusiness from "./EditBusiness";
 import "./EditBusiness.css";
 
 function EditBusinessModal() {
   const [showModal, setShowModal] = useState(false);
-  const allBusinesses = useSelector(state => state.businesses);
-  useEffect(() => {
+  const allBusinesses = useSelector((state) => state.businesses);
+  const closeModal = () => {
     setShowModal(false);
-  }, [allBusinesses])
+  };
   return (
     <>
-      <button className='editButton clear-button' onClick={() => setShowModal(true)}>
+      <button
+        className="editButton clear-button"
+        onClick={() => setShowModal(true)}
+      >
         Edit Business
-        </button>
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditBusiness />
+          <div className="modal-form">
+            <EditBusiness closeModal={closeModal} />
+          </div>
         </Modal>
       )}
     </>

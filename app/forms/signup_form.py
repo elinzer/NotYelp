@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired, Email, ValidationError, URL
 from app.models import User
-
+from .validators import validate_image
 
 def user_exists(form, field):
     # Checking if user exists
@@ -25,4 +25,4 @@ class SignUpForm(FlaskForm):
         'username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[DataRequired()])
-    profile_image = StringField('profile_image', validators=[DataRequired(), URL()])
+    profile_image = StringField('profile_image', validators=[DataRequired(), validate_image])

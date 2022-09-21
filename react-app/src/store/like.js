@@ -59,13 +59,20 @@ export const createLike = (like) => async (dispatch) => {
   if (res.ok) {
     const like = await res.json();
     dispatch(create(like));
+    return like;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
   }
   return res;
 };
 
 //delete like
 export const deleteLikeById = (id) => async (dispatch) => {
-
   const res = await fetch(`/api/likes/${id}`, {
     method: "DELETE",
   });
