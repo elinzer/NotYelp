@@ -15,6 +15,7 @@ const LikeComponent = ({ business }) => {
 
   //helper function to select 'like'
   const likeSelected = () => {
+    if (!sessionUser) return;
     let existingLike = likes.filter((like) => {
       if (like.user_id === sessionUser.id && like.business_id === id) {
         return like;
@@ -26,10 +27,9 @@ const LikeComponent = ({ business }) => {
     return null;
   };
 
-
   useEffect(() => {
-    dispatch(likeActions.getLikes())
-  }, [dispatch])
+    dispatch(likeActions.getLikes());
+  }, [dispatch]);
 
   useEffect(() => {
     const userLike = likeSelected();
@@ -47,9 +47,7 @@ const LikeComponent = ({ business }) => {
       setClickedOkay(false);
       setClickedTrash(true);
     }
-
   }, []);
-
 
   const handleLove = () => {
     if (clickedLove) {
@@ -66,7 +64,6 @@ const LikeComponent = ({ business }) => {
 
       dispatch(likeActions.createLike(info));
       setClickedLove(!clickedLove);
-
     }
   };
 
