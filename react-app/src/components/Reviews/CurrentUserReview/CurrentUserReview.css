@@ -15,9 +15,17 @@
 }
 
 .my-review {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.my-review-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 80vw;
+  gap: 2vw;
 }
 
 .review-card-current {
