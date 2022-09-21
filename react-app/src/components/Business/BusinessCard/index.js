@@ -8,37 +8,6 @@ import { useParams } from "react-router-dom";
 
 const states = require("us-state-converter");
 function BusinessCard({ business }) {
-  const [openTime, setOpenTime] = useState("");
-  const [closeTime, setCloseTime] = useState("");
-  const [openStatus, setOpenStatus] = useState(false);
-  const [curTime, setCurTime] = useState(new Date());
-  const { businessId } = useParams()
-  useEffect(() => {
-    let openTimeDate = new Date();
-    let closeTimeDate = new Date();
-    openTimeDate.setHours(business?.open_time.split(":")[0]);
-    openTimeDate.setMinutes(business?.open_time.split(":")[1]);
-    closeTimeDate.setHours(business?.close_time.split(":")[0]);
-    closeTimeDate.setMinutes(business?.close_time.split(":")[1]);
-    setOpenTime(
-      openTimeDate.toLocaleTimeString("en-US", {
-        timeStyle: "short",
-      })
-    );
-    setCloseTime(
-      closeTimeDate.toLocaleTimeString([], {
-        timeStyle: "short",
-      })
-    );
-    if (
-      curTime.valueOf() > openTimeDate.valueOf() &&
-      curTime.valueOf() < closeTimeDate.valueOf()
-    ) {
-      setOpenStatus(true);
-    } else {
-      setOpenStatus(false);
-    }
-  }, [business]);
 
   return (
     <div>
@@ -67,14 +36,19 @@ function BusinessCard({ business }) {
             <div
               className="business-open-status"
               style={
-                openStatus
+                business?.open_status
                   ? { color: "rgba(4,197,133,1)" }
                   : { color: "rgba(255,139,135,1)" }
               }
             >
-              {openStatus ? "Open" : "Closed"}
+              {business?.open_status ? "Open" : "Closed"}
             </div>
-            <div className="pl5">until {openStatus ? closeTime : openTime}</div>
+            <div className="pl5">
+              until{" "}
+              {business?.open_status
+                ? business?.format_open
+                : business?.format_close}
+            </div>
           </div>
           <div className="business-card-description">
             {business.description}
