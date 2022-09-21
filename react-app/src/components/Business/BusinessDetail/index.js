@@ -137,7 +137,7 @@ function BusinessDetail() {
           <div className="business-details-container flex">
             <div className="business-details">
               <div className="business-actions-container flex">
-                {sessionUser && (
+                {sessionUser && sessionUser.id !== business?.owner_id && (
                   <div>
                     <CreateReviewModal business={business} />
                   </div>

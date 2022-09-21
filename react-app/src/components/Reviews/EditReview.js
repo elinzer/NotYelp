@@ -42,7 +42,7 @@ const EditReview = ({ business, rev, closeModal }) => {
 
   return (
     <form onSubmit={handleSubmit} className="review-form">
-      <div className="editreview-title">Write A Review</div>
+      <div className="editreview-title">Edit A Review</div>
       <label>
         <Rating
           onClick={handleRating}
