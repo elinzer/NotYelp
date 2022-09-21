@@ -198,7 +198,7 @@
 .likes-component {
   border-top: none;
   padding-top: 0;
-  padding: 16px 0px;
+  /* padding: 16px 0px; */
 }
 
 .likes-ul {

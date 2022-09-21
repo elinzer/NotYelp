@@ -3,51 +3,31 @@ import "./BusinessCard.css";
 import LikeComponent from "../../Likes";
 import { useState, useEffect } from "react";
 import DisplayStars from "../../Reviews/DisplayStars";
-// import { useSelector } from "react-redux";
-// import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const states = require("us-state-converter");
 function BusinessCard({ business }) {
-  const [openTime, setOpenTime] = useState("");
-  const [closeTime, setCloseTime] = useState("");
-  const [openStatus, setOpenStatus] = useState(false);
-  const [curTime, setCurTime] = useState(new Date());
-  // const { businessId } = useParams()
-  useEffect(() => {
-    let openTimeDate = new Date();
-    let closeTimeDate = new Date();
-    openTimeDate.setHours(business?.open_time.split(":")[0]);
-    openTimeDate.setMinutes(business?.open_time.split(":")[1]);
-    closeTimeDate.setHours(business?.close_time.split(":")[0]);
-    closeTimeDate.setMinutes(business?.close_time.split(":")[1]);
-    setOpenTime(
-      openTimeDate.toLocaleTimeString("en-US", {
-        timeStyle: "short",
-      })
-    );
-    setCloseTime(
-      closeTimeDate.toLocaleTimeString([], {
-        timeStyle: "short",
-      })
-    );
-    if (
-      curTime.valueOf() > openTimeDate.valueOf() &&
-      curTime.valueOf() < closeTimeDate.valueOf()
-    ) {
-      setOpenStatus(true);
-    } else {
-      setOpenStatus(false);
-    }
-  }, [business]);
-
   return (
-    <div>
-      <Link className="business-card" to={`/businesses/${business.id}`}>
-        <div className="business-card-image">
-          <img src={business.preview_image} />
+    <div className="temp">
+      <div className="business-card" to={`/businesses/${business.id}`}>
+        <div className="business-card-outer">
+          <Link
+            className="business-card-image"
+            to={`/businesses/${business.id}`}
+          >
+            <img src={business.preview_image} />
+          </Link>
+
+          <LikeComponent business={business} />
         </div>
         <div className="business-card-info">
-          <div className="business-card-name">{business.name}</div>
+          <Link
+            className="business-card-name"
+            to={`/businesses/${business.id}`}
+          >
+            {business.name}
+          </Link>
           <div className="business-address-container flex">
             {business.address} {business.city}, {states.abbr(business.state)}
           </div>
@@ -85,9 +65,6 @@ function BusinessCard({ business }) {
             {business.description}
           </div>
         </div>
-      </Link>
-      <div>
-        <LikeComponent business={business} />
       </div>
     </div>
   );

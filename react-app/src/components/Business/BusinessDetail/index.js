@@ -11,7 +11,7 @@ import "./BusinessDetail.css";
 // import { deleteReviewById, editReview } from "../../../store/review";
 import ReviewCard from "../../Reviews/ReviewCard";
 import DisplayStars from "../../Reviews/DisplayStars";
-import LikeComponent from '../../Likes'
+import LikeComponent from "../../Likes";
 const states = require("us-state-converter");
 
 function BusinessDetail() {
@@ -25,8 +25,8 @@ function BusinessDetail() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[businessId]);
-  const likeState = useSelector((state => state.likes))
-  const likes = Object.values(likeState)
+  const likeState = useSelector((state) => state.likes);
+  const likes = Object.values(likeState);
   const reviews = useSelector((state) => state.reviews);
   const items = useSelector((state) => state.items);
   const history = useHistory();
@@ -69,7 +69,7 @@ function BusinessDetail() {
   let trashCount = 0;
 
   for (let i = 0; i < likes.length; i++) {
-    let like = likes[i]
+    let like = likes[i];
     if (business.id === like.business_id) {
       if (like.like === 3) {
         loveCount += 1;
@@ -191,16 +191,29 @@ function BusinessDetail() {
                 </div>
               </div>
               <div className="likes-container">
-                  <div className="likes-component"><LikeComponent business={business}/></div>
-                    <ul className="likes-ul">
-                      <li style={{fontWeight: 'bold'}}>Too lazy to read the reviews? Here's what people are saying:</li>
-                      <li className="likes-li">
-                      {`${loveCount} ${loveCount === 1 ? 'person loves' : 'people love'} this place`}</li>
-                      <li className="likes-li">{`${okayCount} ${okayCount === 1 ? 'person says' : 'people say'} this place is okay`}</li>
-                      <li className="likes-li">
-                      {`${trashCount} ${trashCount === 1 ? "person dislikes" : "people dislike"} this place`}
-                      </li>
-                    </ul>
+                {sessionUser && (
+                  <div className="likes-component">
+                    <LikeComponent business={business} />
+                  </div>
+                )}
+                <ul className="likes-ul">
+                  <li style={{ fontWeight: "bold" }}>
+                    Too lazy to read the reviews? Here's what people are saying:
+                  </li>
+                  <li className="likes-li">
+                    {`${loveCount} ${
+                      loveCount === 1 ? "person loves" : "people love"
+                    } this place`}
+                  </li>
+                  <li className="likes-li">{`${okayCount} ${
+                    okayCount === 1 ? "person says" : "people say"
+                  } this place is okay`}</li>
+                  <li className="likes-li">
+                    {`${trashCount} ${
+                      trashCount === 1 ? "person dislikes" : "people dislike"
+                    } this place`}
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

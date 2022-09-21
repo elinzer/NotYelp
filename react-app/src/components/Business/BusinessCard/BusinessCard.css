@@ -4,13 +4,22 @@
   border-color: #ebebeb;
   gap: 1.25vw;
   width: 42vw;
-  max-height: 300px;
+  /* max-height: 300px; */
   padding: 24px;
   transition: box-shadow 0.3s;
 }
 .business-card:hover {
   box-shadow: 0 0 10px #0000001a;
+}
+
+.business-card > a {
   cursor: pointer;
+}
+.business-card-image {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  height: 220px;
 }
 .business-card-image {
   width: 220px;

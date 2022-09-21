@@ -1,6 +1,6 @@
 .like-button-container {
     display: flex;
-    padding-left: 70px;
+    align-items: center;
     flex-direction: column;
 }
 
