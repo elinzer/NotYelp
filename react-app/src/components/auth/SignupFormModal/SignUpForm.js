@@ -22,13 +22,12 @@ const SignUpForm = ({ closeModal }) => {
     if (errors.length) return null
     if (password === repeatPassword) {
       setErrors([]);
-      const data = await dispatch(sessionActions.signUp(username, email, password, profileImage));
-
-      if (data) {
-        setErrors(data);
-      } else {
-        closeModal();
-      }
+      return dispatch(sessionActions.signUp(username, email, password, profileImage))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors)
+        else closeModal();
+      });
     }
     return setErrors(['Repeat Password field must be the same as the Password field']);
   };
@@ -70,9 +69,9 @@ const SignUpForm = ({ closeModal }) => {
       <form onSubmit={onSignUp}>
         <div className="login">
           <div className="signupTitle">Sign Up</div>
-        <div>
+        <div className="signupErrors">
           {isSubmitted && (errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div key={ind} className='signupError'>{error}</div>
           )))}
         </div>
         <div>
