@@ -1,5 +1,6 @@
 from sqlalchemy import func
 from .db import db
+from datetime import datetime
 
 class Business(db.Model):
   __tablename__ = "businesses"
@@ -28,6 +29,7 @@ class Business(db.Model):
   menuitems = db.relationship("MenuItem", back_populates="business", cascade="all, delete")
 
   def to_dict(self):
+
     return {
       "id": self.id,
       "name": self.name,
@@ -40,6 +42,8 @@ class Business(db.Model):
       "zipcode": self.zipcode,
       "open_time": self.open_time.isoformat(timespec='minutes'),
       "close_time": self.close_time.isoformat(timespec='minutes'),
+      "format_open":self.open_time.strftime("%I:%M %p"),
+      "format_close":self.close_time.strftime("%I:%M %p"),
       "preview_image": self.preview_image,
       "created_at": self.created_at,
       "updated_at": self.updated_at,
@@ -47,5 +51,6 @@ class Business(db.Model):
       "review_ids": [review.id for review in self.reviews],
       "like_ids": [like.id for like in self.likes],
       "menuitem_ids": [menuitem.id for menuitem in self.menuitems],
+      "open_status": self.open_time <= datetime.now().time() <= self.close_time,
       "avg_rating": (sum([review.stars for review in self.reviews]) / len(self.reviews)) if len(self.reviews) > 0 else 0
     }
