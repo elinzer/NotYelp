@@ -183,7 +183,19 @@
 }
 
 .likes-container {
-  padding-top: 40px;
+  padding-top: 30px;
+  margin-top: 20px;
   position: absolute;
-  
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ebebeb;
+  position: relative;
+}
+
+.likes-component {
+  padding-left: 20px;
+}
+
+.likes-text {
+  padding: 20px 20px;
 }

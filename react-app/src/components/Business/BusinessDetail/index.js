@@ -190,8 +190,8 @@ function BusinessDetail() {
                 </div>
               </div>
               <div className="likes-container">
-                  <LikeComponent business={business}/>
-                  <div>{`${loveCount} ${loveCount <= 1 ? 'person loves' : 'people love'} this place, ${okayCount} ${okayCount === 1 ? 'person says' : 'people say'} this place is okay, ${trashCount} ${trashCount === 1 ? 'person does' : 'people do'} not like this place`}</div>
+                  <div className="likes-component"><LikeComponent business={business}/></div>
+                  <div className="likes-text">{`${loveCount} ${loveCount === 1 ? 'person loves' : 'people love'} this place, ${okayCount} ${okayCount === 1 ? 'person says' : 'people say'} this place is okay, ${trashCount} ${trashCount === 1 ? "person dislikes" : "people dislike"} this place`}</div>
               </div>
             </div>
           </div>
