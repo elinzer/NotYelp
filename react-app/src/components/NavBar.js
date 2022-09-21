@@ -13,6 +13,8 @@ import "./NavBar.css";
 const NavBar = ({ loaded }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  let currentUser;
+  const sessionUser2 = useSelector((state) => state.session.user);
   const [search, setSearch] = useState("");
   const history = useHistory();
   let sessionLinks;
@@ -26,6 +28,9 @@ const NavBar = ({ loaded }) => {
       </div>
     );
   }
+
+  if (sessionUser2) currentUser = true
+    else currentUser = false;
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -65,7 +70,9 @@ const NavBar = ({ loaded }) => {
           </button>
         </div>
         <div className="flex pr20">
+        {currentUser && (
           <CreateBusinessModal />
+        )}
           {loaded && sessionLinks}
         </div>
       </div>

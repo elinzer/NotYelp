@@ -29,3 +29,15 @@
   font-weight: 500;
   text-align: left;
 }
+
+.fa-trash {
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menuitem-delete {
+  border: none;
+  background-color: white;
+}

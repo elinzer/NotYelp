@@ -1,8 +1,11 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 import EditReviewModal from "../EditReviewModal";
 import { deleteReviewById } from "../../../store/review";
 import "./ReviewCard.css";
+import DisplayStars from "../DisplayStars";
+
 function ReviewCard({ review }) {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -18,19 +21,24 @@ function ReviewCard({ review }) {
         </div>
         <div className="review-user-info">
           <div className="review-username">{review?.user.username}</div>
-          <div className="review-card-user-date">
+          {/* <div className="review-card-user-date">
             {new Date(review?.created_at).toLocaleDateString()}
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="review-card-content">
-        {/* Need better implementation*/}
-        <div className="review-stars">Stars: {review?.stars}</div>
+        <div className="review-card-user-date">
+          <DisplayStars rating={review?.stars} />
+          {new Date(review?.created_at).toLocaleDateString()}
+        </div>
         <div className="review-text">{review?.review}</div>
         {review?.user_id == sessionUser?.id ? (
           <>
             <EditReviewModal rev={review} />
-            <button onClick={(e) => handleDeleteReview(e, review?.id)}>
+            <button
+              className="delete-rev"
+              onClick={(e) => handleDeleteReview(e, review?.id)}
+            >
               Delete Review
             </button>
           </>

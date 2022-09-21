@@ -71,9 +71,9 @@ function BusinessDetail() {
   //   return alreadyReviewedByUser;
   // };
 
-  const handleDelete = async (e) => {
+  const handleDelete = (e) => {
     e.preventDefault();
-    await dispatch(deleteBusinessById(businessId));
+    dispatch(deleteBusinessById(businessId));
     history.push("/");
   };
 
@@ -90,8 +90,7 @@ function BusinessDetail() {
             <div className="details">
               <div className="details-name">{business?.name}</div>
               <div className="details-review-data flex">
-                <div>{business.avg_rating.toFixed(1)}</div>
-                <DisplayStars rating={business.avg_rating.toFixed(1)} />
+                <DisplayStars rating={business.avg_rating} />
                 <div className="review-count pl10">
                   {business?.review_ids.length == 1 ? (
                     <div>{business?.review_ids.length} review</div>
@@ -139,8 +138,7 @@ function BusinessDetail() {
                     <EditBusinessModal />
                     <button
                       onClick={handleDelete}
-                      className="deleteButton clear-button"
-                    >
+                      className="deleteButton clear-button">
                       Delete Business
                     </button>
                     {/* Item Modal might make more sense to go in menu, unsure atm */}
