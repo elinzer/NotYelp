@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./CurrentUserReview.css";
 import * as reviewActions from "../../../store/review";
 import EditReviewModal from "../EditReviewModal";
+import DisplayStars from "../DisplayStars";
 
 const CurrentUserReviews = () => {
   const user = useSelector((state) => state.session.user);
@@ -26,16 +27,25 @@ const CurrentUserReviews = () => {
   return (
     <div className="currentReviewContainer">
       <h2 className="MyReviewHeader">My Reviews</h2>
-      <div className="current-review-wrap">
+      <div className="my-review">
         {filteredReviews.map((review, i) => (
-          <div className="review-card" key={`${review.id} ${i + 1}`}>
-            <div className="users-name">{`${user.username}`} </div>
-            <span>
-              {" "}
-              <i className="fa-solid fa-star"></i> {review.stars}
-            </span>
+          <div className="review-card-current" key={`${review.id} ${i + 1}`}>
+            <div className="user-info">
+              <img
+                className="review-user-image-current"
+                src={review?.user.profile_image}
+              />
+              <div className="users-name-current">
+                <span>{`${user.username}`}</span>
+                <span className="span-review-stars">
+                  <DisplayStars rating={review.stars} />
+                </span>{" "}
+              </div>
+            </div>
 
-            <div>{`Review ${i + 1}: ${review.review}`}</div>
+            <div className="review-current">{`Review ${i + 1}: ${
+              review.review
+            }`}</div>
             <button
               className="RevButton"
               onClick={() => handleDeleteButton(review.id)}

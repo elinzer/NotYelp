@@ -32,9 +32,12 @@ const CreateReview = ({ business }) => {
 
   return (
     <form onSubmit={handleSubmit} className="review-form">
+      <div className="editreview-title">Write A Review</div>
       <label>
         <input
+          className="stars-review"
           type="number"
+          placeholder="Stars 1-5"
           value={stars}
           onChange={(e) => {
             const value = e.target.value;
@@ -46,9 +49,9 @@ const CreateReview = ({ business }) => {
         ></input>
       </label>
       <label className="review-body">
-        <textarea
+        <input
+          className="make-bigger"
           placeholder="Write a review"
-          wrap="soft"
           value={review}
           onChange={(e) => {
             const textValue = e.target.value;
@@ -58,9 +61,13 @@ const CreateReview = ({ business }) => {
             setReview(e.target.value);
           }}
           required
-        ></textarea>
+        />
       </label>
-      <button type="submit" disabled={review.length <= 5}>
+      <button
+        className="submitButton-review"
+        type="submit"
+        disabled={review.length <= 5}
+      >
         Submit Review
       </button>
     </form>

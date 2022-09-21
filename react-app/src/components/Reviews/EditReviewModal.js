@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
 import EditReview from "./EditReview";
+import "./EditReviewModal.css";
 
 function EditReviewModal(business, rev) {
   const [showModal, setShowModal] = useState(false);

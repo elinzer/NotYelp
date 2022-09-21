@@ -18,3 +18,19 @@
 .review-stars {
   padding-top: 5px;
 }
+
+.delete-rev {
+  background-color: #ffffff;
+  color: #7c7c7d;
+  border: #c8c9ca solid 1px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  height: 40px;
+  cursor: pointer;
+}
+
+.review-card-user-date {
+  display: flex;
+  gap: 4px;
+}
