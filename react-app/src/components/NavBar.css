@@ -1,7 +1,7 @@
 /* .main-nav-container { */
-  /* below is the gradient from Yelp's CSS */
-  /* background: linear-gradient(180deg, #000000b3, #0000004d 72.92%, #0000); */
-  /* background-color: black; */
+/* below is the gradient from Yelp's CSS */
+/* background: linear-gradient(180deg, #000000b3, #0000004d 72.92%, #0000); */
+/* background-color: black; */
 /* } */
 
 .logo {
@@ -24,6 +24,7 @@
   max-width: 56px;
   padding: 12px 16px;
   text-align: center;
+  margin: 0 !important;
   cursor: pointer;
 }
 
