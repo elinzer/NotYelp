@@ -3,8 +3,8 @@ import "./BusinessCard.css";
 import LikeComponent from "../../Likes";
 import { useState, useEffect } from "react";
 import DisplayStars from "../../Reviews/DisplayStars";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+// import { useSelector } from "react-redux";
+// import { useParams } from "react-router-dom";
 
 const states = require("us-state-converter");
 function BusinessCard({ business }) {
@@ -12,7 +12,7 @@ function BusinessCard({ business }) {
   const [closeTime, setCloseTime] = useState("");
   const [openStatus, setOpenStatus] = useState(false);
   const [curTime, setCurTime] = useState(new Date());
-  const { businessId } = useParams()
+  // const { businessId } = useParams()
   useEffect(() => {
     let openTimeDate = new Date();
     let closeTimeDate = new Date();
@@ -67,14 +67,19 @@ function BusinessCard({ business }) {
             <div
               className="business-open-status"
               style={
-                openStatus
+                business?.open_status
                   ? { color: "rgba(4,197,133,1)" }
                   : { color: "rgba(255,139,135,1)" }
               }
             >
-              {openStatus ? "Open" : "Closed"}
+              {business?.open_status ? "Open" : "Closed"}
             </div>
-            <div className="pl5">until {openStatus ? closeTime : openTime}</div>
+            <div className="pl5">
+              until{" "}
+              {business?.open_status
+                ? business?.format_open
+                : business?.format_close}
+            </div>
           </div>
           <div className="business-card-description">
             {business.description}

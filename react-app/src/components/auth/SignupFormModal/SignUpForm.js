@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-// import { signUp } from "../../../store/session";
-// import * as sessionActions from '../../store/session';
 import * as sessionActions from "../../../store/session";
 const SignUpForm = ({ closeModal }) => {
   const imageURLRegex = /\.(jpeg|jpg|png)$/;

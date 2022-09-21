@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createBusiness } from "../../../store/business";
 import { maskPhoneNumber, returnDigitsOnly } from "../../../helpers/phoneMask";
 function BusinessCreateForm({ closeModal }) {

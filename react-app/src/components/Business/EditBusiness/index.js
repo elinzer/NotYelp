@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+// import { useSelector } from "react-redux";
 import { Modal } from "../../../context/Modal";
 import EditBusiness from "./EditBusiness";
 import "./EditBusiness.css";
 
 function EditBusinessModal() {
   const [showModal, setShowModal] = useState(false);
-  const allBusinesses = useSelector((state) => state.businesses);
+  // const allBusinesses = useSelector((state) => state.businesses);
   const closeModal = () => {
     setShowModal(false);
   };
