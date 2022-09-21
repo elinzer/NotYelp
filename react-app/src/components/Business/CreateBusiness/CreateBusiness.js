@@ -69,6 +69,7 @@ function BusinessCreateForm() {
             <div key={ind} className='createError'>{error.split(": ")[1]}</div>
             </div>
             )))}
+        </div>
         <div>
           <label htmlFor="name"/>
           <input
