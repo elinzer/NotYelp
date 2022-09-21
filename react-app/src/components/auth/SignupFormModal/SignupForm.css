@@ -15,7 +15,7 @@
 }
 
 .signupErrors {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +31,6 @@
 .signupError {
   font-family: Helvetica, Rounded;
   font-size: 18px;
-
 }
 
 .userInputs,
