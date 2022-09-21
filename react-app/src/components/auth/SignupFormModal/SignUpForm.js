@@ -88,15 +88,17 @@ const SignUpForm = ({ closeModal }) => {
               onChange={updateUsername}
               value={username}
               placeholder="Username"
+              required
             />
           </div>
           <div>
             <input
-              type="text"
+              type="email"
               className="emailInputs"
               onChange={updateEmail}
               value={email}
               placeholder="Email"
+              required
             />
           </div>
           <div>
@@ -106,6 +108,7 @@ const SignUpForm = ({ closeModal }) => {
               onChange={updatePassword}
               value={password}
               placeholder="Password"
+              required
             />
           </div>
           <div>
@@ -125,6 +128,7 @@ const SignUpForm = ({ closeModal }) => {
               onChange={updateProfileImage}
               value={profileImage}
               placeholder="Profile Image URL"
+              required
             />
           </div>
           <button type="submit" className="signUpButton">
