@@ -45,7 +45,7 @@ class BusinessForm(FlaskForm):
   owner_id = IntegerField("owner_id", validators=[DataRequired()])
   name = StringField("name", validators=[DataRequired(), validate_name])
   address = StringField("address", validators=[DataRequired(), validate_address])
-  url = StringField("url", validators=[DataRequired(), URL()])
+  url = StringField("url", validators=[DataRequired()])
   description = StringField("description", validators=[DataRequired()])
   phone = StringField("phone", validators=[DataRequired(), validate_phone])
   state = StringField("State", validators=[DataRequired(), validate_state])

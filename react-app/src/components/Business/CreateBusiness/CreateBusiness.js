@@ -60,11 +60,20 @@ function BusinessCreateForm({ closeModal }) {
     if (String(zipCode).length !== 5) {
       errors.push("zipcode: Zipcode must be 5 digits");
     }
-    if (address.length < 5) {
+    if (address.length < 6) {
       errors.push("address: Address must be at least 5 characters");
     }
+    if (address.length > 50) {
+      errors.push("address: Address must be less than 50 characters");
+    }
+    if (state.length > 15) {
+      errors.push("state: State must be less than 15 characters");
+    }
+    if (city.length > 35) {
+      errors.push("city: City must be less than 35 characters");
+    }
     setErrors(errors);
-  }, [previewUrl, zipCode, address]);
+  }, [previewUrl, zipCode, address, url, city, state]);
 
   return (
     <div className="createBusinessBox">

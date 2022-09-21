@@ -32,17 +32,30 @@ function BusinessEditForm({ closeModal }) {
   } else if (!business && !isLoaded) {
     dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
   }
-
   useEffect(() => {
     const errors = [];
-    if (previewUrl === "") errors.push("preview_image: previewUrl is required");
     if (!previewUrl.match(imageURLRegex)) {
       errors.push(
         "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
       );
     }
+    if (String(zipCode).length !== 5) {
+      errors.push("zipcode: Zipcode must be 5 digits");
+    }
+    if (address.length < 6) {
+      errors.push("address: Address must be at least 5 characters");
+    }
+    if (address.length > 50) {
+      errors.push("address: Address must be less than 50 characters");
+    }
+    if (state.length > 15) {
+      errors.push("state: State must be less than 15 characters");
+    }
+    if (city.length > 35) {
+      errors.push("city: City must be less than 35 characters");
+    }
     setErrors(errors);
-  }, [previewUrl]);
+  }, [previewUrl, zipCode, address, url, city, state]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
