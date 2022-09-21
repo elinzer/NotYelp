@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 
 const states = require("us-state-converter");
 function BusinessCard({ business }) {
+  const sessionUser = useSelector((state) => state.session.user);
   return (
     <div className="temp">
       <div className="business-card" to={`/businesses/${business.id}`}>
@@ -19,7 +20,7 @@ function BusinessCard({ business }) {
             <img src={business.preview_image} />
           </Link>
 
-          <LikeComponent business={business} />
+          {sessionUser && <LikeComponent business={business} />}
         </div>
         <div className="business-card-info">
           <Link

@@ -7,6 +7,7 @@ const LikeComponent = ({ business }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const likeState = useSelector((state) => state.likes);
+  const [isLoaded, setIsLoaded] = useState(false);
   const likes = Object.values(likeState);
   const { id } = business;
   const [clickedLove, setClickedLove] = useState(false);
@@ -30,7 +31,7 @@ const LikeComponent = ({ business }) => {
   };
 
   useEffect(() => {
-    dispatch(likeActions.getLikes());
+    dispatch(likeActions.getLikes()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   useEffect(() => {
@@ -106,7 +107,8 @@ const LikeComponent = ({ business }) => {
   };
 
   return (
-    sessionUser && (
+    sessionUser &&
+    isLoaded && (
       <div className="like-button-container">
         <div>Eaten here before?</div>
         <div>
