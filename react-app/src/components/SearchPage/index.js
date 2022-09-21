@@ -7,7 +7,7 @@ function SearchPage() {
   const search = useLocation().search;
   const query = new URLSearchParams(search).get("name");
   const businesses = useSelector((state) =>
-    Object.values(state.)
+    Object.values(state.queried_businesses)
   );
   return (
     <div className="main-search-container">
