@@ -157,9 +157,9 @@ function BusinessDetail() {
                 {/* Show every Review Card Here */}
                 <div className="reviews-header header">Reviews</div>
                 <div className="reviews-inner-container">
-                  {business?.review_ids.map((reviewId) => (
+                  {business?.review_ids.length ? business?.review_ids.map((reviewId) => (
                     <ReviewCard key={reviewId} review={reviews[reviewId]} />
-                  ))}
+                  )) : (<div style={{paddingBottom: '25px'}}>No reviews. Yet...</div>)}
                 </div>
               </div>
             </div>

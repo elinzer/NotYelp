@@ -21,20 +21,33 @@ const CurrentUserReviews = () => {
     dispatch(reviewActions.getReviews());
   }, []);
 
-  return (
-    <div className="currentReviewContainer">
-      <h2 className="MyReviewHeader">My Reviews</h2>
-      <div className="my-review">
-        <div className="my-review-inner">
-          <div className="review-cards-inner-container">
-            {filteredReviews.map((review, i) => (
-              <ReviewCard review={review} />
-            ))}
+
+  if (!filteredReviews.length) {
+    return (
+      <div className="currentReviewContainer">
+        <h2 className="MyReviewHeader">My Reviews</h2>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+          No reviews yet! Why not go let your favorite places know what you think?
+        </div>
+      </div>
+    )
+  } else {
+
+    return (
+      <div className="currentReviewContainer">
+        <h2 className="MyReviewHeader">My Reviews</h2>
+        <div className="my-review">
+          <div className="my-review-inner">
+            <div className="review-cards-inner-container">
+              {filteredReviews.map((review, i) => (
+                <ReviewCard review={review} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
+}
 
 export default CurrentUserReviews;
