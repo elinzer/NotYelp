@@ -7,6 +7,25 @@
   max-width: 100vw;
 }
 
+.businesses-button-container {
+  position: absolute;
+  top: 60%;
+  left: 7%;
+  z-index: 999;
+}
+
+.businesses-button {
+  color: white;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.businesses-link {
+  text-decoration: none;
+  color: white;
+}
+
 .main-splash-image {
   width: 100%;
   height: 100%;

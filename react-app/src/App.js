@@ -15,7 +15,7 @@ import { getBusinesses } from "./store/business";
 import { getItems } from "./store/item";
 import CurrentUserReviews from "./components/Reviews/CurrentUserReview/CurrentUserReview";
 import SearchPage from "./components/SearchPage";
-
+import BusinessesPage from "./components/Business/BusinessesPage";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -50,6 +50,9 @@ function App() {
         </Route>
         <Route path="/search">
           <SearchPage />
+        </Route>
+        <Route path="/businesses">
+          <BusinessesPage />
         </Route>
         <Route path="/" exact={true}>
           <SplashPage />
