@@ -8,7 +8,7 @@ const CreateReview = ({ business, closeModal }) => {
   const id = business.id;
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [stars, setStars] = useState(0);
+  const [stars, setStars] = useState(20);
   const [review, setReview] = useState("");
   const [businessId, setBusinessId] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -51,6 +51,7 @@ const CreateReview = ({ business, closeModal }) => {
           fillColor="gold"
           allowHover={false}
           emptyColor="gray"
+          initialValue={stars}
         />
       </label>
       <label className="review-body">

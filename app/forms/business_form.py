@@ -5,14 +5,14 @@ from .validators import validate_image
 def validate_name(form, field):
   if len(field.data) > 25:
     raise ValidationError("Name must be less than 25 characters")
-  elif len(field.data) < 0:
-    raise ValidationError("Name must not be empty")
+  elif len(field.data) < 5:
+    raise ValidationError("Name must be greater than 5 characters")
 
 def validate_address(form, field):
   if len(field.data) > 50:
     raise ValidationError("Address must be less than 50 characters")
   elif len(field.data) < 6:
-    raise ValidationError("Address must be valid")
+    raise ValidationError("Address must be greater than 6 characters")
 
 def validate_phone(form, field):
   if len(str(field.data)) != 10:
@@ -21,14 +21,14 @@ def validate_phone(form, field):
 def validate_state(form, field):
   if len(field.data) > 15:
     raise ValidationError("State must be less than 15 characters")
-  elif len(field.data) < 0:
-    raise ValidationError("State must not be empty")
+  elif len(field.data) < 5:
+    raise ValidationError("State must be greater than 4 characters")
 
 def validate_city(form, field):
   if len(field.data) > 35:
     raise ValidationError("City must be less than 35 characters")
-  elif len(field.data) < 0:
-    raise ValidationError("City must not be empty")
+  elif len(field.data) < 5:
+    raise ValidationError("City must be greater than 5 characters")
 
 def validate_zipcode(form, field):
   if len(str(field.data)) != 5:

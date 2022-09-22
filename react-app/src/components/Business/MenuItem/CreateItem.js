@@ -59,6 +59,7 @@ function CreateItemForm({ businessId, closeModal }) {
             type="number"
             value={price}
             className="priceInputm"
+            min={0}
             placeholder="Price"
             onChange={(e) => setPrice(e.target.value)}
             required

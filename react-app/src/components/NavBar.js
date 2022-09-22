@@ -38,7 +38,9 @@ const NavBar = ({ loaded }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(searchBusinesses(search));
-    history.push(`/search?name=${search}`);
+    const url = `/search?name=${search}`;
+    setSearch("");
+    history.push(url);
   };
 
   return (

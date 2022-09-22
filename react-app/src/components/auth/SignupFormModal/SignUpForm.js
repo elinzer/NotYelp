@@ -17,7 +17,6 @@ const SignUpForm = ({ closeModal }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-    if (errors.length) return null;
     if (password === repeatPassword) {
       setErrors([]);
       const data = await dispatch(
@@ -88,15 +87,17 @@ const SignUpForm = ({ closeModal }) => {
               onChange={updateUsername}
               value={username}
               placeholder="Username"
+              required
             />
           </div>
           <div>
             <input
-              type="text"
+              type="email"
               className="emailInputs"
               onChange={updateEmail}
               value={email}
               placeholder="Email"
+              required
             />
           </div>
           <div>
@@ -106,6 +107,7 @@ const SignUpForm = ({ closeModal }) => {
               onChange={updatePassword}
               value={password}
               placeholder="Password"
+              required
             />
           </div>
           <div>
@@ -125,6 +127,7 @@ const SignUpForm = ({ closeModal }) => {
               onChange={updateProfileImage}
               value={profileImage}
               placeholder="Profile Image URL"
+              required
             />
           </div>
           <button type="submit" className="signUpButton">

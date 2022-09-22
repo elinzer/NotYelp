@@ -3,4 +3,4 @@ import re
 def validate_image(form,field):
   img_match = re.match(r'^https?:\/\/.*\.(?:png|jpg|jpeg)$', field.data)
   if not img_match:
-    raise ValidationError("Image must be valid")
+    raise ValidationError("Image must end in .png/.jpg/.jpeg")
