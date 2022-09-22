@@ -86,5 +86,5 @@
 
 .my-reviews:hover {
   background-color: rgb(240, 240, 240);
-  border-radius: 15px;
+  /* border-radius: 15px; */
 }
