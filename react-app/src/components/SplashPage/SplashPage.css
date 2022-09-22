@@ -21,17 +21,6 @@
   z-index: -1;
 }
 
-.main-splash-image-inner::after {
-  background: linear-gradient(180deg, #0006, #0000001a 5%);
-  bottom: 0;
-  content: "";
-  left: 0;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
 .splash-container {
   align-items: center;
   justify-content: center;

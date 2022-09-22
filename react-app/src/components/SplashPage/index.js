@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import BusinessCard from "../Business/BusinessCard";
 import { getBusinesses } from "../../store/business";
 import "./SplashPage.css";
-import headerImg from '../../imgs/notyelpheader.png'
+import headerImg from "../../imgs/notyelpheader.png";
 function SplashPage() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,10 +15,8 @@ function SplashPage() {
   return (
     isLoaded && (
       <div className="main-splash-container">
-        <div className="splash-page-details">
-        </div>
+        <div className="splash-page-details"></div>
         <div className="main-splash-image">
-          {/* probs placeholder idfk we pick tomorrow LOL */}
           <div className="main-splash-image-inner">
             <img src={headerImg} />
           </div>

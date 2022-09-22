@@ -2,10 +2,13 @@
   padding: 15px 0px;
   margin-bottom: max(1.5vh, 20px);
   border: none;
+  box-sizing: border-box;
   outline: 1px solid #e8e8e8;
   border-radius: 15px;
   padding: 15px;
-  max-width: 70%;
+  width: 100%;
+  max-width: 100%;
+  /* max-width: 70%; */
 }
 
 .review-user-image {
@@ -28,13 +31,12 @@
   /* border: 1px solid red; */
 }
 
-
 .review-text,
 .review-stars {
   margin: 2% 0 2% 0;
-  color:rgb(36, 36, 36, 0.8);
-  max-width: 70%;
-
+  color: rgb(36, 36, 36, 0.8);
+  max-width: 100%;
+  overflow-wrap: break-word;
   /* border: 1px solid red; */
 }
 
@@ -54,6 +56,6 @@
   gap: 4px;
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
-  color:rgb(36, 36, 36, 0.7);
+  color: rgb(36, 36, 36, 0.7);
   /* border: 1px solid red; */
 }
