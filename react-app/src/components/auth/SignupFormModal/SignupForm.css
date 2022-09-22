@@ -56,8 +56,19 @@
 
 .signup-button {
   background-color: rgb(230, 0, 0);
-  height: 40px;
+  box-sizing: border-box;
+  height: 50px;
   font-weight: 600px;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  transition: all 0.8s;
+}
+
+.signup-button:hover {
+  background-color: rgb(244, 13, 21);
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
 .signUpButton {
@@ -65,7 +76,7 @@
   color: white;
   border: white solid 1px;
   border-radius: 8px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 750;
   height: 40px;
   width: 115px;
