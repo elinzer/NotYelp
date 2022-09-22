@@ -12,7 +12,7 @@ def validate_address(form, field):
   if len(field.data) > 50:
     raise ValidationError("Address must be less than 50 characters")
   elif len(field.data) < 6:
-    raise ValidationError("Address must be valid")
+    raise ValidationError("Address must be greater than 6 characters")
 
 def validate_phone(form, field):
   if len(str(field.data)) != 10:
