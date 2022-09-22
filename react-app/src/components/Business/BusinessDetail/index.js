@@ -42,9 +42,7 @@ function BusinessDetail() {
 
   for (let i = 0; i < likes.length; i++) {
     let like = likes[i];
-    console.log(like)
     if (businessId == like.business_id) {
-      console.log('do u get in here')
       if (like.like === 3) {
         loveCount += 1;
       } else if (like.like === 2) {
