@@ -11,7 +11,7 @@ function ItemCard({ item }) {
   const { businessId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[businessId]);
-  
+
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -29,7 +29,10 @@ function ItemCard({ item }) {
   return (
     <div className="item-card">
       <div className="item-card-image">
-        <img className="item-image" src={item?.preview_image || 'https://st2.depositphotos.com/1000419/5237/v/450/depositphotos_52373739-stock-illustration-pieces-of-pizza-sketch-for.jpg' } />
+        <img
+          className="item-image"
+          src={item?.preview_image}
+          onError={(e) => e.target.src = 'https://st2.depositphotos.com/1000419/5237/v/450/depositphotos_52373739-stock-illustration-pieces-of-pizza-sketch-for.jpg'} />
       </div>
       <div className="item-card-info">
         <div className="item-card-name">{item?.name}</div>
