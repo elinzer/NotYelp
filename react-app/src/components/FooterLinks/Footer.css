@@ -6,7 +6,16 @@
   padding: 1rem;
   background-color: #f5f5f5;
   color: #333;
-  font-size: 0.8rem;
+  font-size: 0.94rem;
+}
+.span-hover:hover {
+  background-color: #ebebeb;
+  box-shadow: 0 0 10px #0000001a;
+}
+
+a:hover {
+  background-color: #ebebeb;
+  box-shadow: 0 0 10px #0000001a;
 }
 
 .footer-container {
