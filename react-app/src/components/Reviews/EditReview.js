@@ -4,14 +4,12 @@ import { Rating } from "react-simple-star-rating";
 import "./Reviews.css";
 import * as reviewActions from "../../store/review";
 
-const EditReview = ({ business, rev, closeModal }) => {
-  const { business_id } = business.rev;
+const EditReview = ({ rev, closeModal }) => {
+  const business_id = rev?.business_id;
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [stars, setStars] = useState(business.rev.stars);
-  const [review, setReview] = useState(business.rev.review);
-  // const [businessId, setBusinessId] = useState("");
-  // const [isSubmitted, setIsSubmitted] = useState(false);
+  const [stars, setStars] = useState(rev?.stars * 20);
+  const [review, setReview] = useState(rev.review);
   const [errors, setErrors] = useState([]);
 
   const handleRating = (rate) => {
@@ -20,17 +18,16 @@ const EditReview = ({ business, rev, closeModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("business_id", business_id);
+    console.log("rev", rev);
     const info = {
       user_id: sessionUser.id,
       stars: stars / 20,
       review,
-      business_id: business_id,
+      business_id: rev.business_id,
     };
 
-    const data = await dispatch(
-      reviewActions.editReview(info, business.rev.id)
-    );
+    const data = await dispatch(reviewActions.editReview(info, rev.id));
     if (data && data.errors) {
       setErrors(data.errors);
     } else {
@@ -42,7 +39,7 @@ const EditReview = ({ business, rev, closeModal }) => {
 
   return (
     <form onSubmit={handleSubmit} className="review-form">
-      <div className="editreview-title">Write A Review</div>
+      <div className="editreview-title">Edit A Review</div>
       <label>
         <Rating
           onClick={handleRating}

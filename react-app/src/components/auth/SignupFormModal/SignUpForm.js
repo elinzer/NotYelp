@@ -17,7 +17,6 @@ const SignUpForm = ({ closeModal }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-    if (errors.length) return null;
     if (password === repeatPassword) {
       setErrors([]);
       const data = await dispatch(
@@ -29,7 +28,7 @@ const SignUpForm = ({ closeModal }) => {
         closeModal();
       }
     } else {
-      return setErrors(["Passwords do not match"]);
+      return setErrors(["password: Passwords do not match"]);
     }
   };
 
@@ -38,8 +37,11 @@ const SignUpForm = ({ closeModal }) => {
     if (!profileImage.match(imageURLRegex)) {
       errors.push("Preview url must end in valid img extension [png/jpg/jpeg]");
     }
+    if (password !== repeatPassword) {
+      errors.push("password: Passwords do not match");
+    }
     setErrors(errors);
-  }, [profileImage]);
+  }, [profileImage, password, repeatPassword]);
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -85,15 +87,17 @@ const SignUpForm = ({ closeModal }) => {
               onChange={updateUsername}
               value={username}
               placeholder="Username"
+              required
             />
           </div>
           <div>
             <input
-              type="text"
+              type="email"
               className="emailInputs"
               onChange={updateEmail}
               value={email}
               placeholder="Email"
+              required
             />
           </div>
           <div>
@@ -103,6 +107,7 @@ const SignUpForm = ({ closeModal }) => {
               onChange={updatePassword}
               value={password}
               placeholder="Password"
+              required
             />
           </div>
           <div>
@@ -122,6 +127,7 @@ const SignUpForm = ({ closeModal }) => {
               onChange={updateProfileImage}
               value={profileImage}
               placeholder="Profile Image URL"
+              required
             />
           </div>
           <button type="submit" className="signUpButton">
