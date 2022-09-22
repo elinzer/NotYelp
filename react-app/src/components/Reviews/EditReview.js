@@ -69,7 +69,7 @@ const EditReview = ({ rev, closeModal }) => {
       <button
         className="submitButton-review"
         type="submit"
-        disabled={rev.length <= 5}
+        disabled={review.length <= 3}
       >
         Submit Review
       </button>
