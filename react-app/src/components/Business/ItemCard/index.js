@@ -12,7 +12,6 @@ function ItemCard({ item }) {
   const sessionUser = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[businessId]);
 
-
   const handleDelete = async (e) => {
     e.preventDefault();
     await dispatch(deleteItemById(item.id));

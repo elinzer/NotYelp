@@ -26,8 +26,8 @@ const NavBar = ({ loaded }) => {
   } else {
     sessionLinks = (
       <div className="session-links flex center">
-        <LoginFormModal />
-        <SignUpFormModal />
+        <div className="loginModalBut"><LoginFormModal /></div>
+        <div className="signupModalBut"><SignUpFormModal /></div>
       </div>
     );
   }

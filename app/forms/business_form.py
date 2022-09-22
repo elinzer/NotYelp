@@ -1,38 +1,29 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, DecimalField, TimeField
 from wtforms.validators import DataRequired, ValidationError, URL, Regexp
-from .validators import validate_image
+from .validators import validate_image, validate_zipcode
+
 def validate_name(form, field):
   if len(field.data) > 25:
     raise ValidationError("Name must be less than 25 characters")
   elif len(field.data) < 5:
-    raise ValidationError("Name must be greater than 5 characters")
+    raise ValidationError("Name must be at least 5 characters")
 
 def validate_address(form, field):
   if len(field.data) > 50:
     raise ValidationError("Address must be less than 50 characters")
   elif len(field.data) < 6:
-    raise ValidationError("Address must be greater than 6 characters")
+    raise ValidationError("Address must be at least 6 characters")
 
 def validate_phone(form, field):
   if len(str(field.data)) != 10:
     raise ValidationError("Phone must be 10 numbers")
 
-def validate_state(form, field):
-  if len(field.data) > 15:
-    raise ValidationError("State must be less than 15 characters")
-  elif len(field.data) < 5:
-    raise ValidationError("State must be greater than 4 characters")
-
 def validate_city(form, field):
   if len(field.data) > 35:
     raise ValidationError("City must be less than 35 characters")
   elif len(field.data) < 5:
-    raise ValidationError("City must be greater than 5 characters")
-
-def validate_zipcode(form, field):
-  if len(str(field.data)) != 5:
-    raise ValidationError("Zipcode must be valid")
+    raise ValidationError("City must be at least 5 characters")
 
 def validate_time(form, field):
   if (field.data.hour) > 24:
@@ -48,9 +39,9 @@ class BusinessForm(FlaskForm):
   url = StringField("url", validators=[DataRequired()])
   description = StringField("description", validators=[DataRequired()])
   phone = StringField("phone", validators=[DataRequired(), validate_phone])
-  state = StringField("State", validators=[DataRequired(), validate_state])
+  state = StringField("State", validators=[DataRequired()])
   city = StringField("city", validators=[DataRequired(), validate_city])
-  zipcode = IntegerField("zipcode", validators=[DataRequired(), validate_zipcode])
+  zipcode = StringField("zipcode", validators=[DataRequired(), validate_zipcode])
   open_time = TimeField("open_time", validators=[DataRequired(), validate_time])
   close_time = TimeField("close_time", validators=[DataRequired(), validate_time])
   preview_image = StringField("preview_image", validators=[DataRequired(), validate_image])
