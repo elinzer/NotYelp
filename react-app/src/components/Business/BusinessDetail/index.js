@@ -12,6 +12,7 @@ import "./BusinessDetail.css";
 import ReviewCard from "../../Reviews/ReviewCard";
 import DisplayStars from "../../Reviews/DisplayStars";
 import LikeComponent from "../../Likes";
+import defaultPreview from '../../../imgs/notyelpbusiness.png'
 const states = require("us-state-converter");
 
 function BusinessDetail() {
@@ -112,6 +113,7 @@ function BusinessDetail() {
             <img
               className="business-preview-image"
               src={business?.preview_image}
+              onError={(e) => e.target.src = defaultPreview}
             />
           </div>
         </div>

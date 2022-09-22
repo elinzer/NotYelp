@@ -5,6 +5,7 @@ import EditReviewModal from "../EditReviewModal";
 import { deleteReviewById } from "../../../store/review";
 import "./ReviewCard.css";
 import DisplayStars from "../DisplayStars";
+import defaultImage from '../../../imgs/notyelpDefault.png'
 
 function ReviewCard({ review }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -17,7 +18,10 @@ function ReviewCard({ review }) {
     <div className="review-card">
       <div className="review-user-container flex">
         <div className="review-user-image">
-          <img className="review-user-image" src={review?.user.profile_image} />
+          <img
+          className="review-user-image"
+          src={review?.user.profile_image}
+          onError={(e) => e.target.src = defaultImage} />
         </div>
         <div className="review-user-info">
           <div className="review-username">{review?.user.username}</div>
