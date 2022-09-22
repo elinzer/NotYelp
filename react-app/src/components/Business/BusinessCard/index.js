@@ -23,8 +23,7 @@ function BusinessCard({ business }) {
               onError={(e) => (e.target.src = defaultPreview)}
             />
           </Link>
-
-          {sessionUser && <LikeComponent business={business} />}
+          {/* {sessionUser && <LikeComponent business={business} />} */}
         </div>
         <div className="business-card-info">
           <Link
