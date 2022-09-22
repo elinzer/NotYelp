@@ -158,9 +158,9 @@ function BusinessCreateForm({ closeModal }) {
               required
             />
           </div>
-          <div>
+          <div className="state-select-container">
             <select
-              className="select-state"
+              className="state-select"
               value={state}
               onChange={(e) => setState(e.target.value)}
               required

@@ -154,6 +154,7 @@ function BusinessEditForm({ closeModal }) {
         </label>
         <label>
           <select
+            className="state-select"
             value={state}
             onChange={(e) => setState(e.target.value)}
             required
