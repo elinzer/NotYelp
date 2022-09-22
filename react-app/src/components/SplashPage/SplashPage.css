@@ -24,6 +24,14 @@
   color: white;
 }
 
+.businesses-button {
+  transition: scale 0.25s ease-in-out;
+}
+
+.businesses-button:hover {
+  scale: 1.1;
+}
+
 .main-splash-image-inner {
   width: 100vw;
   height: 83vh;
