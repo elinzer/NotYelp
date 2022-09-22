@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import BusinessCard from "../Business/BusinessCard";
 import { getBusinesses } from "../../store/business";
 import "./SplashPage.css";
+import headerImg from '../../imgs/notyelpheader.png'
 function SplashPage() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,12 +16,11 @@ function SplashPage() {
     isLoaded && (
       <div className="main-splash-container">
         <div className="splash-page-details">
-          <h1>Welcome to NotYelp!</h1>
         </div>
         <div className="main-splash-image">
           {/* probs placeholder idfk we pick tomorrow LOL */}
           <div className="main-splash-image-inner">
-            <img src="https://s3-media0.fl.yelpcdn.com/educatorphoto/T3U8OES-w0Pat6ijyqf8pg/o.jpg" />
+            <img src={headerImg} />
           </div>
         </div>
         <div className="splash-container flex flex-wrap">
