@@ -166,7 +166,7 @@ function BusinessCreateForm({ closeModal }) {
           <div>
             <label htmlFor="zipcode" />
             <input
-              type="number"
+              type="text"
               name="zipcode"
               value={zipCode}
               className="zipcodeInput"
