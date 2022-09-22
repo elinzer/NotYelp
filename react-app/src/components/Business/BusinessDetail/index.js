@@ -36,14 +36,11 @@ function BusinessDetail() {
   const history = useHistory();
 
   useEffect(() => {
-    if (business && !isLoaded) {
-      setIsLoaded(true);
-    } else if (!business && !isLoaded) {
-      dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
-    }
+    dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
+
     for (let i = 0; i < likes.length; i++) {
       let like = likes[i];
-      if (business.id === like.business_id) {
+      if (businessId === like.business_id) {
         if (like.like === 3) {
           setLoveCount((loveCount) => loveCount + 1);
         } else if (like.like === 2) {
@@ -161,9 +158,15 @@ function BusinessDetail() {
                 {/* Show every Review Card Here */}
                 <div className="reviews-header header">Reviews</div>
                 <div className="reviews-inner-container">
-                  {business?.review_ids.length ? business?.review_ids.map((reviewId) => (
-                    <ReviewCard key={reviewId} review={reviews[reviewId]} />
-                  )) : (<div style={{paddingBottom: '25px'}}>No reviews. Yet...</div>)}
+                  {business?.review_ids.length ? (
+                    business?.review_ids.map((reviewId) => (
+                      <ReviewCard key={reviewId} review={reviews[reviewId]} />
+                    ))
+                  ) : (
+                    <div style={{ paddingBottom: "25px" }}>
+                      No reviews. Yet...
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

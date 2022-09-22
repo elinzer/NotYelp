@@ -13,13 +13,14 @@
   height: 40px;
   cursor: pointer;
 }
-
+.user-review-card {
+  width: 30%;
+}
 .review-cards-inner-container {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  /* align-content: flex-st; */
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 2%;
 }
 
 .my-review {

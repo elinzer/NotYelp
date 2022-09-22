@@ -30,6 +30,12 @@ class Business(db.Model):
 
   def to_dict(self):
 
+    is_open = False
+    if self.open_time <= self.close_time:
+      is_open = self.open_time <= datetime.now().time() <= self.close_time
+    else:
+      is_open = self.open_time <= datetime.now().time() or datetime.now().time() <= self.close_time
+
     return {
       "id": self.id,
       "name": self.name,
@@ -51,6 +57,6 @@ class Business(db.Model):
       "review_ids": [review.id for review in self.reviews],
       "like_ids": [like.id for like in self.likes],
       "menuitem_ids": [menuitem.id for menuitem in self.menuitems],
-      "open_status": self.open_time <= datetime.now().time() <= self.close_time,
+      "open_status": is_open,
       "avg_rating": (sum([review.stars for review in self.reviews]) / len(self.reviews)) if len(self.reviews) > 0 else 0
     }

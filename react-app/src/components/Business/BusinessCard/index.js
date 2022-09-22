@@ -62,8 +62,8 @@ function BusinessCard({ business }) {
             <div className="pl5">
               until{" "}
               {business?.open_status
-                ? business?.format_open
-                : business?.format_close}
+                ? business?.format_close
+                : business?.format_open}
             </div>
           </div>
           <div className="business-card-description">
