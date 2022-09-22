@@ -19,7 +19,9 @@ function SplashPage() {
         </div>
         <div className="main-splash-image">
           {/* probs placeholder idfk we pick tomorrow LOL */}
-          <img src="https://s3-media0.fl.yelpcdn.com/educatorphoto/T3U8OES-w0Pat6ijyqf8pg/o.jpg" />
+          <div className="main-splash-image-inner">
+            <img src="https://s3-media0.fl.yelpcdn.com/educatorphoto/T3U8OES-w0Pat6ijyqf8pg/o.jpg" />
+          </div>
         </div>
         <div className="splash-container flex flex-wrap">
           {businesses.map((business) => (

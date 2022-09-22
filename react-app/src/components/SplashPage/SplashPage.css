@@ -11,16 +11,17 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: relative;
   z-index: 5;
 }
 
-.main-splash-image > img {
+.main-splash-image-inner > img {
   width: 100%;
   height: 800px;
   z-index: -1;
 }
 
-.main-splash-image::after {
+.main-splash-image-inner::after {
   background: linear-gradient(180deg, #0006, #0000001a 5%);
   bottom: 0;
   content: "";
