@@ -13,7 +13,7 @@ class Business(db.Model):
   phone = db.Column("phone", db.String, nullable=False)
   state = db.Column("state", db.String, nullable=False)
   city = db.Column("city", db.String, nullable=False)
-  zipcode = db.Column("zipcode", db.Integer, nullable=False)
+  zipcode = db.Column("zipcode", db.String, nullable=False)
   open_time = db.Column("open_time", db.Time, nullable=False)
   close_time = db.Column("close_time", db.Time, nullable=False)
   preview_image = db.Column("preview_image", db.String, nullable=False)

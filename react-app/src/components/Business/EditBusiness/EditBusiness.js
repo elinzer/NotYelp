@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { editBusiness, getBusinessByid } from "../../../store/business";
 import { maskPhoneNumber, returnDigitsOnly } from "../../../helpers/phoneMask";
 const imageURLRegex = /\.(jpeg|jpg|png)$/;
-
+const zipCodeRegex = /^\d{5}$/;
+const states = require("us-state-converter");
 function BusinessEditForm({ closeModal }) {
   const { businessId } = useParams();
   const dispatch = useDispatch();
@@ -34,12 +35,13 @@ function BusinessEditForm({ closeModal }) {
   }
   useEffect(() => {
     const errors = [];
-    if (!previewUrl.match(imageURLRegex)) {
-      errors.push(
-        "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
-      );
+    if (name.length > 25) {
+      errors.push("name: Name must be less than 25 characters");
     }
-    if (String(zipCode).length !== 5) {
+    if (name.length < 5) {
+      errors.push("name: Name must be at least 5 characters");
+    }
+    if (!zipCode.match(zipCodeRegex)) {
       errors.push("zipcode: Zipcode must be 5 digits");
     }
     if (address.length < 6) {
@@ -48,17 +50,21 @@ function BusinessEditForm({ closeModal }) {
     if (address.length > 50) {
       errors.push("address: Address must be less than 50 characters");
     }
-    if (state.length > 15) {
-      errors.push("state: State must be less than 15 characters");
+    if (String(returnDigitsOnly(phone)).length !== 10) {
+      errors.push("phone: Phone must be 10 numbers");
     }
     if (city.length > 35) {
       errors.push("city: City must be less than 35 characters");
     }
+    if (city.length < 5) {
+      errors.push("city: City must be at least 5 characters");
+    }
     setErrors(errors);
-  }, [previewUrl, zipCode, address, url, city, state]);
+  }, [previewUrl, zipCode, address, url, city]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("states:", states());
     setIsSubmitted(true);
     setErrors([]);
     const businessData = {
@@ -147,20 +153,24 @@ function BusinessEditForm({ closeModal }) {
           />
         </label>
         <label>
-          <input
-            className="editState"
-            type="text"
-            placeholder="State"
+          <select
+            className="state-select"
             value={state}
             onChange={(e) => setState(e.target.value)}
             required
-          />
+          >
+            {states().map((state, idx) => (
+              <option key={idx} value={state.name}>
+                {state.name}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           <input
             className="editZipCode"
-            type="number"
-            placeholder="ZipCode"
+            type="text"
+            placeholder="Zip Code"
             value={zipCode}
             onChange={(e) => setZipCode(e.target.value)}
             required

@@ -27,7 +27,7 @@ def upgrade():
     sa.Column('phone', sa.String(), nullable=False),
     sa.Column('state', sa.String(), nullable=False),
     sa.Column('city', sa.String(), nullable=False),
-    sa.Column('zipcode', sa.Integer(), nullable=False),
+    sa.Column('zipcode', sa.String(), nullable=False),
     sa.Column('open_time', sa.Time(), nullable=False),
     sa.Column('close_time', sa.Time(), nullable=False),
     sa.Column('preview_image', sa.String(), nullable=False),

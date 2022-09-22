@@ -37,3 +37,9 @@
 .icon_svg {
   fill: white;
 }
+
+.loginModalBut:hover,
+.signupModalBut:hover {
+  background-color: rgb(230, 230, 230, 0.3);
+  box-shadow: 4px 6px 6px rgb(230, 230, 230, 0.8);
+}
