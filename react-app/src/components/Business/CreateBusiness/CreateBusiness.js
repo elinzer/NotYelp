@@ -60,10 +60,15 @@ function BusinessCreateForm({ closeModal }) {
     // if (String(zipCode).length !== 5) {
     //   errors.push("zipcode: Zipcode must be 5 digits");
     // }
+    if (name.length > 25) {
+      errors.push("name: Name must be less than 25 characters");
+    }
+    if (name.length < 5) {
+      errors.push("name: Name must be at least 5 characters");
+    }
     if (zipCode && !zipCode.match(zipCodeRegex)) {
       errors.push("zipcode: Zipcode must be 5 digits");
     }
-
     if (address.length < 6) {
       errors.push("address: Address must be at least 6 characters");
     }
