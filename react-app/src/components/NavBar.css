@@ -13,6 +13,11 @@
 .logo {
   height: 65px;
   width: 120px;
+  transition: scale 0.25s ease-in-out;
+}
+
+.logo:hover {
+  scale: 1.1;
 }
 
 .search-input {
