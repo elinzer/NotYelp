@@ -47,25 +47,25 @@ def seeded_businesses():
       owner_id=4, name="Dellarocco's Brick Oven Pizza", address="214 Hicks St ", description="Famous for serving authentic wood fired Neapolitan pizzas", url="https://www.dellaroccospizza.com/", phone='7188581010', state="New York", city="New York", zipcode=10003, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/RGsip2vQXryVUbOrXfYBkQ/o.jpg"
     ),
     Business(
-      owner_id=5, name="Giordano's", address="130 E Randolph", description="Famous Stuffed Pizza", url="http://giordanos.com", phone='3126161200', state="Chicago", city="Randolph", zipcode=60601, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/OalRgOyfThOHIqY5A83_fQ/o.jpg"
+      owner_id=5, name="Giordano's", address="130 E Randolph", description="Famous Stuffed Pizza", url="http://giordanos.com", phone='3126161200', state="Illinois", city="Chicago", zipcode=60601, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/OalRgOyfThOHIqY5A83_fQ/o.jpg"
     ),
     Business(
-      owner_id=1, name="Coalfire Pizza", address="1321 W Grand Ave", description="Coalfire is the best pizza in Chicago!", url="https://coalfirechicago.com/", phone='3122262625', state="Chicago", city="Illinois", zipcode=60642, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/m6u0tAqXG27uwft3YElUxA/o.jpg"
+      owner_id=1, name="Coalfire Pizza", address="1321 W Grand Ave", description="Coalfire is the best pizza in Chicago!", url="https://coalfirechicago.com/", phone='3122262625', state="Illinois", city="Chicago", zipcode=60642, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/m6u0tAqXG27uwft3YElUxA/o.jpg"
     ),
     Business(
-      owner_id=2, name="Lou Malnati's Pizzeria", address="439 N Wells St", description="Best Pizza around town!", url="https://www.loumalnatis.com/chicago-river-north", phone='3128289800', state="Chicago", city="Illinois", zipcode=60654, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/FXGmfo6Dv7Wb4RDrSOYJrg/o.jpg"
+      owner_id=2, name="Lou Malnati's Pizzeria", address="439 N Wells St", description="Best Pizza around town!", url="https://www.loumalnatis.com/chicago-river-north", phone='3128289800', state="Illinois", city="Chicago", zipcode=60654, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/FXGmfo6Dv7Wb4RDrSOYJrg/o.jpg"
     ),
     Business(
-      owner_id=3, name="Robert's Pizza & Dough Company", address="465 N McClurg", description="A savory slice of pizza heaven.", url="https://www.robertspizzacompany.com/", phone='3122651328', state="Chicago", city="Illinois", zipcode=60611, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/PUOTRI7rptKfiwY3XVB8Cw/o.jpg"
+      owner_id=3, name="Robert's Pizza & Dough Company", address="465 N McClurg", description="A savory slice of pizza heaven.", url="https://www.robertspizzacompany.com/", phone='3122651328', state="Illinois", city="Chicago", zipcode=60611, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/PUOTRI7rptKfiwY3XVB8Cw/o.jpg"
     ),
     Business(
-      owner_id=4, name="Stix n Brix Wood Fired Pizza", address="218 W 33rd St", description="Wood fired pizza restaurant", url="https://stixnbrix33.com/", phone='3122650219', state="Chicago", city="Illinois", zipcode=60616, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/m1wMSVQQ5hzTbNj7OMQKGg/o.jpg"
+      owner_id=4, name="Stix n Brix Wood Fired Pizza", address="218 W 33rd St", description="Wood fired pizza restaurant", url="https://stixnbrix33.com/", phone='3122650219', state="Illinois", city="Chicago", zipcode=60616, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/m1wMSVQQ5hzTbNj7OMQKGg/o.jpg"
     ),
     Business(
-      owner_id=5, name="Paulie Gee's Logan Square", address="2451 N Milwaukee Ave", description="woodfired neo-Neapolitan and Detroit inspired.", url="https://pauliegee.com/logan-square", phone='7733601072', state="Chicago", city="Illinois", zipcode=60647, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/1D2yidgGT53BiJYoFzNy9g/o.jpg"
+      owner_id=5, name="Paulie Gee's Logan Square", address="2451 N Milwaukee Ave", description="woodfired neo-Neapolitan and Detroit inspired.", url="https://pauliegee.com/logan-square", phone='7733601072', state="Illinois", city="Chicago", zipcode=60647, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/1D2yidgGT53BiJYoFzNy9g/o.jpg"
     ),
     Business(
-      owner_id=1, name="Bonci", address="161 N Sangamon St", description="Grab a quick slice of pizza", url="https://bonciusa.com/", phone='3122434016', state="Chicago", city="Illinois", zipcode=60607, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/C_FcbQ_oq_oTHLdNYPUpfg/o.jpg"
+      owner_id=1, name="Bonci", address="161 N Sangamon St", description="Grab a quick slice of pizza", url="https://bonciusa.com/", phone='3122434016', state="Illinois", city="Chicago", zipcode=60607, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/C_FcbQ_oq_oTHLdNYPUpfg/o.jpg"
     ),
     Business(
       owner_id=2, name="Little Rendezvous", address="256 Pratt St", description="coal-fired brick oven pizza", url="https://thelittlevous.com/", phone='2032350110', state="Connecticut", city="Meriden", zipcode=13221, open_time=time(hour=8), close_time=time(hour=17), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/rFvx1PEYldbioVduSPU63A/o.jpg"
