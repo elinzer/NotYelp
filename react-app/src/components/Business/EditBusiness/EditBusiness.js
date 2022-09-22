@@ -5,7 +5,7 @@ import { editBusiness, getBusinessByid } from "../../../store/business";
 import { maskPhoneNumber, returnDigitsOnly } from "../../../helpers/phoneMask";
 const imageURLRegex = /\.(jpeg|jpg|png)$/;
 const zipCodeRegex = /^\d{5}$/;
-
+const states = require("us-state-converter");
 function BusinessEditForm({ closeModal }) {
   const { businessId } = useParams();
   const dispatch = useDispatch();
@@ -53,26 +53,18 @@ function BusinessEditForm({ closeModal }) {
     if (String(returnDigitsOnly(phone)).length !== 10) {
       errors.push("phone: Phone must be 10 numbers");
     }
-    if (state.length > 15) {
-      errors.push("state: State must be less than 15 characters");
-    }
     if (city.length > 35) {
       errors.push("city: City must be less than 35 characters");
     }
     if (city.length < 5) {
       errors.push("city: City must be at least 5 characters");
     }
-    if (state.length > 15) {
-      errors.push("state: State must be less than 15 characters");
-    }
-    if (state.length < 5) {
-      errors.push("state: State must be at least 5 characters");
-    }
     setErrors(errors);
-  }, [previewUrl, zipCode, address, url, city, state]);
+  }, [previewUrl, zipCode, address, url, city]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("states:", states());
     setIsSubmitted(true);
     setErrors([]);
     const businessData = {
@@ -161,14 +153,17 @@ function BusinessEditForm({ closeModal }) {
           />
         </label>
         <label>
-          <input
-            className="editState"
-            type="text"
-            placeholder="State"
+          <select
             value={state}
             onChange={(e) => setState(e.target.value)}
             required
-          />
+          >
+            {states().map((state, idx) => (
+              <option key={idx} value={state.name}>
+                {state.name}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           <input
