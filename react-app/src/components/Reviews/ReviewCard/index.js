@@ -9,7 +9,6 @@ import defaultImage from "../../../imgs/notyelpDefault.png";
 import FooterAbout from "../../FooterLinks/Footer";
 
 function ReviewCard({ review }) {
-  console.log(review)
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const handleDeleteReview = async (e, id) => {

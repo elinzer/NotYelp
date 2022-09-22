@@ -18,8 +18,6 @@ const EditReview = ({ rev, closeModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("business_id", business_id);
-    console.log("rev", rev);
     const info = {
       user_id: sessionUser.id,
       stars: stars / 20,
