@@ -22,9 +22,6 @@ function BusinessDetail() {
   const [closeTime, setCloseTime] = useState("");
   const [openStatus, setOpenStatus] = useState(false);
   const [curTime, setCurTime] = useState(new Date());
-  const [loveCount, setLoveCount] = useState(0);
-  const [okayCount, setOkayCount] = useState(0);
-  const [trashCount, setTrashCount] = useState(0);
   const { businessId } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -37,20 +34,27 @@ function BusinessDetail() {
 
   useEffect(() => {
     dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
+  }, []);
 
-    for (let i = 0; i < likes.length; i++) {
-      let like = likes[i];
-      if (businessId === like.business_id) {
-        if (like.like === 3) {
-          setLoveCount((loveCount) => loveCount + 1);
-        } else if (like.like === 2) {
-          setOkayCount((okayCount) => okayCount + 1);
-        } else if (like.like === 1) {
-          setTrashCount((trashCount) => trashCount + 1);
-        }
+  let loveCount = 0;
+  let okayCount = 0;
+  let trashCount = 0;
+
+  for (let i = 0; i < likes.length; i++) {
+    let like = likes[i];
+    console.log(like)
+    if (businessId == like.business_id) {
+      console.log('do u get in here')
+      if (like.like === 3) {
+        loveCount += 1;
+      } else if (like.like === 2) {
+        okayCount += 1;
+      } else if (like.like === 1) {
+        trashCount += 1;
       }
     }
-  }, []);
+  }
+
 
   const handleDelete = async (e) => {
     e.preventDefault();
