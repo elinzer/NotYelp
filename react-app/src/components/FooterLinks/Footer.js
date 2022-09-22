@@ -3,8 +3,6 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function FooterAbout() {
-  // const user = useSelector((state) => state.session.user);
-
   return (
     <footer className="footer">
       <div className="footer-container">

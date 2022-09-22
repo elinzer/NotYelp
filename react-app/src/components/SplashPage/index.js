@@ -7,11 +7,8 @@ import headerImg from "../../imgs/notyelpheader.png";
 function SplashPage() {
   return (
     <div className="main-splash-container">
-      <div className="splash-page-details"></div>
-      <div className="main-splash-image">
-        <div className="main-splash-image-inner">
-          <img src={headerImg} />
-        </div>
+      <div className="main-splash-image-inner">
+        <img src={headerImg} />
       </div>
       <div className="businesses-button-container">
         <button className="businesses-button">

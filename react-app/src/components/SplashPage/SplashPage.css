@@ -1,7 +1,4 @@
 .main-splash-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
   position: relative;
   max-width: 100vw;
@@ -10,7 +7,7 @@
 .businesses-button-container {
   position: absolute;
   top: 60%;
-  left: 7%;
+  left: 8%;
   z-index: 999;
 }
 
@@ -19,6 +16,7 @@
   padding: 10px;
   border: 1px solid white;
   border-radius: 5px;
+  z-index: 99999;
 }
 
 .businesses-link {
@@ -26,18 +24,17 @@
   color: white;
 }
 
-.main-splash-image {
-  width: 100%;
-  height: 100%;
+.main-splash-image-inner {
+  width: 100vw;
+  height: 82vh;
+  overflow: hidden;
   object-fit: cover;
-  position: relative;
-  z-index: 5;
 }
 
 .main-splash-image-inner > img {
   width: 100%;
-  height: 800px;
-  z-index: -1;
+  height: 100%;
+  object-fit: cover;
 }
 
 .splash-container {
