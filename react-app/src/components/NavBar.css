@@ -11,8 +11,8 @@
 } */
 
 .logo {
-  height: 65px;
-  width: 120px;
+  height: 70px;
+  width: 140px;
   transition: scale 0.25s ease-in-out;
 }
 
@@ -23,9 +23,15 @@
 .search-input {
   width: 40vw;
   padding: 16px;
+  border-right: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
+
 .search-button {
-  border: none;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
   border-radius: 0 4px 4px 0;
   box-sizing: border-box;
   color: white;
