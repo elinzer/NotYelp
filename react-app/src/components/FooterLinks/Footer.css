@@ -41,3 +41,11 @@
   width: 100%;
   max-width: 1200px;
 }
+
+.dev-links > a {
+  transition: scale 0.25s ease-in-out;
+}
+
+.dev-links > a:hover {
+  scale: 1.3;
+}
