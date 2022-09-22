@@ -38,7 +38,7 @@
   box-shadow: 0 0 10px #0000001a;
 }
 
-a:hover {
+.footer > a:hover {
   background-color: #ebebeb;
   box-shadow: 0 0 10px #0000001a;
 }
@@ -52,10 +52,10 @@ a:hover {
   max-width: 1200px;
 }
 
-.dev-links > a {
+.footer a {
   transition: scale 0.25s ease-in-out;
 }
 
-.dev-links > a:hover {
+.footer a:hover {
   scale: 1.3;
 }
