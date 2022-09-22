@@ -121,6 +121,7 @@ export default function businessesReducer(state = {}, action) {
   let newState = { ...state };
   switch (action.type) {
     case GET_ALL:
+      newState = {};
       action.payload.businesses.forEach((business) => {
         newState[business.id] = business;
       });
