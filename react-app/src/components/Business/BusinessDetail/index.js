@@ -13,7 +13,6 @@ import ReviewCard from "../../Reviews/ReviewCard";
 import DisplayStars from "../../Reviews/DisplayStars";
 import LikeComponent from "../../Likes";
 import defaultPreview from "../../../imgs/notyelpbusiness.png";
-import FooterAbout from "../../FooterLinks/Footer";
 const states = require("us-state-converter");
 
 function BusinessDetail() {
@@ -23,6 +22,9 @@ function BusinessDetail() {
   const [closeTime, setCloseTime] = useState("");
   const [openStatus, setOpenStatus] = useState(false);
   const [curTime, setCurTime] = useState(new Date());
+  const [loveCount, setLoveCount] = useState(0);
+  const [okayCount, setOkayCount] = useState(0);
+  const [trashCount, setTrashCount] = useState(0);
   const { businessId } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -32,33 +34,32 @@ function BusinessDetail() {
   const reviews = useSelector((state) => state.reviews);
   const items = useSelector((state) => state.items);
   const history = useHistory();
-  if (business && !isLoaded) {
-    setIsLoaded(true);
-  } else if (!business && !isLoaded) {
-    dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
-  }
-  //get specific types of like for the business
-  let loveCount = 0;
-  let okayCount = 0;
-  let trashCount = 0;
 
-  for (let i = 0; i < likes.length; i++) {
-    let like = likes[i];
-    if (business.id === like.business_id) {
-      if (like.like === 3) {
-        loveCount += 1;
-      } else if (like.like === 2) {
-        okayCount += 1;
-      } else if (like.like === 1) {
-        trashCount += 1;
+  useEffect(() => {
+    if (business && !isLoaded) {
+      setIsLoaded(true);
+    } else if (!business && !isLoaded) {
+      dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
+    }
+    for (let i = 0; i < likes.length; i++) {
+      let like = likes[i];
+      if (business.id === like.business_id) {
+        if (like.like === 3) {
+          setLoveCount((loveCount) => loveCount + 1);
+        } else if (like.like === 2) {
+          setOkayCount((okayCount) => okayCount + 1);
+        } else if (like.like === 1) {
+          setTrashCount((trashCount) => trashCount + 1);
+        }
       }
     }
-  }
+  }, []);
 
-  const handleDelete = (e) => {
+  const handleDelete = async (e) => {
     e.preventDefault();
-    dispatch(deleteBusinessById(businessId));
-    history.push("/");
+    setIsLoaded(false);
+    await dispatch(deleteBusinessById(businessId));
+    await history.push("/");
   };
 
   const alreadyReviewed = () => {
@@ -84,7 +85,7 @@ function BusinessDetail() {
             <div className="details">
               <div className="details-name">{business?.name}</div>
               <div className="details-review-data flex">
-                <DisplayStars rating={business.avg_rating} />
+                <DisplayStars rating={business?.avg_rating} />
                 <div className="review-count pl10">
                   {business?.review_ids.length == 1 ? (
                     <div>{business?.review_ids.length} review</div>
@@ -160,9 +161,9 @@ function BusinessDetail() {
                 {/* Show every Review Card Here */}
                 <div className="reviews-header header">Reviews</div>
                 <div className="reviews-inner-container">
-                  {business?.review_ids.map((reviewId) => (
+                  {business?.review_ids.length ? business?.review_ids.map((reviewId) => (
                     <ReviewCard key={reviewId} review={reviews[reviewId]} />
-                  ))}
+                  )) : (<div style={{paddingBottom: '25px'}}>No reviews. Yet...</div>)}
                 </div>
               </div>
             </div>

@@ -28,9 +28,7 @@ def search_businesses():
 # Get Business by ID
 @business_routes.route("/<int:id>")
 def get_business(id):
-    print("BUSINESS ID:", id)
     business = Business.query.get(id)
-    print("BUSINESS:", business.to_dict())
     return business.to_dict()
 
 
@@ -55,6 +53,7 @@ def create_business():
             close_time=form.close_time.data,
             preview_image=form.preview_image.data,
         )
+        print("ZIPCODE DATA:", form.zipcode.data)
         db.session.add(new_business)
         db.session.commit()
         return jsonify(new_business.to_dict()), 200
@@ -83,6 +82,7 @@ def edit_business(business_id):
             business.open_time = form.open_time.data
             business.close_time = form.close_time.data
             business.preview_image = form.preview_image.data
+            print("ZIPCODE DATA:", form.zipcode.data)
             db.session.commit()
             return jsonify(business.to_dict()), 200
         else:

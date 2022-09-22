@@ -21,7 +21,8 @@ function BusinessCreateForm({ closeModal }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
   const history = useHistory();
-
+  const zipCodeRegex = /^\d{5}$/;
+  const states = require("us-state-converter");
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitted(true);
@@ -56,7 +57,14 @@ function BusinessCreateForm({ closeModal }) {
         "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
       );
     }
-    if (String(zipCode).length !== 5) {
+
+    if (name.length > 25) {
+      errors.push("name: Name must be less than 25 characters");
+    }
+    if (name.length < 5) {
+      errors.push("name: Name must be at least 5 characters");
+    }
+    if (!zipCode.match(zipCodeRegex)) {
       errors.push("zipcode: Zipcode must be 5 digits");
     }
     if (address.length < 6) {
@@ -65,14 +73,18 @@ function BusinessCreateForm({ closeModal }) {
     if (address.length > 50) {
       errors.push("address: Address must be less than 50 characters");
     }
-    if (state.length > 15) {
-      errors.push("state: State must be less than 15 characters");
+    if (String(returnDigitsOnly(phone)).length !== 10) {
+      errors.push("phone: Phone must be 10 numbers");
     }
     if (city.length > 35) {
       errors.push("city: City must be less than 35 characters");
     }
+    if (city.length < 5) {
+      errors.push("city: City must be at least 5 characters");
+    }
+
     setErrors(errors);
-  }, [previewUrl, zipCode, address, url, city, state]);
+  }, [previewUrl, zipCode, address, url, city, phone, name]);
 
   return (
     <div className="createBusinessBox">
@@ -146,22 +158,24 @@ function BusinessCreateForm({ closeModal }) {
               required
             />
           </div>
-          <div>
-            <label htmlFor="state" />
-            <input
-              type="text"
-              name="state"
+          <div className="state-select-container">
+            <select
+              className="state-select"
               value={state}
-              className="stateInput"
-              placeholder="State"
               onChange={(e) => setState(e.target.value)}
               required
-            />
+            >
+              {states().map((state, idx) => (
+                <option key={idx} value={state.name}>
+                  {state.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
             <label htmlFor="zipcode" />
             <input
-              type="number"
+              type="text"
               name="zipcode"
               value={zipCode}
               className="zipcodeInput"
