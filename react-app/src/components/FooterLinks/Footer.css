@@ -52,10 +52,10 @@ a:hover {
   max-width: 1200px;
 }
 
-.dev-links > a {
+.footer a {
   transition: scale 0.25s ease-in-out;
 }
 
-.dev-links > a:hover {
+.footer a:hover {
   scale: 1.3;
 }
