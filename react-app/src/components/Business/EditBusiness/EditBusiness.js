@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { editBusiness, getBusinessByid } from "../../../store/business";
 import { maskPhoneNumber, returnDigitsOnly } from "../../../helpers/phoneMask";
 const imageURLRegex = /\.(jpeg|jpg|png)$/;
-const zipCodeRegex = '/(^\d{5}$)';
+const zipCodeRegex = /^\d{5}$/;
 
 function BusinessEditForm({ closeModal }) {
   const { businessId } = useParams();
@@ -43,7 +43,9 @@ function BusinessEditForm({ closeModal }) {
     // if (String(zipCode).length !== 5) {
     //   errors.push("zipcode: Zipcode must be 5 digits");
     // }
-    if (!String(zipCode).match(zipCodeRegex)) {
+    if (!zipCode.match(zipCodeRegex)) {
+      console.log("ZICODE MATCH FAILED", zipCode.match(zipCodeRegex));
+      console.log("zipCode", zipCode);
       errors.push("zipcode: Zipcode must be 5 digits");
     }
     if (address.length < 6) {
@@ -80,6 +82,10 @@ function BusinessEditForm({ closeModal }) {
       preview_image: previewUrl,
     };
     const data = await dispatch(editBusiness(businessData, business.id));
+    console.log("EDIT BUSINESS DATA", data);
+    console.log("DATA.ERRORS??", data.errors);
+    console.log("ERRORS:", errors);
+    console.log("ERRORS.LENGTH::", errors.length);
     if (data && data.errors) {
       setErrors(data.errors);
     } else if (data && !data.errors && !errors.length) {
@@ -163,8 +169,8 @@ function BusinessEditForm({ closeModal }) {
         <label>
           <input
             className="editZipCode"
-            type="number"
-            placeholder="ZipCode"
+            type="text"
+            placeholder="Zip Code"
             value={zipCode}
             onChange={(e) => setZipCode(e.target.value)}
             required
