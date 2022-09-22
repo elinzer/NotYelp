@@ -4,7 +4,7 @@
   position: sticky;
   bottom: 0;
   width: 100%;
-  height: 30px;
+  height: 35px;
   align-items: center;
   justify-content: center;
   margin-top: auto;
@@ -59,4 +59,11 @@
 
 .footer a:hover {
   scale: 1.3;
+}
+
+.devTitle {
+  font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+  sans-serif;
+  font-size: 16px;
+  font-weight: 600;
 }

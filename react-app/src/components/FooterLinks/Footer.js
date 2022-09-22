@@ -5,13 +5,13 @@ function FooterAbout() {
     <footer className="footer">
       <div className="footer-container">
         <span>
-          Not Yelp Github
+          <div className="devTitle">Not Yelp Github</div>
           <a href="https://github.com/elinzer/NotYelp" id="repo" target="_blank">
             <i className="fab fa-github fa-2xl" />
           </a>
         </span>
         <span>
-          Hazel Guzzetti
+          <div className="devTitle">Hazel Guzzetti</div>
           <div className="dev-links">
             <a href="https://github.com/hazeluwuz" target="_blank">
               <i className="fab fa-github fa-2xl" />
@@ -22,7 +22,7 @@ function FooterAbout() {
           </div>
         </span>
         <span>
-          Edgar Lee
+          <div className="devTitle">Edgar Lee</div>
           <div className="dev-links">
             <a href="https://github.com/EdgarMLee" target="_blank">
               <i className="fab fa-github fa-2xl" />
@@ -33,7 +33,7 @@ function FooterAbout() {
           </div>
         </span>
         <span>
-          El Linzer
+          <div className="devTitle">El Linzer</div>
           <div className="dev-links">
             <a href="https://github.com/elinzer" target="_blank">
               <i className="fab fa-github fa-2xl" />
@@ -44,7 +44,7 @@ function FooterAbout() {
           </div>
         </span>
         <span>
-          Giordan Maniti
+          <div className="devTitle">Giordan Maniti</div>
           <div className="dev-links">
             <a href="https://github.com/giordanferda" target="_blank">
               <i className="fab fa-github fa-2xl" />
