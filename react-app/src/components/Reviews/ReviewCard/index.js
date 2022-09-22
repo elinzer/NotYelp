@@ -5,7 +5,8 @@ import EditReviewModal from "../EditReviewModal";
 import { deleteReviewById } from "../../../store/review";
 import "./ReviewCard.css";
 import DisplayStars from "../DisplayStars";
-import defaultImage from '../../../imgs/notyelpDefault.png'
+import defaultImage from "../../../imgs/notyelpDefault.png";
+import FooterAbout from "../../FooterLinks/Footer";
 
 function ReviewCard({ review }) {
   console.log(review)

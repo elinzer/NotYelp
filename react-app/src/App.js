@@ -15,6 +15,7 @@ import { getBusinesses } from "./store/business";
 import { getItems } from "./store/item";
 import CurrentUserReviews from "./components/Reviews/CurrentUserReview/CurrentUserReview";
 import SearchPage from "./components/SearchPage";
+import FooterAbout from "./components/FooterLinks/Footer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +59,7 @@ function App() {
           <CurrentUserReviews />
         </ProtectedRoute>
       </Switch>
+      <FooterAbout loaded={loaded} />
     </BrowserRouter>
   );
 }
