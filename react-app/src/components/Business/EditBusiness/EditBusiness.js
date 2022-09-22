@@ -35,12 +35,13 @@ function BusinessEditForm({ closeModal }) {
   }
   useEffect(() => {
     const errors = [];
-    if (!previewUrl.match(imageURLRegex)) {
-      errors.push(
-        "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
-      );
+    if (name.length > 25) {
+      errors.push("name: Name must be less than 25 characters");
     }
-    if (zipCode && !zipCode.match(zipCodeRegex)) {
+    if (name.length < 5) {
+      errors.push("name: Name must be at least 5 characters");
+    }
+    if (!zipCode.match(zipCodeRegex)) {
       errors.push("zipcode: Zipcode must be 5 digits");
     }
     if (address.length < 6) {
@@ -49,11 +50,23 @@ function BusinessEditForm({ closeModal }) {
     if (address.length > 50) {
       errors.push("address: Address must be less than 50 characters");
     }
+    if (String(returnDigitsOnly(phone)).length !== 10) {
+      errors.push("phone: Phone must be 10 numbers");
+    }
     if (state.length > 15) {
       errors.push("state: State must be less than 15 characters");
     }
     if (city.length > 35) {
       errors.push("city: City must be less than 35 characters");
+    }
+    if (city.length < 5) {
+      errors.push("city: City must be at least 5 characters");
+    }
+    if (state.length > 15) {
+      errors.push("state: State must be less than 15 characters");
+    }
+    if (state.length < 5) {
+      errors.push("state: State must be at least 5 characters");
     }
     setErrors(errors);
   }, [previewUrl, zipCode, address, url, city, state]);
