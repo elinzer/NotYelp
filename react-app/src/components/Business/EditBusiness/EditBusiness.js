@@ -64,7 +64,7 @@ function BusinessEditForm({ closeModal }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("states:", states());
+    
     setIsSubmitted(true);
     setErrors([]);
     const businessData = {
