@@ -58,8 +58,8 @@ function BusinessCreateForm({ closeModal }) {
       );
     }
 
-    if (name.length > 25) {
-      errors.push("name: Name must be less than 25 characters");
+    if (name.length > 50) {
+      errors.push("name: Name must be less than 50 characters");
     }
     if (name.length < 5) {
       errors.push("name: Name must be at least 5 characters");
