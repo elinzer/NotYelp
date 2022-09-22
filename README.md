@@ -42,8 +42,8 @@ flask seed all
 ***
 
 # Home Page:
-![image](https://user-images.githubusercontent.com/101891232/191639887-0100d4ac-3dbd-4e54-ba63-d107664ea40a.png)
-![image](https://user-images.githubusercontent.com/101891232/191639912-14ddad2d-8267-4b10-8370-0fccb5ea4d21.png)
+
+![Splash](https://user-images.githubusercontent.com/93215380/191871014-40ad0e94-4044-45bb-9a24-72f26f08209a.PNG)
 
 # Business Details:
 ## Non-Business Owner
