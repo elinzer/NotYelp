@@ -43,7 +43,7 @@ function BusinessEditForm({ closeModal }) {
       errors.push("zipcode: Zipcode must be 5 digits");
     }
     if (address.length < 6) {
-      errors.push("address: Address must be at least 5 characters");
+      errors.push("address: Address must be at least 6 characters");
     }
     if (address.length > 50) {
       errors.push("address: Address must be less than 50 characters");
@@ -60,7 +60,6 @@ function BusinessEditForm({ closeModal }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-    if (errors.length) return null;
     setErrors([]);
     const businessData = {
       owner_id: user.id,
