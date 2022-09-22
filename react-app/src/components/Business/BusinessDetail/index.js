@@ -12,7 +12,8 @@ import "./BusinessDetail.css";
 import ReviewCard from "../../Reviews/ReviewCard";
 import DisplayStars from "../../Reviews/DisplayStars";
 import LikeComponent from "../../Likes";
-import defaultPreview from '../../../imgs/notyelpbusiness.png'
+import defaultPreview from "../../../imgs/notyelpbusiness.png";
+import FooterAbout from "../../FooterLinks/Footer";
 const states = require("us-state-converter");
 
 function BusinessDetail() {
@@ -113,7 +114,7 @@ function BusinessDetail() {
             <img
               className="business-preview-image"
               src={business?.preview_image}
-              onError={(e) => e.target.src = defaultPreview}
+              onError={(e) => (e.target.src = defaultPreview)}
             />
           </div>
         </div>
@@ -121,11 +122,13 @@ function BusinessDetail() {
           <div className="business-details-container flex">
             <div className="business-details">
               <div className="business-actions-container flex">
-                {sessionUser && sessionUser.id !== business?.owner_id && alreadyReviewed() === false && (
-                  <div>
-                    <CreateReviewModal business={business} />
-                  </div>
-                )}
+                {sessionUser &&
+                  sessionUser.id !== business?.owner_id &&
+                  alreadyReviewed() === false && (
+                    <div>
+                      <CreateReviewModal business={business} />
+                    </div>
+                  )}
                 {currentUser && (
                   <div className="EditDeleteBusiness flex">
                     <CreateItemModal businessId={business.id} />

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import DisplayStars from "../../Reviews/DisplayStars";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import defaultPreview from '../../../imgs/notyelpbusiness.png'
+import defaultPreview from "../../../imgs/notyelpbusiness.png";
 
 const states = require("us-state-converter");
 function BusinessCard({ business }) {
@@ -19,8 +19,8 @@ function BusinessCard({ business }) {
             to={`/businesses/${business.id}`}
           >
             <img
-            src={business.preview_image}
-            onError={(e) => e.target.src = defaultPreview}
+              src={business.preview_image}
+              onError={(e) => (e.target.src = defaultPreview)}
             />
           </Link>
 
