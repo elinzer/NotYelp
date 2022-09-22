@@ -8,7 +8,7 @@ function FooterAbout() {
       <div className="footer-container">
         <span>
           GitHub Repository - Not Yelp
-          <a href="https://github.com/elinzer/NotYelp">
+          <a href="https://github.com/elinzer/NotYelp" id="repo">
             <i className="fab fa-github fa-2xl" />
           </a>
         </span>

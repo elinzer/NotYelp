@@ -20,14 +20,17 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
-
+#repo {
+  padding-bottom: 5px;
+}
 .dev-links {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 1rem;
+  padding-bottom: 5px;
 }
 
 .footer-container {
