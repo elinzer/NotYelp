@@ -17,6 +17,7 @@ import CurrentUserReviews from "./components/Reviews/CurrentUserReview/CurrentUs
 import SearchPage from "./components/SearchPage";
 import FooterAbout from "./components/FooterLinks/Footer";
 import BusinessesPage from "./components/Business/BusinessesPage";
+import FourOhFour from "./components/FoF";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -61,6 +62,9 @@ function App() {
         <ProtectedRoute path="/myReviews">
           <CurrentUserReviews />
         </ProtectedRoute>
+        <Route>
+          <FourOhFour />
+        </Route>
       </Switch>
       <FooterAbout loaded={loaded} />
     </BrowserRouter>
