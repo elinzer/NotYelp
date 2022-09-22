@@ -1,24 +1,22 @@
 import "./Footer.css";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 function FooterAbout() {
   return (
     <footer className="footer">
       <div className="footer-container">
         <span>
-          GitHub Repository - Not Yelp
-          <a href="https://github.com/elinzer/NotYelp" id="repo">
+          Not Yelp Github
+          <a href="https://github.com/elinzer/NotYelp" id="repo" target="_blank">
             <i className="fab fa-github fa-2xl" />
           </a>
         </span>
         <span>
           Hazel Guzzetti
           <div className="dev-links">
-            <a href="https://github.com/hazeluwuz">
+            <a href="https://github.com/hazeluwuz" target="_blank">
               <i className="fab fa-github fa-2xl" />
             </a>
-            <a href="https://www.linkedin.com/in/hazel-guzzetti-50445b23b/">
+            <a href="https://www.linkedin.com/in/hazel-guzzetti-50445b23b/" target="_blank">
               <i className="fab fa-linkedin fa-2xl" />
             </a>
           </div>
@@ -26,10 +24,10 @@ function FooterAbout() {
         <span>
           Edgar Lee
           <div className="dev-links">
-            <a href="https://github.com/EdgarMLee">
+            <a href="https://github.com/EdgarMLee" target="_blank">
               <i className="fab fa-github fa-2xl" />
             </a>
-            <a href="https://www.linkedin.com/in/edgar-lee-1357el135/">
+            <a href="https://www.linkedin.com/in/edgar-lee-1357el135/" target="_blank">
               <i className="fab fa-linkedin fa-2xl" />
             </a>
           </div>
@@ -37,10 +35,10 @@ function FooterAbout() {
         <span>
           El Linzer
           <div className="dev-links">
-            <a href="https://github.com/elinzer">
+            <a href="https://github.com/elinzer" target="_blank">
               <i className="fab fa-github fa-2xl" />
             </a>
-            <a href="https://www.linkedin.com/in/elinzer/">
+            <a href="https://www.linkedin.com/in/elinzer/" target="_blank">
               <i className="fab fa-linkedin fa-2xl" />
             </a>
           </div>
@@ -48,10 +46,10 @@ function FooterAbout() {
         <span>
           Giordan Maniti
           <div className="dev-links">
-            <a href="https://github.com/giordanferda">
+            <a href="https://github.com/giordanferda" target="_blank">
               <i className="fab fa-github fa-2xl" />
             </a>
-            <a href="https://www.linkedin.com/in/giordanmaniti/">
+            <a href="https://www.linkedin.com/in/giordanmaniti/" target="_blank">
               <i className="fab fa-linkedin fa-2xl" />
             </a>
           </div>
@@ -60,4 +58,5 @@ function FooterAbout() {
     </footer>
   );
 }
+
 export default FooterAbout;
