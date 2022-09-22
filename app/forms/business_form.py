@@ -4,8 +4,8 @@ from wtforms.validators import DataRequired, ValidationError, URL, Regexp
 from .validators import validate_image, validate_zipcode
 
 def validate_name(form, field):
-  if len(field.data) > 25:
-    raise ValidationError("Name must be less than 25 characters")
+  if len(field.data) > 50:
+    raise ValidationError("Name must be less than 50 characters")
   elif len(field.data) < 5:
     raise ValidationError("Name must be at least 5 characters")
 
