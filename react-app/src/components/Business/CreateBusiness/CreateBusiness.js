@@ -21,6 +21,7 @@ function BusinessCreateForm({ closeModal }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
   const history = useHistory();
+  const zipCodeRegex = '/(^\d{5}$)';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,9 +57,13 @@ function BusinessCreateForm({ closeModal }) {
         "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
       );
     }
-    if (String(zipCode).length !== 5) {
+    // if (String(zipCode).length !== 5) {
+    //   errors.push("zipcode: Zipcode must be 5 digits");
+    // }
+    if (!String(zipCode).match(zipCodeRegex)) {
       errors.push("zipcode: Zipcode must be 5 digits");
     }
+
     if (address.length < 6) {
       errors.push("address: Address must be at least 6 characters");
     }

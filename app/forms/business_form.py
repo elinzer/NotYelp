@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, DecimalField, TimeField
 from wtforms.validators import DataRequired, ValidationError, URL, Regexp
 from .validators import validate_image
+
 def validate_name(form, field):
   if len(field.data) > 25:
     raise ValidationError("Name must be less than 25 characters")
@@ -30,9 +31,10 @@ def validate_city(form, field):
   elif len(field.data) < 5:
     raise ValidationError("City must be greater than 5 characters")
 
-def validate_zipcode(form, field):
-  if len(str(field.data)) != 5:
-    raise ValidationError("Zipcode must be valid")
+# def validate_zipcode(form, field):
+#   zipCodeRegex = '/(^\d{5}$)';
+#   if len(str(field.data)) != 5:
+#     raise ValidationError("Zipcode must be valid")
 
 def validate_time(form, field):
   if (field.data.hour) > 24:
@@ -50,7 +52,7 @@ class BusinessForm(FlaskForm):
   phone = StringField("phone", validators=[DataRequired(), validate_phone])
   state = StringField("State", validators=[DataRequired(), validate_state])
   city = StringField("city", validators=[DataRequired(), validate_city])
-  zipcode = IntegerField("zipcode", validators=[DataRequired(), validate_zipcode])
+  zipcode = IntegerField("zipcode", validators=[DataRequired()])
   open_time = TimeField("open_time", validators=[DataRequired(), validate_time])
   close_time = TimeField("close_time", validators=[DataRequired(), validate_time])
   preview_image = StringField("preview_image", validators=[DataRequired(), validate_image])

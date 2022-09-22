@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { editBusiness, getBusinessByid } from "../../../store/business";
 import { maskPhoneNumber, returnDigitsOnly } from "../../../helpers/phoneMask";
 const imageURLRegex = /\.(jpeg|jpg|png)$/;
+const zipCodeRegex = '/(^\d{5}$)';
 
 function BusinessEditForm({ closeModal }) {
   const { businessId } = useParams();
@@ -39,7 +40,10 @@ function BusinessEditForm({ closeModal }) {
         "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
       );
     }
-    if (String(zipCode).length !== 5) {
+    // if (String(zipCode).length !== 5) {
+    //   errors.push("zipcode: Zipcode must be 5 digits");
+    // }
+    if (!String(zipCode).match(zipCodeRegex)) {
       errors.push("zipcode: Zipcode must be 5 digits");
     }
     if (address.length < 6) {
