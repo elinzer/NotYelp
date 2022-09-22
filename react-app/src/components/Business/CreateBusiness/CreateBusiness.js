@@ -21,7 +21,7 @@ function BusinessCreateForm({ closeModal }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
   const history = useHistory();
-  const zipCodeRegex = '/(^\d{5}$)';
+  const zipCodeRegex = /^\d{5}$/;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,7 +60,7 @@ function BusinessCreateForm({ closeModal }) {
     // if (String(zipCode).length !== 5) {
     //   errors.push("zipcode: Zipcode must be 5 digits");
     // }
-    if (!String(zipCode).match(zipCodeRegex)) {
+    if (zipCode && !zipCode.match(zipCodeRegex)) {
       errors.push("zipcode: Zipcode must be 5 digits");
     }
 

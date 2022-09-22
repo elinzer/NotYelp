@@ -40,12 +40,7 @@ function BusinessEditForm({ closeModal }) {
         "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
       );
     }
-    // if (String(zipCode).length !== 5) {
-    //   errors.push("zipcode: Zipcode must be 5 digits");
-    // }
-    if (!zipCode.match(zipCodeRegex)) {
-      console.log("ZICODE MATCH FAILED", zipCode.match(zipCodeRegex));
-      console.log("zipCode", zipCode);
+    if (zipCode && !zipCode.match(zipCodeRegex)) {
       errors.push("zipcode: Zipcode must be 5 digits");
     }
     if (address.length < 6) {
@@ -82,10 +77,6 @@ function BusinessEditForm({ closeModal }) {
       preview_image: previewUrl,
     };
     const data = await dispatch(editBusiness(businessData, business.id));
-    console.log("EDIT BUSINESS DATA", data);
-    console.log("DATA.ERRORS??", data.errors);
-    console.log("ERRORS:", errors);
-    console.log("ERRORS.LENGTH::", errors.length);
     if (data && data.errors) {
       setErrors(data.errors);
     } else if (data && !data.errors && !errors.length) {
