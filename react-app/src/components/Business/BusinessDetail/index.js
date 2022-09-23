@@ -12,6 +12,7 @@ import "./BusinessDetail.css";
 import ReviewCard from "../../Reviews/ReviewCard";
 import DisplayStars from "../../Reviews/DisplayStars";
 import LikeComponent from "../../Likes";
+import defaultPreview from "../../../imgs/notyelpbusiness.png";
 const states = require("us-state-converter");
 
 function BusinessDetail() {
@@ -30,47 +31,18 @@ function BusinessDetail() {
   const reviews = useSelector((state) => state.reviews);
   const items = useSelector((state) => state.items);
   const history = useHistory();
-  if (business && !isLoaded) {
-    setIsLoaded(true);
-  } else if (!business && !isLoaded) {
-    dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
-  }
 
   useEffect(() => {
-    let openTimeDate = new Date();
-    let closeTimeDate = new Date();
-    openTimeDate.setHours(business?.open_time.split(":")[0]);
-    openTimeDate.setMinutes(business?.open_time.split(":")[1]);
-    closeTimeDate.setHours(business?.close_time.split(":")[0]);
-    closeTimeDate.setMinutes(business?.close_time.split(":")[1]);
-    setOpenTime(
-      openTimeDate.toLocaleTimeString("en-US", {
-        timeStyle: "short",
-      })
-    );
-    setCloseTime(
-      closeTimeDate.toLocaleTimeString([], {
-        timeStyle: "short",
-      })
-    );
-    if (
-      curTime.valueOf() > openTimeDate.valueOf() &&
-      curTime.valueOf() < closeTimeDate.valueOf()
-    ) {
-      setOpenStatus(true);
-    } else {
-      setOpenStatus(false);
-    }
-  }, [business]);
+    dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
+  }, []);
 
-  //get specific types of like for the business
   let loveCount = 0;
   let okayCount = 0;
   let trashCount = 0;
 
   for (let i = 0; i < likes.length; i++) {
     let like = likes[i];
-    if (business.id === like.business_id) {
+    if (businessId == like.business_id) {
       if (like.like === 3) {
         loveCount += 1;
       } else if (like.like === 2) {
@@ -81,10 +53,12 @@ function BusinessDetail() {
     }
   }
 
-  const handleDelete = (e) => {
+
+  const handleDelete = async (e) => {
     e.preventDefault();
-    dispatch(deleteBusinessById(businessId));
-    history.push("/");
+    setIsLoaded(false);
+    await dispatch(deleteBusinessById(businessId));
+    await history.push("/");
   };
 
   const alreadyReviewed = () => {
@@ -110,7 +84,7 @@ function BusinessDetail() {
             <div className="details">
               <div className="details-name">{business?.name}</div>
               <div className="details-review-data flex">
-                <DisplayStars rating={business.avg_rating} />
+                <DisplayStars rating={business?.avg_rating} />
                 <div className="review-count pl10">
                   {business?.review_ids.length == 1 ? (
                     <div>{business?.review_ids.length} review</div>
@@ -140,6 +114,7 @@ function BusinessDetail() {
             <img
               className="business-preview-image"
               src={business?.preview_image}
+              onError={(e) => (e.target.src = defaultPreview)}
             />
           </div>
         </div>
@@ -147,11 +122,13 @@ function BusinessDetail() {
           <div className="business-details-container flex">
             <div className="business-details">
               <div className="business-actions-container flex">
-                {alreadyReviewed() === false && sessionUser && (
-                  <div>
-                    <CreateReviewModal business={business} />
-                  </div>
-                )}
+                {sessionUser &&
+                  sessionUser.id !== business?.owner_id &&
+                  alreadyReviewed() === false && (
+                    <div>
+                      <CreateReviewModal business={business} />
+                    </div>
+                  )}
                 {currentUser && (
                   <div className="EditDeleteBusiness flex">
                     <CreateItemModal businessId={business.id} />
@@ -183,9 +160,15 @@ function BusinessDetail() {
                 {/* Show every Review Card Here */}
                 <div className="reviews-header header">Reviews</div>
                 <div className="reviews-inner-container">
-                  {business?.review_ids.map((reviewId) => (
-                    <ReviewCard key={reviewId} review={reviews[reviewId]} />
-                  ))}
+                  {business?.review_ids.length ? (
+                    business?.review_ids.map((reviewId) => (
+                      <ReviewCard key={reviewId} review={reviews[reviewId]} />
+                    ))
+                  ) : (
+                    <div style={{ paddingBottom: "25px" }}>
+                      No reviews. Yet...
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

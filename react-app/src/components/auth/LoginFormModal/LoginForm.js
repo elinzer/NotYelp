@@ -7,11 +7,13 @@ const LoginForm = ({ closeModal }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   const onLogin = async (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
@@ -29,50 +31,57 @@ const LoginForm = ({ closeModal }) => {
   };
 
   return (
-    <form onSubmit={onLogin} className="loginBox">
-      <div className="loginTitle">Login</div>
-      <div className="loginErrors">
-        {errors.map((error, ind) => (
-          <div key={ind} className="errors">
-            {error.split(": ")[1]}
+    <form onSubmit={onLogin}>
+      <div className="loginBox">
+        <div className="loginTitle">Login</div>
+        <div className="signupErrors">
+          {isSubmitted &&
+            errors.map((error, ind) => (
+              <div key={ind} className="errors">
+                {error.split(": ")[1]}
+              </div>
+            ))}
+        </div>
+        <div className="input-container">
+          <div className="inputItem">
+            <input
+              // name="email"
+              type="text"
+              placeholder=" "
+              className="emailInput"
+              value={email}
+              onChange={updateEmail}
+              required
+            />
+            <label htmlFor="Email">Email</label>
           </div>
-        ))}
+          <div className="inputItem">
+            <input
+              // name="password"
+              type="password"
+              placeholder=" "
+              className="passwordInput"
+              value={password}
+              required
+              onChange={updatePassword}
+            />
+            <label htmlFor="password">Password</label>
+          </div>
+          <button type="submit" className="submitLogin">
+            Login
+          </button>
+          <button
+            onClick={() => {
+              setEmail("demo@aa.io");
+              setPassword("password");
+            }}
+            type="submit"
+            className="submitDemo"
+          >
+            Demo Login
+          </button>
+        </div>
       </div>
-      <div>
-        <label htmlFor="Email" />
-        <input
-          // name="email"
-          type="text"
-          placeholder="Email"
-          className="emailInput"
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor="password" />
-        <input
-          // name="password"
-          type="password"
-          placeholder="Password"
-          className="passwordInput"
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type="submit" className="submitLogin">
-          Login
-        </button>
-      </div>
-      <button
-        onClick={() => {
-          setEmail("demo@aa.io");
-          setPassword("password");
-        }}
-        type="submit"
-        className="submitDemo"
-      >
-        Demo Login
-      </button>
     </form>
   );
 };

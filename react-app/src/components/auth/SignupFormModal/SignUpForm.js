@@ -17,7 +17,6 @@ const SignUpForm = ({ closeModal }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-    if (errors.length) return null;
     if (password === repeatPassword) {
       setErrors([]);
       const data = await dispatch(
@@ -29,17 +28,23 @@ const SignUpForm = ({ closeModal }) => {
         closeModal();
       }
     } else {
-      return setErrors(["Passwords do not match"]);
+      return setErrors(["password: Passwords do not match"]);
     }
   };
 
-  useEffect(() => {
-    const errors = [];
-    if (!profileImage.match(imageURLRegex)) {
-      errors.push("Preview url must end in valid img extension [png/jpg/jpeg]");
-    }
-    setErrors(errors);
-  }, [profileImage]);
+  // useEffect(() => {
+  //   const errors = [];
+  //   if (!profileImage.match(imageURLRegex)) {
+  //     errors.push(
+  //       "preview_img: Image must end in .png/.jpg/.jpeg"
+  //     );
+  //   }
+  //   if (password !== repeatPassword) {
+  //     errors.push("password: Passwords do not match");
+  //   }
+  //   console.log("Errors:", errors);
+  //   setErrors(errors);
+  // }, [profileImage, password, repeatPassword]);
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -66,70 +71,79 @@ const SignUpForm = ({ closeModal }) => {
   }
 
   return (
-    <div className="login">
-      <form onSubmit={onSignUp}>
-        <div className="login">
-          <div className="signupTitle">Sign Up</div>
-          <div className="signupErrors">
-            {isSubmitted &&
-              errors.map((error, ind) => (
-                <div key={ind} className="signupError">
-                  {error.split(": ")[1]}
-                </div>
-              ))}
-          </div>
-          <div>
+    <form onSubmit={onSignUp}>
+      <div className="login">
+        <div className="signupTitle">Sign Up</div>
+        <div className="signupErrors">
+          {isSubmitted &&
+            errors.map((error, ind) => (
+              <div key={ind} className="signupError">
+                {error.split(": ")[1]}
+              </div>
+            ))}
+        </div>
+        <div className="input-container">
+          <div className="inputItem">
             <input
               type="text"
               className="userInputs"
               onChange={updateUsername}
               value={username}
-              placeholder="Username"
+              placeholder=" "
+              required
             />
+            <label>Username</label>
           </div>
-          <div>
+          <div className="inputItem">
             <input
-              type="text"
+              type="email"
               className="emailInputs"
               onChange={updateEmail}
               value={email}
-              placeholder="Email"
+              placeholder=" "
+              required
             />
+            <label>Email</label>
           </div>
-          <div>
+          <div className="inputItem">
             <input
               type="password"
               className="passwordInputs"
               onChange={updatePassword}
               value={password}
-              placeholder="Password"
+              placeholder=" "
+              required
             />
+            <label>Password</label>
           </div>
-          <div>
+          <div className="inputItem">
             <input
               type="password"
               className="passwordInputs"
               onChange={updateRepeatPassword}
               value={repeatPassword}
-              placeholder="Repeat Password"
+              placeholder=" "
               required={true}
             />
+            <label>Confirm Password</label>
           </div>
-          <div>
+          <div className="inputItem">
             <input
               type="url"
               className="profileImg"
               onChange={updateProfileImage}
               value={profileImage}
-              placeholder="Profile Image URL"
+              placeholder=" "
+              required
             />
+            <label>Profile Image URL</label>
           </div>
           <button type="submit" className="signUpButton">
             Sign Up
           </button>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 

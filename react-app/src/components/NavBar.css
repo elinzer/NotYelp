@@ -1,20 +1,37 @@
 /* .main-nav-container { */
 /* below is the gradient from Yelp's CSS */
-/* background: linear-gradient(180deg, #000000b3, #0000004d 72.92%, #0000); */
 /* background-color: black; */
 /* } */
 
+/* .main-nav-container {
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+  background: linear-gradient(180deg, #000000b3, #0000004d 72.92%, #0000);
+} */
+
 .logo {
-  height: 65px;
-  width: 120px;
+  height: 70px;
+  width: 140px;
+  transition: scale 0.25s ease-in-out;
+}
+
+.logo:hover {
+  scale: 1.1;
 }
 
 .search-input {
   width: 40vw;
   padding: 16px;
+  border-right: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
+
 .search-button {
-  border: none;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
   border-radius: 0 4px 4px 0;
   box-sizing: border-box;
   color: white;

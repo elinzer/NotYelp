@@ -8,7 +8,7 @@ const CreateReview = ({ business, closeModal }) => {
   const id = business.id;
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [stars, setStars] = useState(0);
+  const [stars, setStars] = useState(20);
   const [review, setReview] = useState("");
   const [businessId, setBusinessId] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -41,8 +41,8 @@ const CreateReview = ({ business, closeModal }) => {
 
   return (
     <form onSubmit={handleSubmit} className="review-form">
-      <div className="editreview-title">Write A Review</div>
-      <label>
+      <div className="input-container">
+        <div className="editreview-title">Write A Review</div>
         <Rating
           onClick={handleRating}
           ratingValue={stars}
@@ -51,30 +51,32 @@ const CreateReview = ({ business, closeModal }) => {
           fillColor="gold"
           allowHover={false}
           emptyColor="gray"
+          initialValue={stars}
         />
-      </label>
-      <label className="review-body">
-        <input
-          className="make-bigger"
-          placeholder="Write a review"
-          value={review}
-          onChange={(e) => {
-            const textValue = e.target.value;
-            if (textValue.length > 255) {
-              return;
-            }
-            setReview(e.target.value);
-          }}
-          required
-        />
-      </label>
-      <button
-        className="submitButton-review"
-        type="submit"
-        disabled={review.length <= 5}
-      >
-        Submit Review
-      </button>
+        <div className="inputItem">
+          <input
+            className="make-bigger"
+            placeholder=" "
+            value={review}
+            onChange={(e) => {
+              const textValue = e.target.value;
+              if (textValue.length > 255) {
+                return;
+              }
+              setReview(e.target.value);
+            }}
+            required
+          />
+          <label>Review Description</label>
+        </div>
+        <button
+          className="submitButton-review"
+          type="submit"
+          disabled={review.length <= 3}
+        >
+          Submit Review
+        </button>
+      </div>
     </form>
   );
 };

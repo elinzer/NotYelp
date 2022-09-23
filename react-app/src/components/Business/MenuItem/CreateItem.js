@@ -42,38 +42,39 @@ function CreateItemForm({ businessId, closeModal }) {
             </div>
           ))}
         </div>
-        <div>
-          <label htmlFor="name" />
+        <div className="inputItem">
           <input
             type="text"
             value={name}
             className="nameInputm"
-            placeholder="Name"
+            placeholder=" "
             onChange={(e) => setName(e.target.value)}
             required
           />
+          <label htmlFor="name">Item Name</label>
         </div>
-        <div>
-          <label htmlFor="price" />
+        <div className="inputItem">
           <input
             type="number"
             value={price}
             className="priceInputm"
-            placeholder="Price"
+            min={0}
+            placeholder=" "
             onChange={(e) => setPrice(e.target.value)}
             required
           />
+          <label htmlFor="price">Price</label>
         </div>
-        <div>
-          <label htmlFor="previewUrl" />
+        <div className="inputItem">
           <input
             type="url"
             value={previewUrl}
             className="previewUrlInputm"
-            placeholder="Preview Image URL (jpg/jpeg/png)"
+            placeholder=" "
             onChange={(e) => setPreviewUrl(e.target.value)}
             required
           />
+          <label>Preview Image URL</label>
         </div>
         <button name="submit" type="submit" className="submitButtonm">
           Create Item

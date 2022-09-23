@@ -26,8 +26,8 @@ const NavBar = ({ loaded }) => {
   } else {
     sessionLinks = (
       <div className="session-links flex center">
-        <LoginFormModal />
-        <SignUpFormModal />
+        <div className="loginModalBut"><LoginFormModal /></div>
+        <div className="signupModalBut"><SignUpFormModal /></div>
       </div>
     );
   }
@@ -38,7 +38,9 @@ const NavBar = ({ loaded }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(searchBusinesses(search));
-    history.push(`/search?name=${search}`);
+    const url = `/search?name=${search}`;
+    setSearch("");
+    history.push(url);
   };
 
   return (

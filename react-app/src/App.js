@@ -15,7 +15,9 @@ import { getBusinesses } from "./store/business";
 import { getItems } from "./store/item";
 import CurrentUserReviews from "./components/Reviews/CurrentUserReview/CurrentUserReview";
 import SearchPage from "./components/SearchPage";
-
+import FooterAbout from "./components/FooterLinks/Footer";
+import BusinessesPage from "./components/Business/BusinessesPage";
+import FourOhFour from "./components/FoF";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -51,13 +53,20 @@ function App() {
         <Route path="/search">
           <SearchPage />
         </Route>
+        <Route path="/businesses">
+          <BusinessesPage />
+        </Route>
         <Route path="/" exact={true}>
           <SplashPage />
         </Route>
         <ProtectedRoute path="/myReviews">
           <CurrentUserReviews />
         </ProtectedRoute>
+        <Route>
+          <FourOhFour />
+        </Route>
       </Switch>
+      <FooterAbout loaded={loaded} />
     </BrowserRouter>
   );
 }

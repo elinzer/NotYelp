@@ -13,6 +13,15 @@
   font-weight: 750;
 }
 
+.state-dropdown {
+  max-height: 50px;
+  overflow-y: visible;
+}
+
+.state-dropdown > select {
+  height: auto !important;
+}
+
 .editName,
 .editAddress,
 .editUrl,
@@ -59,5 +68,5 @@
 
 .editError:hover {
   font-weight: 600;
-  color: red
+  color: red;
 }

@@ -1,10 +1,25 @@
 /* TODO Add site wide styles */
 body {
   margin: 0;
+  padding: 0;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 * {
   font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
+
+.hide-scroll {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scroll::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -21,8 +36,7 @@ a {
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 100vh;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  max-width: 100vw;
 }
 
 .flex-row {

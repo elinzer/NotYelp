@@ -14,6 +14,7 @@ const LikeComponent = ({ business }) => {
   const [clickedOkay, setClickedOkay] = useState(false);
   const [clickedTrash, setClickedTrash] = useState(false);
 
+  let businessOwner = business.owner_id === sessionUser.id;
 
 
   //helper function to select 'like'
@@ -108,7 +109,7 @@ const LikeComponent = ({ business }) => {
 
   return (
     sessionUser &&
-    isLoaded && (
+    isLoaded && !businessOwner && (
       <div className="like-button-container">
         <div>Eaten here before?</div>
         <div>

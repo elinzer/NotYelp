@@ -13,7 +13,7 @@ class Business(db.Model):
   phone = db.Column("phone", db.String, nullable=False)
   state = db.Column("state", db.String, nullable=False)
   city = db.Column("city", db.String, nullable=False)
-  zipcode = db.Column("zipcode", db.Integer, nullable=False)
+  zipcode = db.Column("zipcode", db.String, nullable=False)
   open_time = db.Column("open_time", db.Time, nullable=False)
   close_time = db.Column("close_time", db.Time, nullable=False)
   preview_image = db.Column("preview_image", db.String, nullable=False)
@@ -29,6 +29,12 @@ class Business(db.Model):
   menuitems = db.relationship("MenuItem", back_populates="business", cascade="all, delete")
 
   def to_dict(self):
+
+    is_open = False
+    if self.open_time <= self.close_time:
+      is_open = self.open_time <= datetime.now().time() <= self.close_time
+    else:
+      is_open = self.open_time <= datetime.now().time() or datetime.now().time() <= self.close_time
 
     return {
       "id": self.id,
@@ -51,6 +57,6 @@ class Business(db.Model):
       "review_ids": [review.id for review in self.reviews],
       "like_ids": [like.id for like in self.likes],
       "menuitem_ids": [menuitem.id for menuitem in self.menuitems],
-      "open_status": self.open_time <= datetime.now().time() <= self.close_time,
+      "open_status": is_open,
       "avg_rating": (sum([review.stars for review in self.reviews]) / len(self.reviews)) if len(self.reviews) > 0 else 0
     }

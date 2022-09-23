@@ -21,13 +21,17 @@ function ItemCard({ item }) {
   if (sessionUser && item) {
     if (sessionUser.id === business.owner_id) {
       currentUser = true;
+
     } else currentUser = false;
   }
 
   return (
     <div className="item-card">
       <div className="item-card-image">
-        <img className="item-image" src={item?.preview_image} />
+        <img
+          className="item-image"
+          src={item?.preview_image}
+          onError={(e) => e.target.src = 'https://st2.depositphotos.com/1000419/5237/v/450/depositphotos_52373739-stock-illustration-pieces-of-pizza-sketch-for.jpg'} />
       </div>
       <div className="item-card-info">
         <div className="item-card-name">{item?.name}</div>

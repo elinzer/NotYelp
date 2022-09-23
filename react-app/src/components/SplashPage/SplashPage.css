@@ -1,11 +1,65 @@
 .main-splash-container {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  position: relative;
+  max-width: 100vw;
+}
+
+.businesses-button-container {
+  position: absolute;
+  top: 60%;
+  left: 8%;
+  z-index: 999;
+}
+
+.businesses-button {
+  color: white;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  z-index: 99999;
+}
+
+.businesses-link {
+  text-decoration: none;
+  color: white;
+}
+
+.businesses-button {
+  transition: scale 0.25s ease-in-out;
+}
+
+.businesses-button:hover {
+  scale: 1.1;
+}
+
+.main-splash-image-inner {
+  width: 100%;
+  height: 83vh;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.main-splash-image-inner > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .splash-container {
   align-items: center;
   justify-content: center;
   gap: 2vw;
+}
+
+.splash-page-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  position: absolute;
+
+  top: 0;
+  color: white;
+  z-index: 999;
 }

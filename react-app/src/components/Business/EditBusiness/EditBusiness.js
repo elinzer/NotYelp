@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { editBusiness, getBusinessByid } from "../../../store/business";
 import { maskPhoneNumber, returnDigitsOnly } from "../../../helpers/phoneMask";
 const imageURLRegex = /\.(jpeg|jpg|png)$/;
-
+const zipCodeRegex = /^\d{5}$/;
+const states = require("us-state-converter");
 function BusinessEditForm({ closeModal }) {
   const { businessId } = useParams();
   const dispatch = useDispatch();
@@ -32,22 +33,39 @@ function BusinessEditForm({ closeModal }) {
   } else if (!business && !isLoaded) {
     dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
   }
-
   useEffect(() => {
     const errors = [];
-    if (previewUrl === "") errors.push("preview_image: previewUrl is required");
-    if (!previewUrl.match(imageURLRegex)) {
-      errors.push(
-        "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
-      );
+    if (name.length > 50) {
+      errors.push("name: Name must be less than 50 characters");
+    }
+    if (name.length < 5) {
+      errors.push("name: Name must be at least 5 characters");
+    }
+    if (!zipCode.match(zipCodeRegex)) {
+      errors.push("zipcode: Zipcode must be 5 digits");
+    }
+    if (address.length < 6) {
+      errors.push("address: Address must be at least 6 characters");
+    }
+    if (address.length > 50) {
+      errors.push("address: Address must be less than 50 characters");
+    }
+    if (String(returnDigitsOnly(phone)).length !== 10) {
+      errors.push("phone: Phone must be 10 numbers");
+    }
+    if (city.length > 35) {
+      errors.push("city: City must be less than 35 characters");
+    }
+    if (city.length < 5) {
+      errors.push("city: City must be at least 5 characters");
     }
     setErrors(errors);
-  }, [previewUrl]);
+  }, [previewUrl, zipCode, address, url, city]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setIsSubmitted(true);
-    if (errors.length) return null;
     setErrors([]);
     const businessData = {
       owner_id: user.id,
@@ -74,129 +92,162 @@ function BusinessEditForm({ closeModal }) {
   return (
     isLoaded && (
       <form onSubmit={handleSubmit} className="editForm">
-        <div className="updateTitle">Update Business</div>
-        <div>
+        <div className="createBusinessBox">
+          <div className="CreateBusTitle">Create Your Business</div>
           {isSubmitted &&
-            errors.map((error, idx) => (
-              <div key={idx} className="editError">
-                {error.split(": ")[1]}
+            errors.map((error, ind) => (
+              <div className="createErrors">
+                <div key={ind} className="createError">
+                  {error.split(": ")[1]}
+                </div>
               </div>
             ))}
+          <div className="input-container">
+            <div className="inputItem">
+              <input
+                type="text"
+                value={name}
+                className="nameInput"
+                placeholder=" "
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+              <label htmlFor="name">Name</label>
+            </div>
+            <div className="inputItem">
+              <input
+                type="text"
+                value={address}
+                className="addressInput"
+                placeholder=" "
+                name="address"
+                onChange={(e) => setAddress(e.target.value)}
+                required
+              />
+              <label htmlFor="address">Address</label>
+            </div>
+            <div className="inputItem">
+              <input
+                type="url"
+                name="url"
+                value={url}
+                className="urlInput"
+                placeholder=" "
+                onChange={(e) => setUrl(e.target.value)}
+                required
+              />
+              <label htmlFor="url">Url</label>
+            </div>
+            <div className="inputItem">
+              <input
+                type="tel"
+                name="phone"
+                value={phone}
+                className="phoneInput"
+                placeholder=" "
+                onChange={(e) => setPhone(maskPhoneNumber(e.target.value))}
+                required
+              />
+              <label htmlFor="phone">Phone</label>
+            </div>
+            <div className="inputItem">
+              <input
+                type="text"
+                name="city"
+                value={city}
+                className="cityInput"
+                placeholder=" "
+                onChange={(e) => setCity(e.target.value)}
+                required
+              />
+              <label htmlFor="city">City</label>
+            </div>
+            <div className="state-select-container">
+              <select
+                className="state-select"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                required
+              >
+                {states().map((state, idx) => (
+                  <option key={idx} value={state.name}>
+                    {state.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="inputItem">
+              <input
+                type="text"
+                name="zipcode"
+                value={zipCode}
+                className="zipcodeInput"
+                placeholder=" "
+                onChange={(e) => setZipCode(e.target.value)}
+                required
+              />
+              <label htmlFor="zipcode">Zip</label>
+            </div>
+            <div className="inputItem">
+              <input
+                type="url"
+                name="previewUrl"
+                value={previewUrl}
+                className="previewUrlInput"
+                placeholder=" "
+                onChange={(e) => setPreviewUrl(e.target.value)}
+                required
+              />
+              <label htmlFor="previewUrl">Image Url</label>
+            </div>
+            <div>
+              <label htmlFor="open_time" className="opentimeTitle">
+                Open-Time
+              </label>
+              <div className="inputItem">
+                <input
+                  type="time"
+                  name="open_time"
+                  value={openTime}
+                  className="openTimeInput"
+                  onChange={(e) => setOpenTime(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="close_time" className="closetimeTitle">
+                Close-Time
+              </label>
+              <div>
+                <input
+                  type="time"
+                  name="close_time"
+                  value={closeTime}
+                  className="closeTimeInput"
+                  onChange={(e) => setCloseTime(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+            <div className="inputItem desc-input">
+              <textarea
+                name="description"
+                value={description}
+                className="descriptionInput"
+                placeholder=" "
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
+              <label className="desc-label" htmlFor="description">
+                Description
+              </label>
+            </div>
+            <button name="submit" type="submit" className="submitButton">
+              Update Your Business
+            </button>
+          </div>
         </div>
-        <label>
-          <input
-            className="editName"
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <input
-            className="editAddress"
-            type="text"
-            placeholder="Address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <input
-            className="editUrl"
-            type="text"
-            placeholder="Url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <input
-            className="editPhone"
-            type="tel"
-            name="phone"
-            value={maskPhoneNumber(phone)}
-            placeholder="Phone Number"
-            onChange={(e) => setPhone(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <input
-            className="editCity"
-            type="text"
-            placeholder="City"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <input
-            className="editState"
-            type="text"
-            placeholder="State"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <input
-            className="editZipCode"
-            type="number"
-            placeholder="ZipCode"
-            value={zipCode}
-            onChange={(e) => setZipCode(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <input
-            className="editOpenTime"
-            type="time"
-            placeholder="OpenTime"
-            value={openTime}
-            onChange={(e) => setOpenTime(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <input
-            className="editCloseTime"
-            type="time"
-            placeholder="CloseTime"
-            value={closeTime}
-            onChange={(e) => setCloseTime(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <textarea
-            className="editDescription"
-            type="text"
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <input
-            className="editPreviewUrl"
-            type="text"
-            placeholder="PreviewUrl"
-            value={previewUrl}
-            onChange={(e) => setPreviewUrl(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit" className="editBusinessBut">
-          Update Your Business
-        </button>
       </form>
     )
   );
