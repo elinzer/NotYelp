@@ -21,6 +21,7 @@
   padding-bottom: 6px;
   padding-left: 10px;
   margin-top: 20px;
+  height: 40px;
 }
 
 .state-select-container {
@@ -72,11 +73,12 @@
   border: solid 1px lightslategray;
   border-radius: 8px;
   width: 300px;
-  height: 20px;
+  height: 30px;
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 15px;
   margin-top: 20px;
+  position: relative;
 }
 
 .openTimeInput,
@@ -85,7 +87,7 @@
   border: solid 1px lightslategray;
   border-radius: 8px;
   width: 300px;
-  height: 20px;
+  height: 30px;
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 15px;
@@ -123,4 +125,52 @@
 
 .submitButton:hover {
   cursor: pointer;
+}
+
+label:not(.closetimeTitle, .opentimeTitle) {
+  color: rgb(129, 129, 129);
+  font-size: 15px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 19px;
+  top: 30px;
+  transition: 0.2s ease all;
+}
+input:focus ~ label,
+input:valid ~ label {
+  top: 22px;
+  font-size: 12px;
+}
+input:not(:placeholder-shown) ~ label {
+  top: 22px;
+  font-size: 12px;
+}
+
+.inputItem {
+    display: flex;
+    position: relative;
+    flex: 1 1 0%;
+    width: 100%;
+  }
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+textarea {
+  resize: none;
+  text-align: justify;
+  height: 35px !important;
+  padding-top: 15px !important;
+  overflow-y: hidden;
+}
+
+textarea:focus ~ label,
+textarea:valid ~ label {
+  top: 22px;
+  font-size: 12px;
+  color: transparent;
 }
