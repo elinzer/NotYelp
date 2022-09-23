@@ -166,6 +166,9 @@ function BusinessCreateForm({ closeModal }) {
               onChange={(e) => setState(e.target.value)}
               required
             >
+              <option value="" disabled>
+                Select State
+              </option>
               {states().map((state, idx) => (
                 <option key={idx} value={state.name}>
                   {state.name}
