@@ -16,6 +16,7 @@ const LikeComponent = ({ business }) => {
 
   let businessOwner = business.owner_id === sessionUser.id;
 
+
   //helper function to select 'like'
   const likeSelected = () => {
     if (!sessionUser) return;
