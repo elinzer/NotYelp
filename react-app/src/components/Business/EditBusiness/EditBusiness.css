@@ -37,7 +37,7 @@
   border: solid 1px lightslategray;
   border-radius: 8px;
   width: 300px;
-  height: 20px;
+  height: 35px;
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 15px;
@@ -52,7 +52,7 @@
   font-size: 16px;
   font-weight: 750;
   height: 40px;
-  width: 200px;
+  /* width: 200px; */
   margin-top: 14px;
   margin-bottom: 10px;
 }

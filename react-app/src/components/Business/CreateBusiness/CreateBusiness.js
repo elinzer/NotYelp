@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createBusiness } from "../../../store/business";
 import { maskPhoneNumber, returnDigitsOnly } from "../../../helpers/phoneMask";
+import { timeStringFormat } from "../../../helpers/dateHelpers";
 function BusinessCreateForm({ closeModal }) {
   const imageURLRegex = /\.(jpeg|jpg|png)$/;
   const dispatch = useDispatch();
@@ -36,8 +37,8 @@ function BusinessCreateForm({ closeModal }) {
       city,
       state,
       zipcode: zipCode,
-      open_time: openTime,
-      close_time: closeTime,
+      open_time: timeStringFormat(openTime),
+      close_time: timeStringFormat(closeTime),
       description,
       preview_image: previewUrl,
     };

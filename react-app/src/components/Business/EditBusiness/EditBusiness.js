@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { editBusiness, getBusinessByid } from "../../../store/business";
 import { maskPhoneNumber, returnDigitsOnly } from "../../../helpers/phoneMask";
+import { timeStringFormat, utcToLocale } from "../../../helpers/dateHelpers";
 const imageURLRegex = /\.(jpeg|jpg|png)$/;
 const zipCodeRegex = /^\d{5}$/;
 const states = require("us-state-converter");
@@ -20,8 +21,8 @@ function BusinessEditForm({ closeModal }) {
   const [city, setCity] = useState(business?.city);
   const [state, setState] = useState(business?.state);
   const [zipCode, setZipCode] = useState(business?.zipcode);
-  const [openTime, setOpenTime] = useState(business?.open_time);
-  const [closeTime, setCloseTime] = useState(business?.close_time);
+  const [openTime, setOpenTime] = useState(utcToLocale(business?.open_time));
+  const [closeTime, setCloseTime] = useState(utcToLocale(business?.close_time));
   const [description, setDescription] = useState(business?.description);
   const [previewUrl, setPreviewUrl] = useState(business?.preview_image);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -67,6 +68,7 @@ function BusinessEditForm({ closeModal }) {
 
     setIsSubmitted(true);
     setErrors([]);
+
     const businessData = {
       owner_id: user.id,
       name,
@@ -76,8 +78,8 @@ function BusinessEditForm({ closeModal }) {
       city,
       state,
       zipcode: zipCode,
-      open_time: openTime,
-      close_time: closeTime,
+      open_time: timeStringFormat(openTime),
+      close_time: timeStringFormat(closeTime),
       description,
       preview_image: previewUrl,
     };
