@@ -68,7 +68,7 @@
 .stateInput,
 .zipcodeInput,
 .previewUrlInput,
-.descriptionInput {
+.desc-input {
   font-size: 16px;
   border: solid 1px lightslategray;
   border-radius: 8px;
@@ -79,6 +79,15 @@
   padding-left: 15px;
   margin-top: 20px;
   position: relative;
+}
+
+.descriptionInput {
+  border: none !important;
+  width: 100%;
+}
+
+.descriptionInput:focus {
+  outline: none;
 }
 
 .openTimeInput,
@@ -148,11 +157,11 @@ input:not(:placeholder-shown) ~ label {
 }
 
 .inputItem {
-    display: flex;
-    position: relative;
-    flex: 1 1 0%;
-    width: 100%;
-  }
+  display: flex;
+  position: relative;
+  flex: 1 1 0%;
+  width: 100%;
+}
 
 .input-container {
   display: flex;
@@ -164,13 +173,16 @@ textarea {
   resize: none;
   text-align: justify;
   height: 35px !important;
-  padding-top: 15px !important;
-  overflow-y: hidden;
+  margin-top: 15px !important;
 }
 
 textarea:focus ~ label,
 textarea:valid ~ label {
-  top: 22px;
+  top: 5px !important;
   font-size: 12px;
-  color: transparent;
+  /* color: transparent; */
+}
+
+.desc-label {
+  top: 20px !important;
 }

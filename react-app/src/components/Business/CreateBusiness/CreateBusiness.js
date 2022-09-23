@@ -108,7 +108,8 @@ function BusinessCreateForm({ closeModal }) {
                 placeholder=" "
                 onChange={(e) => setName(e.target.value)}
                 required
-              /><label htmlFor="name" >Name</label>
+              />
+              <label htmlFor="name">Name</label>
             </div>
             <div className="inputItem">
               <input
@@ -119,7 +120,8 @@ function BusinessCreateForm({ closeModal }) {
                 name="address"
                 onChange={(e) => setAddress(e.target.value)}
                 required
-              /><label htmlFor="address">Address</label>
+              />
+              <label htmlFor="address">Address</label>
             </div>
             <div className="inputItem">
               <input
@@ -130,7 +132,8 @@ function BusinessCreateForm({ closeModal }) {
                 placeholder=" "
                 onChange={(e) => setUrl(e.target.value)}
                 required
-              /><label htmlFor="url">Url</label>
+              />
+              <label htmlFor="url">Url</label>
             </div>
             <div className="inputItem">
               <input
@@ -141,7 +144,8 @@ function BusinessCreateForm({ closeModal }) {
                 placeholder=" "
                 onChange={(e) => setPhone(maskPhoneNumber(e.target.value))}
                 required
-              /><label htmlFor="phone">Phone</label>
+              />
+              <label htmlFor="phone">Phone</label>
             </div>
             <div className="inputItem">
               <input
@@ -152,7 +156,8 @@ function BusinessCreateForm({ closeModal }) {
                 placeholder=" "
                 onChange={(e) => setCity(e.target.value)}
                 required
-              /><label htmlFor="city">City</label>
+              />
+              <label htmlFor="city">City</label>
             </div>
             <div className="state-select-container">
               <select
@@ -177,7 +182,8 @@ function BusinessCreateForm({ closeModal }) {
                 placeholder=" "
                 onChange={(e) => setZipCode(e.target.value)}
                 required
-              /><label htmlFor="zipcode">Zip</label>
+              />
+              <label htmlFor="zipcode">Zip</label>
             </div>
             <div className="inputItem">
               <input
@@ -188,7 +194,8 @@ function BusinessCreateForm({ closeModal }) {
                 placeholder=" "
                 onChange={(e) => setPreviewUrl(e.target.value)}
                 required
-              /><label htmlFor="previewUrl">Image Url</label>
+              />
+              <label htmlFor="previewUrl">Image Url</label>
             </div>
             <div>
               <label htmlFor="open_time" className="opentimeTitle">
@@ -220,7 +227,7 @@ function BusinessCreateForm({ closeModal }) {
                 />
               </div>
             </div>
-            <div className="inputItem">
+            <div className="inputItem desc-input">
               <textarea
                 name="description"
                 value={description}
@@ -228,7 +235,10 @@ function BusinessCreateForm({ closeModal }) {
                 placeholder=" "
                 onChange={(e) => setDescription(e.target.value)}
                 required
-              /><label htmlFor="description">Description</label>
+              />
+              <label className="desc-label" htmlFor="description">
+                Description
+              </label>
             </div>
             <button name="submit" type="submit" className="submitButton">
               Create Business
