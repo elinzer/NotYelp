@@ -31,5 +31,6 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            "profile_image": self.profile_image
+            "profile_image": self.profile_image,
+            "review_ids": [review.id for review in self.reviews],
         }
