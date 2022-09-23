@@ -175,7 +175,7 @@ function BusinessDetail() {
             <div className="business-contact-outer-container">
               <div className="business-contact-container">
                 <div className="business-website">
-                  <a href={business?.url}>{business?.url}</a>
+                  <a href={business?.url} target="_blank">{business?.url}</a>
                 </div>
                 <div className="business-phone">{business?.phone}</div>
                 <div className="business-address">
