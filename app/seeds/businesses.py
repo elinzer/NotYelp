@@ -8,7 +8,7 @@ def seeded_businesses():
       owner_id=1, name="Lombardi's Pizza", address="Mulberry St & Mott St", description="Demo Description 1", url="http://www.firstpizza.com/", phone='2129417994', state="New York", city="Nolita", zipcode=10012,  open_time=time(hour=9), close_time=time(hour=23), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/UZ6V_hobp1KpYDPOHNoCKw/l.jpg"
     ),
     Business(
-      owner_id=2, name="Joes Pizza", address="7 Carmine St", description="West Village locals have depended on this counter-service pizzeria for quick slices since 1975.", url="qmenu.us", phone='6262938800', state="New York", city="New York", zipcode=10014,open_time=time(hour=8), close_time=time(hour=23), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/1TvTRG9HFmEGaTSBMcUBhA/o.jpg"
+      owner_id=2, name="Joes Pizza", address="7 Carmine St", description="West Village locals have depended on this counter-service pizzeria for quick slices since 1975.", url="https://www.joespizzanyc.com/", phone='6262938800', state="New York", city="New York", zipcode=10014,open_time=time(hour=8), close_time=time(hour=23), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/1TvTRG9HFmEGaTSBMcUBhA/o.jpg"
     ),
     Business(
       owner_id=3, name="Prince Street Pizza", address="27 Prince St", description="Prince Street Best Pizza", url="https://princestreetpizzanyc.com/", phone='9239050006', state="New York", city="New York", zipcode=11365,  open_time=time(hour=8), close_time=time(hour=23), preview_image="https://s3-media0.fl.yelpcdn.com/bphoto/PfI8oV4ct9ZJZNtUhSS8DQ/o.jpg"

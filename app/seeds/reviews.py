@@ -4,19 +4,19 @@ from ..models.review import Review
 def seeded_reviews():
   demo_reviews = [
     Review(
-      stars=5, review="This restaurant is amazing!", business_id=1, user_id=1
+      stars=5, review="This restaurant is amazing!", business_id=1, user_id=2
     ),
     Review(
-      stars=2, review="This restaurant is not that good!", business_id=2, user_id=2
+      stars=2, review="This restaurant is not that good!", business_id=2, user_id=3
     ),
     Review(
-      stars=1, review="This restaurant is really bad!", business_id=3, user_id=3
+      stars=1, review="This restaurant is really bad!", business_id=3, user_id=4
     ),
     Review(
-      stars=3.5, review="This restaurant is okay-ish.", business_id=4, user_id=4
+      stars=3.5, review="This restaurant is okay-ish.", business_id=4, user_id=5
     ),
     Review(
-      stars=4, review="This restaurant is good, minor issues!", business_id=5, user_id=5
+      stars=4, review="This restaurant is good, minor issues!", business_id=5, user_id=1
     )
 
   ]
