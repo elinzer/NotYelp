@@ -1,6 +1,8 @@
+from sqlite3 import Timestamp
 from sqlalchemy import func
+from sqlalchemy.ext.hybrid import hybrid_property
 from .db import db
-from datetime import datetime
+from datetime import datetime,timezone
 
 class Business(db.Model):
   __tablename__ = "businesses"
@@ -14,8 +16,8 @@ class Business(db.Model):
   state = db.Column("state", db.String, nullable=False)
   city = db.Column("city", db.String, nullable=False)
   zipcode = db.Column("zipcode", db.String, nullable=False)
-  open_time = db.Column("open_time", db.Time, nullable=False)
-  close_time = db.Column("close_time", db.Time, nullable=False)
+  open_time_utc = db.Column("open_time_utc", db.Time, nullable=False)
+  close_time_utc = db.Column("close_time_utc", db.Time, nullable=False)
   preview_image = db.Column("preview_image", db.String, nullable=False)
 
   created_at = db.Column("created_at", db.DateTime, default=func.now())
@@ -28,13 +30,29 @@ class Business(db.Model):
   likes = db.relationship("Like", back_populates="business", cascade="all, delete")
   menuitems = db.relationship("MenuItem", back_populates="business", cascade="all, delete")
 
+  @hybrid_property
+  def open_time(self):
+    return self.open_time_utc
+
+  @open_time.setter
+  def open_time(self, value):
+    self.open_time_utc = datetime.combine(datetime.today(), value).astimezone(timezone.utc).time()
+
+  @hybrid_property
+  def close_time(self):
+    return self.close_time_utc
+
+  @close_time.setter
+  def close_time(self, value):
+    self.close_time_utc = datetime.combine(datetime.today(), value).astimezone(timezone.utc).time()
+
   def to_dict(self):
 
     is_open = False
     if self.open_time <= self.close_time:
-      is_open = self.open_time <= datetime.now().time() <= self.close_time
+      is_open = self.open_time <= datetime.utcnow().time() <= self.close_time
     else:
-      is_open = self.open_time <= datetime.now().time() or datetime.now().time() <= self.close_time
+      is_open = self.open_time <= datetime.utcnow().time() or datetime.utcnow().time() <= self.close_time
 
     return {
       "id": self.id,
@@ -48,8 +66,6 @@ class Business(db.Model):
       "zipcode": self.zipcode,
       "open_time": self.open_time.isoformat(timespec='minutes'),
       "close_time": self.close_time.isoformat(timespec='minutes'),
-      "format_open":self.open_time.strftime("%I:%M %p"),
-      "format_close":self.close_time.strftime("%I:%M %p"),
       "preview_image": self.preview_image,
       "created_at": self.created_at,
       "updated_at": self.updated_at,
