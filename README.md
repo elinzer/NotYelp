@@ -47,16 +47,16 @@ flask seed all
 
 # Business Details:
 ## Non-Business Owner
-![image](https://user-images.githubusercontent.com/101891232/191640001-b443ecd2-625d-4584-ae60-1c8f2a3fa0c0.png)
+![image](https://user-images.githubusercontent.com/93215380/192047087-b22e375c-f10c-4876-8204-996a8266e60c.png)
 ## Business Owner
-![image](https://user-images.githubusercontent.com/101891232/191640263-2cd34a60-528e-41f8-947e-432fd80ee41a.png)
+![image](https://user-images.githubusercontent.com/93215380/192047216-3dd0a196-d7e0-4628-b8d6-a5a4c20087e6.png)
 
 
 # View my Reviews:
-![image](https://user-images.githubusercontent.com/101891232/191640054-9a5859c0-dfb0-4165-8b93-a5b0f39810ce.png)
+![image](https://user-images.githubusercontent.com/93215380/192047485-781736b7-6d7f-430f-9282-79fad748c977.png)
 
 # Search Filter:
 ![image](https://user-images.githubusercontent.com/101891232/191640089-a0a2ef0d-c1af-4597-89fb-b35f1403c4b3.png)
 
 # Create Business:
-![image](https://user-images.githubusercontent.com/101891232/191640167-84c5a14a-bbc2-46ad-b363-fc7d034fdf4c.png)
+![image](https://user-images.githubusercontent.com/93215380/192047855-9a5f22ee-d22f-4f80-942c-a0a392f87f0b.png)
