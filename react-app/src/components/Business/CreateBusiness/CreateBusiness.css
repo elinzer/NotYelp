@@ -4,7 +4,7 @@
   gap: 1%;
   justify-content: center;
   align-items: center;
-  min-width: 500px;
+  padding: 30px 60px;
 }
 
 .createBusinessBox {
@@ -72,13 +72,19 @@
   font-size: 16px;
   border: solid 1px lightslategray;
   border-radius: 8px;
-  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
   height: 30px;
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 15px;
   margin-top: 20px;
   position: relative;
+}
+
+.desc-input {
+  min-width: 302px;
+  max-width: 302px;
 }
 
 .descriptionInput {
@@ -95,7 +101,8 @@
   font-size: 16px;
   border: solid 1px lightslategray;
   border-radius: 8px;
-  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
   height: 30px;
   padding-top: 6px;
   padding-bottom: 6px;
@@ -116,6 +123,7 @@
 .closetimeTitle {
   font-family: Helvetica, Rounded;
   font-weight: 750;
+  color: rgb(129, 129, 129);
   margin-bottom: 10%;
   margin-left: 35%;
 }
@@ -148,11 +156,13 @@ label:not(.closetimeTitle, .opentimeTitle) {
 }
 input:focus ~ label,
 input:valid ~ label {
-  top: 22px;
+  top: 20px;
+  left: 16px;
   font-size: 12px;
 }
 input:not(:placeholder-shown) ~ label {
-  top: 22px;
+  top: 20px;
+  left: 16px;
   font-size: 12px;
 }
 
@@ -179,6 +189,7 @@ textarea {
 textarea:focus ~ label,
 textarea:valid ~ label {
   top: 5px !important;
+  left: 16px !important;
   font-size: 12px;
   /* color: transparent; */
 }

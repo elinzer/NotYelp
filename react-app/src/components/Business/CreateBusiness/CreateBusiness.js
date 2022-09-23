@@ -87,166 +87,164 @@ function BusinessCreateForm({ closeModal }) {
   }, [previewUrl, zipCode, address, url, city, phone, name]);
 
   return (
-    <div className="createBusinessBox">
-      <form onSubmit={handleSubmit}>
-        <div className="createBusinessBox">
-          <div className="CreateBusTitle">Create Your Business</div>
-          {isSubmitted &&
-            errors.map((error, ind) => (
-              <div className="createErrors">
-                <div key={ind} className="createError">
-                  {error.split(": ")[1]}
-                </div>
-              </div>
-            ))}
-          <div className="input-container">
-            <div className="inputItem">
-              <input
-                type="text"
-                value={name}
-                className="nameInput"
-                placeholder=" "
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-              <label htmlFor="name">Name</label>
-            </div>
-            <div className="inputItem">
-              <input
-                type="text"
-                value={address}
-                className="addressInput"
-                placeholder=" "
-                name="address"
-                onChange={(e) => setAddress(e.target.value)}
-                required
-              />
-              <label htmlFor="address">Address</label>
-            </div>
-            <div className="inputItem">
-              <input
-                type="url"
-                name="url"
-                value={url}
-                className="urlInput"
-                placeholder=" "
-                onChange={(e) => setUrl(e.target.value)}
-                required
-              />
-              <label htmlFor="url">Url</label>
-            </div>
-            <div className="inputItem">
-              <input
-                type="tel"
-                name="phone"
-                value={phone}
-                className="phoneInput"
-                placeholder=" "
-                onChange={(e) => setPhone(maskPhoneNumber(e.target.value))}
-                required
-              />
-              <label htmlFor="phone">Phone</label>
-            </div>
-            <div className="inputItem">
-              <input
-                type="text"
-                name="city"
-                value={city}
-                className="cityInput"
-                placeholder=" "
-                onChange={(e) => setCity(e.target.value)}
-                required
-              />
-              <label htmlFor="city">City</label>
-            </div>
-            <div className="state-select-container">
-              <select
-                className="state-select"
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-                required
-              >
-                {states().map((state, idx) => (
-                  <option key={idx} value={state.name}>
-                    {state.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="inputItem">
-              <input
-                type="text"
-                name="zipcode"
-                value={zipCode}
-                className="zipcodeInput"
-                placeholder=" "
-                onChange={(e) => setZipCode(e.target.value)}
-                required
-              />
-              <label htmlFor="zipcode">Zip</label>
-            </div>
-            <div className="inputItem">
-              <input
-                type="url"
-                name="previewUrl"
-                value={previewUrl}
-                className="previewUrlInput"
-                placeholder=" "
-                onChange={(e) => setPreviewUrl(e.target.value)}
-                required
-              />
-              <label htmlFor="previewUrl">Image Url</label>
-            </div>
-            <div>
-              <label htmlFor="open_time" className="opentimeTitle">
-                Open-Time
-              </label>
-              <div className="inputItem">
-                <input
-                  type="time"
-                  name="open_time"
-                  value={openTime}
-                  className="openTimeInput"
-                  onChange={(e) => setOpenTime(e.target.value)}
-                  required
-                />
+    <form onSubmit={handleSubmit}>
+      <div className="createBusinessBox">
+        <div className="CreateBusTitle">Create Your Business</div>
+        {isSubmitted &&
+          errors.map((error, ind) => (
+            <div className="createErrors">
+              <div key={ind} className="createError">
+                {error.split(": ")[1]}
               </div>
             </div>
-            <div>
-              <label htmlFor="close_time" className="closetimeTitle">
-                Close-Time
-              </label>
-              <div>
-                <input
-                  type="time"
-                  name="close_time"
-                  value={closeTime}
-                  className="closeTimeInput"
-                  onChange={(e) => setCloseTime(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
-            <div className="inputItem desc-input">
-              <textarea
-                name="description"
-                value={description}
-                className="descriptionInput"
-                placeholder=" "
-                onChange={(e) => setDescription(e.target.value)}
-                required
-              />
-              <label className="desc-label" htmlFor="description">
-                Description
-              </label>
-            </div>
-            <button name="submit" type="submit" className="submitButton">
-              Create Business
-            </button>
+          ))}
+        <div className="input-container">
+          <div className="inputItem">
+            <input
+              type="text"
+              value={name}
+              className="nameInput"
+              placeholder=" "
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+            <label htmlFor="name">Name</label>
           </div>
+          <div className="inputItem">
+            <input
+              type="text"
+              value={address}
+              className="addressInput"
+              placeholder=" "
+              name="address"
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+            <label htmlFor="address">Address</label>
+          </div>
+          <div className="inputItem">
+            <input
+              type="url"
+              name="url"
+              value={url}
+              className="urlInput"
+              placeholder=" "
+              onChange={(e) => setUrl(e.target.value)}
+              required
+            />
+            <label htmlFor="url">Url</label>
+          </div>
+          <div className="inputItem">
+            <input
+              type="tel"
+              name="phone"
+              value={phone}
+              className="phoneInput"
+              placeholder=" "
+              onChange={(e) => setPhone(maskPhoneNumber(e.target.value))}
+              required
+            />
+            <label htmlFor="phone">Phone</label>
+          </div>
+          <div className="inputItem">
+            <input
+              type="text"
+              name="city"
+              value={city}
+              className="cityInput"
+              placeholder=" "
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
+            <label htmlFor="city">City</label>
+          </div>
+          <div className="state-select-container">
+            <select
+              className="state-select"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              required
+            >
+              {states().map((state, idx) => (
+                <option key={idx} value={state.name}>
+                  {state.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="inputItem">
+            <input
+              type="text"
+              name="zipcode"
+              value={zipCode}
+              className="zipcodeInput"
+              placeholder=" "
+              onChange={(e) => setZipCode(e.target.value)}
+              required
+            />
+            <label htmlFor="zipcode">Zip</label>
+          </div>
+          <div className="inputItem">
+            <input
+              type="url"
+              name="previewUrl"
+              value={previewUrl}
+              className="previewUrlInput"
+              placeholder=" "
+              onChange={(e) => setPreviewUrl(e.target.value)}
+              required
+            />
+            <label htmlFor="previewUrl">Image Url</label>
+          </div>
+          <div>
+            <label htmlFor="open_time" className="opentimeTitle">
+              Open-Time
+            </label>
+            <div className="inputItem">
+              <input
+                type="time"
+                name="open_time"
+                value={openTime}
+                className="openTimeInput"
+                onChange={(e) => setOpenTime(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="close_time" className="closetimeTitle">
+              Close-Time
+            </label>
+            <div>
+              <input
+                type="time"
+                name="close_time"
+                value={closeTime}
+                className="closeTimeInput"
+                onChange={(e) => setCloseTime(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+          <div className="inputItem desc-input">
+            <textarea
+              name="description"
+              value={description}
+              className="descriptionInput"
+              placeholder=" "
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+            <label className="desc-label" htmlFor="description">
+              Description
+            </label>
+          </div>
+          <button name="submit" type="submit" className="submitButton">
+            Create Business
+          </button>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 

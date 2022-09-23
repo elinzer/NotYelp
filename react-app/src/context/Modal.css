@@ -23,7 +23,8 @@
 #modal-content {
   position: absolute;
   background-color: white;
-  max-height: 100vh;
+  max-height: 90vh;
+  overflow-y: scroll;
   z-index: 999999999;
   border-radius: 15px;
   animation-duration: 400ms;
