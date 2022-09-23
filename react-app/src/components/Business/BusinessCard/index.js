@@ -6,6 +6,7 @@ import DisplayStars from "../../Reviews/DisplayStars";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import defaultPreview from "../../../imgs/notyelpbusiness.png";
+import { timeStringFormat, utcToLocale12 } from "../../../helpers/dateHelpers";
 
 const states = require("us-state-converter");
 function BusinessCard({ business }) {
@@ -61,8 +62,8 @@ function BusinessCard({ business }) {
             <div className="pl5">
               until{" "}
               {business?.open_status
-                ? business?.format_close
-                : business?.format_open}
+                ? utcToLocale12(business?.close_time)
+                : utcToLocale12(business?.open_time)}
             </div>
           </div>
           <div className="business-card-description">

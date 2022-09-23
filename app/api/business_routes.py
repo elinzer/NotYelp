@@ -67,6 +67,7 @@ def create_business():
 def edit_business(business_id):
     form = BusinessForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+    print("FORM_DATA: ", form.data)
     if form.validate_on_submit():
         business = Business.query.get(business_id)
         print("FORM DATA:", form.data["open_time"])
@@ -82,7 +83,8 @@ def edit_business(business_id):
             business.open_time = form.open_time.data
             business.close_time = form.close_time.data
             business.preview_image = form.preview_image.data
-            print("ZIPCODE DATA:", form.zipcode.data)
+            print("OPEN_TIME:", form.open_time.data)
+            print("CLOSE_TIME", form.close_time.data)
             db.session.commit()
             return jsonify(business.to_dict()), 200
         else:

@@ -32,9 +32,9 @@ class Business(db.Model):
 
     is_open = False
     if self.open_time <= self.close_time:
-      is_open = self.open_time <= datetime.now().time() <= self.close_time
+      is_open = self.open_time <= datetime.utcnow().time() <= self.close_time
     else:
-      is_open = self.open_time <= datetime.now().time() or datetime.now().time() <= self.close_time
+      is_open = self.open_time <= datetime.utcnow().time() or datetime.utcnow().time() <= self.close_time
 
     return {
       "id": self.id,

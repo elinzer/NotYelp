@@ -13,6 +13,7 @@ import ReviewCard from "../../Reviews/ReviewCard";
 import DisplayStars from "../../Reviews/DisplayStars";
 import LikeComponent from "../../Likes";
 import defaultPreview from "../../../imgs/notyelpbusiness.png";
+import { timeStringFormat, utcToLocale12 } from "../../../helpers/dateHelpers";
 const states = require("us-state-converter");
 
 function BusinessDetail() {
@@ -52,7 +53,6 @@ function BusinessDetail() {
       }
     }
   }
-
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -105,7 +105,8 @@ function BusinessDetail() {
                   {business?.open_status ? "Open" : "Closed"}
                 </div>
                 <div className="business-open-time pl5">
-                  {business?.format_open} - {business?.format_close}
+                  {utcToLocale12(business?.open_time)} -{" "}
+                  {utcToLocale12(business?.close_time)}
                 </div>
               </div>
             </div>
