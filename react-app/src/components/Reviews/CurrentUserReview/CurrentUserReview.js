@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { authenticate } from "../../../store/session";
 import "./CurrentUserReview.css";
 import * as reviewActions from "../../../store/review";
 import EditReviewModal from "../EditReviewModal";
@@ -8,20 +9,15 @@ import ReviewCard from "../ReviewCard";
 
 const CurrentUserReviews = () => {
   const user = useSelector((state) => state.session.user);
-  const reviews = useSelector((state) => Object.values(state.reviews));
-
-  const filteredReviews = reviews.filter(
-    (review) => review.user_id === user.id
-  );
-
+  const reviews = useSelector((state) => state.reviews);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(UserReview());
     dispatch(reviewActions.getReviews());
+    dispatch(authenticate());
   }, []);
 
-  if (!filteredReviews.length) {
+  if (!user?.review_ids.length) {
     return (
       <div className="currentReviewContainer">
         <h2 className="MyReviewHeader">My Reviews</h2>
@@ -38,9 +34,9 @@ const CurrentUserReviews = () => {
         <div className="my-review">
           <div className="my-review-inner">
             <div className="review-cards-inner-container">
-              {filteredReviews.map((review, i) => (
+              {user?.review_ids.map((id, i) => (
                 <div className="user-review-card">
-                  <ReviewCard review={review} />
+                  <ReviewCard review={reviews[id]} />
                 </div>
               ))}
             </div>
