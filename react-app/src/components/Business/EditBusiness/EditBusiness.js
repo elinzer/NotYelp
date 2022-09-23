@@ -12,7 +12,6 @@ function BusinessEditForm({ closeModal }) {
   // const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[businessId]);
-
   const [name, setName] = useState(business?.name);
   const [address, setAddress] = useState(business?.address);
   const [url, setUrl] = useState(business?.url);
@@ -28,11 +27,25 @@ function BusinessEditForm({ closeModal }) {
   const [errors, setErrors] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  if (business && !isLoaded) {
-    setIsLoaded(true);
-  } else if (!business && !isLoaded) {
-    dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
-  }
+  const timeStringToLocale = (timeString) => {
+    let temp_time = new Date();
+    temp_time.setUTCHours(...timeString.split(":"));
+    return temp_time.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+  };
+  useEffect(() => {
+    if (business && !isLoaded) {
+      setIsLoaded(true);
+    } else if (!business && !isLoaded) {
+      dispatch(getBusinessByid(businessId)).then(() => setIsLoaded(true));
+    }
+    setOpenTime(timeStringToLocale(business?.open_time));
+    setCloseTime(timeStringToLocale(business?.close_time));
+  }, []);
+
   useEffect(() => {
     const errors = [];
     if (name.length > 50) {
@@ -81,6 +94,8 @@ function BusinessEditForm({ closeModal }) {
       description,
       preview_image: previewUrl,
     };
+    console.log("OPEN_TIME", openTime);
+    console.log("CLOSE_TIME", closeTime);
     const data = await dispatch(editBusiness(businessData, business.id));
     if (data && data.errors) {
       setErrors(data.errors);

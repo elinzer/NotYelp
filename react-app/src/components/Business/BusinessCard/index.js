@@ -10,6 +10,10 @@ import defaultPreview from "../../../imgs/notyelpbusiness.png";
 const states = require("us-state-converter");
 function BusinessCard({ business }) {
   const sessionUser = useSelector((state) => state.session.user);
+  let openTime = new Date();
+  let closeTime = new Date();
+  openTime.setUTCHours(...business.open_time.split(":"));
+  closeTime.setUTCHours(...business.close_time.split(":"));
   return (
     <div className="temp">
       <div className="business-card" to={`/businesses/${business.id}`}>
@@ -61,8 +65,16 @@ function BusinessCard({ business }) {
             <div className="pl5">
               until{" "}
               {business?.open_status
-                ? business?.format_close
-                : business?.format_open}
+                ? closeTime.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true,
+                  })
+                : openTime.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true,
+                  })}
             </div>
           </div>
           <div className="business-card-description">

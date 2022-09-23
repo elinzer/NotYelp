@@ -18,8 +18,6 @@ const states = require("us-state-converter");
 function BusinessDetail() {
   let currentUser;
   const [isLoaded, setIsLoaded] = useState(false);
-  const [openTime, setOpenTime] = useState("");
-  const [closeTime, setCloseTime] = useState("");
   const [openStatus, setOpenStatus] = useState(false);
   const [curTime, setCurTime] = useState(new Date());
   const [loveCount, setLoveCount] = useState(0);
@@ -51,6 +49,16 @@ function BusinessDetail() {
       }
     }
   }, []);
+
+  const timeStringToLocale = (timeString) => {
+    let temp_time = new Date();
+    temp_time.setUTCHours(...timeString.split(":"));
+    return temp_time.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -103,7 +111,8 @@ function BusinessDetail() {
                   {business?.open_status ? "Open" : "Closed"}
                 </div>
                 <div className="business-open-time pl5">
-                  {business?.format_open} - {business?.format_close}
+                  {timeStringToLocale(business?.open_time)} -{" "}
+                  {timeStringToLocale(business?.close_time)}
                 </div>
               </div>
             </div>

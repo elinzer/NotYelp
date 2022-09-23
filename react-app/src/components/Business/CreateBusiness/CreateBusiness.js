@@ -12,7 +12,7 @@ function BusinessCreateForm({ closeModal }) {
   const [url, setUrl] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [state, setState] = useState(null);
   const [zipCode, setZipCode] = useState("");
   const [openTime, setOpenTime] = useState("");
   const [closeTime, setCloseTime] = useState("");
@@ -41,6 +41,7 @@ function BusinessCreateForm({ closeModal }) {
       description,
       preview_image: previewUrl,
     };
+    console.log("STATE:", state);
     const newBusiness = await dispatch(createBusiness(businessData));
     if (newBusiness && newBusiness.errors) {
       setErrors(newBusiness.errors);
@@ -57,7 +58,6 @@ function BusinessCreateForm({ closeModal }) {
         "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
       );
     }
-
     if (name.length > 50) {
       errors.push("name: Name must be less than 50 characters");
     }
@@ -165,6 +165,9 @@ function BusinessCreateForm({ closeModal }) {
               onChange={(e) => setState(e.target.value)}
               required
             >
+              <option value="" disabled selected={true}>
+                Select State
+              </option>
               {states().map((state, idx) => (
                 <option key={idx} value={state.name}>
                   {state.name}

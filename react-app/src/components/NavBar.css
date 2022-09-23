@@ -23,15 +23,13 @@
 .search-input {
   width: 40vw;
   padding: 16px;
+  border: 2px solid #d3d3d3;
   border-right: none;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
 .search-button {
-  border-top: 2px solid black;
-  border-right: 2px solid black;
-  border-bottom: 2px solid black;
   border-radius: 0 4px 4px 0;
   box-sizing: border-box;
   color: white;
