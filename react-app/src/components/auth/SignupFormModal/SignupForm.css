@@ -3,8 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 500px;
-  width: 450px;
+  padding: 30px 60px;
   border-radius: 20px;
 }
 
@@ -43,15 +42,14 @@
   font-size: 16px;
   border: solid 1px lightslategray;
   border-radius: 8px;
-  width: 300px;
-  height: 20px;
+  min-width: 300px;
+  max-width: 300px;
+  height: 30px;
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 15px;
-  justify-content: center;
-  align-items: center;
-  margin-top: 25px;
-  margin-left: 10px;
+  margin-top: 20px;
+  position: relative;
 }
 
 .signup-button {

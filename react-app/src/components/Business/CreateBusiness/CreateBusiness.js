@@ -87,76 +87,76 @@ function BusinessCreateForm({ closeModal }) {
   }, [previewUrl, zipCode, address, url, city, phone, name]);
 
   return (
-    <div className="createBusinessBox">
-      <form onSubmit={handleSubmit}>
-        <div className="createBusinessBox">
-          <div className="CreateBusTitle">Create Your Business</div>
-          {isSubmitted &&
-            errors.map((error, ind) => (
-              <div className="createErrors">
-                <div key={ind} className="createError">
-                  {error.split(": ")[1]}
-                </div>
+    <form onSubmit={handleSubmit}>
+      <div className="createBusinessBox">
+        <div className="CreateBusTitle">Create Your Business</div>
+        {isSubmitted &&
+          errors.map((error, ind) => (
+            <div className="createErrors">
+              <div key={ind} className="createError">
+                {error.split(": ")[1]}
               </div>
-            ))}
-          <div>
-            <label htmlFor="name" />
+            </div>
+          ))}
+        <div className="input-container">
+          <div className="inputItem">
             <input
               type="text"
               value={name}
               className="nameInput"
-              placeholder="Name"
+              placeholder=" "
               onChange={(e) => setName(e.target.value)}
               required
             />
+            <label htmlFor="name">Name</label>
           </div>
-          <div>
-            <label htmlFor="address" />
+          <div className="inputItem">
             <input
               type="text"
               value={address}
               className="addressInput"
-              placeholder="Address"
+              placeholder=" "
               name="address"
               onChange={(e) => setAddress(e.target.value)}
               required
             />
+            <label htmlFor="address">Address</label>
           </div>
-          <div>
-            <label htmlFor="url" />
+          <div className="inputItem">
             <input
               type="url"
               name="url"
               value={url}
               className="urlInput"
-              placeholder="URL"
+              placeholder=" "
               onChange={(e) => setUrl(e.target.value)}
               required
             />
+            <label htmlFor="url">Url</label>
           </div>
-          <div>
-            <label htmlFor="phone" />
+          <div className="inputItem">
             <input
               type="tel"
               name="phone"
               value={phone}
               className="phoneInput"
-              placeholder="Phone Number"
+              placeholder=" "
               onChange={(e) => setPhone(maskPhoneNumber(e.target.value))}
               required
             />
+            <label htmlFor="phone">Phone</label>
           </div>
-          <div>
-            <label htmlFor="city" />
+          <div className="inputItem">
             <input
               type="text"
               name="city"
               value={city}
               className="cityInput"
-              placeholder="City"
+              placeholder=" "
               onChange={(e) => setCity(e.target.value)}
               required
             />
+            <label htmlFor="city">City</label>
           </div>
           <div className="state-select-container">
             <select
@@ -172,35 +172,35 @@ function BusinessCreateForm({ closeModal }) {
               ))}
             </select>
           </div>
-          <div>
-            <label htmlFor="zipcode" />
+          <div className="inputItem">
             <input
               type="text"
               name="zipcode"
               value={zipCode}
               className="zipcodeInput"
-              placeholder="Zip Code"
+              placeholder=" "
               onChange={(e) => setZipCode(e.target.value)}
               required
             />
+            <label htmlFor="zipcode">Zip</label>
           </div>
-          <div>
-            <label htmlFor="previewUrl" />
+          <div className="inputItem">
             <input
               type="url"
               name="previewUrl"
               value={previewUrl}
               className="previewUrlInput"
-              placeholder="Preview Image URL"
+              placeholder=" "
               onChange={(e) => setPreviewUrl(e.target.value)}
               required
             />
+            <label htmlFor="previewUrl">Image Url</label>
           </div>
           <div>
             <label htmlFor="open_time" className="opentimeTitle">
               Open-Time
             </label>
-            <div>
+            <div className="inputItem">
               <input
                 type="time"
                 name="open_time"
@@ -226,23 +226,25 @@ function BusinessCreateForm({ closeModal }) {
               />
             </div>
           </div>
-          <div>
-            <label htmlFor="description" />
+          <div className="inputItem desc-input">
             <textarea
               name="description"
               value={description}
               className="descriptionInput"
-              placeholder="Description"
+              placeholder=" "
               onChange={(e) => setDescription(e.target.value)}
               required
             />
+            <label className="desc-label" htmlFor="description">
+              Description
+            </label>
           </div>
           <button name="submit" type="submit" className="submitButton">
             Create Business
           </button>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 
