@@ -11,7 +11,9 @@ body {
 * {
   font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-
+div {
+  word-wrap: break-word;
+}
 .hide-scroll {
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
