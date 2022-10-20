@@ -41,10 +41,7 @@ export const getBusinesses = () => async (dispatch) => {
 export const createBusiness = (business) => async (dispatch) => {
   const res = await fetch("/api/businesses/", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(business),
+    body: business,
   });
   if (res.ok) {
     const data = await res.json();

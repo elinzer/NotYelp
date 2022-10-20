@@ -18,7 +18,7 @@ function BusinessCreateForm({ closeModal }) {
   const [openTime, setOpenTime] = useState("");
   const [closeTime, setCloseTime] = useState("");
   const [description, setDescription] = useState("");
-  const [previewUrl, setPreviewUrl] = useState("");
+  const [previewUrl, setPreviewUrl] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
   const history = useHistory();
@@ -28,20 +28,20 @@ function BusinessCreateForm({ closeModal }) {
     e.preventDefault();
     setIsSubmitted(true);
     setErrors([]);
-    const businessData = {
-      owner_id: user.id,
-      name,
-      address,
-      url,
-      phone: returnDigitsOnly(phone),
-      city,
-      state,
-      zipcode: zipCode,
-      open_time: timeStringFormat(openTime),
-      close_time: timeStringFormat(closeTime),
-      description,
-      preview_image: previewUrl,
-    };
+    const businessData = new FormData();
+      businessData.append('owner_id', user.id)
+      businessData.append('name', name)
+      businessData.append('address', address)
+      businessData.append('url', url)
+      businessData.append('phone', returnDigitsOnly(phone))
+      businessData.append('city', city)
+      businessData.append('state', state)
+      businessData.append('zipcode', zipCode)
+      businessData.append('open_time', timeStringFormat(openTime))
+      businessData.append('close_time', timeStringFormat(closeTime))
+      businessData.append('description', description)
+      businessData.append('image', previewUrl)
+
     const newBusiness = await dispatch(createBusiness(businessData));
     if (newBusiness && newBusiness.errors) {
       setErrors(newBusiness.errors);
@@ -53,11 +53,11 @@ function BusinessCreateForm({ closeModal }) {
 
   useEffect(() => {
     const errors = [];
-    if (!previewUrl.match(imageURLRegex)) {
-      errors.push(
-        "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
-      );
-    }
+    // if (!previewUrl.match(imageURLRegex)) {
+    //   errors.push(
+    //     "preview_url: Preview url must end in valid img extension [png/jpg/jpeg]"
+    //   );
+    // }
 
     if (name.length > 50) {
       errors.push("name: Name must be less than 50 characters");
@@ -85,7 +85,7 @@ function BusinessCreateForm({ closeModal }) {
     }
 
     setErrors(errors);
-  }, [previewUrl, zipCode, address, url, city, phone, name]);
+  }, [zipCode, address, url, city, phone, name]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -190,12 +190,12 @@ function BusinessCreateForm({ closeModal }) {
           </div>
           <div className="inputItem">
             <input
-              type="url"
+              type="file"
+              accept="image/*"
               name="previewUrl"
-              value={previewUrl}
               className="previewUrlInput"
-              placeholder=" "
-              onChange={(e) => setPreviewUrl(e.target.value)}
+              // placeholder=" "
+              onChange={(e) => setPreviewUrl(e.target.files[0])}
               required
             />
             <label htmlFor="previewUrl">Image Url</label>
