@@ -9,8 +9,8 @@ Definitely not Yelp
 
 * #### DB: SQLAlchemy
 
-* ####  Hosted on Heroku
-[NotYelp](https://notyelp.herokuapp.com/)
+* ####  Hosted on Render
+[NotYelp](https://notyelp.onrender.com/)
 
 ## Wiki Links:
 
