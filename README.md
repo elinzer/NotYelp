@@ -15,7 +15,6 @@ Definitely not Yelp
 ## Wiki Links:
 
 * [Database Schema](https://github.com/elinzer/NotYelp/wiki/DB-Schema)
-* [Features](https://github.com/elinzer/NotYelp/wiki/User-Stories)
 * [API Routes](https://github.com/elinzer/NotYelp/wiki/API-Routes)
 * [Redux State Shape](https://github.com/elinzer/NotYelp/wiki/Redux-State-Shape)
 * [App Features](https://github.com/elinzer/NotYelp/wiki/App-Features)
